@@ -1,0 +1,1557 @@
+osm_id,osm_type,name,lat,lon,city,state,postcode,website,opening_hours
+2160492080,node,Farmers Market,33.5343432,-86.843964,,AL,,,
+2231183577,node,River Market,33.2165387,-87.562781,,AL,,,
+2758779531,node,Northport Farmers Market,33.2203636,-87.5976108,,AL,,,
+3419726842,node,Selma Curb Market,32.400577,-87.0157825,,AL,,,
+5553315034,node,Irondale Market,33.5403004,-86.7034751,Irondale,AL,35210,https://www.facebook.com/pg/IrondaleMarket/,Mo-Sa 10:00-18:00
+10170742506,node,Farmer's Market,32.634111,-85.4106411,,AL,,,
+221417342,way,Limestone County Farmers Market,34.801025,-86.9741223,Athens,AL,35611,https://limestonecounty-al.gov/limestone-county-farmers-market/,May-Nov unknown; Dec-Apr closed
+445836679,way,Florence Lauderdale Farmer's Market,34.8392228,-87.6750023,Florence,AL,35630,,
+480942878,way,Morgan County-Decatur Farmer's Market,34.6009549,-86.986905,Decatur,AL,35601,http://www.decaturfarmersmarket.org/,
+562805621,way,Decatur Morgan County Farmer's Market,34.6008316,-86.9868891,,AL,,,
+600868916,way,Marketplatz Farmer's Market,34.1791188,-86.8441363,,AL,,,
+897680076,way,Oakwood Farms Market,34.7511901,-86.6471833,,AL,,,
+935015917,way,Springville Farmers Market,33.7751593,-86.4721617,Springville,AL,35146,,
+3721787053,node,Birch Hill Market,64.869234,-147.6700384,,AK,,,
+7567276797,node,Spenard Farmers Market,61.197464,-149.904849,Anchorage,AK,99503,https://www.facebook.com/spenardfarmersmarket/,Sa 09:00-14:00
+10019479239,node,Midtown Anchorage Farmers Market,61.1914309,-149.864832,Anchorage,AK,99508,https://anchoragemidtownfarmersmarket.com/,
+10019479240,node,Pena Park Market,61.2263346,-149.72977,Anchorage,AK,99504,https://www.facebook.com/PenaParkMarket/,
+10019479241,node,South Anchorage Farmers Market,61.1201084,-149.86067,Anchorage,AK,99515,https://www.safm.org/,
+10019479242,node,Muldoon Farmers Market,61.2088663,-149.732625,Anchorage,AK,99504,https://muldoonfarmersmarket.org/,
+10019479243,node,Eagle River Farmers Market,61.3301019,-149.570095,Eagle River,AK,99577,https://dnr.alaska.gov/ag/Marketing/FarmersMarkets2016.pdf,
+10019479244,node,Eagle River Farmers Market,61.3157311,-149.572063,Eagle River,AK,99577,https://dnr.alaska.gov/ag/Marketing/FarmersMarkets2016.pdf,
+10019479245,node,Grow North Farm,61.2245063,-149.814339,anchorage,AK,99508,https://anchoragelandtrust.org/grow-north-farm/,
+10574097660,node,ANC Market Social,61.2170582,-149.892757,Anchorage,AK,99501,https://anchoragedowntown.org/anc-market-social/,
+10574097661,node,Anchorage Farmers Market,61.2081259,-149.880815,Anchorage,AK,99501,https://www.anchoragefarmersmarket.org/our-vendors/,
+10574097662,node,Girdwood Farmers Market,60.9632543,-149.135,Anchorage,AK,99587,https://www.girdwoodlandtrust.org/into-the-woods-market,
+212666169,way,Homer Community Market,59.6374481,-151.5138607,,AK,,,
+627012478,way,Delta Junction Farmer's Market,64.0357037,-145.729894,,AK,,,
+944425914,way,Tanana Valley Farmers Market,64.8629397,-147.7824251,Fairbanks,AK,99708,https://www.tvfmarket.com/,
+2602832671,node,Tempe Farmers Market,33.4216362,-111.9440443,Tempe,AZ,85281,https://www.tempefarmersmarket.com/,
+5133838329,node,Sierra Vista Farmers Market,31.555643,-110.266665,,AZ,,http://www.sierravistafarmersmarket.com/,Th 10:00-14:00; Nov Th[4]  off
+6219069339,node,Farmers' Market,31.574798,-111.3297946,,AZ,,,
+6454741065,node,San Tan Valley Farmers Market,33.2769603,-111.5417165,,AZ,,http://santanvalleyfarmersmarket.com/,Sa[2] 07:00+
+6454741069,node,Oro Valley Farmers Market,32.4060434,-110.9503645,,AZ,,https://www.heirloomfm.org/markets/oro-valley/,Apr-Sep Sa 08:00-12:00; Oct-Mar Sa 09:00-13:00
+6454741070,node,Oracle Farmers Market,32.6257814,-110.7906872,,AZ,,,Sa 09:00-12:00
+6454742703,node,Casa Grande Farmers Market,32.8782773,-111.7527808,,AZ,,https://www.farmersmarketonline.com/fm/CasaGrandeFarmersMarket.html,Tu 09:00-15:00
+7383097521,node,Sprouts Farmers Market,35.1854079,-111.6592948,Flagstaff,AZ,86001,,
+7630435780,node,Oak Creek Overlook Vista Native American Crafts Market,35.0296977,-111.7335856,,AZ,,https://nacainc.org/oak-creek-overlook.html,
+8923613154,node,Roadrunner Farmers Market,33.597369,-112.0065084,,AZ,,https://arizonacommunityfarmersmarkets.com/roadrunner-farmers-mkt,Sa 07:00-11:00
+9307451476,node,The Wedge Pizza and Market,35.188603,-111.6549219,Flagstaff,AZ,86011,,"Mo-Fr 09:00-22:00; Sa,Su 18:00-22:00"
+10286604461,node,Market Monarca,33.3781387,-112.0811089,,AZ,,,
+10780808502,node,CBD & Wellness Market,33.6235333,-111.8970288,,AZ,,,
+12327820406,node,Cecilia's Market,33.4219747,-111.8200072,,AZ,,,
+12592425986,node,Grandma’s Farm,33.3654586,-112.1009255,Phoenix,AZ,85041,http://www.farmingwithgrandma.com,
+257051292,way,Gilbert Farmers Market,33.3537537,-111.7905894,,AZ,,,
+275407797,way,Lakeside Market,31.4943671,-110.8550376,,AZ,,,
+477788264,way,Arizona Market Place,32.6661923,-114.5618991,Yuma,AZ,85365,http://www.arizonamkt.com/,Th-Su 09:00-16:00; Mo-We closed
+494477135,way,Big D's Market,33.0532845,-110.9161294,,AZ,,,
+522299943,way,Bull Market,34.4358517,-109.6331833,,AZ,,,
+721491784,way,Patagonia Market,31.5413779,-110.7531157,Patagonia,AZ,85624,,Mo-Su 04:00-20:00
+1097148296,way,Freeman Farms,33.4326703,-111.8297755,,AZ,,,
+756783603,way,Latino Market,35.2733875,-93.1331469,Russellville,AR,72801,,
+18658764,relation,Judd Hill Farmers' Market,35.8422993,-90.6659813,,AR,,,
+596905604,node,Kenwood Market,32.7458434,-116.9902178,Spring Valley,CA,91977,,
+992089177,node,California Avenue Farmer's Market,37.425915,-122.145151,,CA,,https://uvfm.org/palo-alto-sundays,Su 09:00-13:00
+1231853214,node,Irvine Farmers Market,33.6332796,-117.8312696,,CA,,https://www.ocfarmbureau.org/schedule-locations,Sa 08:00-12:00
+1231853217,node,Irvine Farmers Market at Historic Park,33.730202,-117.7857169,,CA,,,Tu 09:00-13:00
+1478520965,node,Fort Mason Farmer's Market,37.8061667,-122.4315658,,CA,,,
+1583862294,node,Mountain View Farmer's Market,37.3933767,-122.0740609,,CA,,,Su 09:00-13:00
+1598674116,node,Menlo Park Farmers Market,37.4508012,-122.184289,,CA,94025,https://www.localharvest.org/menlo-park-farmers-market-M3662,Su 09:00-13:00
+2019847911,node,El Cerrito Plaza Farmers' Market,37.8982731,-122.3002116,,CA,,,Tu 09:00-13:00; Sa 09:00-13:00
+2068028033,node,Blossom Hill Cerified Farmer's Market,37.2579732,-121.8604775,,CA,,,Su 9:00 - 13:00
+2247860156,node,Hollywood Farmers Market,34.0997432,-118.328298,Hollywood,CA,90028,https://hfm.la/,Su 08:00-13:00
+2292891529,node,Live Oak Farmer's Market,36.9637548,-121.9904011,,CA,,,
+2342926896,node,Farmers Market,38.6082176,-121.3793004,Sacramento,CA,95825,,
+2390947266,node,Farmers Market,38.5486929,-121.4697424,Sacramento,CA,95817,,
+2390970857,node,Farmers Market,38.6016845,-121.392504,Sacramento,CA,95825,,Apr-Oct Fr 09:30-13:30
+2390977916,node,Farmers Market,38.5965905,-121.4294016,Sacramento,CA,95815,,Apr-Oct Mo 09:30-13:30
+2494421337,node,Boulder Creek Farmer's Market,37.1240356,-122.122504,,CA,,,Sa 12:00-16:00
+2713449215,node,Associated Students Farmer's Market,37.7226102,-122.4805093,,CA,,,Th 10:00-15:00
+2714942366,node,The Village Market,37.7233534,-122.4823518,,CA,,,
+2744235303,node,Grand Lake – Oakland Farmers Market,37.8105631,-122.2476338,,CA,,https://www.agriculturalinstitute.org/grand-lake-oakland/,Sa 9:00 - 14:00
+2993406188,node,City Heights Market,32.7478591,-117.1015151,,CA,,http://www.sdfarmbureau.org/BuyLocal/Farmers-Markets.php/wb/#cityhts,Sa 9:00-13:00
+3129352932,node,San Marcos Market,33.1446204,-117.1698468,,CA,,,
+3301478960,node,Curtis Park Market,38.5548944,-121.4830685,,CA,,,
+3362770643,node,Cherry Market,33.785056,-118.1678896,,CA,,,
+3622806326,node,Downtown San Jose Farmers’ Market,37.3356512,-121.8932308,,CA,,,Fr 10:00-14:00
+3755316270,node,Marina del Rey Farmers Market,33.9793326,-118.4589084,,CA,,,Sa 09:00-14:00
+3810633923,node,Jack London Square – Oakland Farmers Market,37.7940844,-122.274763,,CA,,https://www.pcfma.org/jacklondonsq,Su 10:00-15:00
+3810636657,node,Temescal - Oakland Farmers Market,37.8399089,-122.2594145,oakland,CA,94618,https://uvfm.org/temescal-sunday,Su 09:00-13:00
+3810637762,node,Fruitvale - Oakland Farmers Market,37.7756872,-122.2242054,,CA,,,Sa 14:00-19:00
+3846089957,node,Kenwood Village Market,38.4190235,-122.5518182,Kenwood,CA,95452,,Mo-Sa 06:00-20:00; Su 06:00-21:00
+4238538992,node,Old Town Market,32.7537993,-117.1958324,,CA,92110,,
+4526793032,node,Palo Alto Farmer's Market,37.4453603,-122.1590277,,CA,,https://www.pafarmersmarket.org/,Sa 8:00-12:00
+4569861297,node,Echo Park Farmers' Market,34.0769108,-118.2585944,,CA,,https://seela.org/markets-echo-park/,Fr 15:00-19:30
+4580741352,node,Silverlake Farmers Market,34.0905618,-118.277379,,CA,90026,,"Mo,We-Fr,Su off; Tu 01:30-19:00; Sa 08:00-13:30"
+4942533434,node,Mexican Farmers Market,37.3055976,-121.8530037,,CA,,,
+5222351457,node,DE BU Fillipino Market,35.1449888,-120.6432965,,CA,,,Mo-Sa 10:00-18:00; Su 12:00-17:00
+5272612559,node,Di Raimondos Italian Market,35.6276574,-120.6896104,,CA,,,
+5446511508,node,Istanbul Market,37.5862743,-122.3643813,Burlingame,CA,94010,,Mo-Su 09:00-21:00
+5469671513,node,Cerritos Certified Farmers Market,33.8677925,-118.0623149,,CA,,http://www.cerritos.us/RESIDENTS/recreation/events/farmers_market.php,Sa 8:00-12:00
+5471193112,node,Southland Farmers' Market,34.1476179,-118.1495983,,CA,,,Su 09:00-14:00
+5613333166,node,Fida Market,37.7660549,-122.4196272,,CA,,,
+5696143243,node,Bay Area Night Market,37.524974,-121.9995697,,CA,,,
+5831142586,node,Fish Market,32.7122312,-117.175625,San Diego,CA,92101,,
+6215022320,node,Claro's Italian Market,34.0875424,-117.8886172,,CA,,,
+6521383065,node,Taylor Street Night Market,37.3539309,-121.892725,,CA,,https://www.mvblfeast.com/taylorstreetmarket,May-Aug: Th 17:00-21:00
+6521383066,node,Japantown Certified Farmer’s Market,37.3538371,-121.8929717,,CA,,https://www.japantownsanjose.org/sunday-farmers-market,May-Oct Su 08:00-12:00
+6597620445,node,Farmers Market,39.1483853,-123.2082865,,CA,,,Sa 09:00-12:00
+6923605960,node,The SF Market,37.7411787,-122.3949507,,CA,,https://www.thesfmarket.org/,"Mo-Fr 03:00-09:00 || ""some businesses open on Saturdays and longer hours"""
+6959323280,node,Danville Farmers' Market,37.8204968,-122.00043,Danville,CA,94526,,Sa 09:00-13:00
+6970032907,node,Liberty Public Market,32.7401964,-117.2112403,,CA,,https://bluebridgehospitality.com/libertypublicmarket/,Mo-Su 10:30-21:00; Dec 25 off; Dec 31 11:00-17:00; Jan 1 11:00-19:00; Nov Th[4] off; Jul 4 off
+6993884746,node,Farmer's Market,32.7494379,-117.1493307,,CA,,,Su 09:00-14:00
+7121798609,node,Paseo Market,37.3363187,-121.881477,,CA,,,Mo-Sa 08:00-18:00
+7450878939,node,Quail Valley Market,33.7016434,-117.2410049,,CA,,,
+7484930538,node,Joshua Tree Open Air Market,34.1398288,-116.3074886,,CA,,,
+7529576208,node,Quail Valley Market,33.7015682,-117.2410068,,CA,,,
+7698979069,node,Bill's Market,38.4693398,-122.7306959,,CA,,,
+7972230359,node,San Miguel Market,36.6596017,-121.6573936,,CA,,,
+8048823883,node,Alpine Market,33.8422426,-118.2877619,,CA,,,
+8382278869,node,Motor Avenue Farmers Market,34.0289456,-118.4113021,,CA,,https://www.motoravenuemarket.com/,Su 09:00-14:00
+8741196624,node,Soledad Farmers Market,36.4268232,-121.3279163,,CA,,,
+8775177246,node,"Hispanic Market, Grocery Store",36.5066763,-121.4440284,,CA,,,
+8775430959,node,Farmers Food Market,36.5062208,-121.4431896,,CA,,,
+8870738756,node,Stonestown Farmers Market,37.7302007,-122.4790236,,CA,,,Su 09:00-13:00
+9054926287,node,Saet Byul Asian Market,33.9201214,-117.4478911,,CA,,,
+9130489297,node,Culver City Farmers' Market,34.0246277,-118.3943995,,CA,,https://www.culvercityfarmersmarket.org/,Tu 14:00-19:00
+9328044909,node,Al's Market 7,33.8725389,-117.9263588,,CA,,,
+9503737727,node,Marconi's River Park Market,38.5731657,-121.4329202,,CA,,,
+9559516415,node,West LA Farmers Market,34.0455828,-118.4505626,,CA,,,Su 09:00-14:00
+9736077947,node,Quality Market,33.8280054,-117.9116609,,CA,,,
+9738075044,node,Economic Market,36.3209312,-121.2436816,,CA,,,
+9791517979,node,Juquilita Market,36.6982816,-121.6504547,,CA,,,
+9791518015,node,Steve's Filipino Asian Market,36.7007859,-121.6518764,,CA,,,
+9892079806,node,Pars Kosher Market,37.2583521,-121.9475622,San Jose,CA,95124,,
+9906973046,node,626 Night Market Mini,34.0180401,-118.4957024,,CA,,,"""it's seasonal and is only a bunch of stalls that are set up occasionally"""
+10120011709,node,San Miguel Market,35.3140326,-120.8330788,,CA,,,
+10124701049,node,Santa Monica Airport Antique Market,34.0177747,-118.4453134,,CA,,,
+10181219315,node,Brentwood Farmers Market,34.0504995,-118.47503,,CA,,,Su 09:00-14:00
+10205352044,node,Village Market,35.3073361,-120.659242,,CA,,,
+10226810205,node,Super Seafood Market,33.9143905,-117.4844741,,CA,,,
+10261525788,node,Stonestown Farmers Market,37.7301174,-122.4799993,,CA,,https://www.agriculturalinstitute.org/stonestown,Su 09:00-13:00
+10292342264,node,Lao Market,40.5717601,-122.3887068,,CA,,,
+10651024023,node,Ferry Plaza Farmers Market,37.7952753,-122.3923704,,CA,,https://foodwise.org/markets/ferry-plaza-farmers-market/,Tu 10:00-14:00; Th 10:00-14:00; Sa 08:00-14:00
+10655776640,node,De Anza College Farmers' Market,37.3203594,-122.04251,Cupertino,CA,95014,https://www.wcfma.org/cupertino,Su 09:00-13:00
+10655777211,node,Berryessa Farmers' Market,37.4026102,-121.8477815,San Jose,CA,95132,https://www.pcfma.org/berryessa,Apr 01-Nov 18 Sa 09:00-13:00
+10894495098,node,Scotts Valley Farmers Market,37.0550209,-122.0110981,,CA,,https://santacruzfarmersmarket.org/markets/scotts-valley/,May Sa[1]-Nov Sa[3] Sa 09:00-13:00
+10925657805,node,Westwood Village Farmers Market,34.061758,-118.4464374,,CA,,https://thewestwoodvillage.com/events/westwood-village-farmers-market/,Th 12:00-17:00
+10942519298,node,Farmers Produce,37.7961757,-122.2740642,,CA,,,
+11013168406,node,Lake Forest Farmer's Market,33.6632806,-117.6578992,,CA,,https://www.lakeforestca.gov/en/departments/community-services/lake-forest-certified-farmers-market,We 16:00-20:00; Th-Tu off
+11020560267,node,Laguna Hills Farmer's Market,33.6123916,-117.7095099,,CA,,https://www.ocfarmbureau.org/shop-at-farmer-s-markets,"Fr 09:00-13:00 ""Rain or shine"""
+11345417100,node,Mar Vista Farmers' Market,34.0045841,-118.4309913,,CA,,https://www.marvistafarmersmarket.org/,Su 09:00-14:00
+11654865040,node,Winter Sister Farm,38.3884874,-122.8004477,,CA,,https://www.wintersisterfarm.com/,"tu 14:00-18:00, Sa 10:00-14:00"
+11694828615,node,Uptown Market,37.8090511,-122.2686666,,CA,,https://www.blockcommunityhub.com/uptown-market,
+11742191287,node,Micro-Market Spaces,37.8015951,-122.2734159,,CA,,https://www.sanctuaryfsa.org,
+11757296435,node,Nairi Market,34.1019792,-118.3003442,,CA,90027,https://m.yelp.com/biz_redir?url=http%3A%2F%2Fnairimarket.mobile-webview1.com&cachebuster=1727990527&website_link_type=website&src_bizid=goLMgI32aesov_2OzaNERg&s=d661b2bf48c027f29952b8717c58c0de36068ecfe01e2cac5516c81e7675d34d,Mo 08:00-18:00; Tu-Sa 08:00-19:00; Su 08:00-17:00
+11918627087,node,West Oakland Farmers' Market,37.8144378,-122.2919127,,CA,,https://www.westoaklandfarmersmarket.org/,Su 10:00-14:00
+11971191448,node,Prescott Night Market,37.8144672,-122.2924621,,CA,,https://www.westoaklandfarmersmarket.org/nightmarket,Jun-Oct Th 16:00-20:00
+12136434190,node,Ashby Flee Market,37.8537796,-122.2702236,,CA,,https://berkeleyfleamarket.com,"Sa, Su 09:00-00:00"
+12147212608,node,Davis Farmer's Market,38.5447817,-121.7440979,,CA,,https://www.davisfarmersmarket.org/,Sa 08:00-13:00; We 15:00-18:00; May-Sep We 16:00-20:00
+12405680772,node,Folsom Blvd Fle Market,38.5489515,-121.389765,,CA,95826,http://folsomflea.com/,Mo-Fr off; Sa-Su 07:00-16:00
+12530023760,node,Mi Rancho Market,37.3244971,-121.8969738,San Jose,CA,95126,,
+12832972904,node,Colorado River Market,34.8487445,-114.6191287,Needles,CA,92363,,
+12976266032,node,Santa Rosa Community Farmers Market,38.4341134,-122.6893299,Santa Rosa,CA,95405,,
+31808955,way,Farmers Outlet,32.7901491,-117.0993534,,CA,,,
+34994967,way,Westside Farmer's Market,36.9601361,-122.0563552,,CA,,,Sa 09:00-13:00
+39018501,way,San Pedro Square Market Hall,37.3363762,-121.894967,,CA,,,
+43968258,way,Pico Farmer's Market,34.0209181,-118.4678354,,CA,,,Sa
+44803360,way,Tana Ethio Market,37.2996939,-121.9495265,San Jose,CA,95128,,
+99584438,way,Belmont Farmer's Market,37.5185111,-122.2732247,,CA,,,Su 09:00-13:00
+106607203,way,UTC Farmers Market,32.8621125,-117.2239611,,CA,,,Th 15:00-19:00
+114555289,way,Ecology Center Farmer's Market,37.8698389,-122.2717031,,CA,,https://www.ecologycenter.org/bfm/,Sa 10:00-15:00
+123286911,way,Redlands Public Market,34.0583096,-117.1840226,Redlands,CA,92374,https://www.redlandspublicmarket.com/,Su-Th 08:00-22:00; Fr-Sa 08:00-02:00
+132789281,way,Farmers Market,34.0720135,-118.3602298,Los Angeles,CA,90036,https://www.farmersmarketla.com/,Mo-Fr 09:00-21:00; Sa 09:00-20:00; Su 10:00-19:00
+160146695,way,Westchester Farmers Market (Wednesdays),33.9574316,-118.4158172,,CA,,,
+165361026,way,Saturday Farmers Market,34.2164464,-119.041365,,CA,,,
+166620586,way,Santa Maria Certified Farmers' Market,34.9521541,-120.436306,,CA,,http://www.cafarmersmarkets.com/index.cfm?fuseaction=detail&id=2040,We 12:30-16:30
+166620794,way,Orcutt Certified Farmers' Market,34.8659138,-120.4185504,,CA,,http://www.cafarmersmarkets.com/index.cfm?fuseaction=detail&id=1900,Tu 10:00-13:00
+194336662,way,Santa Monica Farmers Market,34.0166333,-118.4982368,,CA,,,We Sa
+197444905,way,Mesa View Market,35.0807236,-120.5871555,,CA,,,
+239932194,way,Bear Cupboards Market,34.2401444,-116.9107487,,CA,,,
+245562479,way,North Berkeley Farmer's Market,37.8809096,-122.2692054,,CA,,https://www.ecologycenter.org/bfm/,Th 15:00-19:00
+249321589,way,Market Hall,37.8436343,-122.2522388,,CA,,https://rockridgemarkethall.com/,
+257827433,way,Downtown Farmer's Market Wed PM,36.9720138,-122.0266328,,CA,,,We 13:30-18:30
+259804434,way,Fruitvale Public Market,37.776304,-122.2240996,,CA,,,
+265640062,way,Loyalton Farmer's Market (Summer Weekends),39.6756039,-120.241168,,CA,,,
+332091165,way,Canyon Market,33.7473241,-117.6391323,Silverado,CA,92676,,
+338746231,way,San Pedro Square Market,37.3364574,-121.8946432,,CA,,https://sanpedrosquaremarket.com/,
+354759211,way,Diablo Valley Farmers' Market,37.9279728,-122.0282216,Walnut Creek,CA,94598,,Sa 9:00-13:00
+362162006,way,Clement St. Farmers Market,37.7830983,-122.4612258,,CA,,,Su 09:00-14:00
+367586034,way,Alemany Farmers Market,37.7359725,-122.4100436,,CA,,https://www.sf.gov/location--alemany-farmers-market,
+368695781,way,Oxbow Public market,38.3017078,-122.2816892,Napa,CA,,https://oxbowpublicmarket.com/,
+380023148,way,Calabasas Saturday Farmers Market,34.1571844,-118.6386442,,CA,,,Sa 09:00-13:00
+380903024,way,Thursday Farmers Market,34.1803665,-118.8835722,,CA,,https://www.vccfm.org/thousand-oaks,Th 12:00-17:00
+381643990,way,Warner Business Center Certified Wednesday Farmers Market,34.1741011,-118.5935852,,CA,,,We 10:00-14:00
+385737288,way,Canoga Saturday Farmers Market,34.2022082,-118.6015906,,CA,,,Sa 09:00-13:00
+385737310,way,Encino Sunday Farmers Market,34.1855876,-118.5126288,,CA,,,Su 08:00-13:00
+387057317,way,Pirooz Market,37.5528696,-122.3152214,San Mateo,CA,94402,https://www.piroozmarket.com/,
+403656578,way,Bombay Market,33.3526401,-115.7337214,Niland,CA,92257,,
+403659459,way,Alamo Market,33.4032355,-116.0444518,Desert Shores,CA,,,
+428152658,way,Southern California Flower Market,34.0412933,-118.2498993,Los Angeles,CA,90014,http://www.socalflowermarket.com/,
+428152740,way,The Original Los Angeles Flower Market,34.0402884,-118.2495656,Los Angeles,CA,90014,https://www.originallaflowermarket.com/,
+433027169,way,Oxbow Public Market,38.3016781,-122.2816586,,CA,,https://oxbowpublicmarket.com/,
+439624433,way,Thursday Evening Market,34.697688,-118.1432853,,CA,,,Th 16:00-21:00
+450413697,way,intra Market,33.9036584,-118.2149484,,CA,,,
+465951860,way,Watsonville Farmer's Market Fri PM,36.9099286,-121.7554952,,CA,,,Fr 13:30-18:30
+470594875,way,Frank's Market,34.1044266,-117.9603269,,CA,,,
+471050374,way,Claro's Italian Market,34.0876526,-117.888616,Covina,CA,91723,,
+472939218,way,Antelope Acres Market,34.7549821,-118.2906814,,CA,,https://www.facebook.com/AntelopeAcresMarket/,
+477417074,way,Old Oakland Farmers' Market,37.8013697,-122.2745702,,CA,,https://uvfm.org/old-oakland-fridays,Fr 08:00-14:00
+538091053,way,Poppi Seed Market,33.698727,-117.739304,Irvine,CA,92620,,Mo-Th 11:00-18:00; Fr-Sa 11:00-19:00; Su 11:00-17:00
+651868840,way,Ecology Center Farmer's Market,37.8477253,-122.2720787,,CA,,https://www.ecologycenter.org/fm/,Tu 14:00-18:30
+683470860,way,Sunday Market,34.1513606,-118.823861,,CA,,,Su 10:00-14:00
+696538413,way,Otay Ranch Farmers Market,32.6236708,-116.9684012,,CA,,https://www.otayranchtowncenter.com/en/visit/otay-ranch-market.html,Tu 16:00-20:00
+696614060,way,Montclair Village Farmers’ Market,37.8264836,-122.2100506,,CA,,http://www.urbanvillageonline.com/markets/montclair-village/,Su 9:00-13:00
+707120559,way,Tuesday Market,34.2398399,-118.5278388,,CA,,,Tu 10:00-14:00
+708312409,way,Modesto Certified Farmer's Market,37.6433411,-120.9928695,,CA,,https://modestocfm.com/,"Mar 14-Nov 21 Th 08:00-13:00; Mar 16-Dec 21 Sa 08:00-13:00; 2019 Nov 30 off ""for year 2019"""
+781407428,way,Live Oak Farmer's Market Sun PM,36.9767237,-121.9849362,,CA,,,Su 11:00-16:30
+796789614,way,Quail Valley Market,33.7015778,-117.2410514,,CA,,,
+841068085,way,Bear Valley Springs Market,35.1690574,-118.6097246,,CA,,,
+847582815,way,Hiouchi Hamlet Market Deli Liquor,41.7931877,-124.0711709,Hiouchi,CA,95531,,
+850639459,way,Haven City Market,34.1001547,-117.5740491,,CA,,,
+904226187,way,Grand Central Market,34.0508624,-118.2489965,Los Angeles,CA,90013,https://www.grandcentralmarket.com/,Mo-Su 08:00-21:00
+943814794,way,NoHo Saturday AM Farmers Market,34.167491,-118.3774245,,CA,,,
+1007527208,way,Poway Farmer's Market,32.969403,-117.0361535,,CA,,https://poway.org/456/Farmers-Market,Su-Fr off; Sa 08:00-13:00
+1080170232,way,Bixby Park Local Harvest Farmers Market,33.7658286,-118.166943,Long Beach,CA,90802,,"Tu 15:00-19:00, Sa 10:00-15:00"
+1085582957,way,Swan's Market,37.8019484,-122.2749517,Oakland,CA,,https://swansmarket.com/,
+1086264805,way,Bodega Bay Farmer's Market,38.3410898,-123.050516,Bodega Bay,CA,94923,,Su 10:00-14:00
+1097621739,way,Oakland Produce Market,37.79617,-122.274903,,CA,,,
+1108103084,way,Kensington Farmer's Market,37.8994283,-122.2876282,,CA,,https://www.kensingtonfarmersmarket.org/,Su 09:00-14:00
+1120003077,way,Golden Gate Produce Market,37.6442472,-122.4085297,South San Francisco,CA,94080,https://www.goldengateproducemarket.com/,Sa-Th 22:00-14:00
+1133042427,way,Aliso Viejo Farmers' Market,33.5759175,-117.725611,,CA,,https://myoccfm.com/aliso-viejo,Sa 10:00-14:00
+1152744866,way,Victoria Grove Produce Market,33.861938,-117.4492743,Riverside,CA,92503,,sunrise-sunset
+1190108807,way,Lake Mathews Market,33.8348436,-117.3508416,Perris,CA,92570,,Mo-Sa 07:00-18:30
+1190111244,way,74 Liquor & Market,33.724886,-117.2934532,Perris,CA,92570,,
+1203378477,way,Sanel Valley Market,38.9750045,-123.1007994,Old Hopland,CA,95449,,
+1208212561,way,San Fernando Outdoor Market,34.2828337,-118.4415561,San Fernando,CA,91340,https://www.myvalleypass.com/sf-outdoor-market,Sat[-1] 17:00-21:00; Feb-Mar off
+1248980190,way,Woodland Hills Saturday 9-2 Farmers Market,34.1733282,-118.6141894,,CA,,,Sa 08:30-14:00
+1259309224,way,Milpitas Farmer's Market,37.4122136,-121.8970091,,CA,,,Su 08:00-13:00
+1265751950,way,Milkman Market,34.0764859,-118.296717,Wilshire Center,CA,90004,,
+1385641955,way,Redlands Saturday AM Farmers Market,34.0570361,-117.1809284,,CA,,,Sa 09:00-13:00
+1385645361,way,Grove School Farmers Market,34.0516783,-117.2149709,,CA,,,
+1415929166,way,Burlingame Fresh Market,37.5778963,-122.3464137,,CA,,https://burlingamechamber.org/burlingame-events/burlingame-fresh-market/,Su 09:00-13:00
+418831944,node,Thomas Open Space Organic Farm,39.9998614,-105.1096082,,CO,,,
+3196452693,node,Boulder Farmers Market,40.0151491,-105.2776903,Boulder,CO,,https://bcfm.org/,Apr-Nov Sa 08:00-14:00; May-Sep We 15:30-19:30
+3196452694,node,Longmont Farmers' Market,40.1579974,-105.1283863,Longmont,CO,80501,http://www.boulderfarmers.org/,Apr-Nov Sa 08:00-13:00
+3196553147,node,Mondo Market,39.7687307,-104.9794918,Denver,CO,80216,,
+4758511172,node,Greeley Farmer's Market,40.4231373,-104.6885404,,CO,,,
+6838432005,node,Littleton Market,39.6126848,-105.019744,Littleton,CO,80120,,
+7237275252,node,Larimer County Farmers Market,40.5859348,-105.0799906,Fort Collins,CO,,http://www.larimercountyfarmersmarket.org/,Jun-Oct: Sa 06:00-12:00
+7277831871,node,Free Market,39.7526108,-104.9967648,Denver,CO,80202,,
+9820931931,node,The Arts District Market,39.8632025,-104.6758411,,CO,,,
+10140001208,node,Telluride Farmers' Market - Friday,37.9368347,-107.813132,Telluride,CO,81435,https://www.thetelluridefarmersmarket.com/,Fr 10:30-15:30
+10977981262,node,African International Market,39.6543988,-104.7688396,,CO,,,
+11176700487,node,Aspen Saturday Farmer's Market,39.1889016,-106.818647,,CO,,https://aspenchamber.org/plan-trip/trip-highlights/aspen-saturday-market,Sa 08:30-14:00
+12599526973,node,Milberger Farms,38.2445564,-104.5192724,Pueblo,CO,81006,https://milbergerfarms.com/,Mo-Su 07:00-15:00
+12604522282,node,Cole Market,38.9457504,-104.8023527,Colorado Springs,CO,80920,https://www.colemarket.com/,Tu-Sa 10:00-18:00
+301177395,way,Edgewater Public Market Building 01,39.7491881,-105.0572647,Edgewater,CO,80214,https://edgewaterpublicmarket.com/,
+313745222,way,Drake Road Farmers Market,40.5532225,-105.0910115,Fort Collins,CO,,http://www.drakeroadfarmersmarket.com/,Jun-Oct Sa 10:00-13:00
+484702171,way,farmers market,38.4794085,-107.8742165,,CO,,,
+702148749,way,Betty's Market,39.6388576,-106.3657759,,CO,,,
+955760609,way,Bluebird Market,39.6308581,-106.074003,,CO,,,
+1112094145,way,Mangiare Italian Market,39.5939722,-106.4334822,Minturn,CO,81645,,
+7996117979,node,Brookfield Market and Deli,41.4826344,-73.4082301,Brookfield,CT,06804,https://thenewbrookfieldmarketanddeli.com/,
+8017013871,node,LaRocca's Country Market,41.1450957,-73.5891956,Stamford,CT,06903,,
+9140878415,node,Willimantic Farmers' Market,41.712225,-72.2188459,Willimantic;Windham,CT,06226,https://www.willimanticfarmersmarket.org/,May Sa[2]-Oct Sa[-1] Sa 08:00-12:00
+9941654433,node,South Windsor Farmer's Market,41.8433392,-72.5488936,South Windsor,CT,06074,,Sa 09:00-12:00
+12974149751,node,Europa Balkan Food Market,41.095937,-73.519954,,CT,,,
+915685310,way,Parkville Market,41.7585594,-72.701802,Hartford,CT,06106,https://parkvillemarket.com/,Mo 11:00-20:00; Tu-We 11:00-21:00; Th-Sa 11:00-22:00; Su 11:00-20:00; Dec 25 off; Nov Th[4] off
+1380690730,way,The Georgtown Owl Market,41.2581621,-73.4275836,Redding;Georgetown,CT,06896,https://www.georgetownowl.com/,Tu-Su 07:00-15:00
+312006390,way,New Castle Farmers Market,39.6662491,-75.600588,,DE,,,
+545367920,way,New Castle Farmers Market,39.667069,-75.5991427,,DE,,,
+1924784930,node,Chiefland Farmers Flea Market,29.4905916,-82.8644475,Chiefland,FL,32626,,
+2290635632,node,McCraken Farms,27.5376793,-81.4487845,,FL,,,
+3233769733,node,Upper East Side Farmers Market,25.8366339,-80.1840315,,FL,,,Sa 09:00-14:00
+3669389543,node,Riverside Arts Market,30.3162294,-81.6750606,,FL,,,Sa 10:00-15:00
+4608877545,node,Farm Market,28.237937,-81.2109926,,FL,,http://www.osceolacountygrown.com/,Sa 10:00-13:00
+4852402689,node,Bauernmarkt: Farmer's Market,28.3684426,-81.5468528,,FL,,,Mar 01-May 29 unknown
+5788289985,node,Asian Market,30.759049,-86.5695962,Crestview,FL,,,
+6019671530,node,Mima Market,25.8650703,-80.1933412,Miami Shores,FL,33138,,
+6342353386,node,Celebration Farmers Market,28.3187143,-81.5407514,Celebration,FL,34747,https://www.celebrationfarmersmarket.com/,Su 09:00-14:00
+6530476861,node,Farmers Market Oceanside,27.6494553,-80.3557959,,FL,,,Sa 08:00-12:00
+6712640521,node,Baum Ave market,27.7713149,-82.6505292,Saint Petersburg,FL,33705,https://baumavemarket.com/,Mo-Su 09:00-20:00
+8007791766,node,Grove Street Farmers Market,29.6614456,-82.3279935,Gainesville,FL,32601,https://www.grovestreetfarmersmarket.com/,Mo 16:00-19:00
+8007791767,node,GNV Market,29.6460704,-82.3243336,Gainesville,FL,32601,,Th 16:00-19:00
+8608676631,node,Bob's Blueberry Farm,28.363556,-82.6288699,,FL,,,
+8641482766,node,New Smyrna Beach Farmers' Market,29.0266583,-80.9232966,New Smyrna Beach,FL,32168,,
+9402957954,node,Saint Petersburg Saturday Morning Market,27.7697675,-82.6333932,,FL,,https://saturdaymorningmarket.com/,Sa 09:00-14:00
+9603406643,node,Babcock Farmers Market,26.7839579,-81.7466978,,FL,,,Su 09:00-13:00
+9814406247,node,Parkesdale Farm Market,28.0200959,-82.1619388,Plant City,FL,33563,https://parkesdale.com/,We-Su 09:00-18:00
+9934299817,node,World Wine Market,25.7921211,-80.2815244,,FL,,,
+9934299831,node,World Wine Market,25.7914611,-80.2789352,,FL,,,
+10010240943,node,Farmer's Market,30.6711371,-81.4598245,,FL,,,
+10813148831,node,Trenton State Farmer's Market,29.6259333,-82.8080401,Trenton,FL,32693,https://www.freshfromflorida.com/Business-Services/State-Farmers-Markets/Trenton-State-Farmers-Market,
+11223358891,node,Duda Farm Fresh Foods,26.6511733,-80.2366686,Wellington,FL,33414,,
+12286726201,node,Yellow Green Farmers Market,26.028297,-80.168939,,FL,33021,,
+12330948902,node,Redland Market Village,25.5388418,-80.4100598,,FL,33032,https://redlandmarketvillage.com/,Th-Fr 07:00-18:00; Sa-Su 11:00-18:00
+12459457564,node,Montura’s Market,26.6403263,-81.1081423,,FL,,,
+107477474,way,Waldo Farmers Market,29.8185198,-82.1654394,,FL,32694,,Sa-Su 08:00-16:00
+399347548,way,Alachua County Farmer's Market,29.7099863,-82.3534512,,FL,,https://441market.com/,Sa 08:30-13:00
+476464516,way,Daytona Flea & Farmers Market,29.1645007,-81.0837385,Daytona Beach,FL,32124,https://daytonafleamarket.com/,
+478681053,way,Kissimmee Valley Farmer's Market,28.2904237,-81.4058402,,FL,,,
+601192485,way,Petty's Meat Market,28.2110698,-80.671595,,FL,,https://www.pettysmeatmarket.com/,
+783389262,way,Pecan Park Flea & Farmers' Market,30.5146206,-81.6368011,,FL,,,
+833930260,way,Grand Fresh Market,28.2351628,-82.7234881,,FL,,,
+888785193,way,Sumter County Farmers Market,28.6159636,-82.0568298,Webster,FL,33597,http://www.sumtercountyfarmersmarket.com/,
+1065704627,way,Yellow Green Farmers Market,26.028275,-80.1690371,,FL,,,
+1150357112,way,Palm City Farms Produce & Market,27.1609413,-80.3195583,,FL,,,
+2096589,relation,East End Market,28.5683229,-81.3436593,,FL,,,
+1253900309,node,East Atlanta Farmer's Market,33.7388641,-84.3441,,GA,,,Th 16:00-18:00
+1460581338,node,Grant Park Farmers Market,33.7363316,-84.3733083,,GA,,,
+1576241262,node,State Farmer's Market,33.618655,-84.3954165,,GA,,,
+3162256295,node,Achachi International Market,33.9250092,-83.3788895,Athens,GA,30605,,
+4020735007,node,Green Market,33.7841708,-84.3779313,,GA,,,Mar-Dec: Sa 09:00-13:00
+4997265457,node,Woodstock Market,34.0855044,-84.5747897,,GA,,,
+5901823288,node,Burger's Market,33.7626203,-84.7240662,Douglasville,GA,30134,,
+6198477611,node,Nature Market,31.1576546,-81.3911234,Saint Simons Island,GA,31522,,
+7968715252,node,Athens Farmers Market,33.964433,-83.412198,,GA,,,Sa 08:00-12:00
+7968805246,node,Monroe Farmers Market,33.794494,-83.7128681,,GA,,http://monroedowntownfarmersmarket.com/,Sa 08:00-12:00
+9371374606,node,Kabul Market,33.8103542,-84.2706476,Decatur,GA,,,
+9903880779,node,Atlanta State Farmers Market,33.6205818,-84.3954545,Forest Park,GA,30297,,
+10582557527,node,Nam Dae Mun Farmers Market,33.5673137,-84.3255937,Morrow,GA,30260,,
+11238498548,node,Saturday Market On The River,33.4779069,-81.9639997,,GA,,,
+11294805858,node,HN Asian Market,33.7808203,-84.2393719,,GA,,,
+11340593274,node,Brunswick Harbor Market,31.1494774,-81.4984797,Brunswick,GA,31520,https://forwardbrunswick.org/farmersmarket/,"Sa[1],Sa[3],Sa[5] 08:00-14:00"
+11340593275,node,Forward Brunswick Farmers' Market,31.1495383,-81.4984931,Brunswick,GA,31520,https://forwardbrunswick.org/farmersmarket/,"Sa[2],Sa[4] 09:00-13:00"
+11413262187,node,Veggie Park Farmers Market,33.4775311,-81.9893703,,GA,,,
+11617854978,node,Z's Oriental Market,33.4891157,-82.1359946,,GA,,,
+11992553926,node,La Grange Farmer's Market,33.0407836,-85.0190857,,GA,,,
+12173925785,node,LaFayette Farmers Market,34.7050425,-85.2814054,,GA,,,Jun-Aug Sa 09:00-12:00
+12986272821,node,Westside Market,34.0383529,-84.3415851,,GA,,,
+39448667,way,Atlanta Municipal Market,33.7539279,-84.3799682,,GA,,,
+44684944,way,Morningside Farmers Market,33.7923154,-84.3523329,,GA,,https://www.morningsidemarket.com/,Sa 08:00-11:30
+487350846,way,State Farmer's Market,32.8161862,-83.6830327,Macon,GA,31206,,Mo-Su 08:00-19:00
+597420117,way,Bitter Creek Market,34.9100625,-83.8704826,,GA,,,
+618582400,way,Senoia Farmers' Market,33.3004115,-84.5552794,,GA,,,
+653832845,way,Bitter Creek Market,34.9099813,-83.87095,Blairsville,GA,30512,,
+690369001,way,Sunset Market,34.9537857,-85.2492482,Fort Oglethorpe,GA,,,
+781661247,way,International City Farmer's Market,32.618971,-83.6105274,,GA,,,Th 13:00-18:00
+963405390,way,Hamilton's Meat Market,34.5273917,-83.9942781,,GA,,https://hamiltonsmeatmarket.com/,
+968826113,way,New Happy Market,33.605654,-84.4358115,,GA,,,
+1062117126,way,Farm 441,33.846044,-83.423569,Bishop,GA,30621,https://www.farm441ga.com/,
+1080663244,way,Johnson's Meat Market,30.8677783,-84.1234199,,GA,,,
+1098073546,way,Walthourville Meat Market,31.775227,-81.631013,,GA,,,
+1128105938,way,Coweta County Farmers Market,33.3840669,-84.8132122,,GA,,,
+1128106294,way,Country Gardens Farm,33.3868808,-84.675814,,GA,,https://countrygardensfarm.com/,
+1252734540,way,Knight's Market,33.4460536,-84.1466152,,GA,,,
+1281221600,way,Farmer's Market,34.8573691,-84.328002,,GA,,,
+1289730210,way,Evan’s Farmers Market,33.5430895,-82.1271462,,GA,,,
+1296668475,way,Polk's Market,31.98476,-81.0754859,,GA,,,
+1392437089,way,Cabbagetown Market,33.7492424,-84.3679417,Atlanta,GA,30312,,
+2657172975,node,Flower Market,19.7226861,-155.0857476,,HI,,,
+2661744350,node,Hawi Farmers Market,20.2372686,-155.830194,,HI,,,"Sa 8:00-14:00,Tu 14:00-18:00"
+3743435260,node,Hanalei Farmer's Market,22.2014337,-159.498842,Hanalei,HI,96714,https://halehalawai.org/,Sa 09:30-12:00
+4421914590,node,KCC Saturday Farmers’ Market,21.2694931,-157.8007315,,HI,,https://hfbf.org/markets/markets/kcc/,Sa 07:30-11:00
+4603040771,node,Farmers Market,22.2029394,-159.5131337,,HI,,,Tu 14:00-15:00+
+5371660821,node,Hana Farms,20.7821558,-156.0203241,,HI,96713,,
+5557767128,node,Ho’oulu Community Farmers Market,19.5590605,-155.9626636,,HI,96740,,We 09:00-14:00
+5796389653,node,Hyatt Regency Waikiki Farmers Market,21.2761642,-157.8251415,,HI,,,"Tu, Th 16:00-20:00"
+5904945547,node,Haiku Market,20.9134909,-156.3224102,Haiku,HI,96708,,
+7178538485,node,Farmers Market,19.5639571,-155.0879442,,HI,,,
+7816207222,node,Waimea Town Market,20.0221817,-155.66923,Waimea,HI,96743,https://waimeatownmarket.com/,Sa 07:30-12:00
+8307558646,node,Kona Farmer's Market,19.6372125,-155.9919005,,HI,,http://www.konafarmersmarket.com/,
+8308136207,node,Rufus Poets Corner Market,19.4847143,-154.9414371,,HI,,http://rufuspoetscornermarket.com/,
+9104127889,node,Kinoole Farmers Market,19.6904784,-155.0699302,,HI,,,Sa 6:30-11:00
+9573846208,node,Kakaako Farmers Marketplace,21.2946171,-157.8587423,,HI,,,
+13018787555,node,Hilo Town Market,19.7260334,-155.0874627,Hilo,HI,96720,https://www.hilotownmarket.co,Fr 17:00-21:00
+287389084,way,Hilo Farmers Market - Crafts,19.7231904,-155.0846504,,HI,,,
+287389085,way,Hilo Farmer's Market - Food,19.7234883,-155.0848757,,HI,,,
+287389086,way,Hilo Farmer's Market - Crafts,19.7229123,-155.0847711,,HI,,,
+358042164,way,Nahiku Market,20.7942157,-156.0519078,,HI,,,
+360372429,way,Pau Hana Market,21.2798097,-157.8315735,,HI,,http://5starpark.com/,closed
+830631506,way,Panaʻewa Farmers Market,19.6989851,-155.0575632,,HI,,,
+1055232418,way,Kauai Community Market,21.9652602,-159.3953765,,HI,,,
+8429196298,node,Blackboard Market,47.4722627,-115.9237702,,ID,,,
+8999636126,node,Portneuf Valley Farmers Market,42.864711,-112.4530721,,ID,,,
+1338442302,way,Pettit's County Market,42.5203825,-114.8720293,Castleford,ID,83321,,
+1907946069,node,Saturday Farmers' Market,40.9461135,-90.3653756,,IL,,,May-Oct Sa 08:00-12:00
+2699329330,node,Farmer's Market,41.888753,-87.7869122,,IL,,,
+3559191160,node,French Market,41.8641363,-88.1076495,,IL,,,Jun-Aug Sa 08:00-14:00
+5652012631,node,Sheffield Market & Deli,41.9361561,-87.6538197,Chicago,IL,60657,,"Mo-Th 06:30-23:00, Fr 06:30-00:00"
+6042657756,node,Jeffrey's Meat Market,39.8404429,-88.9728816,Decatur,IL,62522,https://www.jeffreyshouseofmeats.com/jeffreys-meat-market/4145634,
+7782952530,node,Oswego Country Market,41.6849381,-88.3518655,,IL,,https://www.oswegolandparkdistrict.org/programs-events/special-events/oswego-country-market/,Su 09:00-13:00
+8883997338,node,Lincoln Square Farmers Market,41.9666517,-87.6874062,Chicago,IL,60625,https://www.lincolnsquare.org/farmers-market,Tu 07:00-13:00; Th 15:00-19:00
+9132855795,node,Downtown Bloomington Farmers' Market,40.4803125,-88.9944868,Bloomington,IL,61701,,May-Oct: Sa 07:30 - 12:00
+9857039053,node,Farmer's Market,41.9158214,-87.6335907,,IL,,,We 07:00-10:00; Sa 07:00-10:00
+10766558226,node,Deo Gratias Food Market,39.7480904,-89.7097994,Springfield,IL,62704,,Tu-Fr 10:00-19:00; Sa 10:30-20:30; Su 13:00-19:00
+11504861455,node,61st Street Farmers Market,41.7842791,-87.5908436,,IL,,,
+12829418469,node,Green City Market,41.8804041,-87.650239,,IL,,https://greencitymarket.org,Sa 08:00-13:00; Dec-Apr off
+12853992600,node,Mill Creek Market,41.8737419,-88.3799031,Geneva,IL,60134,,
+112490185,way,State Street Market Shops,42.0507735,-88.2952631,Elgin,IL,60136,http://www.statestreetmarketshops.com/,
+285600073,way,Goshen Farmers Market,38.8119614,-89.9575697,,IL,,https://www.goshenmarket.org/,
+406628807,way,Maxwell Street Market,41.8708405,-87.6437791,,IL,,https://www.cityofchicago.org/city/en/depts/dca/supp_info/maxwell_street_market.html,Su
+616176657,way,Market at the Square,40.1096523,-88.2056521,,IL,,https://urbanamarket.org/,May-Oct: Sa 07:00-12:00
+1190203250,way,Ravinia Farmers Market;Food Truck Thursdays,42.1650701,-87.7816067,Highland Park,IL,60035,,Jun-Aug: We 07:00-13:00; Jun-Aug: Th 16:30-dusk
+1190811652,way,Edgebrook Farmers Market,41.9981978,-87.7651681,,IL,,,
+1417587887,way,Arlington Heights Farmer's Market,42.087216,-87.9846564,Arlington Heights,IL,60004,https://www.arlingtonheightsfarmersmarket.org/,May-Oct: Sa 08:00-12:00
+4961975242,node,East Asia Market,39.9254466,-86.1139044,Indianapolis,IN,46240,,
+4964123310,node,Carmel Farmers Market,39.9691852,-86.1307559,,IN,,,May-Sep Sa 08:00-11:30
+5359211890,node,Goshen Farmers Market,41.5848235,-85.8374356,,IN,,https://www.goshenfarmersmarket.org/,
+5815740753,node,Rongmei Asian Market,40.7564574,-86.3659596,Logansport,IN,46947,,
+6887320755,node,The Farmers' Market,39.7169018,-86.2976436,,IN,,,
+8570398950,node,Elkhart Farmers Market,41.6845639,-85.9697545,,IN,,,
+9029306233,node,Noblesville Farmers Market,40.0474043,-86.0198902,Noblesville,IN,46060,,May 01-Oct 15 Sa 08:00-12:00
+9499675971,node,Fayette County Farmer's Market,39.6411073,-85.1401967,Connersville,IN,47331,,May 21-Oct 29 Sa 08:00-11:00
+9509485309,node,Nashville Farmer's Market,39.2024934,-86.2455833,Nashville,IN,47448,https://www.nashvilleindianafarmersmarket.com/,May-Oct Su 11:00-14:00
+9559601702,node,Miller Beach Farmers Market,41.5980918,-87.2660351,Gary,IN,46403,https://millerbeacharts.org/places/market/,May 16-Sep 26 Su 11:00-13:00
+9586887497,node,Yorktown Farmers Marketplace,40.1775669,-85.49582,Yorktown,IN,47396,https://yorktownmarketplace.com/,May 27-Oct 07 Fr 16:30-19:30
+9795117501,node,Kokomo Downtown Farmers Market,40.4885901,-86.1333374,,IN,,https://kokomofarmersmarket.com/,May-Sep Sa 09:00-13:00
+11037699554,node,HG Market on Vine,40.8914967,-85.5025293,Huntington,IN,46750,,
+11187267785,node,Purdue Farmers Market,40.4256887,-86.9143443,,IN,,,May-Oct: Th 11:00-31:00
+12085610423,node,Viet Hua Food Market,39.649832,-86.1187415,Indianapolis,IN,46227,,Mo-Su 09:00-21:00
+245731594,way,Monroe County Farmer's Market,39.1691888,-86.5369145,,IN,,,
+318472727,way,Fresh for You Market,39.7773139,-86.1831086,,IN,,,
+544222198,way,Farmer's Market,38.2096226,-86.1238818,,IN,,,
+624777781,way,Tailfeathers Farm Market,39.0367101,-85.6390227,,IN,,,
+935919134,way,Historic West Main Street Farmers Market,41.0789706,-85.1678916,,IN,,http://facebook.com/mainstreetfarmmarket,Fr 15:00-19:00
+1032656550,way,YLNI Farmers Market,41.0806795,-85.1432616,Fort Wayne,IN,46802,,
+1207299989,way,Lafayette Farmer's Market,40.4191449,-86.8918764,,IN,,,May-Oct: Sa 08:00-12:30
+1207301959,way,West Lafayette Farmers Market,40.4630506,-86.9162179,West Lafayette,IN,47906,http://www.wlfarmersmarket.com,May-Oct: We 15:30-19:00
+1285355959,way,D&R Fruit & Meat Market,40.7527844,-86.3830361,Logansport,IN,46947,,
+1303981245,way,Jehovah-Jireh Haitian Market,40.7561491,-86.361648,Logansport,IN,46947,,
+3536074352,node,Sioux City Farmers Market,42.4915884,-96.4089465,,IA,,https://www.farmersmarketsiouxcity.com/,"May-Oct: We,Sa 08:00-13:00"
+6281028851,node,Moville Farmer's Market,42.4890259,-96.0699236,,IA,,,Th 16:30-19:00
+6612471993,node,Karibu Market,41.9802088,-91.66096,Cedar Rapids,IA,52401,https://karibumarketcedarrapids.com/,
+9078211973,node,Farmers Market,41.2598441,-95.8515721,,IA,,,Th 16:30-19:30
+9570201535,node,Iowa City Farmers Market,41.6597822,-91.5293889,Iowa City,IA,52240,https://www.icgov.org/farmersmarket,
+9603564532,node,Market Wagon,41.6719259,-91.5731673,,IA,,https://marketwagon.com/,
+9744946367,node,Cedar Rapids African and Oriental Market,41.9598919,-91.7264076,Cedar Rapids,IA,52404,,
+9745444629,node,Vintage Market & Supply Co.,41.9643265,-91.6613098,Cedar Rapids,IA,52404,https://www.facebook.com/Vintagemarket.village,"Tu-Th,Su 10:00-17:00; Fr-Sa 10:00-18:00"
+9779424515,node,Brothers market,42.6646219,-92.3353936,,IA,,,
+11225793513,node,College Hill Farmers Market,42.5179299,-92.4550246,Cedar Falls,IA,50613,https://ceee.uni.edu/collegehillfm,May 14-Oct 31 We 16:00-18:00
+11232266867,node,Waterloo Urban Farmers Market,42.4952608,-92.3422122,Waterloo,IA,50703,https://www.waterloourbanfarmersmarket.com/,May-Oct Sa 08:00-12:00
+11739404756,node,Furaha Market,41.6745025,-91.5778878,Coralville,IA,52241,,
+287184696,way,NewBo City Market,41.9711104,-91.6577264,Cedar Rapids,IA,52401,https://www.newbocitymarket.org/,Mo-Fr 10:00-20:00; Sa 10:00-18:00; Su 10:00-16:00
+301862364,way,Freight House Farmers Market,41.5200193,-90.579593,,IA,,,
+498093703,way,Timber Ridge Country Market,41.035064,-93.7663692,Osceola,IA,50213,https://timberridgecountrymarketandcattlecompany.com/,Mo-We 07:00-14:00; Th-Fr 07:00-18:00; Sa 08:00-14:00
+498093734,way,Mayhew's Market,41.0332592,-93.7654902,Osceola,IA,50213,https://www.mayhewsmarket.com/,
+877763407,way,Norby's farm fleet,42.963463,-91.8135055,West Union,IA,52175,https://www.norbysfarmfleet.com/,
+1329824299,node,Emporia Farmers Market,38.406749,-96.1810923,,KS,,https://www.emporiafarmersmarket.org/,
+2052941063,node,Farmers Market,39.0508312,-95.6976528,,KS,,,
+2371733986,node,Meadowlark Farm Fresh Fruit & Vegetables,37.5900101,-97.0477272,,KS,,,
+7616219086,node,Farmers Market,39.84731,-95.5266302,,KS,,,
+11398935280,node,Hi-Crest Market,39.0085008,-95.6735292,Topeka,KS,66605,,Sa[2] 09:00-11:00
+11399249748,node,Breadbasket Farmers Market,39.0320944,-95.7651481,Topeka,KS,66614,https://breadbasketfarmersmarket.com/,"Apr Sa[1]-Nov Sa[3] Sa 07:30-13:00; 2023 Dec 02,2023 Dec 09,2023 Dec 16,2023 Dec 23 07:30-13:00; 2024 Jan 13,Feb 10,Mar 09,30 07:30-13:00"
+11402052961,node,Downtown Topeka Farmers Market,39.0523766,-95.6773151,Topeka,KS,66604,https://www.topekafarmersmarket.com/,Apr Sa[1]-Nov Sa[2] Sa 07:30-12:00
+11430044964,node,Derby Farmers' Market,37.5492686,-97.2660881,Derby,KS,67037,https://www.kansas-grown.com/,May-Oct Sa 08:00-12:00
+11484350089,node,Old Town Farm & Art Market,37.6875583,-97.3278943,Wichita,KS,67202,https://oldtownfarmandartmarket.com/,Apr-Oct Sa 08:00-13:00; Nov-Dec Sa 10:00-13:00
+11487047524,node,Reno County Farmers Market,38.0543525,-97.9339676,Hutchinson,KS,67501,https://www.rcfmks.com/,May-Oct Sa 07:30-12:30; Jun-Oct We 10:00-13:00
+12644689954,node,Mission Market,39.0219112,-94.6509347,,KS,,,
+487494523,way,Linn Valley Farmers Market,38.3732366,-94.6976306,,KS,,,"Sa 08:00-13:00 ""summer only"""
+553349915,way,Ideal Market,39.5914847,-97.3983222,Clyde,KS,66938,,
+677202882,way,Nomar International Market,37.7228605,-97.3363887,,KS,,,
+1237950328,node,Bardstown Farmer's Market,37.8101199,-85.465463,,KY,,,
+2685381879,node,Downtown Farmer's Market,38.0479333,-84.4983002,,KY,,,
+3389631945,node,Selby's International Food Market,38.0270508,-84.5347631,,KY,,,
+7689710474,node,Catlettsburg Farmers Market,38.4186724,-82.5984718,,KY,,,
+9351587010,node,The Farmers Market Of Paris And Bourbon County,38.2104356,-84.2523962,Paris,KY,40361,https://www.bourboncountyfarmersmarket.com/,"Mar,Apr,Nov,Dec Sa 10:00-12:00; May-Oct Mo,We 16:00-18:00; May-Oct Sa 09:00-13:00"
+9416820770,node,Jackson County Farmer's Market,37.3238114,-83.9407177,,KY,,,
+11836598673,node,Logan Street Market,38.235655,-85.7392596,,KY,,https://www.loganstmarket.com/,
+12034051820,node,El Rancho Market,36.6094871,-88.3208718,,KY,,,
+295431833,way,Night Market,38.0566466,-84.4814928,,KY,,,
+297220699,way,Farmer's Market,37.0901553,-88.5965286,,KY,,https://www.paducahalliance.org/farmers-market,
+1101368447,way,French Valley Farm,36.9988641,-85.0705799,,KY,,,
+1148377422,way,Fruit Market,37.0320223,-85.0760399,,KY,,,
+4469406407,node,French Market,29.9593429,-90.0602566,New Orleans,LA,,,
+10069013496,node,Farmer's & Artist's Market,30.4090581,-91.0240138,Baton Rouge,LA,70817,https://www.marketattheoasis.com/,Sa 06:00-13:00
+11653991403,node,Vintage Muller's Market,30.23087,-93.216604,Lake Charles,LA,,https://www.mullersvintage.com,Su-Th 10:00-18:00; Fr-Sa 10:00-22:00
+345253096,way,Farmers Market Pavilion,29.9600137,-90.0591632,,LA,,,
+483254560,way,Mask Market,29.9585579,-90.0607134,,LA,,,
+627635308,way,Walmart Neibourhood Market,30.2607591,-89.7839416,Slidell,LA,70458,,
+889648266,way,Da Berry Fresh Market,30.0083426,-91.8283564,New Iberia,LA,70560,https://www.facebook.com/daBerryFreshMarket/,
+1127385518,way,Abita Springs Farmers Market,30.4781866,-90.0386873,,LA,,,
+1155903249,way,West Monroe Farmer's Market,32.5108862,-92.1446253,West Monroe,LA,71291,https://www.cityofwestmonroe.com/164/Farmers-Market,Mo-Sa 07:00-17:00
+1174675833,way,Westwego Farmers and Fisheries Market,29.9105993,-90.1461727,,LA,,,
+1215491036,way,Dominique's Livestock Market,30.507634,-91.179518,Baton Rouge,LA,70805,https://www.dominiqueslivestock.com/,Mo 12:00-14:00
+1220431205,way,Ruston Farmer's Market,32.5289906,-92.6355485,Ruston,LA,71270,https://www.rustonfarmersmarket.org,Sa 09:00-13:00
+1287254435,way,Friends & Family Market,30.601833,-93.2328946,,LA,,,
+101956468,node,Megunticook Market,44.2170949,-69.0779345,Camden,ME,04843,https://www.megunticookmarket.com/,Mo-Sa 07:00-19:00
+1375305580,node,Farmstand,43.862316,-70.0727042,,ME,,,
+2825557937,node,Skowhegan Farmers' Market,44.7669234,-69.7185493,,ME,,,
+4622037560,node,Melby's Market & Eatery,44.2317583,-70.7686411,Waterford,ME,04088,,
+5070068509,node,Millinocket Farmer's Market,45.6528027,-68.7066602,,ME,,,Jul-Oct: Sa 10:00-13:00
+6342356212,node,The Market,43.9025749,-70.2590409,,ME,,,
+7010082152,node,Brunswick Topsham Land Trust Farmers' Market At Crystal Springs,43.8909898,-69.9955882,Brunswick,ME,,https://www.btlt.org/farmers-market/,May-Oct Sa 08:30-12:30
+8681383693,node,Rosemont Market & Wine Bar,43.6513848,-70.2902353,,ME,,,
+8949781063,node,Al Naeem Market,44.3136097,-69.774745,Augusta,ME,04330,,
+10867742940,node,Turner Farm Market,44.1422096,-68.8509712,,ME,,,
+11520902210,node,Boothbay Farmers' Market,43.8761911,-69.6336973,Boothbay,ME,04537,https://www.boothbayfarmersmarket.me,Th 09:00-12:00
+11565584642,node,Brunswick Farmers' Market,43.9131874,-69.9637287,Brunswick,ME,04011,,
+12616901806,node,Farmers' Market,44.5878594,-69.2889442,,ME,,,
+12616901807,node,Farmers' Market,44.59146,-69.2923141,,ME,,,
+13074831810,node,Belfast Farmers' Market,44.4297901,-69.0137849,Belfast,ME,,,
+349864141,way,Public Market House,43.6569454,-70.2591168,Portland,ME,04101,,
+578997273,way,The Good Life Market,43.889108,-70.4635225,Raymond,ME,04071,,07:00-19:00
+819848721,way,Madore's Market,44.662636,-70.156481,West Farmington,ME,04992,,
+955867981,way,Chipman's Farm Market,43.8769544,-70.4646896,Raymond,ME,04071,,
+974840470,way,On The Vine Market Place,43.5724316,-70.3866721,Scarborough,ME,04074,,
+571338000,node,Olney Farmers Market,39.1506329,-77.0585369,,MD,,,
+2467265684,node,Riverdale Park Farmers Market,38.9629701,-76.9353272,,MD,,,Th 15:00-19:00
+3026468154,node,El Imperio Latin Market,39.2939753,-76.5115059,Highlandtown,MD,21224,,
+3158993557,node,Farmers Market,38.0764114,-75.5698364,,MD,,,"Sa,Fr"
+3200110802,node,Beltsville Farmers Market,39.0213391,-76.9099133,Beltsville,MD,20705,,Jun-Oct Th 10:00-14:00
+3523748306,node,Baltimore Farmers Market & Bazaar,39.2934389,-76.6102415,Baltimore,MD,21202,http://www.promotionandarts.org/events-festivals/baltimore-farmers-market,Apr-Dec: Su 07:00-12:00
+3613821813,node,Main Street Farmers Market,39.1217969,-77.2388098,,MD,,https://www.gaithersburgmd.gov/leisure/markets/farmers-markets,
+3730920384,node,Hyattsville Farmers Market,38.9661041,-76.9497763,Hyattsville,MD,20782,http://www.hyattsville.org/591/Farmers-Market,Tu 15:00-19:00
+4313250090,node,Pensylvania Dutch Market,39.4907664,-76.6466068,,MD,,https://www.padutchmarketcockeysville.com/,
+4749585522,node,Mountain Fresh Farmers Market,39.4087388,-79.4095919,,MD,,https://www.mountainfresh.org,"Jun 01:00-04:00 Sa 10:00-13:00; Jun 05-Oct 31 We,Sa 10:00-13:00"
+5429971678,node,Dutch Market,39.1709316,-77.2607005,,MD,,,
+6002050565,node,Village Market and Cafe,39.4986785,-76.3239479,Bel Air,MD,21015,https://pairingsbistro.com/market-cafe/,
+6435171933,node,1-Stop Universal Market,39.5209578,-76.1899055,Aberdeen,MD,21001,,
+6439981924,node,Bayanihan Food Market,39.5098661,-76.1648067,Aberdeen,MD,21001,,
+6474256779,node,La Familia International Market,39.5238886,-76.359988,Bel Air,MD,21014,,
+7131844175,node,PA Dutch Market,39.2842282,-76.4949961,,MD,,,
+7490268209,node,University of Maryland Medical Center Farmers Market,39.2891442,-76.6224563,,MD,,,Tu 10:30-14:30
+7490268210,node,BMI Farmers Market,39.2738637,-76.6007331,,MD,,,Sa 09:00-13:00
+7490596401,node,Druid Hill Farmers Market,39.3178788,-76.6459117,,MD,,,Jun-Sep: We 15:30-19:30
+7490765559,node,Johns Hopkins Hospital Farmers Market,39.2961875,-76.5974267,,MD,,,May-Oct: Th 10:00-14:00
+7490765560,node,Fells Point Farmers Market,39.2822493,-76.5931861,,MD,,,Jun-Oct: Sa 07:30-12:30
+9125465702,node,Govanstowne Farmers' Market,39.3516578,-76.6104735,Baltimore,MD,21212,https://govansmarket.weebly.com/,Jun-Sep We 15:00-18:00
+9196484191,node,Takoma Park Farmers Market,38.9741196,-77.011908,,MD,,https://takomaparkmarket.com/,Su 10:00-14:00
+10013780295,node,Whitehall Market,39.3269038,-76.636806,,MD,,,
+12331353040,node,URBN Market,38.9812132,-77.0982761,,MD,,,
+12552999888,node,American Market at National Harbor,38.7856658,-77.0165803,,MD,,,
+117446595,way,Montgomery Farm Women’s Co-operative Market,38.9810921,-77.0921054,Bethesda,MD,20814,,
+155228840,way,Belvedere Square Market,39.3637396,-76.6087927,,MD,,,
+178069521,way,Joppa Grand Market,39.421131,-76.3718862,,MD,21085,https://joppagrandmarket.com/,
+206041502,way,Broadway Market,39.2842463,-76.5933934,,MD,,https://broadwaymarketbaltimore.com/,
+210437456,way,B&J Market,38.3521973,-75.5109456,,MD,,,
+338550715,way,Cross Street Market,39.2768079,-76.6133197,Baltimore,MD,21230,https://www.bpmarkets.com/,
+431796081,way,32nd Street Farmer's Market,39.3275406,-76.6106049,,MD,,https://www.32ndstreetmarket.org/,Sa 07:00-12:00
+461435626,way,Homegrown Farm Market,38.2479036,-76.4210818,Lexington Park,MD,20653,https://www.facebook.com/homegrownfarmmarket/,
+502913102,way,Connelly's Market,38.9421095,-75.8822858,Ridgely,MD,21660,,
+628713538,way,Ellicott City Farmer's Market,39.273283,-76.8405581,,MD,,,We 02:00-18:00
+737326260,way,Whitelock Community Farm Market Stand,39.3145124,-76.634133,,MD,,,
+948837234,way,Assateague Farms,38.2901354,-75.1536416,,MD,,,
+1089571901,way,Detwiler's Farm Market,39.5634112,-75.8179105,,MD,,https://justplainbusiness.com/detwilers-farm-market/,
+1113151676,way,Lexington Market,39.2911472,-76.621769,,MD,,https://www.lexingtonmarket.com/,
+1334648081,way,Pennsylvania Dutch Market,39.6649686,-77.7014531,Hagerstown,MD,21742,,
+8955169,relation,Hollins Market,39.2875106,-76.6359312,Baltimore,MD,21223,,
+1361556135,node,Seasonal Farm Stand,42.3878738,-71.1589116,,MA,,,
+1401217110,node,Burdett Hill Market,42.4139038,-71.6912157,,MA,,,
+1975375115,node,La Guanaquita Market,42.3664758,-71.1863551,,MA,02472,,
+3143013737,node,Newburyport Farmers' Market,42.8103593,-70.8660285,Newburyport,MA,01950,https://www.thenewburyportfarmersmarket.org/,
+5212542324,node,Boston Public Market,42.3621228,-71.0575399,,MA,,https://bostonpublicmarket.org,
+5485628457,node,Farm & Coast Market,41.5869466,-70.9445667,Dartmouth,MA,,https://farmandcoastmarket.com/,Mo-Su 07:00-19:00
+6124562874,node,Charles Square Farmer's Market,42.3723375,-71.1223295,,MA,,,Fr 12:00-18:00; Su 10:00-15:00
+6141568160,node,S&S Market,42.3842247,-71.100409,,MA,,,
+7096570823,node,Salem Farmer's Market,42.5207843,-70.8946022,,MA,,,
+8951988374,node,Uncle Sam Market,42.263947,-71.8073033,Worcester,MA,,,
+8958446377,node,Cebao Market,42.255773,-71.8116451,Worcester,MA,,,
+9448614193,node,Worcester Public Market,42.2558644,-71.7975861,,MA,,https://www.worcesterpublicmarket.org/,
+9767943560,node,Village market,42.282188,-70.8733647,,MA,,,
+9986329818,node,Brighton Farmers Market,42.3479331,-71.153735,Brighton,MA,02135,https://abhealthcollaborative.org/farmers-market/,"Jun 15-Sep 30: We 14:30-18:30, Oct 01-26: We 14:30-18:00"
+10065624622,node,Holden Farmer's Market,42.3511034,-71.8606264,Holden,MA,01520,,May-Oct Tu 15:00-18:30
+10599649525,node,Lucky Asian Market,42.6348134,-71.3274101,,MA,,,
+11212957664,node,CS Market,42.3726237,-71.0913959,Cambridge,MA,02141,,
+11479293148,node,Pittsfield Farmer's Market,42.4511436,-73.2500783,Pittsfield,MA,,,
+12015079029,node,Aster + Pine Market,42.3784275,-72.5196608,,MA,,,Mo-Sa 10:00-18:00
+12073681784,node,Cape Roots Market,41.6677386,-70.0739862,,MA,,,
+12098948756,node,Westfield Farmers' Market,42.1199177,-72.7518047,,MA,,,Th 12:00-17:00
+12959649201,node,Fieldstone Farm Market,41.6890257,-70.7737403,,MA,,http://fieldstonemarket.com,
+13062004302,node,Jamaica Plain Farmer's Market,42.3125212,-71.1146021,,MA,,,Sa 12:00-15:00; Tu 12:00-17:00
+29573399,way,Quincy Market,42.3602163,-71.0547993,,MA,,,
+214261166,way,Cape Codder Seafood Market,41.6482712,-70.2239033,West Yarmouth,MA,,http://www.capecodderseafood.market,
+215965108,way,Hagers Farmers Market,42.6119961,-72.6691964,,MA,,,
+379091461,way,Orleans Farmer's Market,41.7870603,-69.9940531,,MA,,,
+644451447,way,Saratoga Market,42.3859205,-71.0109011,,MA,,,
+1745144473,node,Fulton Street Farmers Market,42.9628786,-85.6402302,,MI,,,
+2149184233,node,Westview Orchards Farm Market,42.7726288,-83.0184674,,MI,,,
+2771945130,node,The Market (Ferris State University),43.6813488,-85.4820437,,MI,,,Mo-Su 12:00-01:00
+3122716437,node,Muskegon Farmer's Market,43.2381579,-86.2492632,,MI,,,
+3345824824,node,Northwest Detroit Farmers Market,42.4061555,-83.223181,Detroit,MI,48219,,Th 15:00-20:00
+3375141345,node,Marshall Area Farmers' Market,42.270723,-84.9598358,,MI,,,
+4066634528,node,Hyundai Asian Market,42.2308853,-83.6986163,,MI,,,
+4728797475,node,Downtown Saginaw Farmers' Market,43.4286112,-83.9411949,Saginaw,MI,48607,https://www.saginawfarmersmarket.org/,
+5406757593,node,Northville Farmers Market,42.4264508,-83.4833885,,MI,,,May-Oct: Th 08:00-15:00
+5747965904,node,The Dutch Farm,42.4842648,-86.2261644,,MI,,,
+6028770567,node,Buchanan Farmers Market,41.826488,-86.3600688,,MI,,,
+6203897426,node,DDA Farmers Market,42.6295957,-84.742984,,MI,,,
+7223656646,node,Howell’s Sunday Farmers’ Market,42.6078358,-83.9281373,,MI,,,May-Oct Su 09:00-14:00
+7223682529,node,Green Oak Farmers & Community Market,42.5164491,-83.7274745,,MI,,,May-Oct Su 10:00-15:00
+7223691388,node,Brighton Farmers’ Market,42.5303845,-83.7850428,,MI,,,May-Oct Sa 08:00-13:00
+7223698043,node,Hartland Farmer's Market,42.632755,-83.7448096,,MI,,,Jun-Oct Sa 09:00-13:00
+7223709642,node,Stockbridge Open Air Farmers Market,42.4510846,-84.1799068,,MI,,,May-Oct Fr 16:00-19:00
+7223735792,node,Meridian Twp Winter Farmers' Market,42.7254638,-84.4201255,,MI,,,
+7223757361,node,Eastern Ingham Farmers Market,42.6902736,-84.2828075,,MI,,https://www.easterninghamfarmersmarket.org/,May-Oct Su 10:00-14:00
+7223762207,node,Mason Area Farmers Market,42.5801347,-84.4427674,,MI,,,Jul-Oct Sa 09:00-13:00
+7324507562,node,Al-Mona Market,42.3276437,-83.1763448,,MI,,,
+7812309876,node,Dexter Farmers Market,42.3395205,-83.8894712,Dexter,MI,48130,https://www.dextermi.gov/community/farmers_market.php,
+7975321050,node,Helena's Country Market,42.7262684,-82.5503183,Marine City,MI,48039,,"Th,Fr 12:00-18:00; Sa 10:00-15:00; Su-We closed"
+8267572292,node,Peters Gourmet Market,42.8829507,-85.7442017,,MI,,,
+8320290046,node,Grass Lake Farmers Market,42.2521554,-84.2124984,Grass Lake,MI,49240,,
+8329355246,node,Albion Farmers Market,42.244425,-84.7523426,Albion,MI,49224,,
+8346294414,node,Farmer's Market of Waters,44.8772961,-84.6991418,,MI,,,
+8397899315,node,Yoder's Country Market,41.9204268,-85.5109757,Centreville,MI,49032,,
+8583523421,node,Oakland County Farmer's Market,42.6531164,-83.3332193,Waterford,MI,48328,,
+8604404390,node,Big J Market,42.4150744,-83.1800303,,MI,,,
+8633764635,node,Fresh Valley Fruit Market,42.4003855,-83.0579437,Hamtramck,MI,48212,,
+8747466032,node,Walled Lake Farmers Market,42.5391191,-83.474107,,MI,,,
+8777874714,node,Joe's Market,43.1109301,-84.9850988,,MI,,,
+8806966472,node,Gladstone Farmers Market And Street Fair,45.8472946,-87.0211262,Gladstone,MI,49837,,May-Oct Mo 15:00-18:00
+8857257577,node,Sara Hardy Downtown Farmer's Market,44.7650785,-85.6220215,,MI,,https://dda.downtowntc.com/farmers-market/,
+8940254882,node,Willis Market,42.158584,-83.5598718,Willis,MI,48191,,
+9445725206,node,Homeland Market,42.2838365,-83.2509882,Dearborn,MI,48124,,
+9554321135,node,Woodward Market,42.4360894,-83.1172843,Detroit,MI,48203,,
+9813540028,node,Bert's Market Place,42.3473965,-83.0415295,Detroit,MI,48207,,
+9820898457,node,The Market,43.5836701,-84.7735533,,MI,,,
+9863614846,node,Dexter Winter Farmers Market,42.3452853,-83.8846017,Dexter,MI,48130,https://www.dextermarket.com,"Nov-Apr Sa[-1], Sa[1] 09:00-13:00"
+10542325101,node,Von's Market,42.3983327,-83.1982302,,MI,,,
+10689200767,node,Fremont Farmer's Market,43.4677699,-85.943948,,MI,,,"Jun-Sep Tu,Sa unknown; Jun-Sep Mo,We-Fr,Su closed; Oct-May closed"
+10901529633,node,Farmers Market,42.3703862,-83.4682142,,MI,,https://www.downtownplymouth.org,May - Oct Sa 07:30-12:20
+10926669370,node,Emma Hearth and Market,41.9427255,-86.5631915,,MI,,,
+11110305996,node,Market @ Eastern Eateries,42.252349,-83.6228413,,MI,,,
+11127620734,node,From The Ground Farmers Market,47.2474925,-88.4535067,Calumet,MI,49913,https://fromthegroundfmc.org/calumet-farmers-market,
+11135147321,node,From The Ground Farmers Market Houghton,47.1229531,-88.5675307,Houghton,MI,49931,https://fromthegroundfmc.org/houghton-farmers-market,"Jun 13-Oct 10 Tu 15:00-18:00; Jun 13-Oct 10 Tu 18:00-19:00 ""Flex hours"""
+11135154078,node,From The Ground Farmers Market Hancock,47.1268923,-88.585867,Hancock,MI,49930,https://fromthegroundfmc.org/hancock-tori-farmers-market,Jun 15-Oct 12 Th 15:00-18:00
+11137445709,node,Depot Park Farmers & Artisans Market,46.4554337,-90.1709263,Ironwood,MI,49938,https://www.ironwoodfarmersmarket.com/,"Jun 23-Oct 6 Fr[2,3,4,5] 16:00-18:00"
+11151793303,node,Bay Mills Farmer's Market,46.4260257,-84.6071144,Brimley,MI,49715,,Jul 25-Oct 31 Th 16:00-19:00
+11158175359,node,Hannahville Farmer's Market,45.6837502,-87.3402947,Wilson,MI,49896,,
+11170828893,node,Menominee Historical Downtown Farmers Market Association,45.1072198,-87.6046935,Menominee,MI,49858,https://menomineefarmersmarket.com/,May 20-Sep 30 Sa 09:00-12:00
+11170828894,node,M&M Farmers Market,45.1236733,-87.6126811,Menominee,MI,49858,,Sa 09:00-13:00
+11173317818,node,Downtown Big Rapids Farmers Market,43.7001767,-85.4817572,Big Rapids,MI,49307,https://www.cityofbr.org/residents/farmersmarket.php,May-Oct Tu 12:00-17:00; May-Oct Fr 08:00-14:00
+11175177598,node,Webster's Market Inc,42.9667043,-85.6704989,Grand Rapids,MI,,,
+11176415145,node,Village of Barryton Farmers Market,43.7508251,-85.1449817,Barryton,MI,49305,,May 27-Oct 31 Sa 09:00-13:00
+11177747245,node,Evart Farmers' Market,43.8991061,-85.2596837,Evart,MI,49631,https://www.evart.org/our_community/farmers_market.php,Jun Sa[2]-Oct Sa[2] Sa 09:00-13:00
+11179038622,node,Alpena Farmers Market,45.0460047,-83.4482946,Alpena,MI,49707,https://alpenafarmersmarket.com/,Jun-Oct Sa 08:00-13:00; Jul-Sep We 08:00-13:00
+11179176327,node,Elberta Community Farmers Market,44.6194975,-86.225971,Elberta,MI,49628,https://www.elbertacommunityfarmersmarket.com/,May 25-Sep Mo[1] Th 08:00-12:00; Sep Mo[1]-Oct 12 Th 09:00-12:00
+11180948408,node,Manistee Farmers Market,44.2544865,-86.3273183,Manistee,MI,49660,https://manisteekitchen.org/farmers-market/,May 27-Oct 27 Sa 09:00-12:00
+11181743319,node,Ludington Farmer's Market,43.956286,-86.4478514,Ludington,MI,49431,https://downtownludington.org/markets/,May 26-Sep 22 Fr 15:00-19:00
+11286251452,node,Market @ Pray-Harrold,42.2496177,-83.6226305,,MI,,,
+11286251453,node,Market @ Mark Jefferson Science Complex,42.2473608,-83.6265711,,MI,,,
+11403191323,node,Gladwin Farmers Market,43.9816071,-84.4814987,,MI,,,
+12115289014,node,Market 24/7,42.7753812,-84.5899576,,MI,,https://www.flylansing.com/airport/services-amenities,24/7
+45610306,way,Royal Oak Farmers Market,42.489423,-83.1411452,Royal Oak,MI,48067,,
+166478534,way,Farmers Market,42.7904461,-86.1132591,,MI,,,
+172364291,way,Meridian Farmers Market,42.7289496,-84.4158028,,MI,,,May-Oct Sa 08:00-14:00
+193502052,way,Ann Arbor Farmers Market,42.2839533,-83.7465086,Ann Arbor,MI,48104,https://www.a2gov.org/departments/parks-recreation/parks-places/farmers-market/Pages/default.aspx,
+269743867,way,Escanaba Farmer's Market,45.7466921,-87.0600514,,MI,,,
+269743868,way,Escanaba Farmer's Market,45.7464894,-87.0598755,,MI,,,
+288631813,way,Kalamazoo Farmer's Market,42.2798797,-85.5753073,Kalamazoo,MI,49001,https://pfcmarkets.com/all-markets/kalamazoo-farmers-market/,
+309746978,way,Grand Rapids Downtown Market,42.9550375,-85.6706624,Grand Rapids,MI,49503,https://www.downtownmarketgr.com/,
+479614138,way,Muskegon Farmers Market,43.2382918,-86.2497765,,MI,,,
+524524222,way,Holt Farmers Market,42.6451238,-84.5199372,,MI,,https://holtfarmersmarket.org/,Sa 09:00-14:00
+530440583,way,"Riverside Market, Inc.",42.9137714,-83.988425,Durand,MI,48429,http://www.riversidemarket.net/,
+552046849,way,Cenzo's Market,43.776515,-86.4321588,,MI,,,
+619911301,way,Old Emmet Farmers Market,45.3690605,-84.9594225,,MI,,,
+659147379,way,Festival Square Market,42.3198896,-85.1851561,,MI,,,
+667928923,way,Lee's Oriental Market,42.9091534,-85.6652826,Grand Rapids,MI,49548,,
+677961971,way,Mieske's Country Market,43.6042737,-84.1488969,,MI,,,
+803241003,way,Bellaire Farmer's Market,44.9746043,-85.2052551,,MI,,,
+851856788,way,Stacks Market,43.7288233,-83.2678385,,MI,,,
+898093492,way,Farmer's Market of Waters,44.8772749,-84.6991317,,MI,,,
+957368477,way,Pigeon Farmers' Market,43.829116,-83.269411,,MI,,,
+960175949,way,Huron Market,42.1150486,-83.4020072,,MI,48164,,
+972693511,way,Meridian Township Farmers' Market,42.7282761,-84.4198003,Okemos,MI,48864,https://www.meridian.mi.us/farmersmarket,May-Oct Sa 08:00-14:00; Jul-Oct We 15:00-19:00
+999847471,way,The Market,43.9560201,-86.3402243,,MI,,,
+1007176271,way,Port Austin Farmer's Market,44.0450709,-82.994542,,MI,,,
+1063415232,way,Ypsilanti Farmers Marketplace,42.2401755,-83.614831,,MI,,https://growinghope.net/,
+1076120263,way,Oakland County Farmer's Market,42.6534937,-83.332901,,MI,,,
+1076120264,way,Oakland County Farmer's Market,42.6531123,-83.3332093,,MI,,,
+1150191481,way,Twin Beach Market,42.5748059,-83.4210427,,MI,,,
+1234359169,way,Rose City Farmers Market,44.4259528,-84.116922,Rose City,MI,48654,,Jun-Sep Fr 13:00-17:00; Sa 10:00-15:00
+1263769371,way,Muskegon Western Market,43.2363558,-86.2508831,,MI,,,
+1288228162,way,Harrison City Market,44.0199445,-84.8007803,Harrison,MI,48625,,
+4224577,relation,Midland Farmers' Market,43.6117617,-84.2474956,,MI,,,
+16691282,relation,Downtown Marquette Farmers Market,46.5428639,-87.396347,Marquette,MI,49855,https://www.mqtfarmersmarket.com/,May-Oct Sa 09:00-13:00; Jun 21-Aug 30 We 17:00-20:00
+1341549390,node,Midtown Farmers Market,44.9478964,-93.2388363,,MN,,,May-Oct Sa 08:00-13:00; Jun-Oct Tu 15:00-19:00
+4435261342,node,Lonsdale Country Market,44.4799372,-93.4288467,Lonsdale,MN,55046,,"Su closed, Mo-Fr 10:00-18:00, Sa 08:30-17:00"
+9804294163,node,Tare Market,44.9992522,-93.2467288,Minneapolis,MN,55413,https://www.thetaremarket.com/,Mo-Fr 11:00-19:00; Sa 10:00-18:00; Su 10:00-17:00
+11182295183,node,Moorhead Farmers Market,46.8776116,-96.7790473,Moorhead,MN,56560,https://cityofmoorhead.com/departments/parks-recreation/special-events/farmer-s-market,Jun 6-Sep 26 Tu 3:30-18:30; Jul 4 off
+12581402170,node,Brine's Market,45.0406152,-92.8348169,,MN,,,
+12730027386,node,La Paz Market,44.8151805,-93.2098148,,MN,,,
+12730027391,node,Minsk Market,44.8147983,-93.210807,,MN,,,
+12955365231,node,Uptown Farmers Market,44.9473592,-93.297054,,MN,,https://uptownmarket.org/,Jun 12 - Sep 25: Th 16:00-20:00
+12983336910,node,Linden Hills Farmers Market,44.9245264,-93.315923,Minneapolis,MN,55410,https://www.lindenhillsfarmersmarket.org/,May-Oct: Su 10:00-13:00
+12996326440,node,Farmers Market on the Rum,45.1997618,-93.3898216,Anoka,MN,,https://www.anokaminnesota.com/516/Farmers-Market-on-the-Rum,Jun 18 - Sep 24: We 15:00-19:00
+44165364,way,Saint Paul Farmer's Market,44.949601,-93.0850724,Saint Paul,MN,55101,https://stpaulfarmersmarket.com/,Mar-Nov Sa 06:00-13:00; Mar-Nov Su 08:00-13:00; Dec-Feb Sa 09:00-13:00
+89070233,way,Minneapolis Farmers Market,44.9812441,-93.2860734,Minneapolis,MN,55405,https://www.mplsfarmersmarket.com/,We-Fr 07:00-13:00; Sa-Su 06:00-13:00; Nov-Apr off
+312797801,way,Midtown Global Market,44.9487598,-93.2607498,Minneapolis,Mn,55407,https://midtownglobalmarket.org/,Mo-Fr 06:30-20:00; Sa 10:00-20:00; Su 11:00-18:00
+365452184,way,Nokomis Farmers Market,44.9091269,-93.2622796,,MN,,https://www.neighborhoodrootsmn.org/,Jun-Aug: We 16:00-20:00; Sep: We 16:00-19:00
+480955304,way,West Side Farmer's Market,44.9298828,-93.087798,Saint Paul,MN,55107,,Jun 01-Oct 15: Sa 08:30-12:30
+930485106,way,Hutchinson Farmers Market,44.8918318,-94.3641746,Hutchinson,MN,55350,https://www.hutchinsonfarmersmarket.org/,We 14:30-17:30; Sa 08:00-12:00
+1264664309,way,Farmers Market Annex,44.9804122,-93.2860455,Minneapolis,MN,55405,http://www.farmersmarketannex.com,Sa-Su 07:00-13:00; Nov-Apr off
+2439584953,node,Farmer's Market,33.526076,-90.2116389,,MS,,,
+3367140333,node,James Quality Market,33.9501517,-90.7686342,,MS,,,
+5893463085,node,Midtown Farmers' Market,34.3741492,-89.5163005,Oxford,MS,38655,https://www.mtfarmersmarket.com/,
+13009044764,node,Alsalam Market,32.4004775,-90.1315647,Ridgeland,MS,,,
+140782340,way,The Menagerie On Market,30.3585547,-88.5480784,,MS,,https://www.themenagerieonmarket.com/,
+165667275,way,Farmer's Market,30.487025,-89.1035865,Gulfport,MS,39503,,
+308917304,way,Farmer's Market,33.5168028,-90.1812609,,MS,,,
+577630791,way,Hitching Lot Farmer's Market,33.4962827,-88.4318553,,MS,,,
+596693382,way,Oxford Community Market,34.3635976,-89.5102291,Oxford,MS,38655,https://www.oxfordcommunitymarket.com/,
+1171903294,way,Tupelo Furniture Market,34.2843615,-88.7773364,,MS,,,
+2672374716,node,Grandma Ruth's Farmers Market,36.6430566,-93.235748,,MO,65616,gruths.com,
+4917674669,node,Farmers Market,37.1362497,-93.2546486,,MO,,,
+4971120597,node,MaMa Jean's Natural Market,37.137765,-93.2800747,,MO,,,
+5787957047,node,Farmer's Market,37.6415235,-91.5345859,,MO,,,
+9327730054,node,Brookside Farmers' Market,39.0109789,-94.5928456,,MO,64113,https://www.brooksidefarmersmarket.com/,Sa 08:00-13:00
+9935914000,node,Cape Riverfront Market,37.3027467,-89.5201392,,MO,,,Sa 08:00-12:00
+10709018963,node,Arnold Farmers Market,38.4544527,-90.358736,,MO,,https://www.arnoldmo.org/government/departments/parks-recreation/arnold-farmers-market/,"Apr-Oct Sa 08:00-12:00; Nov Sa[1,2] 08:00-12:00"
+120339336,way,Parkville Farmer's Market,39.18789,-94.6832511,Parkville,MO,64152,,
+132571954,way,City Market,39.1092479,-94.582148,,MO,,,
+442339229,way,Soulard Market,38.6106453,-90.201144,Saint Louis,MO,63104,https://www.stlouis-mo.gov/government/departments/parks/soulard/index.cfm,Su-Tu off; We-Tu 08:00-17:00; Fr 07:00-17:00; Sa 07:00-17:30
+583026752,way,Kirkwood Farmers' Market,38.5807705,-90.4048952,,MO,,,
+631645286,way,Urzi's Italian Market,38.6096939,-90.2796436,Saint Louis,MO,63139,https://www.urzismarket.com/,Mo-Fr 11:00-16:00; Sa 10:00-16:00
+686206903,way,Columbia Farmers Market,38.9584895,-92.3646653,Columbia,MO,65203,https://columbiafarmersmarket.org/,Apr-Oct Sa 08:00-12:00; Nov-Mar Sa 09:00-12:00; May 24-Sep 27 We 15:00-19:00
+1052051942,way,The Farmer's House,39.3938165,-94.8490551,Weston,MO,64098,,
+1144098991,way,Pulaski County Farmer's Market,37.8286539,-92.207606,,MO,,,
+1167426206,way,The Covered Bridge Market,38.5167709,-92.4168715,,MO,,,
+1167450682,way,Shirk's Country Market,38.6087255,-92.4140767,,MO,,,
+1368828681,way,Lloyd's Family Farm,38.7748778,-92.2371152,Ashland,MO,65010,,
+6928738908,node,Front Street Market and Catering,45.9978952,-112.5350896,,MT,,,
+9254778878,node,Isabela Asian Market,45.7793914,-108.5758132,,MT,,,
+10613531289,node,Maven's Market,45.6790494,-111.0475549,,MT,,,
+10655878811,node,Huckleberry's Natural Market,45.6705295,-111.0822328,,MT,,,
+12131359775,node,BZN Market,45.7791836,-111.1616456,,MT,,,
+767763074,way,Warden's Market,46.8739508,-113.9932526,Missoula,MT,59802,,
+2085470299,node,Fallbrook Farmers Market,40.8780012,-96.7286682,Lincoln,NE,68521,http://fallbrookfarmersmarket.com/,
+6533262814,node,Ciaran's Farmers Market & Christmas Trees,41.2522527,-95.9886726,,NE,,,
+8829998605,node,Farmers Market,41.3437013,-95.9626914,,NE,,,Su 10:00-15:00
+11020659049,node,Farmers Market,40.7720458,-96.6536964,,NE,,,Su 10:00-14:00
+12811837450,node,Hickman Farmers Market,40.6209758,-96.6328458,,NE,,,May-Sep Th[1] 17:00-20:00; May-Sep Th[3] 17:00-20:00
+1354956075,way,Adam's Corner Market,40.7481916,-98.845533,Gibbon,NE,68840,,
+7021632585,node,Downtown Summerlin Farmers Market,36.1512956,-115.3338901,Las Vegas,NV,89135,,
+9799370031,node,Carson Farmers Market,39.1660803,-119.7649311,,NV,,https://carsonfarmersmarket.com/,Sa 08:30-13:00
+12139124539,node,Fallon International Market,39.4725864,-118.7769627,Fallon,NV,89406,,
+12779080562,node,2 If By Sea Asian Market,35.9999018,-115.2448951,Las Vegas,NV,89178,,
+12883789001,node,Reno Public Market,39.5069059,-119.8021874,,NV,89502,https://renopublicmarket.com/,Su-Th 11:00-21:00; Fr-Sa 11:00-23:00
+725687830,way,Nakata Market of Japan Henderson,36.0281764,-115.0485665,,NV,,,
+753229882,way,Raines Market,39.513486,-115.9609138,,NV,,,
+1240329610,way,Aladin's Market & Kitchen,39.5142242,-119.8064189,Reno,NV,89502,https://www.aladdinsmarketreno.com/,
+8078386840,node,Exeter Farmers' Market,42.9822011,-70.9492296,,NH,,https://www.seacoastgrowers.org/exeter-farmers-market/,May 02-Oct 31 Th 14:30-18:00
+13015531785,node,Barnstead Farmers' Market,43.3490226,-71.2634642,,NH,,,
+555193217,way,Stout Oak Farm,42.9934499,-71.0184777,,NH,,,
+1235012946,way,Tuscan Market,42.7837175,-71.2321874,,NH,,,
+1608160741,node,Green Street Market,39.0207789,-74.869731,,NJ,,,
+2325899447,node,Farm Market,39.1356611,-74.7732604,,NJ,,,
+3200101492,node,Middletown VA Farmers Market,40.4283775,-74.1112607,Middletown,NJ,22645,,
+3669037023,node,Haddon Farmer's Market,39.909499,-75.0962586,,NJ,,,
+4631406626,node,Blitz's Hole In the Wall Market,39.0309912,-74.934167,Villas,NJ,08251,,
+5167530077,node,South Station Market,38.9599632,-74.8547584,,NJ,,,
+6487034708,node,516 Farmers Market,40.4035802,-74.3251363,Old Bridge,NJ,08857,,
+6851552538,node,206 Farmers Market,40.5001045,-74.6470378,,NJ,,,
+7272952830,node,Caspian Market,40.979534,-74.1219557,Ridgewood,NJ,07450,https://www.caspian.market/,"Tu,We 12:00-20:00; Th-Sa 10:00-20:00; Su 10:00-17:00"
+8384370150,node,Dale's Market,40.9822325,-74.9615137,,NJ,,,
+8778022763,node,Madison Market,40.7580248,-74.4119547,,NJ,,,
+9525783932,node,Grasso Girls Farmers Market,39.808634,-75.1950083,,NJ,,,
+9652976807,node,Bellino's Market,39.4876026,-74.4636742,,NJ,,,
+9896376962,node,McFarlan's Market,39.9159713,-75.0675842,,NJ,,,
+9936244364,node,Burkes Market,40.0676552,-74.0446765,,NJ,,,
+10671314692,node,Hopewell Farmers Market,40.3909942,-74.7570701,,NJ,,,May-Nov Su 9:00-14:00
+10939595748,node,Makola African Market Imports,40.7133323,-74.219995,Newark,NJ,07112,https://charlottfields.com,Mo-Sa 09:00-19:00
+10960868239,node,Mohican Farms,41.0007226,-74.9792631,Blairstown,NJ,07825,https://mohicanfarmsllc.com/,
+12155160828,node,Tranquility Farms,40.9450913,-74.7991699,Green Township,NJ,07821,,
+12190704612,node,Stewart's Scottish Market,40.7623128,-74.1496244,,NJ,,,
+12537298470,node,Wayne Farmers Market,40.9507568,-74.2211501,Wayne,NJ,07470,,
+12920499705,node,Vraj Fresh Farmers Market,40.8975696,-74.0990482,Saddle Brook,NJ,07663,https://vrajfresh.com/,10:00-20:00
+506577427,way,Anna's Market,40.9730788,-73.9604499,,NJ,,,
+544636890,way,Westfield Farm,40.6464857,-74.3376165,,NJ,,,
+703235073,way,Meadowbrook Farmers Market,39.9629602,-75.0353746,,NJ,,,
+703235075,way,Meadowbrook Market,39.9628062,-75.0352779,,NJ,,,
+800819814,way,Duckie's Farmer's Market,38.9431109,-74.9296338,,NJ,,,
+993760312,way,Pennsville Farm Market,39.6736159,-75.5001966,Pennsville,NJ,08070,,Mo-Su 09:00-17:00
+1052463573,way,Donaldson Farms Farmers' Market,40.8310091,-74.8439149,Hackettstown,NJ,07840,,Mo-Sa 09:00-18:00
+1089725666,way,Marlboro Farmers Market,40.3334855,-74.2479073,Marlboro,NJ,07746,https://marlboro-nj.gov/farmers-market,Jun-Oct Su 09:00-13:00
+1092569348,way,Maugeri's Farm Market,39.726935,-75.3521917,,NJ,,,
+1092606952,way,Rosie's Farm Market,39.7539756,-75.2502432,,NJ,,,
+1092623213,way,Stella Farms,39.767939,-74.928699,,NJ,,,
+1205267445,way,Pochuck Valley Farm Market,41.250081,-74.4783729,Glenwood,NJ,07418,pochuckvalleyfarms.com,
+1232937532,way,The Market Place,40.8745685,-74.6919123,Flanders,NJ,07836,https://marketplaceroxbury.com/,
+1388858825,way,Highland Park Farmer's Market,40.4983483,-74.4291074,Highland Park,NJ,08904,,Fr 11:00 - 17:00
+2074168815,node,Corrales Growers' Market,35.2206355,-106.6196784,,NM,,,"Su 09:00-12:00, We 09:00-12:00"
+2488301224,node,Downtown Growers Market,35.0859559,-106.6571097,,NM,,https://downtowngrowers.com/,May 17-Sep 05: Sa 07:00-12:00; Sep 06-Dec 08: Sa 08:00-13:00
+3334813859,node,Beneficial Farms,35.4533276,-105.7946351,,NM,,,
+4324801824,node,Silver City Farmers Market,32.7731934,-108.2755472,,NM,,,May-Oct Sa 08:30-12:00; Nov-Apr closed
+5703270981,node,Rail Yards Market,35.0758473,-106.6489216,Albuquerque,NM,87102,https://railyardsmarket.org/,May-Oct: Su 10:00-14:00
+10285504833,node,Jerry's Market,34.9531082,-106.6953002,,NM,,,
+319942823,way,Sawmill Market,35.1014788,-106.6673937,Albuquerque,NM,87104,,"Su-Th 08:00-21:00; Fr,Sa 08:00-22:00"
+558698130,way,Carniceria Y Taqueria Meet Market,34.6600746,-106.7595415,,NM,,,
+646758512,way,Santa Fe Farmers Market,35.6821324,-105.9491495,Santa Fe,NM,87501,https://santafefarmersmarket.com,Jun-Sep Sa 07:00-13:00; Oct-May Sa 08:00-13:00; May-Nov Tu 07:00-13:00; Jul-Sep We 15:00-18:00
+646758533,way,Santa Fe Artists Market,35.6834255,-105.9483834,Santa Fe,NM,87501,https://www.santafeartistsmarket.com/,Mar-Dec Sa 08:00-14:00
+676698327,way,Oasis Market,35.1263056,-106.6046708,,NM,,,
+833064126,way,Terry's Market Place,35.3653427,-103.4111842,Logan,NM,88426,,
+833604239,way,Cedar Crest Farmer's Market,35.1258051,-106.3688289,Cedar Crest,NM,87008,,We 15:00-18:00
+213427092,node,Mamakating Farmers Market,41.5667579,-74.4978371,,NY,,,Fr 16:00-19:00
+1003286805,node,Union Square Green Market,40.7366941,-73.9900361,,NY,10003,,"Mo,We,Fr-Sa 08:00-18:00"
+1708932242,node,Carson's Country Market,43.1630849,-78.7257994,,NY,,,
+1913660983,node,Locke Market & Italian Carry-Out,42.6602133,-76.4300628,,NY,,,
+2041500810,node,Rhinebeck Farmer's Market,41.9274338,-73.9103371,,NY,,http://rhinebeckfarmersmarket.com,May Su[2]-Nov Th[4] Su 10:00-14:00
+2411316936,node,Saugerties Farmer's Market (Summer),42.0794314,-73.9487313,,NY,,,
+2930207492,node,Plattsburgh Farmer's Market,44.6963703,-73.4514718,,NY,,,
+3319203713,node,Water Street Market,41.7467248,-74.0891106,,NY,,,
+3765493557,node,Dewitt Park Farmers Market,42.441504,-76.4988083,,NY,,https://www.ithacamarket.com/,May-Oct: Tu 09:00-14:00
+3842837139,node,Grand Central Market,40.7522987,-73.9759625,,NY,,https://grandcentralterminal.com/grand-central-market/,Mo-Fr 07:00-20:00; Sa 10:00-19:00; Su 11:00-18:00
+4707586221,node,City Market,43.0453129,-76.1467046,,NY,,http://citymarketsyracuse.com,May-Oct Su[2] 10:00-16:00
+4707599509,node,Downtown Farmer's Market,43.0505964,-76.1525268,,NY,,http://www.downtownsyracuse.com/farmersmarket,Jun-Oct Tu 07:00-15:00
+4795984076,node,Warsaw Farmer's Market,42.7558843,-78.1323154,,NY,,,
+5064791966,node,Sayville Farmer’s Market,40.7483058,-73.0674923,,NY,,,
+5142999060,node,Ocean Fish Market,40.7651253,-73.917973,,NY,,,
+5156183130,node,Best Fish Market,40.7669241,-73.9211226,,NY,,,
+5163879633,node,Keita West African Market,40.6919288,-73.9260426,,NY,,,
+5174248128,node,The Market NYC,40.7246645,-73.9948783,New York,NY,10012,,
+5263688560,node,Malcolm Shabazz Harlem Market,40.801468,-73.9488612,,NY,10026,,10:00-20:00
+5322387946,node,Troy Waterfront Farmers Market (Winter),42.7317963,-73.6895072,,NY,,https://www.troymarket.org/,Nov-Apr Sa 09:00-14:00
+5322389583,node,Troy Waterfront Farmers Market (Summer),42.7315057,-73.6915781,,NY,,https://www.troymarket.org/,May-Oct Sa 09:00-14:00
+5418877899,node,Ridgewood Market,40.706776,-73.9056085,Ridgewood,NY,11385,http://www.ridgewoodmarket.com/,
+5455055829,node,Park Slope Sunday Farmers Market,40.6723725,-73.9840138,,NY,,http://downtoearthmarkets.com/markets?region=Brooklyn,Su 10:00-16:00
+5546394201,node,El Paisano #3 Fish Market,40.8261992,-73.8764155,,NY,,,
+5546451212,node,Stratford Fruit Market,40.8288295,-73.8755465,,NY,,,
+5546454760,node,Westchester Caribbean Market,40.8286688,-73.8799186,,NY,,,
+5548939369,node,Bangla Market,40.8325475,-73.8634765,,NY,,,
+5552547320,node,Aftab Market,40.8307941,-73.8619637,,NY,,,
+5564023744,node,7's Fish Market,40.8742188,-73.8795161,,NY,,,
+5689244854,node,Roberts Farm Market,43.2063702,-78.4013866,,NY,,,
+5726123940,node,Cazenovia Farmers Market,42.9297315,-75.8557509,,NY,,,May-Oct: Sa 09:00-14:00
+5735397976,node,Southern Boulevard Farm,40.8364122,-73.8880987,,NY,,,
+5962390879,node,Ossining Farmers Market,41.1607769,-73.8632873,,NY,,http://downtoearthmarkets.com/markets?region=Westchester&market=Ossining++Farmers+Market,May-Dec: Sa 08:30-13:00
+5978792506,node,Fulton Stall Market,40.7061847,-74.0034548,,NY,,https://fultonstallmarket.org,
+6188716408,node,Cook Park Farmers Market,42.707667,-73.8345439,Colonie,NY,12205,,
+6231307186,node,Monroe Market,40.711586,-73.9961061,New York,NY,10002,,
+6444299542,node,Seneca Farmers Market,42.9099915,-76.80005,Seneca Falls,NY,13148,http://senecamarket.com/,Jun 11-Oct 8 Tu 15:00-19:00
+6462532127,node,The Market by Cure Thrift,40.732168,-73.9877613,,NY,,,
+6611117653,node,Al-Zabiha Fish Market,40.737141,-73.7078841,,NY,,,
+6946801057,node,Queens Night Market,40.7478455,-73.8505827,,NY,,https://queensnightmarket.com,Apr 15-Aug 19: Sa 17:00-24:00; Sep 16-Oct 28: Sa 17:00-24:00
+7706173958,node,Pakatakan Farmers' Market,42.2001851,-74.5965776,Halcottsville,NY,12438,https://www.roundbarnmarket.org/,Sa 09:00-13:00
+7826463429,node,Ivan Mini Market,40.9514595,-73.7369111,Mamaroneck,NY,10543,,
+8027323532,node,Farmers & Artisans,42.9625714,-78.7817542,Amherst,NY,14226,https://www.farmersandartisans.com/,
+8362684491,node,Jamestown Public Market,42.0959053,-79.2423083,,NY,,https://www.jtownpublicmarket.org/farmers-market,Jun Sa[2]-Oct Sa[-1] Sa 10:00-14:00
+8446199676,node,Latinos Market,42.0767946,-73.9520728,Saugerties,NY,12477,,
+8633199631,node,Lombardi's Gourmet Market,40.809648,-73.0765668,,NY,,,
+8651361241,node,Cold Spring Farmers' Market,41.4145069,-73.9391003,,NY,,,Sa 08:30-13:00
+8783523597,node,Albertson Seafood Market,40.770865,-73.6477189,Albertson,NY,11507,,
+8788954890,node,Auntie El's Farm Market,41.1470488,-74.1913713,Sloatsburg,NY,10974,,
+8975338363,node,Greenpoint Terminal Market,40.7278922,-73.9599186,Brooklyn,NY,11222,https://greenpointterminalmarket.com/,Sa-Su 10:00-18:00
+9062870154,node,Kingston Farmers Market,41.933325,-74.0206567,,NY,,https://kingstonfarmersmarket.org/,Sa 09:00-14:00
+9121569615,node,Lockport Farmer's Market,43.1707295,-78.6937997,,NY,,https://www.lockportcommunitymarket.com/,We 14:00-18:00; Sa 09:00-14:00
+9122770504,node,Freeville Farmers Market,42.5116002,-76.3508851,Freeville,NY,13068,https://www.freevillefarmersmarket.org/,May-Sep: Su 11:30-14:30
+9371206961,node,The Market Line,40.7181774,-73.9877719,New York,NY,,https://marketline.nyc/,
+9374738173,node,Jamaica Farmers Market,40.7042186,-73.7999289,,NY,,https://publicmarkets.nyc/jamaica-farmers-market,
+9870456717,node,Chandler Street Market,42.9426996,-78.8903713,,NY,,https://stepoutbuffalo.com/event/chandler-street-market/,
+10037649661,node,Glens Falls Farmers' Market,43.3100864,-73.6474694,Glens Falls,NY,12801,,May-Oct: Sa 08:00-12:00
+10301637296,node,Liberty Farmers' Market,41.801472,-74.7462284,,NY,,,Jun-Sep: Fr 15:00-18:00
+10420459500,node,Westfield Market Place,40.7634529,-73.9924393,,NY,,,
+10899967107,node,Washington Park Farmers Market,42.6555548,-73.7680528,,NY,,https://washingtonparkfarmersmarket.com/,Jul-Sep Sa 10:00-14:00
+11052950702,node,Albany County Farmers Market,42.6483399,-73.753841,,NY,,https://www.downtownalbany.org/albany-county-farmers-market,Jul-Oct Su 12:00-16:00
+11101765616,node,Canal Street Market,40.7190468,-74.00091,New York,NY,10013,https://canalstreet.market/retail/,Fr-Su 11:00-19:00
+11108082051,node,Poestenkill Farmers Market,42.6904921,-73.5638583,,NY,,http://poestenkillfarmersmarket.com/,Jul-Oct 9:00-12:00
+11249097415,node,Lakewood Farmers Market,42.0983478,-79.3246445,Lakewood,NY,14750,https://lakewoodny.com/government/lakewoods-farmers-artisans-market/,Jun-Aug Th 10:00-14:00
+11256418783,node,Jamestown Mobile Market,42.0958819,-79.2333663,Jamestown,NY,14701,https://www.jtownpublicmarket.org/mobile-market,Jun Th[1]-Sep Th[4] Th 13:00-14:00
+11266904280,node,The British Daily Market,42.1958774,-74.1328512,,NY,,,
+11528534652,node,Cornwall Farmers Market,41.4391834,-74.029237,Cornwall,NY,12518,,We 11:00-17:00
+11728018664,node,Brazilian Market NYC,40.771711,-73.9555384,,NY,,https://brazilianmarketnyc.com,Mo-Fr 09:00-19:00; Sa 09:00-17:00
+11861287868,node,Premier Market,40.7513135,-73.8594293,,NY,,,
+11949428949,node,First Friday Makers Market,42.6544196,-73.7661038,,NY,,https://larkstreetbid.org/events-,Fr[1] 18:00-21:00
+12075709178,node,G&G Euro Market and Burek,41.27289,-73.7813825,Yorktown Heights,NY,10598,,
+12185009317,node,Victor Farmer's Market,42.9815348,-77.4086444,,NY,,,Jul-Oct: We 15:00-18:00
+12185353050,node,Empire State Plaza Farmers Market,42.651466,-73.7585488,,NY,,https://empirestateplaza.ny.gov/empire-state-plaza-farmers-market,Jul-Sep We 10:00-14:00
+12209293668,node,Farmers Market & Festival Plaza,42.7174321,-78.0028096,,NY,,,
+12233749944,node,Isabahlia Farmers Market,40.6633998,-73.9016443,Brooklyn,NY,11212,https://www.isabahlialoefinc.org/farmer-market,Jul-Oct Sa 08:00-14:00
+12251152340,node,Sunny Side-Up Farm,42.8776786,-73.302217,Hoosick Falls,NY,12090,,
+12971471569,node,Glens Falls Farmer's Market,43.30928,-73.6477787,Glens Falls,NY,,,
+13065464321,node,Olly Olly Market,40.7516871,-74.0068424,,NY,,https://www.ollyollymarket.com/,
+51853588,way,Market Office,43.1650736,-77.5891306,,NY,,,
+51853595,way,Rochester Public Market Shed C,43.1650233,-77.5883757,,NY,,,
+51853600,way,Rochester Public Market Shed A,43.1650992,-77.5891825,,NY,,,"Tu,Th 06:00-12:00"
+132231774,way,Farmer's Market on Thursday and Saturday,42.9524079,-76.4306272,,NY,,,
+165271643,way,CNY Regional Market,43.0743512,-76.1674106,Syracuse,NY,13208,http://cnyrma.com/,"Su 07:00-14:00 open ""Flea Market""; Sa 07:00-14:00 open ""Farmers' Market""; May-Nov: Th 07:00-14:00 open ""Farmers' Market"""
+194329490,way,Ithaca Farmers' Market,42.4508642,-76.5094337,Ithaca,NY,14851,https://www.ithacamarket.com/,
+198097137,way,North Tonawanda Farmers Market,43.0341618,-78.8703064,,NY,,,
+250445452,way,Al-Yemini Market,40.7052233,-73.9066072,,NY,11385,,
+258567922,way,Southold Fish Market,41.0794899,-72.39521,Southold,NY,11971,,
+276051964,way,Arthur Avenue Market,40.8541499,-73.8881923,,NY,,https://publicmarkets.nyc/arthur-avenue-market,
+279624015,way,Moore Street Retail Market,40.7035408,-73.941137,,NY,11206,https://publicmarkets.nyc/moore-street-market,
+309154411,way,Terminal Market,40.6434821,-73.9159379,,NY,,,
+450894953,way,Rochester Public Market Shed D,43.1656697,-77.588618,,NY,,,
+450895368,way,Rochester Public Market Shed B,43.1649347,-77.5894885,,NY,,,
+452550321,way,Market North,41.1255125,-73.7143332,Armonk,NY,10504,,
+508213114,way,The Windmill Farm & Craft Market,42.5751982,-77.0374151,Penn Yan,NY,14527,https://www.thewindmill.com/,Apr Sa[4]-Dec Sa[2] Sa 08:00-16:30
+545546706,way,Gro-Moore Farms,43.0650442,-77.6104394,Henrietta,NY,14467,,
+548523197,way,Red Berry Farmer's Market,41.4563728,-74.3968432,Middletown,NY,10940,,
+591914334,way,Farmer's Market,43.0855887,-73.7811166,,NY,,,
+655739489,way,Lakeside Farms Country Store,42.9266035,-73.8560114,Ballston Lake,NY,12019,,
+681432060,way,Thursday Farmer's Market,42.8691439,-76.9816614,,NY,,,Jun 13-Oct 17 Th 07:30-13:00
+690624940,way,Essex Market,40.717912,-73.9880525,New York,NY,10002,https://www.essexmarket.nyc/,Mo-Sa 08:00-20:00; Su 10:00-18:00
+825072179,way,People's Market of Lansing,42.5288784,-76.4987256,Lansing,NY,14882,,
+907890518,way,Draudt's Farm Market,42.735351,-78.8040828,Hamburg,NY,14075,,"Su-We 09:00-19:00, Th 09:00-14:00"
+1008207126,way,Poughkeepsie Waterfront Market,41.7090155,-73.9398533,Poughkeepsie,NY,12601,,
+1038344480,way,Locust Hill Market,41.7528182,-73.7122266,Millbrook,NY,12545,,
+1219916875,way,Matteson's Market,43.5349061,-75.1544606,,NY,,,
+1375649688,way,Hoosick Local Market,42.8784741,-73.3009459,Hoosick Falls,NY,12090,,
+227144929,node,Durham Farmer's Market,36.000504,-78.9018502,,NC,,,"Sa 08:00-12:00, We 15:30-18:30"
+2458849587,node,David's Market,36.1634197,-81.1877577,North Wilkesboro,NC,28659,,
+2532689994,node,Western Wake Farmers' Market,35.8218696,-78.8294173,Morrisville,NC,27560,https://westernwakefarmersmarket.org,Jan-Mar: Sa 09:30-12:00; Apr-Nov: Sa 08:00-12:00; Dec: Sa 09:30-12:00
+3172597887,node,River Arts District Farmers Market,35.5884655,-82.564275,Asheville,NC,28801,,We 14:00-18:00
+3297335808,node,Piedmont Triad Farmers' Market,36.0878213,-79.9890651,,NC,,,Mo-Su 08:00-18:00
+5307479863,node,Lincoln County Farmers Market,35.4696067,-81.2592106,,NC,,http://www.lincolncountyfarmersmarket.com/,
+5732110117,node,Eno River Farmer's Market,36.0737201,-79.0977092,Hillsborough,NC,27278,,Sa 08:00-12:00
+5991480306,node,Cary Downtown Farmers Market,35.7850897,-78.7795497,Cary,NC,27511,https://www.caryfarmersmarket.com/,Sa 08:00-12:00
+6371414275,node,West Asheville Tailgate Market,35.5771006,-82.591945,Asheville,NC,28806,,
+6594249208,node,Marion Tailgate Market,35.6822177,-82.0092652,,NC,,,
+6606864524,node,Denton Community Farmers Market,35.6331816,-80.1138588,,NC,,,
+6737268588,node,Bulldega Urban Market,35.9960194,-78.9014162,Durham,NC,27701,,
+7161282621,node,Farm Fresh Produce Inc.,35.1163076,-78.1378249,Faison,NC,28341,,
+7298069228,node,Pleasant Garden Country Market,35.9659907,-79.7635744,,NC,,,
+9685819556,node,Black Mountain Tailgate Market,35.6214163,-82.3209399,Black Mountain,NC,28711,https://blackmountainmarket.org/,Sa 09:00-12:00
+10207352854,node,Clemmons Farmer's Market,36.040647,-80.3913064,,NC,,https://www.clemmons.org/243/Clemmons-Farmers-Market?fbclid=IwAR3UpFAC6ayysdq36e_M7xi_z7Ee00pFy85kD2bCc37tfA2ff7VOupB38D4,May-Oct: Sa 8:30-11:30
+11322946979,node,Western Wake Farmer's Market,35.8235596,-78.8316567,Morrisville,NC,27560,https://www.westernwakefarmersmarket.org/,Apr-Nov: Sa 08:00-12:00
+11535108406,node,Uptown Farmers' Market,35.2211386,-80.8417885,Charlotte,NC,28202,https://www.uptownfarmersmarket.com/,Sa 08:00-12:30
+12102864706,node,Farm Credit Farmers Market,35.4054802,-77.944334,,NC,,,
+12272552765,node,Wilson Farmers & Artisan Market,35.7227096,-77.9124544,,NC,,,
+12398060441,node,Market 317,35.7837157,-78.7809239,Cary,NC,27511,https://downtowncarypark.com/locations/market-317,Mo-Su 09:00-18:00
+12877472993,node,Rahim Meat Market,36.0385209,-79.8556157,,NC,,,
+12915131418,node,Blowing Rock Market & Wine Shop,36.1341886,-81.6783598,,NC,,,
+12960481126,node,Hickory Farmers Market,35.7321909,-81.3409007,,NC,,https://www.hickoryfarmersmarket.com,
+12973480648,node,Market 94,35.4095972,-80.5804626,Concord,NC,28025,https://www.marketninetyfour.com/,
+12987808435,node,Turkuaz Market,35.7898236,-78.7838881,Cary,NC,27513,https://www.facebook.com/TurkuazMarket/,Su-Th 10:00-19:00; Fr-Sa 10:00-20:00
+12988996909,node,Jackson County Farmers' Market,35.3745765,-83.2250776,,NC,,https://jacksoncountyfarmersmarket.org/,Sa 09:00-12:00; Nov-Mar Sa 10:00-13:00
+13043548466,node,Farmers Market,33.9393408,-78.0615715,,NC,,,
+194981757,way,State Farmers Market,35.763704,-78.6618896,Raleigh,NC,27603,https://www.ncagr.gov/markets/facilities/markets/raleigh/index.htm,
+226299725,way,Carrboro Farmers' Market,35.9108434,-79.0775285,Carrboro,NC,27510,http://www.carrborofarmersmarket.com/,Nov-Mar Sa 09:00-12:00; Apr-Oct Sa 07:00-12:00; Apr-Nov We 15:00-18:00
+301966184,way,Morganton Farmers Market,35.7426538,-81.680812,Morganton,NC,28655,,May-Oct Sa 08:00-12:00
+362866106,way,Thomasville Farmers' Market,35.884927,-80.0807824,,NC,,,
+427934374,way,Lexington Farmers Market,35.8206525,-80.2524723,,NC,,,May-Oct: Sa 08:00-12:00
+467836996,way,Anh Dao Sakura Oriental Market,35.1842848,-80.8752366,Charlotte,NC,28209,,Su-Tu 09:00-19:00 We 09:00-20:00 Th-Sa 09:00-21:00
+550528401,way,Downtown Farmers Market,35.7049296,-79.8177498,,NC,,,
+553077609,way,Common Market,35.2103591,-80.8635992,Charlotte,NC,28203,https://commonmarketisgood.com/,"Su,Mo 08:00-20:00; Tu-Th 08:00-22:00; Fr,Sa 08:00-23:00"
+572963569,way,Greensboro Farmers Curb Market,36.0784709,-79.778835,Greensboro,NC,27405,,
+596677218,way,Union County Farmers Market,34.9884623,-80.5498438,Monroe,NC,28110,http://www.co.union.nc.us/explore-union-county/farmers-market,
+614147593,way,Bakersville Main Street Market,36.0141014,-82.1561405,Bakersville,NC,28705,,Sa 08:00-12:00
+683524103,way,Denver Farmers Market,35.4874649,-80.9983536,,NC,,,Mo-Sa 08:00-12:00
+721055531,way,Open Air Market,35.4776758,-83.3200339,,NC,,,
+750963336,way,Bear Towne Market,35.8667044,-76.7504493,,NC,,,
+813470991,way,Market Square,36.3585385,-79.6638868,Reidsville,NC,27320,,
+822675129,way,Capital Seafood Market,35.9849875,-78.9113295,Durham,NC,27707,,
+834834612,way,Liberty Farmers Market,35.8520883,-79.5781979,Liberty,NC,27298,,
+880740211,way,Carolina Farmers Market,35.0439548,-78.952522,,NC,,,
+927883901,way,Island Market & Tiki Bar,34.5234582,-77.3518922,North Topsail Beach,NC,28460,,
+993318544,way,Gastonia Farmers Market,35.2671345,-81.1743605,,NC,,,
+996990171,way,Piedmont Farmers Market,35.445102,-80.625377,,NC,,https://piedmontfarmersmarket.com,"Mo-Fr,Su off; Sa 08:00-12:00"
+1071778306,way,Matthews Community Farmers Market,35.1160402,-80.7217599,Matthews,NC,28105,,
+1101603195,way,Lineberger's Maple Springs Farm,35.3264146,-81.1506524,,NC,,,
+1185417669,way,Kings Drive Farmers Market,35.2055551,-80.8356172,,NC,,,
+1240347171,way,Western North Carolina Farmers Market,35.5549288,-82.5970303,Asheville,NC,28806,https://www.ncagr.gov/divisions/marketing/farmers-markets-agricultural-centers/western-north-carolina-farmers-market-asheville,Mo-Su 08:00-17:00
+1252440891,way,Parkway Flea & Farmers Market,35.8571168,-82.048469,Spruce Pine,NC,28777,,Temporary Closed
+1409907899,way,Uncle Bill's Fleat Market,35.3915097,-83.2967984,Whittier,NC,28789,,
+17948970,relation,Charlotte Regional Farmers Market,35.1871493,-80.9094464,Charlotte,NC,28217,https://www.ncagr.gov/divisions/marketing/farmers-markets-agricultural-centers/charlotte-regional-farmers-market,We-Su 08:00-17:00
+11189150220,node,Red River Market,46.8782909,-96.7873178,Fargo,ND,58102,https://www.redriver.market/,Jul 08-Oct 28 Sa 10:00-14:00
+11189402234,node,Town Square Farmers Market,47.925299,-97.0299706,Grand Forks,ND,58201,https://www.tsfarmersmarket.com/,Jun 17-Sep 30 Sa 09:00-13:00
+1727991598,node,Union Market,39.9979049,-83.0091075,,OH,,,Su-Fr 10:30-21:00; Sa 10:30-19:00
+3160671416,node,Montgomery Farmers’ Market,39.2306299,-84.3533931,,OH,,https://www.montgomeryfarmersmarket.org/,May-Oct: Sa 09:00-12:30
+3707426094,node,Farmers Market,41.0351625,-83.6301749,,OH,,,Th 16:00-18:00
+4624843124,node,Loveland Farmers’ Market,39.2662826,-84.2598316,,OH,,http://www.lovelandfm.com/,May-Oct Tu 15:00-18:30
+4931176376,node,Muskigum County Farmer's Market,39.9242049,-82.0231286,,OH,,,
+5170207909,node,Northside Farmers' Market,41.1118722,-80.645909,,OH,,,
+6338803849,node,The Witten Farm Market & Greenhouse,39.9804363,-82.0175331,Zanesville,OH,43701,,
+6338896427,node,Canal Market District,40.05657,-82.4010851,Newark,OH,43055,,"""See Website"""
+6545366342,node,Asian Market,39.951849,-83.1461522,Columbus,OH,43119,,
+6558271345,node,Baraka International Market,40.0342206,-82.9626945,Columbus,OH,43224,,
+6744469736,node,Bluffton Farmers Market,40.89319,-83.8927379,,OH,,,
+7549850011,node,Acme Farm Market,41.024732,-81.7992295,,OH,,,Tu-Th 09:30-18:00; Fr 09:30-18:30; Sa 09:30-17:00
+8916267782,node,Fowler Open Air Market,41.3089166,-80.6563618,,OH,,,
+9098662123,node,Farmers Market (seasonal),41.5048729,-81.6067511,,OH,,,
+9098662124,node,Farmers Market (seasonal),41.5022893,-81.6185386,,OH,,,
+9393337430,node,McKenna's Market,39.41282,-81.454042,Marietta,OH,45750,https://mckennasmarket.com/marietta/,
+9671308601,node,Garrettsville Farmers Market,41.2850939,-81.0976316,Garrettsville,OH,44231,https://www.garrettsvillefarmersmarket.com/,Jun 03-Aug 26 Th 16:00-19:00
+9672781881,node,South Euclid Farmer's Market,41.5203511,-81.5196349,South Euclid,OH,44121,,
+9722590031,node,Southeast Growers And Farmers Market,39.9238205,-82.8298262,Reynoldsburg,OH,43068,,Aug 01-Sep 10 Sa 09:00-12:00
+9742127729,node,Hilliard Farm Market,40.0281691,-83.1620283,Hilliard,OH,43026,https://hilliardfarmmarket.com/,May 24-Sep 06 Tu 16:00-19:00
+11283124693,node,Springfield Farmers Market,39.9228263,-83.8107356,Springfield,OH,45502,,Jun-Sep Sa 09:00-12:30
+11765085829,node,Victorian Village Market,39.9876657,-83.0105993,Columbus,OH,43201,,Mo-Su 06:00-01:00
+11772704696,node,The Amish Market,41.0373022,-80.6329777,Boardman,OH,44512,,
+11902007932,node,Athens Farmers Market,39.3365861,-82.0741126,Athens,OH,45701,https://www.athensfarmersmarket.org/,Sa 09:00-12:00; We 09:00-12:00
+12058208698,node,Garvers Family Farm Market,39.4455338,-84.3908822,Monroe,OH,45050,,
+12370425601,node,Littleton’s Market,40.0142362,-83.0692514,,OH,,,
+12544874848,node,Haren's Market,40.0392073,-84.2028594,Troy,OH,45373,https://www.harensmarket.com/,Mo-Su 11:00-23:00
+12790640057,node,B&D Asian Nepali Market,39.2330392,-84.509025,Cincinnati,OH,45231,,
+12885284935,node,Frantz Road Market,40.0708952,-83.1186454,,OH,,,
+35116662,way,Findlay Market,39.1153137,-84.5190597,,OH,,https://www.findlaymarket.org/,Su 10:00-16:00; Tu-Fr 09:00-18:00; Sa 08:00-18:00
+53260589,way,Farmer's Market,39.1159664,-84.5192259,,OH,,,
+61479665,way,North Market,39.971897,-83.0043336,Columbus,OH,43215,https://www.northmarket.com,"Su,Mo 10:00-17:00; Tu-Sa 09:00-19:00"
+93599980,way,West Side Market,41.4846469,-81.7030159,Cleveland,OH,44113,https://www.westsidemarket.org/,"Mo, We, Fr, Sa 08:00-17:00; Su 10:00-16:00"
+147834932,way,Second Street Market,39.7626326,-84.1807326,,OH,,,
+235556141,way,Erie Street Market,41.6454974,-83.5432638,,OH,,,
+239788830,way,Coit Road Farmers Market,41.5449303,-81.5772638,,OH,,,
+461451705,way,Van Aken Market Hall,41.4662259,-81.5368438,,OH,,,
+675404847,way,The Pearl Market,39.9630547,-82.999916,,OH,,https://www.pearlmarket.org/,"May-Oct: Tu,Fr 10:30-14:00"
+889602150,way,East Market,39.9624959,-82.9578126,,OH,,,
+923581785,way,River City Farmers Market,39.4139391,-81.452037,Marietta,OH,45750,https://www.therivercityfarmersmarket.com/,Sa 08:00-12:00
+947035448,way,Henslers Town and Country Market,39.4004781,-81.4095188,Marietta,OH,45750,,Mo-Sa 09:00-19:00; Su 09:00-18:00
+1051360537,way,Saucy Sows Farm Market,40.3514471,-83.9094604,De Graff,OH,43318,,
+1054318140,way,Farmers Flea Market,39.5734947,-82.5181314,,OH,,,
+1066137832,way,Way Farms Market Place,39.1298131,-82.9817289,,OH,,,
+1071358804,way,B&K Farm Market,41.283026,-80.7693284,,OH,,,
+1123808067,way,Four Seasons Flea & Farm Market,41.0908563,-80.5864696,,OH,,,
+1322988044,way,The Little Grand Market,39.9726066,-83.0399043,Columbus,OH,43215,https://thelittlegrandmarket.com/,Su-Th 11:00-21:00 + Fr-Sa 11:00-23:00
+3978162507,node,OSU-OKC Famers Market,35.4699984,-97.5817896,Oklahoma City,OK,,https://osuokc.edu/farmersmarket/find.aspx,Sa 09:00-13:00
+8997186295,node,Arcadia Farmer's Market General Store,35.663463,-97.3235228,Arcadia,OK,73007,,Mo-Fr 10:00-19:00; Sa 10:00-16:00
+10016085306,node,Tulsa Farmer's Market,36.1595213,-95.957781,Tulsa,OK,,https://www.tulsafarmersmarket.org/,"Apr-Oct Sa 07:00-11:00; Nov-Dec,Jan-Mar Sa 08:30-12:00; Su[2] 10:00-13:00"
+11632820945,node,Paseo Farmers Market,35.5001103,-97.5209017,Oklahoma City,OK,73103,https://paseofarmersmarket.com/,
+132601618,way,Bi-Rite Market,35.4682391,-97.5510278,,OK,,,
+591701019,way,Farmer's Market,35.653557,-97.4827817,,OK,,,
+987827475,way,Alva Market,36.8055159,-98.6692909,,OK,,,
+1077783399,way,Local 259 Market,34.1899033,-94.7786778,Broken Bow,OK,74728,https://www.thelocal259.com,
+1190062849,way,Vintage Market,35.9123638,-94.969571,Tahlequah,OK,74464,,"Mo-Sa 10:00-18:00, Su 12:30-16:00"
+2539177225,node,Portland Saturday Market,45.5227219,-122.6697912,Portland,OR,97204,https://www.portlandsaturdaymarket.com/,Mar 01-Dec 24 Sa 10:00-17:00
+2539201585,node,Skidmore Market,45.5224569,-122.6716915,,OR,,https://www.portlandskidmoremarket.com/,
+3722831640,node,Beaverton Farmers Market,45.484414,-122.805197,Beaverton,OR,97005,https://www.beavertonfarmersmarket.com/,Feb-Apr Sa 10:00-13:30; May-Sep Sa 08:00-13:30; Oct 01-Nov 17 Sa 09:00-13:30
+3874914837,node,Moreland Farmers Market,45.4752724,-122.6486805,,OR,,https://morelandfarmersmarket.org/,May-Oct Sa 10:00-14:00
+4212228296,node,Horai Farm Shop,44.0478652,-123.087509,,OR,97401,https://horai.farm/,Mo-Su 08:00-19:00
+4844857875,node,Pendleton Farmers' Market,45.6711666,-118.786634,,OR,,,May-Oct Fr 16:00-19:00
+5089502861,node,Fresh! Corner Market,44.0448629,-123.0738395,,OR,,,
+6471696442,node,Superette Market,44.5690907,-123.279815,Corvallis,OR,97330,,"Mo-Th 08:00-24:00, Fr-Sa 08:00-02:00, Su 09:00-24:00"
+6804342080,node,Woodland heights market,42.3183685,-122.8901446,,OR,,,
+6974976004,node,Flying Eagle Market,42.5163553,-122.8106715,,OR,,,
+7131901083,node,Fairmount Neighborhood Farmers Market,44.0389472,-123.0706301,Eugene,OR,97403,,Su 10:00-14:00
+7131973117,node,Cottage Market,44.0416209,-123.0818361,,OR,,,
+8855966909,node,Salem Saturday Market,44.943088,-123.0290169,Salem,OR,,https://www.salemcommunitymarkets.com/saturday-market.html,Sa 09:00-15:00
+8984913794,node,Shemanski Park Market,45.5173702,-122.6821254,,OR,,https://www.portlandfarmersmarket.org/our-markets/shemanski-park/,May-Oct We 10:00-14:00
+9159865262,node,Mj market,42.4199852,-122.9578369,,OR,,,
+10083100719,node,Milwaukie Farmers Market,45.4451101,-122.6421337,,OR,,https://milwaukiefarmersmarket.com/,May-Oct Su 09:30-14:00
+10099492772,node,South Valley Farmers Market,43.7970932,-123.060968,,OR,,https://www.southvalleyfarmersmarket.org/,May-Dec Sa 10:00-14:00
+10605410411,node,Corvallis Farmer's Market,44.5639995,-123.2586545,,OR,,,"Sa,We 09:00-13:00"
+10846979712,node,Monroe Farmers Market,44.3194664,-123.2979094,,OR,,,
+12142962950,node,Florence Farmers Market,43.9674427,-124.1034701,,OR,,,
+12826356401,node,Oregon City Farmer’s Market,45.3262454,-122.5685387,,OR,97045,https://orcityfarmersmarket.com/,Sa 09:00-14:00
+263706592,way,Sunday Market,45.6094853,-123.1138949,,OR,,,
+288398227,way,Bella Organic Farm,45.6390563,-122.7948858,,OR,,,
+325482896,way,Montavilla Farmer's Market,45.5189526,-122.5842846,Portland,OR,97215,https://www.montavillamarket.org/,Jun-Oct Su 10:00-02:00
+368531472,way,Saigon Market,45.5311212,-122.579432,Portland,OR,97220,,
+505854132,way,Holiday Market Lot,43.8019119,-123.0399839,Cottage Grove,OR,97424,,
+763232464,way,Tom's Market,44.0387595,-123.0700518,Eugene,OR,97403,,
+828200598,way,Maupin Farmer's Market,45.1752041,-121.0816422,,OR,,,
+1050169749,way,Helvetia Farm Market,45.5764694,-122.9160521,Hillsboro,OR,,https://www.helvetiamarket.com/,
+1119170911,way,Provisions Market Hall,44.0539931,-123.0884034,Eugene,OR,97401,https://provisionsmarkethall.com,
+1144933735,way,5th Street Public Market,44.0537664,-123.0889263,Eugene,OR,97401,https://5stmarket.com,
+1386104179,way,Farmer Creek Gardens & Marketplace,45.2531481,-123.8485696,Cloverdale,OR,97112,,
+679229522,node,Tyrone Farmers Market,40.6710644,-78.2396082,,PA,,,
+882794218,node,Perry County Farmers Market,40.4366429,-77.0605295,,PA,,,
+1130132350,node,Yeagers Market,40.1188721,-75.585621,,PA,,,
+2123882252,node,Clark Park Farmers Market,39.9493009,-75.2094014,Philadelphia,PA,19104,https://thefoodtrust.org/farmers-markets/market/clark-park,Jan-Dec: Sa 10:00-14:00; Jun-Nov: Th 15:00-19:00
+2247020281,node,Bacchus Market & Catering,39.9486985,-75.1791191,Philadelphia,PA,19103,https://www.bacchusmarket.com,Mo-Tu off; We-Su 11:30-19:00
+2403593938,node,Whitecomb's Market,39.9873762,-76.7866544,,PA,,,
+2633142365,node,52nd & Haverford Farmers Market,39.9651072,-75.2244238,Philadelphia,PA,19139,https://thefoodtrust.org/farmers-markets/market/52nd-haverford,Jun-Nov: We 13:00-17:00; Fr 13:00-17:00
+2668016915,node,Fairmount Farmers Market,39.9675577,-75.1740334,Philadelphia,PA,19130,https://thefoodtrust.org/farmers-markets/market/fairmount,May-Nov: Th 15:00-19:00
+2668017961,node,Cecil B. Moore Farmers Market,39.9785002,-75.157908,,PA,,,Th 14:00-18:00
+2668030808,node,Wadsworth Farmers Market,40.0801568,-75.1731636,Philadelphia,PA,19150,,May-Oct: Fr 10:00-14:00
+2701427813,node,Morning Star Market,39.9312734,-76.8541985,,PA,,,
+2719558286,node,West Oak Lane Farmers Market,40.0642591,-75.1536874,Philadelphia,PA,19138,https://thefoodtrust.org/farmers-markets/market/west-oak-lane,Jun-Nov: Tu 13:00-17:00
+2719571034,node,Broad & South Farmers Market,39.9437964,-75.1652966,Philadelphia,PA,19147,https://thefoodtrust.org/farmers-markets/market/broad-and-south,May-Nov: We 14:00-17:00
+2719643375,node,Cliveden Park Farmers Market,40.052199,-75.1761237,Philadelphia,PA,19119,https://thefoodtrust.org/farmers-markets/market/cliveden-park,Jun-Nov: We 14:00-18:00
+2720252212,node,Norris Square Park Farmers Market,39.9821084,-75.1355377,,PA,,,Jun-Oct Sa 10:00-14:00
+2727251803,node,New Food Trust Farmer's Market,40.0046922,-75.1718807,Philadelphia,PA,,,
+2745593578,node,Schuylkill River Park Farmers Market,39.9490623,-75.1812541,Philadelphia,PA,19103,https://thefoodtrust.org/farmers-markets/market/schuylkill-river-park,May-Oct: We 15:00-19:00
+2745676659,node,Oxford Circle Farmers Market,40.0375642,-75.0910499,Philadelphia,PA,19149,https://thefoodtrust.org/farmers-markets/market/oxford-circle,Jun-Oct: Th 14:00-18:00
+2745807601,node,Germantown Farmers Market,40.040047,-75.1789774,Philadelphia,PA,19144,https://thefoodtrust.org/farmers-markets/market/germantown,May-Nov: Fr 14:00-18:00
+2745825124,node,Fitler Square Farmers Market,39.9475341,-75.1793351,Philadelphia,PA,19103,https://thefoodtrust.org/farmers-markets/market/fitler-square,Sa 09:00-14:00
+2745990725,node,Palmer Park Farmers Market,39.9774423,-75.131292,,PA,19125,,Jun-Nov: Th 14:00-18:00
+2752459656,node,Overbrook Farmers Market,39.9884496,-75.2530719,Philadelphia,PA,19151,https://thefoodtrust.org/farmers-markets/market/overbrook,May-Nov: Sa 09:00-13:00
+2752679733,node,Broad & Snyder's Farmers Market,39.9240315,-75.1692094,Philadelphia,PA,19148,https://thefoodtrust.org/farmers-markets/market/broad-and-snyder-1,Jun-Oct: Tu 14:00-19:00
+2752688769,node,29th & Wharton Farmers Market,39.9372038,-75.1922901,Philadelphia,PA,19146,https://thefoodtrust.org/farmers-markets/market/29th-wharton,Jun-Oct: Tu 14:00-18:00
+2752694980,node,22nd & Tasker Farmers Market,39.9320701,-75.1812565,Philadelphia,PA,19146,https://thefoodtrust.org/farmers-markets/market/22nd-tasker,Jun-Nov: Tu 14:00-18:00
+2752699200,node,Hunting Park Farmers Market,40.0167584,-75.1469604,Philadelphia,PA,19140,https://thefoodtrust.org/farmers-markets/market/hunting-park,Jun-Nov: Sa 10:00-14:00
+2752719283,node,Olney Transportation Center Farmers Market,40.039226,-75.1448405,Philadelphia,PA,19141,https://thefoodtrust.org/farmers-markets/market/olney-transportation-center,Jul-Nov: Tu 14:00-18:00
+2752722047,node,Fairhill Square Park Farmers Market,39.991662,-75.1385824,Philadelphia,PA,19133,https://thefoodtrust.org/farmers-markets/market/fairhill-square,Jul-Oct: We 13:00-17:00
+2752724985,node,Frankford Transportation Center Farmers Market,40.0236393,-75.0767059,Philadelphia,PA,19149,https://thefoodtrust.org/farmers-markets/market/frankford-transportation-center,Jun-Nov: Tu 14:00-18:00
+2752736446,node,33rd & Diamond Farmers Market,39.98886,-75.1872432,Philadelphia,PA,19121,https://thefoodtrust.org/farmers-markets/market/33rd-diamond,Jun-Oct: We 14:00-18:00
+2752762909,node,58th & Chester Farmers Market,39.9355241,-75.2285297,Philadelphia,PA,19143,https://thefoodtrust.org/farmers-markets/market/58th-chester,Jun-Nov: We 14:00-18:00
+2752776496,node,Reading Terminal Farmers Market: 12th and Arch Streets,39.9537281,-75.1592392,Philadelphia,PA,19107,https://readingterminalmarket.org/,Su 09:00-17:00; Mo-Sa 08:00-18:00
+2752788045,node,Rittenhouse Farmers Market,39.9501438,-75.1717741,Philadelphia,PA,19103,https://www.facebook.com/RittenhouseFarmersMarket,Jan-Dec: Sa 10:00-14:00
+2752798594,node,South and Passyunk Farmers Market,39.9418902,-75.150682,Philadelphia,PA,19147,,May-Oct: Tu 14:30-19:00
+2752814337,node,Mt. Airy Farmers Market,40.0463766,-75.1961278,Philadelphia,PA,19119,https://www.facebook.com/pages/Mt-Airy-Farmers-Market/115303871848990,May-Oct: Th 15:00-19:00
+2752817466,node,University Square Farmers Market,39.9533357,-75.1948894,Philadelphia,PA,19104,,May-Nov: We 10:00-15:00
+2752820086,node,Fountain Farmers Market,39.9299889,-75.1631625,Philadelphia,PA,19147,,May-Oct: We 15:00-19:00
+2760042238,node,Suburban Station Farmers Market,39.953358,-75.166308,Philadelphia,PA,19103,,Jan-Dec: Th 12:00-18:30
+2760042645,node,Jefferson Farmers Market,39.9498152,-75.1569288,Philadelphia,PA,19107,https://www.facebook.com/pages/Jefferson-Farmers-Market/129580207073874,May-Oct: Th 11:00-15:30
+2760044052,node,East Falls Farmers Market,40.0073213,-75.1917726,Philadelphia,PA,19129,,May-Oct: Sa 10:00-14:00
+2760044909,node,Chestnut Hill Growers Market,40.0674652,-75.1972921,Philadelphia,PA,19118,https://www.facebook.com/ChestnutHillFarmersMarket,Sa 10:00-12:00
+2760047586,node,Gorgas Park Farmers Market,40.0373647,-75.221412,Philadelphia,PA,19128,,May-Oct Fr 14:00-18:00
+2760049622,node,Dickinson Square Park Farmers' Market,39.927209,-75.1511962,Philadelphia,PA,19148,https://www.facebook.com/DSPFarmersMarket,Jun-Oct: Su 10:00-14:00
+2760051352,node,IBC Farmers Market,39.9536493,-75.1716232,Philadelphia,PA,19103,,May-Sep: We 10:30-14:30
+2760059634,node,Fair Food Farmstand,39.9535301,-75.1593845,Philadelphia,PA,19107,,Mo-Sa 08:00-18:00; Su 09:00-17:00
+2760096651,node,Mill Creek Farmers Market,39.9664872,-75.2187495,Philadelphia,PA,19139,https://www.millcreekurbanfarm.org/content/our-produce,Jun-Nov: Sa 11:00-14:00
+2760098506,node,Greensgrow Farmstand,39.9785274,-75.1210129,Philadelphia,PA,19125,https://www.greensgrow.org/farmstand/,"Mo-Fr 10:00-18:00, Sa 9:00-17:00, Su 10:00-16:00; Th 15:00-19:00 ""farmstand""; Sa 10:00-14:00 ""farmstand"""
+2760163290,node,Francisville Farmers Market,39.9669438,-75.1610059,Philadelphia,PA,19130,http://francisvillefarmersmarket.com/,Jun-Oct: Sa 10:00-14:00
+2760164873,node,Germantown Kitchen Garden Farmers Market,40.0348373,-75.1668031,Philadelphia,PA,19144,https://www.facebook.com/pages/Germantown-Kitchen-Garden/189168871110366,May 13-Oct 28: Sa 09:00-13:00
+2760171006,node,Growing for Good Farmers Market,40.0680972,-75.18507,Philadelphia,PA,19150,,We 11:00-15:00
+2825660392,node,Norhtampton Fish Market,40.6902934,-75.5004183,,PA,,,
+2895876538,node,Greensgrow Mobile Market,39.9593205,-75.1952988,,PA,,https://www.greensgrow.org/mobile-markets/,
+2895900134,node,Greensgrow Mobile Market,39.95853,-75.2373403,Philadelphia,PA,19139,,Fr 10:00-11:30
+2895934408,node,Greensgrow Mobile Market,40.027694,-75.2140098,Philadelphia,PA,19128,https://www.greensgrow.org/mobile-markets/,We 10:00-11:30
+2895943162,node,Greensgrow Mobile Market,40.036856,-75.1756112,Philadelphia,PA,19144,https://www.greensgrow.org/mobile-markets/,Th 12:00-13:00
+2895948005,node,Greensgrow Mobile Market,40.0032862,-75.1045155,Philadelphia,PA,19134,https://www.greensgrow.org/mobile-markets/,"Jun-Aug Mo-Tu closed, Jun-Aug We-Fr 12:00-19:00, Jun-Aug Sa,Su 10:00-16:00"
+2895958216,node,Greensgrow Mobile Market,39.9759881,-75.1586284,Philadelphia,PA,19121,https://www.greensgrow.org/mobile-markets/,"week 19-48/2 Th 12:00-13:30, Jan-Apr off, Dec off"
+3001737149,node,Saucon Valley Farmer's Market,40.579594,-75.3447355,,PA,,,
+3445748327,node,Newberrytown Peddler's Market,40.1105076,-76.8277218,,PA,,,
+3526329367,node,High Street Farmer's Market,39.9498899,-75.1458259,,PA,,,Sa 10:00-14:00
+3542577320,node,Dilworth Park Farmer's Market,39.9531741,-75.1646835,Philadelphia,PA,,http://www.ccdparks.org/events/farmers-market,We 11:00-14:00
+3776960062,node,Spring Valley Farmers Market,40.5351517,-75.2840379,,PA,,,
+4670258445,node,Headhouse Farmers Market,39.9423427,-75.1454083,,PA,,https://thefoodtrust.org/farmers-markets/market/headhouse,
+5205450384,node,Simba Market,40.4535049,-79.9999813,,PA,,,
+5255072430,node,Aden Market,40.457238,-80.0070393,,PA,,,
+5376909089,node,Adams-Ricci Farmer's Market,40.2744048,-76.9373632,,PA,,,Th 15:00-19:00
+5683582710,node,South Chester Market Place,39.8354318,-75.3874266,Chester,PA,19013,,
+5765527540,node,Little Britain Market,39.7796478,-76.117026,,PA,,,
+5816768194,node,Hometown Farmers' Market,40.821226,-75.991525,Tamaqua,PA,18252,,
+5838442508,node,Renninger's Farmer's Market,40.6464171,-76.1400864,,PA,,,
+5839947728,node,Harding's Farm Market,40.6669424,-76.0864421,Orwigsburg,PA,17961,,
+5839947731,node,Stein's Farm Market,40.6689346,-76.0824278,Orwigsburg,PA,17961,,
+5975773785,node,Williamsport Growers Market,41.2428255,-77.0064203,Williamsport,PA,17701,,Sa 08:00-12:30
+6044649226,node,Bloomfield Saturday Market,40.4587766,-79.9445012,Pittsburgh,PA,15224,https://bloomfieldpgh.org/bloomfield-saturday-market/,"May Sa[1]-Nov Sa[3] + 1 day Sa 09:00-13:00; Dec-Mar Sa[1,3] 09:00-13:00 ""Winter Market"""
+6580324231,node,Lemon Street Market,40.0441507,-76.3110963,Lancaster,PA,,https://www.lemonstreetmarket.com/,Mo-Su 07:00-19:00
+6652384005,node,Oylers Organic Farm & Market,39.8995827,-77.3177923,,PA,,,
+6658478004,node,Bird-in-Hand Farmer’s Market,40.0379598,-76.1776512,Bird-in-Hand,PA,17505,https://birdinhandfarmersmarket.com,"Jan-Mar,Dec Mo-Th,Su off, Fr-Sa 09:00-17:30; Apr-Jun,Nov Mo-Tu,Th,Su off, We,Fr-Sa 09:00-17:30; Jul-Oct Mo-Tu,Su off, We-Sa 09:00-17:30"
+6828077125,node,Beyond the Blend Market,41.0541943,-76.2350971,,PA,,,
+7307200106,node,West Chester Growers Market,39.9613138,-75.6070273,West Chester,PA,19380,https://www.westchestergrowersmarket.com/,"Jan-Apr Sa [1,3,5] 10:00-12:00; May-Dec Sa 9:00-13:00"
+7658974295,node,Farmstead Farmers Market,40.3702269,-76.6492066,Palmyra,PA,17078,https://www.farmsteadmarket.com/,"Fr 08:00-18:00, Sa 08:00-15:00"
+7840739555,node,Trexlertown Farmer's Market,40.5471064,-75.6111966,,PA,,,
+7934654759,node,Dutch Country Farm Market,40.1931946,-75.5791575,,PA,,https://www.dutchcountryfarmmarket.com,
+8355365975,node,Ken's Farm Market,41.039717,-80.1116006,,PA,,,
+8446073876,node,Sil's Market,40.3983587,-80.1875282,,PA,,,
+8591448494,node,Little Thai Market,39.9532656,-75.1588711,,PA,,,
+8985872024,node,Main Street Market,41.3676215,-79.9285298,Polk,PA,,,
+9896581858,node,Peppercorn Market,40.0185915,-78.5036208,Bedford,PA,15522,https://peppercornmarketbedford.business.site/,Mo-Sa 10:00-17:00; Su 11:00-16:00
+10646612097,node,Vinny's Italian Market & Catering,39.8003682,-76.9839146,Hanover,PA,17331,,
+10922416707,node,Bellevue Farmers Market,40.4963148,-80.0539608,Bellevue,PA,15202,https://bellevuemarket.org/,Jun-Oct We 15:00-19:00
+10922416708,node,Carrick Farmers Market,40.4000253,-79.9887565,Pittsburgh,PA,,,Jun 19-Nov 20 We 15:00-19:00
+10922416709,node,East End Farmers Market,40.4627838,-79.9187756,Pittsburgh,PA,,https://pittsburghpa.gov/events/east-end-market,June 17-Nov 25 Mo 15:00-19:00
+10922416710,node,Forest Hills Farmers Market,40.4184013,-79.8406984,Pittsburgh,PA,15221,https://foresthillsfarmersmarket.com/,May Fr[3]-Oct Fr[-1] + 1 day Fr 16:00-19:00
+10922416711,node,Green Tree Farmer’s Market,40.4215311,-80.0419722,,PA,,https://www.greentreeboro.com/services/community_events/farmer_s_market_in_the_park.php,May 16-Oct 24 Th 16:00-19:00
+10922416712,node,Lawrenceville Farmers Market,40.4718783,-79.9646611,Pittsburgh,PA,15201,,May 21-Nov 26 Tu 15:00-19:00
+10922416713,node,Market Square Farmers Market,40.4407361,-80.0026105,,PA,,https://downtownpittsburgh.com/market-square-farmers-market/,May 16-Nov 01 Th 10:00-14:00
+10922416714,node,Mount Lebanon Farmers Market,40.3744063,-80.047364,,PA,15228,https://mtlebanonfarmersmarket.com/,Jun 5-Oct 31 We 16:00-19:00
+10922416715,node,Northside Farmers Market,40.4547897,-80.0026631,,PA,,https://pittsburghpa.gov/citiparks/northside-market,May 24-Nov 22 Fr 15:00-19:00
+10922416716,node,Squirrel Hill Farmers Market,40.4353841,-79.9235186,,PA,,https://pittsburghpa.gov/events/squirrel-hill-market,May 14-Nov 19 Su 09:00-13:00
+10922416717,node,Wilkinsburg Thursday Market,40.4430817,-79.8821226,,PA,,,Jun 22-Oct 12 Th 16:00-18:00
+10924885894,node,Baldwin Farmer's Market,40.3569463,-79.9636028,,PA,,,Jun 8-Oct 31 Th 16:00-19:00
+10924885895,node,Bethel Park Farmers Market,40.325241,-80.0168599,,PA,,https://bethelparkfarmersmarket.com/about/,May 2-Sep 27 Tu 15:00-19:00
+10924885896,node,Braddock Farm Stand,40.3991446,-79.863394,,PA,,https://www.growpittsburgh.org/about-us/locations/braddock-farms/,Jun-Oct: We 15:30-18:00; Jun-Oct: Fr 15:30-18:00; Apr 01-Nov Tu[4]: Sa 09:00-13:00
+10924898334,node,Carnegie Farmers Market,40.4078309,-80.0866985,,PA,,https://www.carnegieborough.com/market/,"Jul-Aug Su 12:00-15:00; Sep Su 11:00-14:00; Nov 19 ""Holiday Market"""
+10924898335,node,Hampton Township Farmers Market,40.5850366,-79.9366061,,PA,,https://www.hampton-pa.org/316/Farmers-Market,Jun 07-Oct 15 We 15:00-19:00
+10924898336,node,Monroeville Lions Farmers Market,40.4304353,-79.7987718,,PA,,https://www.monroevillefarmersmarket.com/,May 13-Nov 18 Sa 09:00-12:00
+10924898337,node,Moon Market & Music,40.4906381,-80.1815138,,PA,,http://www.moonparks.org/events/FarmersMarket.asp#,"Jun-Aug We[2,4] 17:00-21:00; Sep 01-30 We[2,4] 17:00-20:00"
+10924898338,node,Robinson Farmers Market,40.4525332,-80.1354884,,PA,,,Jun 05-Oct 31 Mo 15:00-19:00
+10924898339,node,Ross Township Farmers Market,40.5330841,-80.0355579,,PA,,,May-Oct We 15:00-19:00
+11060202869,node,Pottstown Farm & Artisan Regional Market,40.245533,-75.6514657,Pottstown,PA,19464,https://pottstownfarm.org,"""every other Saturday May to October, 9am-12pm"""
+11107895468,node,Pretzel Park Farmers Market,40.025724,-75.2211243,,PA,,,May-Oct Sa 10:00-14:00
+12564263370,node,Danville Growers' Market on Ferry Street,40.9622723,-76.6158771,Danville,PA,17821,https://visitdanvillepa.org/about/ferry-street-growers-market/,Jan-Apr off; May-Nov Sa 08:00-12:00; Dec off
+13022325414,node,Downtown Allentown Market,40.6032143,-75.4715335,Allentown,PA,18101,,
+33359810,way,Lancaster Central Market,40.0383722,-76.3065051,Lancaster,PA,,https://centralmarketlancaster.com/,"Tu,Fr,Sa 06:00-15:00"
+42784822,way,Reading Terminal Market,39.9531838,-75.1590599,Philadelphia,PA,19107,https://readingterminalmarket.org,08:00-18:00
+81741957,way,Lancaster County Farmers' Market,40.0449032,-75.4003278,Wayne,PA,19087,https://www.lancastercountyfarmersmarket.com/,"We,Fr,Sa 06:00-16:00"
+165766859,way,Wilson's Meat Market,40.5868659,-77.5768135,,PA,,,
+172067804,way,Quakertown Farmers Market,40.4316556,-75.3306599,Quakertown,PA,18951,,
+184518830,way,Allentown Farmer's Market,40.6008213,-75.4981772,Allentown,PA,18104,,
+248099534,way,Boscov's Fairgrounds Farmer Market,40.3839904,-75.9314712,Reading,PA,19605,https://fairgroundsfarmersmarket.com/,Th 8:00-19:00; Fr 8:00-19:00; Sa 8:00-16:00
+260550533,way,Path Valley Market,40.1422525,-77.7708032,,PA,,,
+293377111,way,Farmer's Market,40.2063081,-79.5653811,,PA,,,
+339064278,way,Little Joes Market,40.2591152,-80.1887373,,PA,,,
+358717345,way,York Central Market,39.9631225,-76.7297061,,PA,,,"Tu,Th,Sa 09:00-14:00"
+375850789,way,Broad Street Market,40.2701487,-76.8876519,,PA,,,
+461783912,way,Paul's Country Market,39.7825809,-77.5890786,Waynesboro,PA,17268,,
+479950641,way,Oakmont Farmer's Market,40.5284847,-79.7940952,,PA,,,
+486699599,way,Scranton Co-Op Farmers' Market,41.4223152,-75.6621966,Scranton,PA,,,
+488847641,way,Newtown Farmer's Market,40.2317346,-74.9410887,,PA,,,
+504039366,way,Rossi's Pop-Up Market,40.3896175,-79.8221829,North Versailles,PA,15137,http://rossispopup.com/,Sa-Su 8:00-15:00
+531601389,way,Lazarus Farm Market,40.6409801,-75.513596,Whitehall,PA,18052,,
+538830170,way,Renninger's Antique Market,40.2321976,-76.0839397,Adamstown,PA,17517,,Su unknown; Mo-Sa off
+558348813,way,Dillner Family Farm,40.6229218,-79.9001545,,PA,,,
+575303958,way,Booth's Corner Farmer's Market,39.8405123,-75.4969327,Garnet Valley,PA,19060,https://boothscorner.com/,"Fr,Su 09:00-20:00"
+575363278,way,Tebbs Farms and Greeenhouses,41.2617396,-76.9719175,Williamsport,PA,17701,,
+575787468,way,Triple Fresh Market,39.9466358,-75.8387773,Coatesville,PA,19320,https://www.triplefresh.net/,
+628818821,way,Flourtown Farmers Market,40.1092354,-75.213579,Flourtown,PA,19031,https://flourtownmarket.com/,"Mo-We,Su off; Th 08:00-18:00; Fr 08:00-19:00; Sa 08:00-17:00"
+646482553,way,The Pennsylvania Market,40.4508778,-79.9851285,Pittsburgh,PA,,https://www.thepamarket.com/,Tu-Th 11:00-22:00; Fr 11:00-02:00; Sa 09:00-02:00; Su 09:00-19:00
+666774403,way,Milk House Farm Market,40.296876,-74.9102311,,PA,,,
+678522100,way,Fresh Market at Hershey Towne Square,40.2852801,-76.6536614,,PA,,https://www.hersheyfreshmarket.com,
+678926253,way,Mana Food Market,40.6906039,-75.2167108,,PA,,,
+707967067,way,Oyler's Organic Farms & Market,39.8995878,-77.317842,Biglerville,PA,17307,https://www.oylersorganicfarms.com/,"Tu-Fr 10:00-17:00, Sa 09:00-16:00"
+723913081,way,La Stalla Italian Market,40.2326427,-74.9382095,,PA,,,
+732084575,way,Simmons Farm,40.2681731,-80.0831063,McMurray,PA,15317,,
+755235128,way,Penn Market,39.9592678,-76.7365857,York,PA,17401,http://www.pennmarket.com/,"Tu,Fr,Sa 06:30-15:00"
+780991879,way,Richland Local Market,40.480139,-75.3224131,,PA,,,Mo-Sa 07:00-20:00
+784106983,way,Saranelli's Market,40.0908218,-79.3475347,,PA,,,
+820197553,way,Monroe Farmers Market,40.9864063,-75.1946165,Stroudsburg,PA,18360,https://www.monroefarmersmarket.com/,May-Oct: Sa 08:00-12:00
+915682310,way,Farmer Fred's,41.7416491,-76.4486036,,PA,,,
+987837318,way,Market House,41.6387803,-80.1538189,Meadville,PA,16335,,
+1032427123,way,Gabby Market,40.1515607,-80.2647811,,PA,,,Mo-Su 08:00-20:00
+1033666746,way,Downingtown Farmers Market,40.0071108,-75.7052758,Downingtown,PA,19335,,Sa 09:00-13:00
+1070308261,way,Rice's Sale & Country Market,40.3751518,-75.0303446,New Hope,PA,18938,,
+1132775298,way,Millstone Market,41.6317188,-79.9770175,,PA,,,
+1211980215,way,Ludwig's Village Market,40.1152481,-75.694846,Glenmoore,PA,19343,,
+1227630355,way,Rice's Sale & Country Market,40.3758226,-75.0284705,,PA,,,
+1331069715,way,Shupp's Grove Outdoor Antique Market,40.2263837,-76.0625285,,PA,,,
+1414002223,way,Diehl's Farm Market,41.05825,-76.5832144,Bloomsburg,PA,,,Fr 08:00-20:00
+1418157630,way,Maplewood Farmer's Market,40.0212695,-77.5294095,,PA,,,
+1420024532,way,Quakertown Farmers Market - Indoor Flea Market,40.431871,-75.3291868,Quakertown,PA,18951,,
+11754241364,node,Leo's Market,41.4941126,-71.3094633,Newport,RI,02840,https://leosmarketnewport.com/,
+11862213772,node,Driftwood Surf Market,41.489788,-71.3160554,Newport,RI,02840,,Fr 11:00-17:00; Sa-Su 10:00-17:00
+1101853351,node,Dempsey Farms,32.4126325,-80.5118138,,SC,,,
+2645612459,node,Smart Chick Farms,34.5620956,-82.9682268,,SC,,,
+3081188934,node,Manning Farmers Market,33.695328,-80.2094152,,SC,,,Sa 08:00-12:00
+4468143302,node,Farmer's Market,33.696573,-78.8819147,,SC,,,
+4938804342,node,Hub City Farmers' Market,34.9564272,-81.9426385,Spartanburg,SC,29303,http://hubcityfm.org/,Sa 08:00-12:00
+5339048941,node,Saluda Livestock Market,34.014922,-81.7694732,,SC,,,
+9807034990,node,City Center Farmers Market,34.1993784,-79.7738779,Florence,SC,29501,https://www.cityofflorence.com/local-foods-initiative/city-center-market,
+10968553060,node,Bamberg Farmers Market,33.2980443,-81.035884,,SC,,,
+11018715673,node,DORA Farmers Market,33.4901549,-80.862498,,SC,,,
+12396825739,node,Farmers Market Xchange,34.0010441,-81.0385273,Columbia,SC,,,
+12861486117,node,Charleston Farmers Market,32.7864861,-79.936113,Charleston,SC,29403,https://www.charlestonfarmersmarket.com,Sa 08:00-14:00
+421953229,way,Historic Charleston City Market,32.7809199,-79.9294496,Charleston,SC,29401,https://www.thecharlestoncitymarket.com/,Mo-Su 09:30-17:00
+556279057,way,South Carolina State Farmers Market,33.906014,-81.0588047,,SC,,,
+760105483,way,Uptown Market,34.1902889,-82.1635067,Greenwood,SC,29656,https://www.uptowngreenwood.com/uptown-market/,"Apr-Sep We 10:00-14:00, Sa 08:00-12:00; Oct-Mar We,Sa 10:00-13:00"
+830532339,way,Farmer's Market,34.5267944,-82.4971286,Belton,SC,29627,,
+936779597,way,Jasper County Farmers Market,32.4700522,-80.9878142,Ridgeland,SC,29936,https://jaspersc.org/farmers-market/,
+989485074,way,Meeting Street Artisan Market,33.9938798,-81.0572176,,SC,,,
+1021138163,way,Ward's Fish Market,33.8735644,-79.7539696,,SC,,,
+1081018458,way,Aiken County Farmers Market,33.5562953,-81.7085852,Aiken,SC,29801,,
+1277901694,way,Tiger Valley Market,34.7216959,-82.7846743,Central,SC,29630,,
+1279990458,way,Summerville Farmer's Market,33.0182426,-80.177099,,SC,,,
+1292163416,way,North Charleston Farmers Market,32.8814072,-79.9857643,,SC,,,
+2534692798,node,Saturday Farmer's Market,43.7137392,-98.0251453,,SD,,,
+4073870251,node,The Prairie Farmers' Market,43.5499132,-96.7237308,Sioux Falls,SD,57104,http://theprairiefarmersmarket.com/,
+11203983999,node,Blackhills Farmers Market,44.0810526,-103.2082191,Rapid City,SD,57701,https://blackhillsfarmersmarket.org/,Nov-Apr Sa 09:00-12:00; May-Oct Sa 08:00-13:00; Jul-Oct We 08:00-13:00
+1365583531,node,Main Street Market,35.0348466,-85.3033251,,TN,,,
+3737651188,node,Nolensville Farmer's Market,35.9599318,-86.6726955,Nolensville,TN,37135,https://www.nolensvillefarmersmarket.com/,Sa 08:00-12:00
+5771784076,node,Richland Park Farmer's Market,36.1516461,-86.8451582,,TN,,,
+8329576740,node,Wedgewood Houston Makers + Growers Market,36.131394,-86.7735034,,TN,,,
+9579243736,node,Marble City Market,35.970689,-83.9219676,,TN,,,
+11283509495,node,Oak Grove Market,36.383613,-86.4568705,,TN,,,
+118643981,way,Memphis Farmers Market,35.1318729,-90.0602904,,TN,,https://www.memphisfarmersmarket.org/location/,
+130913035,way,Nashville Farmer's Market,36.1702395,-86.7886786,Nashville,TN,37208,https://www.nashvillefarmersmarket.org/,08:00-20:00
+206600106,way,The Market,35.7569241,-83.9645431,,TN,,,
+477665364,way,Kingsport Farmer's Market,36.5515146,-82.5648065,,TN,,,
+549998307,way,Cookeville Farmer's Market,36.1666066,-85.505049,,TN,,,
+590298927,way,Sneedville Farmer's Market,36.5322587,-83.2187797,Sneedville,TN,37869,,
+646980158,way,Teter's Market,36.2041409,-86.9915841,,TN,,,
+741312306,way,Farmers Market,36.4353649,-89.0711673,,TN,,,
+938449899,way,Morristown Farmer's Market,36.2117997,-83.292135,,TN,,,
+964801741,way,Dyersburg Farmer's Market,36.0298697,-89.3897448,,TN,,,
+1053924264,way,Farmers Market at the Square,36.0070775,-84.8870017,,TN,,,
+1158534461,way,Franklin County Farmers Market,35.1924404,-86.1048464,,TN,,,
+1162777436,way,Van Buren County Farmers Market,35.7452739,-85.4625458,Spencer,TN,38585,,
+1190723465,way,Farmers Market,35.6055908,-85.1885562,,TN,,,
+1198788997,way,Coning Family Farm Market,35.6659747,-83.9985741,,TN,,,
+1265592021,node,Pearl Farmer's Market,29.4436402,-98.4797301,,TX,,,Sa 09:00-13:00; We 16:00-19:00
+1339543318,node,Littlejohn's Farmers' Market,32.2307727,-98.2136172,,TX,,,
+2331836292,node,Urban Harvest Farmers Market,29.7353247,-95.4243174,,TX,,,Sa 08:00-12:00; Su 11:00-14:00
+2918069640,node,Celebration Market,32.8516158,-96.8330807,,TX,,,
+4813699979,node,San Angelo Farmer's Market,31.4550268,-100.4306367,,TX,,,
+8342768656,node,Houston Farmers Market,29.8102257,-95.3816173,Houston,TX,77009,https://thehoustonfarmersmarket.com/,"Mo-Su 05:30-18:00; Dec 25,Dec 31 closed"
+8843074543,node,Texas Farmers' Market at Mueller,30.3003457,-97.703398,,TX,,,Su 10:00-14:00
+9135965197,node,Waxahachie Farmers Market,32.3789832,-96.8470802,Waxahachie,TX,75165,https://www.waxahachiecvb.com/business/waxahachie-downtown-farmers-market,
+9240599207,node,Darna Euro Market,33.0820804,-96.825851,,TX,,,
+9571217690,node,Sustainable Food Center Farmers' Market,30.2672548,-97.7471061,Austin,TX,78701,https://sustainablefoodcenter.org/farmers-market/downtown,Sa 09:00-13:00
+11965911989,node,La Habanera Market,32.9551613,-96.8396653,Addison,TX,75001,,
+12004767764,node,Latin Market,32.9898188,-96.8008877,,TX,,,
+12184775382,node,Clark Street Market,32.7952924,-95.4562784,,TX,,,
+12235768108,node,Brooklyn's Market,29.8012003,-95.4312615,,TX,,,
+12810859229,node,Farmer's Market at the Country Corner,35.0910754,-101.812735,Amarillo,TX,79118,,Th 17:00-sunset; Sa 09:00-13:00
+12926833347,node,Madina International Food Market,35.2230381,-101.8126439,Amarillo,TX,79107,,
+13070892801,node,Don Chepe Meat Market,29.8656864,-95.7061829,,TX,77449,,Mo-Su 06:00-21:00
+98620857,way,Market Square,29.4250429,-98.4996608,San Antonio,TX,78207,https://www.getcreativesanantonio.com/ExploreSanAntonio/MarketSquare.aspx,
+220543266,way,World Market,32.9336479,-96.8185926,,TX,,,
+317912695,way,Farmers Market Building,32.745815,-97.0045473,Grand Prairie,TX,,,Apr-Dec: Sa 10:00-13:00
+410408522,way,Laverne's Farm Market,31.316902,-94.7009041,Lufkin,TX,75901,,
+464665154,way,Texas Country Farmers Market,33.5774876,-101.8367376,Lubbock,TX,79404,,
+467216655,way,Ly Food oriental food and Market,32.719005,-96.8923755,Dallas,TX,75211,,
+562246380,way,Fulshear Farmers Market,29.6900897,-95.889286,Fulshear,TX,77441,,Sa 09:00-13:00
+636212730,way,Farmers Market,31.6052888,-94.6579072,Nacogdoches,TX,75961,,
+646607084,way,Bastrop 1832 Farmer's Market,30.1111812,-97.3122437,Bastrop,TX,78602,https://www.bastrop1832farmersmarket.org/,Sa 10:00-14:00
+712107665,way,Las Palmas Market Place,31.7253387,-106.307092,,TX,,,
+845876391,way,International Market Place,29.9506661,-95.4141132,Houston,TX,,,
+968003544,way,Abilene Farmer's Market,32.449847,-99.7300435,Abilene,TX,79601,,
+1013620245,way,Flores Meat Market & Restaurant,31.7541086,-106.2768094,,TX,,,
+1117948538,way,Wolfforth Farmers Market,33.5204065,-102.0158978,Wolfforth,TX,79382,,
+1181443147,way,Lockney Farmers Market,34.1244503,-101.4413458,Lockney,TX,79241,,
+1186109806,way,812 Outdoor Market,30.1643259,-97.6890411,Austin,TX,78719,https://www.812market.com/,
+1309293117,way,Guadalupe Market Square,27.5070372,-99.4718836,,TX,,,
+1309293118,way,Heights Market Square,27.5068265,-99.4706198,,TX,,,
+1348625298,way,Weatherford Farmers Market,32.7592899,-97.7942638,Weatherford,TX,,https://weatherfordfarmersmarket.website/,
+1368221983,way,Harvest Market Sienna,29.515486,-95.52956,Missouri City,TX,77459,,
+1382793069,way,Hutto Farmer's Market,30.5462137,-97.5598925,Hutto,TX,78634,https://huttofarmersmarket.org/,We 15:00-19:00
+1439665096,node,Frei's Fruit Market,37.1324012,-113.6511797,,UT,,,
+1956115738,node,Farmer's Market,37.1100984,-113.5838897,,UT,,,
+4327600058,node,Garcia's Market,41.0887897,-111.9724098,Layton,UT,84041,,
+6324411429,node,Stadium Farmer's Market,40.256089,-111.6548274,,UT,,,Jul-Oct Th 15:00-19:00
+7722360567,node,St. George Downtown Farmers Market,37.1110143,-113.5839453,,UT,,,
+8060731365,node,Sage Market Japan,40.7365906,-111.890671,,UT,,,
+9041732536,node,Tiendita Luzita Mini-Market,37.1240857,-113.5294761,,UT,,,Mo-Fr 10:00-19:00; Sa 10:00-18:00; Su 10:00-17:00
+11365272150,node,Specialty Market,40.6215741,-111.8678971,,UT,,,
+11910598946,node,Provo Farmers Market,40.2334346,-111.6684277,Provo,UT,84601,https://www.provofarmersmarket.com/,Sa 09:00-14:00
+12190990767,node,Public Market,40.7008936,-111.8530304,,UT,,,
+12660538274,node,Campus Corner Market,37.1056824,-113.5626904,,UT,,,
+12670181266,node,Asian Market,37.0836955,-113.5557596,,UT,,,
+469291390,way,Main Street Market,39.0895745,-111.132574,,UT,,,
+472730625,way,Arce Market La Favorita,41.060934,-111.9580984,,UT,,,
+483768728,way,Yun's Korean Market & Kimchi House,41.0872543,-111.9727965,,UT,,,Mo-Sa 10:00-20:00
+864850056,way,Town and Country Market,40.7094714,-111.8914614,,UT,,,
+7766376165,node,Hardwick Farmers Market,44.5062368,-72.3728936,Hardwick,VT,,https://www.hardwickfarmersmarketvt.com/,May-Oct: Fr 15:00-18:00
+8088532453,node,Rutland Farmers Market,43.606168,-72.9803499,,VT,,,
+8770329816,node,Jericho Farmers' Market,44.5167397,-72.9480976,,VT,,https://www.jerichofarmersmarket.com/,Th 15:00-18:30
+8977372098,node,Woodstock Farmer's Market,43.6168408,-72.5418105,,VT,,,
+9777627726,node,Burlington Farmers Market,44.4693561,-73.2161314,Burlington,VT,,https://burlingtonfarmersmarket.org/,Sa 09:00-14:00
+9921038092,node,Mach's market,43.3464619,-73.1775552,,VT,,,
+11383112961,node,Farmhouse Market,42.8748879,-72.8632177,,VT,,,
+12258337748,node,Bromley market,43.2140633,-72.9281,,VT,,,
+12260881017,node,Mach's market,43.3463628,-73.1772102,,VT,,,
+235232312,way,West River Farmers Market,43.2266068,-72.8080253,,VT,,https://www.westriverfarmersmarket.com/West_River_Farmers_Market/Welcome.html,
+605763532,way,Norwich Farmers Market,43.6978242,-72.3171533,Norwich,VT,05055,http://www.norwichfarmersmarket.org/,
+864647302,way,Vermont Farmer's Winter Market,43.6077329,-72.985382,,VT,,https://vtfarmersmarket.org/,
+987696441,way,Manchester Farmers Market,43.1775651,-73.0528691,Manchester Center,VT,05255,https://manchesterfarmers.org,Th 15:00-18:00
+1186524335,way,Red Barn Market & Deli,44.4492639,-73.1570727,S. Burlington,VT,05403,,Mo-Fr 07:00-18:30
+1369731021,way,The Market Wagon,42.9279784,-73.2088524,Bennington,VT,05201,,Tu-Sa 09:00-17:30
+1233506298,node,Burke Farmers Market,38.7971003,-77.2982721,Burke,VA,22015,https://www.fairfaxcounty.gov/parks/farmersmarkets/burke,May 7-Nov 19: Sa 08:00-12:00
+1233568230,node,Herndon Farmers' Market,38.9713593,-77.3855566,,VA,,,May 05-Oct 26: Th 08:00-12:00
+1233568231,node,Kingstowne Farmers Market,38.7729292,-77.1355789,Alexandria,VA,22315,https://www.fairfaxcounty.gov/parks/farmersmarkets,May 6-Oct 28: Fr 16:00-19:00
+1233568233,node,McLean Farmers Market,38.9284172,-77.1913095,McLean,VA,22101,https://www.fairfaxcounty.gov/parks/farmersmarkets,May 6-Nov 18: Fr 08:00-12:00; May 13 off
+1233568234,node,Lorton Farmers Market,38.7151747,-77.213651,Lorton,VA,22079,https://www.fairfaxcounty.gov/parks/farmersmarkets/lorton,May 1-Nov 6: Su 09:00-13:00
+1233568236,node,Fairfax Farmers Market,38.8529274,-77.298286,,VA,,,May 3-Oct 25: Tu 08:00-12:00
+1233568237,node,Vienna/Oakton Farmers Market,38.8743933,-77.3156847,,VA,,https://www.freshfarm.org/markets/oakton,May 4-Nov 16: We 08:00-12:00
+1233568238,node,Annandale Farmers Market,38.8358082,-77.1734348,,VA,,,May 5-Nov 3: Th 08:00-12:00
+1233568240,node,Reston Farmers Market,38.9697621,-77.3410881,Reston,VA,20190,,May 3-Nov 8: Sa 08:00-12:00
+2164603889,node,Lynchburg Community Market,37.4119086,-79.1401007,,VA,,https://lynchburgcommunitymarket.com,"Mo,Su off; Tu-Sa 07:00-14:00"
+2208307520,node,Cox Farms,38.881662,-77.486178,,VA,,,
+2412438393,node,Southwest Virginia Farmer's Market,36.7421812,-80.7725177,,VA,,,
+2501701005,node,Market House,37.2709036,-76.6996013,Williamsburg,VA,23185,,Mo-Su 10:00-18:00
+2835013843,node,Del Ray Farmers' Market,38.8268316,-77.0585103,,VA,,https://www.alexandriava.gov/FarmersMarket,Sa 08:00-12:00
+3075818583,node,Farmer's Market,36.9339228,-82.6277915,,VA,,,
+3181928278,node,Cascades Market,39.0315837,-77.3952468,,VA,,http://loudounfarmersmarkets.org/markets/cascades/,Su 09:00-13:00; Jan - Apr off; Dec off
+3191726515,node,Old Town Farmers' Market,38.8050783,-77.0429881,Alexandria,VA,22314,https://www.alexandriava.gov/OldTownFarmersMarket,Sa 7:00-12:00
+3200077499,node,City of Manassas Farmer's Market- Thursday,38.750395,-77.4740236,Manassas,VA,20110,https://visitmanassas.org/listings/farmers-market/,Th 07:30-13:00
+3200077516,node,Great Falls Community Farmers Market,38.9962072,-77.2889417,Great Falls,VA,22066,https://www.greatfallsfarmersmarket.org/,Apr 01-Nov 29: Sa 09:00-13:00;Dec 06-Apr18: Sa 10:00-14:00
+3200080497,node,Falls Church Farmers Market,38.8854934,-77.1725389,Falls Church,VA,22046,http://www.fallschurchva.gov/farmersmarket,Sa 08:00-12:00
+3200086588,node,Woods Farmers Market,37.2636321,-77.4948695,South Chesterfield,VA,23803,,Jun-Oct Sa 08:30-12:00
+3200087184,node,Freight Station Farmers Market,39.1850639,-78.1708331,Winchester,VA,22601,https://www.facebook.com/pages/Freight-Station-Farmers-Market/304266982986?__fns&hash=Ac3_Ljer9jtSt6Iz,
+3200088956,node,Archwood Green Barns Farmers' Market,38.8515287,-77.7866995,The Plains,VA,20198,https://www.warrentonva.gov/Community/Attractions.aspx,Apr-Nov Su 10:00-15:00
+3200090025,node,Westover Farmers Market,38.8859258,-77.1418875,Arlington,VA,22205,https://westoverfarmersmarket.org/,May-Nov: Su 08:00-12:00; Dec-Apr Su 09:00-13:00
+3200091061,node,Bristow Farmers Market,38.759318,-77.5758006,Bristow,VA,20136,https://www.facebook.com/pages/Bristow-Farmers-Market/336754686393407?sk,10:00-14:00
+3200092838,node,Herndon Farmers Market,38.9701162,-77.3851553,Herndon,VA,20170,https://www.fairfaxcounty.gov/parks/farmersmarkets/herndon,May01-Nov06:08:00-12:30
+3200094621,node,Crozet Farmers Market,38.0684847,-78.7021171,Crozet,VA,22932,,
+3200095126,node,Ashburn Farmers Market,39.0232169,-77.4778674,Ashburn,VA,20147,https://www.loudounfarmersmarkets.org/,
+3200095818,node,Mosaic Central Farm Market,38.8699807,-77.2309664,Fairfax,VA,22031,https://www.centralfarmmarkets.com/,Apr-Dec Su 09:30-14:30
+3200104278,node,Kingstowne Farmers Market,38.7708145,-77.1382104,Alexandria,VA,22315,https://www.fairfaxcounty.gov/parks/farmersmarkets,May02-Oct31: Fr 16:00-19:00
+3200104482,node,Chesapeake Farmers Market,36.7206122,-76.2419164,Chesapeake,VA,23322,,We 08:00-13:00; Sa 08:00-13:00; Jun-Nov: We 08:00-13:00; Sa 08:00-13:00
+3200104785,node,Emporia Farmers Market,36.6890875,-77.5411688,Emporia,VA,23847,,Jan-Dec: Mo-Su 06:00-19:00
+3200110272,node,Wakefield Farmers Market,38.8135426,-77.22479,Annadale,VA,22003,,
+3200113672,node,Galax Farmer's Market,36.6635141,-80.9252862,Galax,VA,24333,http://www.galaxfarmersmarket.com/,Fr 08:00-13:00; Sa 08:00-13:00
+3200114316,node,Brandermill Green Market,37.4232732,-77.6365796,Midlothian,VA,23112,,May-Oct Sa 10:00-12:00
+3200117704,node,Fluvanna Farmer's Market,37.8698456,-78.2946862,Palmyra,VA,22963,https://www.fluvannacounty.org/parksrec/page/fluvanna-farmers-market,Apr 1-Oct 31: Tu 14:00-18:00
+3200121801,node,Reston Farmers Market,38.969482,-77.340713,Reston,VA,20190,https://www.fairfaxcounty.gov/parks/farmersmarkets,May-Sep; Sa 08:00-12:00
+3200125253,node,West End Farmer's Market,38.8090453,-77.1162506,Alexandria,VA,22304,http://www.westendfarmersmarket.org,Su 08:30-13:00
+3200129059,node,Vienna Saturday Farmers' Market,38.9004542,-77.2597037,Vienna,VA,22180,http://viennafarmersmarket.com/,May-Oct Sa 08:00-12:00
+3200129260,node,Farmer's Market at Governor's Pointe,36.8988462,-76.4955249,Suffolk,VA,23436,,
+3200133102,node,Williamsburg Farmers Market,37.2709862,-76.7058526,Williamsburg,VA,23185,https://www.williamsburgfarmersmarket.com/,
+3200139980,node,Deltaville Farmers Market,37.551569,-76.3238102,Deltaville,VA,,,
+3200141841,node,Wise Farmers' Market,36.976856,-82.5784421,Wise,VA,24293,https://www.townofwise.net/,16:00-19:00
+3200155427,node,Chesterfield Farmers Market,37.5080019,-77.6095829,Richmond,VA,23235,http://www.chesterfieldfarmersmarket.blogspot.com,May-Oct: Tu 10:00-18:00; We 10:00-18:00; Th 10:00-18:00; Fr 10:00-18:00; Sa 08:00-16:00
+3200158320,node,Arlington Farmer's Market,38.8898326,-77.0845728,Arlington,VA,,http://www.arlingtonparks.us/farmersmarket,"Sa 08:00-12:00, Jan-Mar: 09:00-12:00"
+3200169240,node,Farmers Market at Rural Retreat Depot,36.8939639,-81.2762627,rural Retreat,VA,24368,https://theruralretreatdepot.com/,Jul 02- Sep 24: We 14:00-18:00
+3200171185,node,Glade Spring Farmers Market,36.790964,-81.7711842,Glade Spring,VA,24340,,Sa 08:00-12:00
+3200177690,node,Staunton Farmers' Market,38.1480293,-79.0737098,Staunton,VA,24401,https://stauntonfarmersmarket.org/,
+3200183850,node,Midlothina Mines Farmers Market,37.4931329,-77.6523758,Midlothian,VA,23114,,May 3 - Dec 6 Sa 09:00-16:00
+3200183851,node,Petersburg Farmers Market,37.2340311,-77.4030323,Petersburg,VA,23803,,Sa 07:00-24:00
+3200191025,node,Bath County Farmers Market,38.0003816,-79.8332612,Hot Springs,VA,24445,,Su 09:00-13:00
+3200191510,node,The Virginia Beach Farmers Market,36.776773,-76.0912662,Virginia Beach,VA,23453,https://www.vbgov.com/farmersmarket,Fr 19:00-22:00
+3200191762,node,Chesterfield County Farmers Market,37.3768978,-77.504329,Chesterfield,VA,23832,,May-Sep We 15:00-18:00
+3200191763,node,Wytheville Farmers Market,36.9485727,-81.083896,Wytheville,VA,24382,http://www.wythevillefarmersmarket.com,May-Oct Sa 9:00-13:00
+3200192424,node,Mineral Farmers Market,38.0124362,-77.9076024,,VA,,http://www.mineralmarket.org,
+3200209421,node,Clinch River Farmers Market,36.9044333,-82.3111517,St. Paul,VA,24283,https://www.stpaulva.org/community/page/clinch-river-farmers-market,May-Oct: We 02:00-17:00; Sa 08:00-13:00
+3200216065,node,Bedford Farmers Market,37.3337629,-79.524794,,VA,,,Apr-Oct Fr 08:00-13:00
+3200217826,node,Front Royal Farmers Market,38.9176434,-78.1895122,Front Royal,VA,22630,http://frontroyalfarmersmarket.com/wp/about-the-market/,May-Oct: Sa 09:00-13:00
+3201006122,node,Historic Manassas Farmers Market,38.7527794,-77.4764757,Manassas,VA,20110,,
+3548874617,node,Harrisonburg Farmers Market,38.4463293,-78.8709231,,VA,,,"Tu,Sa 08:00-13:00"
+4082316439,node,Clarendon Farmers Market,38.8867779,-77.0956516,,VA,,,Apr-Oct: We 15:00-19:00
+5586935853,node,Warrenton Farmer's Market,38.7114554,-77.7934961,Warrenton,VA,20186,https://www.warrentonva.gov/277/Farmers-Market,Apr 19-Nov 22 Sa 07:00-12:00
+5730843887,node,One Loudoun Market,39.0575129,-77.4555203,,VA,,https://eatloco.org/oneloudoun-marketplace/,Sa 09:00-13:00
+6329907649,node,17th Street Market Place,36.8444153,-75.9808144,,VA,,,
+6466751515,node,Lubber Run Farmers Market,38.8733687,-77.1121951,,VA,,https://lubberrunfarmersmarket.org/,May-Oct: Sa 08:00-12:00
+7737725368,node,Manila Oriental Market,38.7830508,-77.1876601,,VA,,,
+8319607138,node,Media Market,36.6655019,-80.9261808,,VA,,,
+8346214479,node,Batesville Market,37.9956572,-78.722351,,VA,,,
+8589383061,node,Smithfield Farmers Market,36.9816167,-76.6312091,Smithfield,VA,23430,https://www.co.isle-of-wight.va.us/our_community/farmers_market/,
+8656067865,node,Carrollton Farmers Market,36.9531985,-76.5309996,Carrollton,VA,23314,https://www.co.isle-of-wight.va.us/our_community/farmers_market/,May-Aug: We 10:00-14:00
+8836818991,node,West End Farmer's Market,37.2722361,-79.9600911,Roanoke,VA,,,Tu 15:00-18:00
+8907353089,node,Streets Market & Cafe,38.8336396,-77.060229,Alexandria,VA,22305,http://streetsmarketcafe.com/,
+9081274334,node,J & L Green Farm,38.8418048,-78.6615961,Edinburg,VA,22824,https://www.jlgreenfarm.com/,Sa 09:00-17:00
+9297738079,node,Chili Hill Food Market,36.9811306,-76.6338563,Smithfield,VA,23430,,Tu-Sa 10:00-18:00
+9772081062,node,Farmers Market at Bridgeport,36.8636639,-76.4586058,,VA,,https://www.bridgeportsuffolk.com/farmersmarket,
+9780182980,node,West Oaks Farm Market,39.1230547,-78.2418849,,VA,,,
+10173339658,node,Pickers Market,36.9801474,-76.634007,Smithfield,VA,23430,https://www.co.isle-of-wight.va.us/our_community/farmers_market/,Jun-Nov Sa[2] 09:00-13:00
+10298282303,node,Windsor Farmers Market,36.8043326,-76.7270308,Windsor,VA,23487,,
+10733094334,node,RVA Big Market,37.5895724,-77.4710726,Richmond,VA,23227,https://www.growrva.com/rvabigmkt,Nov-Apr: Sa 09:00-12:00; May-Oct: Sa 08:00-12:00
+10752276190,node,Blacksburg Farmers' Market,37.2291493,-80.4148849,,VA,,https://www.blacksburgfarmersmarket.com/,"Apr-Oct We 12:00-18:00,Sa 08:00-14:00; Nov-Dec We 12:00-18:00,Sa 09:00-14:00; Jan-Mar Sa 10:00-14:00"
+11186899998,node,Downtown South Boston Farmers Market,36.6972647,-78.9003572,,VA,,,
+11268268150,node,Altavista Trade Lot Farmers Market,37.1116626,-79.2877623,Altavista,VA,24517,,All Day on Every 1st Saturday
+12230373873,node,Friends and Farmers Market,36.9331709,-82.6298592,,VA,,,
+12299718589,node,Poor Farmer's Market,36.7350883,-80.407692,,VA,,,Mo-Sa 06:00-20:00; Su 07:00-20:00
+12413004819,node,Chincoteague Island Farmers and Artistan Market,37.9330333,-75.3734078,Chincoteague,VA,23336,,Sa 09:00-13:00
+12758805647,node,"Bedford, Virginia Farmers Market",37.3342975,-79.5237586,,VA,,,
+12758829226,node,Forest Farmers Market,37.3640586,-79.284969,,VA,,,
+12812521854,node,Pierce Street Farmers Market,37.4041171,-79.1521945,,VA,,,May-Oct:Th[1] 16:00-19:00
+13007752618,node,Greene Farmers Market at Greene Commons,38.2967717,-78.442091,Stanardsville,VA,22973,https://greenecommons.com/,
+254093107,way,Main Street Market,38.0303951,-78.4871925,Charlottesville,VA,22903,,
+288474434,way,Farmers Market,36.5849566,-79.3852606,,VA,,,
+298375262,way,City Market,37.2334805,-77.4042363,Petersburg,VA,23803,,
+313964108,way,Fairfax Sunday Farmers' Market,38.8459529,-77.3087771,Fairfax,VA,22030,http://www.FairfaxSundayMarket.com,May-Oct Su 10:00-14:00
+313969460,way,Earlysville Farmers Market,38.1547699,-78.4814247,Earlysville,VA,22936,https://earlysvillefarmersmarket.wordpress.com/,May 1-Oct 9: Th 16:00-19:00
+313969711,way,Columbia Pike Farmers Market,38.8624265,-77.0866429,Arlington,VA,22204,,
+313971425,way,Forest Lakes Farmers Market,38.1087023,-78.4409112,Charlottesville,VA,22911,https://www.facebook.com/ForestLakesFarmersMarket,Tu 16:00-19:00
+313975149,way,Scottsville Community Farmers Market Pavillion,37.7978873,-78.495148,Scottsville,VA,24590,https://www.svillechamber.org/,Sa 09:00-13:00
+323730057,way,Game's Farmers Market,37.0639987,-76.4600177,Newport News,VA,23601,,
+340235857,way,Covington Farmers Market,37.7935421,-79.9945021,,VA,,,
+483463302,way,Martinsville Farmers Market,36.6917976,-79.8750038,,VA,,,
+550145006,way,Abingdon Farmers Market,36.7086211,-81.9773825,Abingdon,VA,24210,http://www.abingdonfarmersmarket.com/,"Apr Sa[3]-Nov Th[4] Tu 15:00-18:00, Sa 08:00-13:00; Dec Sa 10:00-12:00 ""Holiday Market""; Jan-Apr Sa[1,3] 10:00-12:00 ""Winter Market"""
+552440419,way,Holley's Market,38.0707591,-78.1867963,Gordonsville,VA,22942,,
+563163269,way,Rocky Mount Farmers' Market,36.9970792,-79.8917875,Rocky Mount,VA,24151,http://www.rockymountva.org/index.cfm/go/content.dspcontent/Page_Name/Farmers--Market.html,Mo-Sa 06:00-17:00
+770888016,way,Waynesboro Farmers Market,38.0685038,-78.8857522,,VA,,,
+771214802,way,Crewe Farmer and Flea Market,37.1658643,-78.1162968,,VA,,,
+819906706,way,Nalls Produce Market,38.759064,-77.160971,,VA,22315,,
+858292397,way,Vinton Farmer's Market,37.2805421,-79.8987472,,VA,,,
+952783637,way,Dug In Farm,37.6939869,-76.3718992,,VA,,,
+1055024238,way,Virginia Furniture Market,37.0764449,-79.9167015,Rocky Mount,VA,24151,,
+1055247464,way,Heritage Family Market,37.4974775,-79.8790547,Fincastle,VA,24090,,
+1098316861,way,New Kent Farmers Market,37.5242605,-77.0744394,New Kent,VA,23124,,
+1116069699,way,Archwood Green Barns Farmers' Market,38.8516086,-77.7864533,,VA,,,
+1132498706,way,Dorey Farmer's Market,37.4684076,-77.3367662,Henrico,VA,23231,https://www.doreyparkfarmersmarket.org/,Jun-Oct: Sa 09:00-12:00
+1171031020,way,Brambleton Farmers Market,38.9614429,-77.5354026,,VA,,,Su 9:00-13:00
+1306465371,way,Little River Market,37.8797914,-76.3270562,,VA,,,
+1321720095,way,New Castle Farmers Market,37.5028846,-80.1096102,,VA,,,
+1342195073,way,The Roost Store County Market,37.8771401,-78.1657107,,VA,,,
+1342204915,way,Chevy Chase Farm Store,37.7644896,-78.3662571,,VA,,,
+1352806893,way,Farmers Market,39.0522215,-78.371251,,VA,,,
+1415709159,way,RVA Big Market,37.5893768,-77.4723551,Richmond,VA,23227,https://www.growrva.com/rvabigmkt,Nov-Apr: Sa 09:00-12:00; May-Oct: Sa 08:00-12:00
+1415709834,way,South of the James Farmers Market,37.5208132,-77.4733867,Richmond,VA,23225,https://www.growrva.com/sojmarket,Su 10:00-13:00
+1415711161,way,RVA Black Farmers Market,37.5776066,-77.4525302,Richmond,VA,23227,https://www.rvablackfarmersmarket.com/,"Jun-Nov: Su[2,4] 11:00-15:00"
+2221792,relation,Roanoke City Market,37.2711654,-79.9390589,,VA,,,
+1866817294,node,Village Market,48.3659912,-124.6082017,,WA,,,
+2692002464,node,Mattawa Market,46.7381369,-119.9056867,,WA,,,
+3502347374,node,Fremont Sunday Market,47.6501721,-122.3528867,,WA,,http://www.fremontmarket.com/,Su 10:00-16:00
+3616281888,node,Kent Farmers Market,47.3824666,-122.2352076,Kent,WA,98032,,
+4324237887,node,Wallingford Farmers Market,47.6636696,-122.3329153,,WA,,https://www.sfmamarkets.com/visit-wallingford-farmers-market/,May-Sep We 15:00-19:00
+4505477982,node,Vashon Island Farmers Market,47.4481319,-122.4609384,,WA,,,Apr-Oct Sa 10:00-14:00
+5002340095,node,Anacortes Farmers Market,48.5168602,-122.6091237,,WA,,https://anacortesfarmersmarket.org/,
+5587274775,node,Shin's Asian Market,46.7171666,-117.1833222,,WA,,,
+5840518175,node,Farmer's Market,47.0457317,-122.9255313,,WA,,,
+5895717907,node,Joyce Farmers Market,48.1189783,-123.6693621,,WA,,,
+6322027960,node,Amarilis's Meat Market,46.2419069,-119.113887,Pasco,WA,99301,,Mo-Su 08:00-22:00
+6582209313,node,Puyallup Farmers Market,47.1891259,-122.294763,,WA,,,
+6648363983,node,Quincy Public Market,47.2326235,-119.869894,Quincy,WA,98848,,
+8423188706,node,Queen Anne Farmer's Market,47.6371711,-122.3578321,,WA,,https://qafm.org/,Jun-Oct: Th 15:00-19:30
+8493192303,node,Al-Barawi Int'l Halal Food Market,47.3582997,-122.3081,Kent,WA,98032,https://al-barawi-international-food-market.business.site/?utm_source=gmb&utm_medium=referral,Mo-Su 09:00-21:00
+9902623745,node,Ashanti African Market & Hair Braiding,47.324345,-122.3113958,Federal Way,WA,98003,,Tu-Sa 11:30-20:00
+9965543027,node,Shoreline Farmers Market,47.7675434,-122.3470285,Shoreline,WA,98133,https://shorelinefarmersmarket.org/,Jun 1-Oct 7 Sa 10:00-14:00
+9966729352,node,Southside Market,46.7272222,-117.1633757,,WA,,,
+10069701317,node,Federal Way Farmers Market,47.3121628,-122.3095239,,WA,,https://www.federalwayfarmersmarket.com/,May 07-Oct 29: Sa 09:00-15:00
+10232099524,node,Europa International Food Market,45.6436254,-122.6108786,Vancouver,WA,98661,,Mo-Su 09:00-21:00
+10596684732,node,Adarash Market,47.5709193,-122.291331,Seattle,WA,98144,,Mo-Sa 11:00-21:00
+10754442791,node,Garfield Market,47.146044,-122.4374924,Tacoma,WA,98444,,
+10811632083,node,Variety Market in the Couve,45.6724251,-122.5331398,Vancouver,WA,,,Sa-Su 09:00-15:00
+11211516334,node,Castle Rock Sunday Market,46.2761429,-122.9077093,,WA,,,
+11244219780,node,Asia Oriental Market,48.7622712,-122.4859128,,WA,,,Mo-Sa 09:00-19:00; Su 10:00-18:00
+11580929875,node,Rosana's Asian Market,47.6332236,-122.6497586,Bremerton,WA,98311,,Mo-Su 09:00-20:00
+11622619468,node,Farmers' Market,47.6261209,-122.5193012,,WA,,,Sa 09:00-13:00
+11921635021,node,Vulca's Mediterranean Market,47.5659892,-122.6267611,Bremerton,WA,98337,https://thesmugetruscan.com/,We-Fr 16:00-20:00; Sa 11:00-20:00; Su 12:00-18:00
+11921737788,node,Asian Market International,47.5677241,-122.669909,Bremerton,WA,98312,,Mo-Sa 09:00-20:00; Su 12:00-18:00
+11950946656,node,Redmond Saturday Market,47.6891459,-122.1478433,,WA,,http://www.redmondsaturdaymarket.org/,"May-Oct Sa 09:00-14:00 open ""Check market website to verify hours."""
+12113032382,node,Vancouver Farmers Market,45.6273114,-122.6761106,,WA,,https://www.vancouverfarmersmarket.com/,"Apr-Oct Sa 09:00-15:00, Su 10:00-15:00; Nov-Mar Sa 10:00-14:00"
+12412989220,node,Sorya Asian Market,45.6436141,-122.6110006,Vancouver,WA,98661,,
+12877170624,node,Scale House Market,47.6483073,-117.3448956,Spokane Valley,WA,99212,https://thescalehousemarket.com/,
+38731151,way,Magnolia Farmers Market,47.6395705,-122.3990046,,WA,,,Sa 10:00-14:00
+51563598,way,Pybus Public Market,47.4252438,-120.3071923,Wenatchee,WA,98801,,
+185301286,way,Olympia Farmers Market,47.0504409,-122.9025156,Olympia,WA,98501,https://www.olympiafarmersmarket.com/,
+206858876,way,Corner Market,47.608958,-122.3405792,Seattle,WA,98101,,
+206858888,way,Sanitary Public Market,47.6091868,-122.3408132,Seattle,WA,98101,,
+269984714,way,Snohomish Farmers Market (May - October),47.9114441,-122.0918842,,WA,,,
+298236153,way,Depot Market,48.7470367,-122.4806395,Bellingham,WA,98225,,"""Open during Farmers Market hours"""
+376261553,way,Carpinito Brothers Farmer's Market (Seasonal),47.3558573,-122.2489487,,WA,,,
+423711223,way,Bremerton Farmer's Market,47.5742687,-122.6296852,Bremerton,WA,98337,,May 5-Oct 13: Th 16:00-19:00
+494733580,way,Tony's Market,47.4054859,-120.2610087,,WA,,,
+568494031,way,Mount Baker Farmer's Market,48.8190249,-122.4865736,,WA,,,
+589128375,way,Waterfront Market at Ruston,47.2988951,-122.5073781,Ruston,WA,98407,https://www.waterfrontmarketatruston.com,10:00-18:00
+700585355,way,U-District Farmers' Market,47.6656794,-122.3130699,,WA,,https://www.seattlefarmersmarkets.org/markets/u_district,Sa 09:00-14:00
+785519255,way,Three Sisters Market,48.2372354,-122.719982,,WA,,,
+832767450,way,Maple Valley Farmers' Market,47.3712633,-122.0245928,,WA,,,Sa 09:00-14:00
+1003670468,way,Coupeville Farmers Market,48.2193013,-122.6893163,,WA,,https://coupevillemarket.com/,Sa 10:00-14:00
+1087669980,way,Capitol Hill Farmers Market,47.6189084,-122.3201636,Seattle,WA,98122,,Su 11:00-15:00
+1154400349,way,Bellingham Farmers Market,48.7472343,-122.4804355,Bellingham,WA,98225,https://www.bellinghamfarmers.org/,
+1237917137,way,Tilth Farmer's Market,48.0089336,-122.4750844,,WA,,https://www.southwhidbeytilth.org/market,
+1289733279,way,Columbia City Farmers Market,47.5586697,-122.2879954,,WA,,https://seattlefarmersmarkets.org/ccfm,2025 week 19-41 We 15:00-19:00; Nov-Apr Sa[2] 10:00-14:00
+1324223573,way,Juanita Friday Farmers Market (seasonal),47.7049909,-122.2159664,Kirkland,WA,98034,https://kirklandwa.gov/JuanitaFridayMarket,Jun-Sep Fr 15:00-19:00
+3281845,relation,Tonasket Farmers Market,48.7097584,-119.4367051,,WA,,http://tonasketfarmersmarket.com/,May-Sep Th 15:00-19:00; Oct Th 15:00-18:00; May 1-14 off
+17865886,relation,Sammamish Farmers Market,47.6010254,-122.0368836,Sammamish,WA,98074,,We 16:00-20:00
+2683115064,node,White Barn Farmers Market,39.0836226,-78.9639382,,WV,,,
+3421847738,node,Festival Fridays - Seasonal Entertainment and Open Market,38.992806,-80.2279792,,WV,,,
+6093978351,node,Cacapon Market,39.5053296,-78.2897763,,WV,,,
+6504390885,node,Pullman Square Farmers Market,38.4222082,-82.4434032,,WV,,,"May-Oct We,Sa 07:00-14:00"
+7713577773,node,Ceredo Farmers Market,38.3960369,-82.5647522,,WV,,,
+8910787435,node,Cheat Lake Farmers Market,39.6753849,-79.8540705,,WV,,,Mo 16:00-19:00
+12466206624,node,Winter Pop-up Market,39.1508186,-79.4976604,,WV,,,
+334629897,way,Capitol Market (Seasonal Stalls),38.3522033,-81.6274238,,WV,,,
+349903550,way,Halfway Market,38.4322406,-82.1167937,,WV,,,
+691962523,way,Central City Farmers Market,38.411239,-82.4789643,,WV,,,"Jun Sa[4]-Oct 31 Tu,Th,Sa 07:00-14:00"
+795471590,way,Barboursville Farmer's Market,38.4106721,-82.2981626,,WV,,,
+842040588,way,Gilmer County Farmers' Market,38.9413479,-80.8199996,Glenville,WV,26351,,
+1086971034,way,Mountain Owl Market,39.0439986,-79.40402,Davis,WV,26260,,
+1188033850,way,Orr's Farm Market,39.4355422,-78.0467618,Martinsburg,WV,25403,,
+4149655903,node,Schofield Oriental Market,44.9051722,-89.5820861,Weston,WI,54476,https://schofieldorientalmarket.com/,Mo-Su 08:00-20:00
+4710012278,node,Eau Claire Farmer's Market,44.8153557,-91.5050521,,WI,,,"We,Sa 07:30-13:00; Th 12:00-17:00"
+4949788860,node,The Cannery Public Market,44.5198331,-88.0192724,Green Bay,WI,54303,,
+5139758119,node,Wausau Farmer's Market,44.9556617,-89.6315484,,WI,,https://www.farmersmarketofwausau.com,"May-Oct We,Sa 07:00-14:00"
+5686202810,node,Cathedral Square Market,43.042405,-87.9050511,,WI,,http://easttown.com/?page_id=544,Jun 01-Oct 10 Sa 09:00-12:30
+7192396999,node,Weston Farmers Market,44.9053344,-89.5733656,,WI,,,
+7647288608,node,Inter Market - Продукты Подарки,43.0738514,-89.4712383,Madison,WI,53705,,
+8701402384,node,South Shore Farmers Market,42.993878,-87.8810713,Milwaukee,WI,53207,https://southshorefarmersmarket.com/,Jun 20-Oct 24; Sa 8:00-12:00
+8806928863,node,Merrill Area Farmers Market,45.1852734,-89.6836039,Merrill,WI,54452,http://merrillareafarmersmarket.com/,
+9133352273,node,Eagle River Farmers Market,45.9233494,-89.2557491,,WI,,,
+9136065550,node,Mares Farm Market,44.5644754,-88.7563165,,WI,,,
+10005249579,node,Antigo Farmer's Market,45.1387722,-89.1502445,,WI,,,
+10180810916,node,Best of Wisconsin Indoor Farmers' Market,43.013233,-89.287157,,WI,,,Sa 09:00-14:00
+10180882663,node,Dane County Farmers' Market - Late Winter Market,43.0945392,-89.3343968,Madison,WI,53704,,Jan-Apr Sa 8:00-12:00
+10180882664,node,Dane County Farmers' Market,43.0747172,-89.3860989,Madison,WI,53703,https://dcfm.org/markets/saturday-on-the-square,Apr-Nov Sa[1] 06:15-13:45
+10180882667,node,Eastside Farmers' Market,43.0831569,-89.3673408,Madison,WI,53703,http://EASTSIDEFARMERSMARKET.ORG,Tu 16:00-19:00
+10180882668,node,Hilldale Farmers' Market,43.0716319,-89.4546759,Madison,WI,53705,,"We,Sa 08:00-13:00"
+10180980767,node,McFarland Farmers' Market,43.0158791,-89.3006404,McFarland,WI,53558,,Th 14:00-18:00
+10180980768,node,Monona Farmers Market,43.0466573,-89.3194629,Monona,WI,53716,,Su 8:30-12:30
+10180980769,node,Monroe Street Farmers Market,43.060529,-89.4223313,Madison,WI,53711,,Su 9:00-13:00
+10180980770,node,Mount Horeb Farmers Market,43.0085701,-89.7356361,Mount Horeb,WI,53572,,Th 15:00-17:30
+10180980771,node,Northside Farmers' Market,43.1282021,-89.3618414,Madison,WI,53704,,Su 8:30-12:30
+10180980772,node,Oregon Farmers' Market,42.9390482,-89.3837611,Oregon,WI,53575,,Tu 14:00-18:00
+10180980773,node,South Madison Farmers' Market - Monday,43.0354376,-89.3807886,Madison,WI,53713,,Mo 14:00-18:00
+10180980774,node,South Madison Farmers' Market - Sunday,43.0504031,-89.394588,Madison,WI,53715,,"Su 11:00-15:00, Tu 14:00-18:00"
+10180980775,node,Stoughton Farmers' Market,42.9180516,-89.2323676,Stoughton,WI,53589,,Fr 7:00-13:00
+10180980777,node,Sun Prairie Farmers Market,43.1828102,-89.2107502,Sun Prairie,WI,53590,,Sa 7:00-12:00
+10180980778,node,Verona Downtown Farmers Market,42.9875742,-89.5336363,Verona,WI,53593,,We 15:00-18:30
+10180980779,node,Waunakee Farmers' Market,43.1893947,-89.4624459,Waunakee,WI,53597,,We 15:00-18:00
+10180980780,node,West Main Street Sun Prairie Farmer's Market,43.1810461,-89.2306106,Sun Prairie,WI,53590,,Tu 14:30-18:00
+10180980781,node,Westside Community Market,43.0760892,-89.4703486,Madison,WI,53705,,Sa 7:00-12:30
+11155178117,node,Jacksonport Farmers Market,44.9784783,-87.1844919,Sturgeon Bay,WI,54235,https://www.jacksonport.net/farmers-market/,May 16-Oct 17 Tu 09:00-13:00
+11967494732,node,Oneida Farmers Market,44.5039038,-88.2004473,Oneida,WI,54155,https://oneida-nsn.gov/resources/environmental/food-ag-area/farmers-market/,Jun Th[3]-Sep 30 Th 12:00-18:00
+12649367091,node,Milwaukee Winter Farmers Market,43.0895977,-87.9799335,,WI,,,
+53160687,way,Milwaukee Public Market,43.0352528,-87.9080919,Milwaukee,WI,53202,http://www.milwaukeepublicmarket.org,Mo-We 06:30-20:00; Th-Fr 06:30-21:00; Sa 08:00-21:00; Su 10:00-18:00
+246354834,way,The Market on Strongs,44.5228693,-89.582565,,WI,,,
+330196841,way,Cathryn's Market,42.9611588,-90.1307159,Dodgeville,WI,53533,https://cathrynsmarket.com,
+385065519,way,Arts & Crafts Market,43.0301898,-87.8985816,,WI,,,
+669411844,way,Racine Farmer's Market,42.7180237,-87.8165802,,WI,,,
+831386755,way,Greenfield Farmers Market,42.9585485,-87.9766742,Greenfield,WI,53220,https://www.greenfieldwifarmersmarket.com/,May-Oct: Su 10:00-14:00
+906240521,way,West Allis Farmers Market,43.0145605,-87.9938021,,WI,,https://thatswhywestallis.com/farmers-market/,"May Sa[1]-Nov Su[4]: Tu,Th 12:00-18:00; May Sa[1]-Nov Su[4]: Sa 13:00-18:00; Jul 04 off; Nov Th[4] off"
+1025452083,way,Barnard Farms,44.9517419,-87.3375095,Sturgeon Bay,WI,54235,https://pickyourowndoorcountycherries.com/,We-Mo 09:00-18:00
+1081637716,way,Fondy Farmer's Market,43.0616384,-87.939769,Milwaukee,WI,53206,https://fondymke.org/,
+1103740080,way,Fitchburg Center Farmers' Market,43.005262,-89.4239218,Fitchburg,WI,53711,http://fitchburgcenter.com,Th 15:00-18:00
+1174066677,way,South Milwaukee Downtown Market,42.9104888,-87.8630394,South Milwaukee,WI,53172,https://smmarket.org/,Th 15:00-19:00
+1435908102,node,Laramie Farmer's Market,41.3097955,-105.5961413,,WY,,http://www.laramiefarmersmarket.com/,Jul-Sep:Sa 15:00-19:00
+4935640622,node,Pearl Street Market and Delicatessen,43.478769,-110.7626887,,WY,,,
+1784988466,node,Columbia Heights Farmers Market,38.9302362,-77.0323439,,DC,,http://www.columbiaheightscommunitymarketplace.org/,Sa 10:00-13:00
+2457603232,node,Farmer's Market (Wednesdays),38.9006047,-77.0508406,,DC,,,
+3781085662,node,Petworth Community Market,38.9413521,-77.0250915,,DC,,,Sa 09:00-13:00
+6129180614,node,Market SW,38.8767384,-77.0182216,,DC,,,
+6173810703,node,Downtown Holiday Market,38.897329,-77.0229739,,DC,,,2023 Nov 17-Dec 23: 12:00-20:00; 2023 Nov 23: off; 2023 Dec 04: off
+9010770730,node,Adams Morgan Farmers Market,38.9231997,-77.0416327,Washington,DC,20009,,
+9483455588,node,Monroe Street Farmers Market,38.9332572,-76.9952093,Washington,DC,20017,,Sa 10:00-13:00
+13000155394,node,Dupont Circle Market,38.9103862,-77.044777,,DC,,,Su 08:30-13:30
+13000284555,node,Mount Pleasant Farmers' Market,38.9314984,-77.0386548,,DC,,,Sa 09:00-13:00
+13000287816,node,UDC Van Ness Farmers Market,38.9440454,-77.0638786,,DC,,,Sa 08:00-14:00
+67460471,way,Eastern Market,38.8865813,-76.9964839,Washington,DC,20003,https://easternmarket-dc.org/,Tu-Sa 08:00-18:00; Su 08:00-17:00
+187087932,way,Union Market,38.9085985,-76.9973664,,DC,20002,https://unionmarketdc.com/,Fr 11:00-20:00; Sa-Su 8:00-20:00
+295732304,way,Municipal Fish Market at The Wharf,38.8810606,-77.0280068,Washington,DC,20024,,Mo-Su 08:00-20:00
+810045604,way,Cleveland Park Farmers Market (Saturday),38.9349441,-77.0583042,,DC,,https://cpbiz.org/community/farmers-markets/,Sa 09:00-13:00
