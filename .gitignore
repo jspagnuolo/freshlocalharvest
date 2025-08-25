@@ -1,0 +1,20 @@
+# Python / env
+.venv/
+__pycache__/
+*.pyc
+
+# Generated data & databases (reproducible; do not version)
+data/
+db/
+
+# Binary blobs / archives
+*.zip
+*.tar.gz
+*.parquet
+*.xlsx
+
+# Editors / OS
+.DS_Store
+*.swp
+!data/.gitkeep
+!db/.gitkeep
