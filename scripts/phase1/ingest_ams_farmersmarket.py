@@ -120,3 +120,7 @@ print("rows=", len(out))
 print("csv=", csv_path)
 print("parquet=", pq_path)
 print("sqlite=", DB)
+
+# sanity guard: fail if suspiciously few rows
+if len(out) < 1000:
+    raise SystemExit(f"Ingest sanity failed: only {len(out)} rows. Aborting.")
