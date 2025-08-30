@@ -116,3 +116,36 @@ status   -> show process bound to :8001
 test     -> run pytest (no server needed)
 smoke    -> quick curl checks against running server
 enrich   -> (future) SNAP/EBT join when enabled
+site-dev   -> run Hugo dev server on :1313 (drafts enabled)
+site-build -> build static site to site/public (prod parity)
+
+```
+
+## Public Site (Hugo) — Dev/Prod
+
+### Local dev
+- `make site-dev` → http://localhost:1313 (drafts enabled)
+- Dev-only API status pings `http://127.0.0.1:8001/health`. If API is down, indicator shows “unreachable.”
+
+### Build locally (prod parity)
+- `make site-build` → outputs to `site/public/` (same flags as CI)
+
+### Cloudflare Pages (prod)
+- Build cmd: `hugo --gc --minify --environment production --source site` (or set Root directory=site & output=public)
+- Output dir: `site/public`
+- Env vars: `HUGO_VERSION=0.149.0`, `HUGO_ENV=production`, `HUGO_ENABLEGITINFO=true`, `HUGO_EXTENDED=true`
+- Files deployed at root via Hugo static copy:
+  - `site/static/_redirects` (www → apex)
+  - `site/static/_headers` (baseline security)
+
+### Base URL
+- `site/hugo.development.toml` → `baseURL="/"` (local)
+- `site/hugo.production.toml` → `baseURL="https://freshlocalharvest.org/"` (prod)
+- **Gotcha**: Do not hardcode full URLs in content unless intended; use relative links or `absURL`/`relURL` helpers.
+
+### Custom domains
+- Bind `freshlocalharvest.org` and `www.freshlocalharvest.org` in Pages → Custom domains.
+- Keep `mail` DNS **DNS-only** for email services.
+
+### Rollback
+- Pages → Deployments → select prior green build → “Rollback”.
