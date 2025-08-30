@@ -30,7 +30,7 @@ def make_db(path):
 
 def app_with_db(tmpdb):
     # Import the API module and point it at tmpdb
-    api = importlib.import_module("scripts.phase1.api")
+    api = importlib.import_module("api.app")
     api.DB_PATH = tmpdb
     return api.app
 
