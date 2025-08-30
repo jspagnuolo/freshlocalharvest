@@ -3,9 +3,12 @@
 __pycache__/
 *.pyc
 
-# Generated data & databases (reproducible; do not version)
+# data + db (keep raw/processed/db out of git)
 data/
 db/
+data/**/raw/*
+data/**/processed/*
+db/*.db
 
 # Binary blobs / archives
 *.zip
@@ -18,3 +21,11 @@ db/
 *.swp
 !data/.gitkeep
 !db/.gitkeep
+
+# site build artifacts
+/site/public/
+/site/resources/
+/site/.hugo_build.lock
+
+# venv
+.venv/
