@@ -1,2 +1,1 @@
-# Force www → apex
-https://www.freshlocalharvest.org/* https://freshlocalharvest.org/:splat 301!
+https://freshlocalharvest.org/* https://www.freshlocalharvest.org/:splat 301!

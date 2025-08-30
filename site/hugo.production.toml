@@ -1,4 +1,4 @@
-baseURL = "https://freshlocalharvest.org/"
+baseURL = "https://www.freshlocalharvest.org/"
 
 [params]
   env = "production"
