@@ -1,0 +1,4 @@
+baseURL = "https://freshlocalharvest.org/"
+
+[params]
+  env = "production"
