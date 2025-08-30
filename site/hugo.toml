@@ -1,0 +1,35 @@
+baseURL = "/"
+languageCode = "en-us"
+title = "Fresh Local Harvest"
+theme = "ananke"
+enableRobotsTXT = true
+canonifyURLs = false  # keep relative URLs in dev; we'll set a real baseURL in prod
+
+[pagination]
+  pagerSize = 10      # replaces deprecated 'paginate'
+
+[params]
+  description = "Find fresh local produce and farmers markets—fast."
+  env = "development" # used later to gate dev-only API status widget
+
+[menus]
+  [[menus.main]]
+    name = "Home"
+    pageRef = "/"
+    weight = 10
+  [[menus.main]]
+    name = "Blog"
+    pageRef = "/posts"
+    weight = 20
+  [[menus.main]]
+    name = "Map"
+    url = "http://127.0.0.1:8001/web/"
+    weight = 30
+
+[sitemap]
+  changefreq = "weekly"
+  filename = "sitemap.xml"
+  priority = 0.5
+
+[permalinks]
+  posts = "/posts/:slug/"
