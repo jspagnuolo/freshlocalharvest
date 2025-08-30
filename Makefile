@@ -55,3 +55,13 @@ restart: stop
 
 status:
 	@lsof -nP -iTCP:$(PORT) -sTCP:LISTEN || true
+	
+# --- Hugo site ---------------------------------------------------------------
+
+site-dev:
+	# why: consistent local preview with drafts and live reload
+	cd site && hugo server -D
+
+site-build:
+	# why: reproduce CI build locally; publishes to site/public
+	cd site && hugo --gc --minify --environment production
