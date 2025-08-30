@@ -33,3 +33,8 @@ canonifyURLs = false  # keep relative URLs in dev; we'll set a real baseURL in p
 
 [permalinks]
   posts = "/posts/:slug/"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

@@ -1,0 +1,30 @@
+<article class="pv3 ph2">
+  {{ $img := or (.Params.featured_image) (index .Params.images 0) }}
+  {{ with $img }}
+    <a class="db mb3" href="{{ $.RelPermalink }}">
+      <img src="{{ . | relURL }}" alt="{{ $.Title }}">
+    </a>
+  {{ end }}
+
+  <h2 class="f3 fw7 lh-title mv0">
+    <a class="link black dim" href="{{ .RelPermalink }}">{{ .Title }}</a>
+  </h2>
+
+  <p class="f6 gray mt1 mb3">
+    <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+      {{ .Date.Format "Jan 2, 2006" }}
+    </time>
+  </p>
+
+  {{ with .Summary }}
+    <p class="measure lh-copy">{{ . }}</p>
+  {{ end }}
+
+  <p class="mt2">
+    <a class="ba b--black-20 bg-white link br2 ph3 pv2 dib"
+       href="{{ .RelPermalink }}"
+       aria-label="Read more: {{ .Title }}">
+      {{ i18n "read_more" | default "read more" }}
+    </a>
+  </p>
+</article>
