@@ -52,3 +52,7 @@ make restart
 
 # Export data to db/markets.db and site/static/data/markets.json
 make update-data
+
+## Status (Aug 2025): Paused — USDA TLS cert expired
+USDA endpoint `https://search.ams.usda.gov/farmersmarkets/` presents an expired/invalid chain (expired Mar 22, 2025).
+Automation is paused. Once fixed, we’ll switch the exporter to a Cloudflare Worker proxy and re-enable cron.
