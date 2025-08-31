@@ -12,7 +12,6 @@ permissions:
 jobs:
   update:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -63,7 +62,6 @@ jobs:
           except Exception as e:
               print(f"Failed to parse {p}: {e}")
               sys.exit(1)
-
           def count_items(d):
               if isinstance(d, dict) and isinstance(d.get("items"), list):
                   return len(d["items"])
@@ -74,7 +72,6 @@ jobs:
                   if isinstance(v, list):
                       return len(v)
               return 0
-
           n = count_items(data)
           print(f"items_count={n}")
           if n <= 0:
