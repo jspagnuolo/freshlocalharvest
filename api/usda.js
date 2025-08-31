@@ -1,12 +1,17 @@
 // /api/usda?path=locSearch&lat=..&lng=..
 // /api/usda?path=mktDetail&id=..
 import dns from "node:dns";
-dns.setDefaultResultOrder?.("ipv4first"); // prefer IPv4 (sometimes helps on .gov)
+import { Agent } from "undici";
 
-const ORIGINS = [
-  "https://search.ams.usda.gov/farmersmarkets/v1/data.svc",
-  "http://search.ams.usda.gov/farmersmarkets/v1/data.svc" // fallback if HTTPS handshake is fussy
-];
+dns.setDefaultResultOrder?.("ipv4first"); // be IPv4-friendly
+
+const USDA_HOST = "search.ams.usda.gov";
+const USDA_BASE = `https://${USDA_HOST}/farmersmarkets/v1/data.svc`;
+
+// Insecure agent ONLY for USDA host (temporary: their cert is expired)
+const insecureUSDAAgent = new Agent({
+  connect: { rejectUnauthorized: false },
+});
 
 export default async function handler(req, res) {
   try {
@@ -16,53 +21,42 @@ export default async function handler(req, res) {
       return;
     }
 
-    // Build upstream URLs (try HTTPS, then HTTP)
-    const urls = ORIGINS.map(base => {
-      const u = new URL(`${base}/${path}`);
-      Object.entries(rest).forEach(([k, v]) => u.searchParams.set(k, v));
-      return u.toString();
+    // Build upstream URL
+    const url = new URL(`${USDA_BASE}/${path}`);
+    Object.entries(rest).forEach(([k, v]) => url.searchParams.set(k, v));
+
+    // Use insecure dispatcher ONLY for this host to bypass the expired cert
+    const dispatcher = url.hostname === USDA_HOST ? insecureUSDAAgent : undefined;
+
+    const upstream = await fetch(url.toString(), {
+      headers: {
+        "User-Agent": "FLH Vercel Proxy/1.0",
+        "Accept": "application/json,text/plain,*/*",
+      },
+      redirect: "follow",
+      // @ts-ignore — undici option supported in Node 18+
+      dispatcher,
     });
 
-    let lastErr = null;
-    for (const u of urls) {
-      try {
-        const upstream = await fetch(u, {
-          headers: {
-            "User-Agent": "FLH Vercel Proxy/1.0",
-            "Accept": "application/json,text/plain,*/*"
-          },
-          redirect: "follow"
-        });
-        const text = await upstream.text(); // read once
-        if (!upstream.ok) {
-          // bubble upstream error (e.g., 403) so we can see it in job logs
-          res.setHeader("Access-Control-Allow-Origin", "*");
-          res.setHeader("Cache-Control", "no-store");
-          res.status(upstream.status).send(text);
-          return;
-        }
-        // try to return JSON; if not JSON, return text as-is
-        res.setHeader("Access-Control-Allow-Origin", "*");
-        res.setHeader("Cache-Control", "no-store");
-        const ct = upstream.headers.get("content-type") || "";
-        if (ct.includes("application/json")) {
-          res.status(200).send(text);
-        } else {
-          res.setHeader("Content-Type", ct || "application/json");
-          res.status(200).send(text);
-        }
-        return;
-      } catch (e) {
-        lastErr = e;
-        console.error("Upstream fetch failed for", u, e);
-        // try next origin
-      }
+    const text = await upstream.text();
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Cache-Control", "no-store");
+
+    if (!upstream.ok) {
+      // bubble USDA errors so we can see them
+      res.status(upstream.status).send(text);
+      return;
     }
 
-    // All attempts failed
-    res.status(502).json({ error: "upstream_fetch_failed", detail: String(lastErr) });
+    const ct = upstream.headers.get("content-type") || "";
+    if (ct.includes("application/json")) {
+      res.status(200).send(text);
+    } else {
+      res.setHeader("Content-Type", ct || "application/json");
+      res.status(200).send(text);
+    }
   } catch (err) {
     console.error("Proxy error:", err);
-    res.status(500).json({ error: "proxy_failed", detail: String(err) });
+    res.status(502).json({ error: "upstream_fetch_failed", detail: String(err) });
   }
 }
