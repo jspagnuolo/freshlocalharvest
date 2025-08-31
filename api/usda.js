@@ -8,8 +8,8 @@ const { URL } = require('node:url');
 const USDA_HOST = 'search.ams.usda.gov';
 const USDA_BASE = `https://${USDA_HOST}/farmersmarkets/v1/data.svc`;
 
-// TEMP: bypass expired TLS chain from USDA (scoped to that host only)
-const insecureAgent = new https.Agent({ rejectUnauthorized: false });
+// TEMP: bypass USDA's incomplete cert chain (scoped to this host only)
+const insecureUSDAAgent = new https.Agent({ rejectUnauthorized: false });
 
 function fetchViaNode(u) {
   return new Promise((resolve, reject) => {
@@ -17,22 +17,26 @@ function fetchViaNode(u) {
     const isHttps = url.protocol === 'https:';
     const mod = isHttps ? https : http;
 
-    const opts = {
+    const options = {
       method: 'GET',
       headers: {
         'User-Agent': 'FLH Vercel Proxy/1.0',
-        'Accept': 'application/json,text/plain,*/*'
+        'Accept': 'application/json,text/plain,*/*',
       },
-      // Only relax TLS for the USDA host
-      agent: (isHttps && url.hostname === USDA_HOST) ? insecureAgent : undefined
+      // RELAX TLS ONLY for USDA host; everything else remains strict
+      agent: (isHttps && url.hostname === USDA_HOST) ? insecureUSDAAgent : undefined,
     };
 
-    const req = mod.request(url, opts, (res) => {
-      let chunks = [];
-      res.on('data', d => chunks.push(d));
+    const req = mod.request(url, options, (res) => {
+      const chunks = [];
+      res.on('data', (d) => chunks.push(d));
       res.on('end', () => {
         const body = Buffer.concat(chunks).toString('utf8');
-        resolve({ status: res.statusCode || 502, headers: res.headers, body });
+        resolve({
+          status: res.statusCode || 502,
+          headers: res.headers,
+          body,
+        });
       });
     });
 
@@ -45,12 +49,13 @@ module.exports = async function handler(req, res) {
   try {
     const q = req.query || {};
     const path = String(q.path || '');
+
     if (!['locSearch', 'mktDetail'].includes(path)) {
       res.status(400).json({ error: "Missing or invalid 'path' (locSearch|mktDetail)" });
       return;
     }
 
-    // Build upstream URL
+    // Build upstream USDA URL
     const upstream = new URL(`${USDA_BASE}/${path}`);
     for (const [k, v] of Object.entries(q)) {
       if (k !== 'path') upstream.searchParams.set(k, v);
@@ -62,7 +67,7 @@ module.exports = async function handler(req, res) {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Cache-Control', 'no-store');
 
-    // Pass content-type if upstream sent one, else assume JSON
+    // Preserve content-type if given; default to JSON
     res.setHeader('Content-Type', headers['content-type'] || 'application/json');
 
     res.status(status).send(body);
