@@ -13,18 +13,19 @@ canonifyURLs = false  # keep relative URLs in dev; we'll set a real baseURL in p
   env = "development" # used later to gate dev-only API status widget
 
 [menus]
-  [[menus.main]]
+  [[menu.main]]
     name = "Home"
     pageRef = "/"
     weight = 10
-  [[menus.main]]
+  [[menu.main]]
     name = "Blog"
     pageRef = "/posts"
     weight = 20
-  [[menus.main]]
+  [[menu.main]]
     name = "Map"
-    url = "http://127.0.0.1:8001/web/"
-    weight = 30
+    url = "/map/"
+    weight = 20
+
 
 [sitemap]
   changefreq = "weekly"

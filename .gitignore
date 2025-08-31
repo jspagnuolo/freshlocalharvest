@@ -3,12 +3,18 @@
 __pycache__/
 *.pyc
 
-# data + db (keep raw/processed/db out of git)
+# raw ingest + db (top-level only)
+# (ignore /data at repo root, not Hugo's site/static/data)
+#/data/   <-- WRONG (too broad)
 data/
 db/
 data/**/raw/*
 data/**/processed/*
 db/*.db
+
+# allow Hugo's static data folder
+!site/static/data/
+!site/static/data/*.json
 
 # Binary blobs / archives
 *.zip
@@ -29,3 +35,4 @@ db/*.db
 
 # venv
 .venv/
+.env

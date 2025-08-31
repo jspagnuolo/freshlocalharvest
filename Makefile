@@ -58,10 +58,21 @@ status:
 	
 # --- Hugo site ---------------------------------------------------------------
 
-site-dev:
-	# why: consistent local preview with drafts and live reload
-	cd site && hugo server -D
 
 site-build:
 	# why: reproduce CI build locally; publishes to site/public
 	cd site && hugo --gc --minify --environment production
+
+update-data:
+	. .venv/bin/activate && \
+	python3 scripts/export_markets.py
+
+site-stop:
+	- pkill -f "hugo server.*1313" || true
+	- PIDS="$$(lsof -tiTCP:1313 -sTCP:LISTEN)"; \
+	  if [ -n "$$PIDS" ]; then kill $$PIDS || true; fi
+	@sleep 1
+	@echo "Stopped Hugo on :1313 (if it was running)."
+
+site-dev:
+	cd site && hugo server -D --disableFastRender --ignoreCache --forceSyncStatic --port 1313

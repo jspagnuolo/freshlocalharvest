@@ -1,0 +1,38 @@
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin>
+<style>#map{height:60vh;width:100%}</style>
+
+<div id="map" data-src='{{ default "data/markets.json" (.Get "src") | relURL }}'></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin data-cfasync="false"></script>
+<script data-cfasync="false">
+document.addEventListener('DOMContentLoaded', () => {
+  // Guard against double-init (Hugo hot reload)
+  if (window.__flhMap) { window.__flhMap.remove?.(); }
+
+  const el = document.getElementById('map');
+  const url = el?.dataset?.src;
+  if (!el || !url) return console.error('Map init aborted: missing #map or data-src');
+
+  // Base tiles (no token required)
+  window.__flhMap = L.map('map').setView([27.95,-82.46], 9);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution:'© OSM' }).addTo(window.__flhMap);
+
+  // Fetch data safely, log errors to console
+  fetch(url).then(r => {
+    if (!r.ok) throw new Error(`Fetch failed ${r.status}: ${url}`);
+    return r.json();
+  }).then(data => {
+    const rows = Array.isArray(data) ? data : (data.markets || data.items || []);
+    let count = 0;
+    rows.forEach(m => {
+      const lat = +(m.lat ?? m.latitude);
+      const lon = +(m.lon ?? m.lng ?? m.longitude);
+      if (Number.isFinite(lat) && Number.isFinite(lon)) {
+        L.marker([lat,lon]).addTo(window.__flhMap).bindPopup(m.name || m.marketname || 'Market');
+        count++;
+      }
+    });
+    if (!count) console.warn('No valid rows with lat/lon found in', url, data);
+  }).catch(err => console.error('Map data error:', err));
+});
+</script>
