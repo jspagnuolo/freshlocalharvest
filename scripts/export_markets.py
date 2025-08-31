@@ -58,11 +58,10 @@ def split_city_state_zip(address: str):
 
 def fetch_json(client, path, params=None):
     url = f"{API_BASE}/{path}"
-    headers = {"User-Agent": "FLH/1.0"}
-    if USDA_API_KEY:
-        headers["X-API-Key"] = USDA_API_KEY  # harmless if ignored
-        if params is None: params = {}
-        params.setdefault("api_key", USDA_API_KEY)
+    headers = {
+        "User-Agent": "FLH/1.0",
+        "Accept": "application/json",
+    }
     r = client.get(url, params=params or {}, headers=headers)
     r.raise_for_status()
     return r.json()
