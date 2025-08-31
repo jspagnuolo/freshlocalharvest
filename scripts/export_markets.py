@@ -2,6 +2,7 @@
 import re, json, pathlib
 import httpx
 
+# Point to your PHP proxy (no trailing slash)
 API_BASE = "https://api.freshlocalharvest.org/api/usda.php"
 
 # State centers to sweep the US coarsely
@@ -23,20 +24,6 @@ states = {
   "TX": (31.054487,-97.563461), "UT": (40.150032,-111.862434), "VT": (44.045876,-72.710686),
   "VA": (37.769337,-78.169968), "WA": (47.400902,-121.490494), "WV": (38.491226,-80.954453),
   "WI": (44.268543,-89.616508), "WY": (42.755966,-107.302490), "DC": (38.9072, -77.0369),
-}
-
-BROWSER_HEADERS = {
-    # Emulate a modern browser; include Origin to satisfy some edge checks
-    "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
-                  "(KHTML, like Gecko) Chrome/124.0 Safari/537.36",
-    "Accept": "application/json,text/plain,*/*",
-    "Accept-Language": "en-US,en;q=0.9",
-    "Referer": "https://search.ams.usda.gov/",
-    "Origin": "https://search.ams.usda.gov",
-    "Connection": "keep-alive",
-    "Cache-Control": "no-cache",
-    "Pragma": "no-cache",
-    "Upgrade-Insecure-Requests": "1",
 }
 
 def strip_distance(name: str) -> str:
@@ -68,8 +55,10 @@ def split_city_state_zip(address: str):
     return city, state, zipc
 
 def fetch_json(client, path, params=None):
-    url = f"{API_BASE}/{path}"
-    r = client.get(url, params=params or {}, headers=BROWSER_HEADERS)
+    # Build query with `path` param (PHP proxy expects it)
+    q = dict(params or {})
+    q["path"] = path
+    r = client.get(API_BASE, params=q, headers={"Accept": "application/json"})
     r.raise_for_status()
     return r.json()
 
@@ -77,14 +66,9 @@ def main():
     seen = set()
     items = []
 
-    with httpx.Client(
-        timeout=30,
-        verify=False,           # USDA TLS chain quirk
-        follow_redirects=True,  # handle 303 -> HTTPS
-        http2=False             # stick to HTTP/1.1
-    ) as client:
+    # Your subdomain has a valid cert; default verification is fine.
+    with httpx.Client(timeout=30, follow_redirects=True) as client:
         for abbr, (lat, lon) in states.items():
-            # Nearby search around state "center"
             payload = fetch_json(client, "locSearch", {"lat": lat, "lng": lon})
             results = payload.get("results") or payload.get("items") or []
             for row in results:
