@@ -1,5 +1,5 @@
 ---
-title: "We went live 🎉 A static site, a few gremlins, and good company"
+title: "We went live - A static site and a few gremlins"
 date: 2025-08-30T12:00:00-04:00
 description: "How Fresh Local Harvest found its home on the internet—with Hugo, Cloudflare Pages, and a little friendly troubleshooting."
 tags: ["launch", "behind-the-scenes"]
@@ -42,4 +42,4 @@ We chose a static site for speed and reliability, **Cloudflare Pages** for zero-
 - Add a tight **Content Security Policy** once our assets are steady.
 - Keep a light blog cadence: short updates, real progress, no jargon detours.
 
-Thanks for following along. If you spot anything odd—or have a farmers market story to share—say hello. We’re just getting started. 🌽🍅🥕
+Thanks for following along. If you spot anything odd—or have a farmers market story to share—say hello. We’re just getting started. 

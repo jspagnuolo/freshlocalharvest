@@ -1,0 +1,70 @@
+/* Base text */
+html { font-size: 16px; } /* keep root predictable */
+body {
+  font-size: clamp(18px, 1.15rem + 0.2vw, 20px); /* slightly larger on wide screens */
+  line-height: 1.75;                               /* increased leading */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Content width/measure for comfortable reading */
+main, .ma0-l.lh-copy { 
+  max-width: 72ch;  /* ~optimal line length */
+}
+
+/* Headings: a bit larger, a bit tighter leading */
+h1 { font-size: clamp(2rem, 1.6rem + 1.2vw, 2.6rem); line-height: 1.2; margin: 0 0 0.6em; }
+h2 { font-size: clamp(1.6rem, 1.3rem + 0.8vw, 2rem); line-height: 1.25; margin: 1.2em 0 0.5em; }
+h3 { font-size: clamp(1.25rem, 1.1rem + 0.4vw, 1.5rem); line-height: 1.3;  margin: 1.1em 0 0.4em; }
+
+/* Paragraph rhythm */
+p, ul, ol, blockquote { margin: 0 0 1.1em; }
+
+/* Post lists / summaries often use these utility classes in Ananke */
+.lh-copy { line-height: 1.75; }
+.f5, .f4, .f3 { line-height: 1.35; } /* tighten common heading utilities slightly */
+
+/* Images in articles */
+article img { display:block; max-width:100%; height:auto; margin: 1.2rem auto; }
+
+/* Links */
+a { text-underline-offset: 0.15em; text-decoration-thickness: 0.08em; }
+a:hover { text-decoration-thickness: 0.12em; }
+
+/* Code blocks */
+pre, code { line-height: 1.6; font-size: 0.95em; }
+
+/*logo*/
+a.f3.fw2.hover-white.white-90.dib.no-underline {font-weight: 600;}
+
+/*heading*/
+h1.f2.f-subheadline-l.fw2.light-silver.mb0.lh-title {
+    font-weight: 500;
+    color: #95d195;
+}
+
+h2.fw1.f5.f3-l.white-80.measure-wide-l.center.lh-copy.mt3.mb4 {
+    font-weight: 400;
+}
+
+/* Custom hero background */
+.bg-hero-green {
+  background-color: #3A7D44; /* replace with your brand green */
+  color: #fff;               /* optional: force text to white for contrast */
+}
+
+/* Brand Colors */
+.bg-hero-green { background-color: #3A7D44; color: #fff; }
+.bg-leaf-green { background-color: #6BBF59; }
+.bg-sun-yellow { background-color: #FFD449; }
+.bg-cool-gray  { background-color: #EAEAEA; }
+.bg-warm-white { background-color: #FDFBF7; }
+
+.text-stone-gray { color: #5A5A5A; }
+.text-hero-green { color: #3A7D44; }
+.text-leaf-green { color: #6BBF59; }
+.text-sun-yellow { color: #FFD449; }
+
+/* Links */
+a { color: #0a56c9; text-decoration: underline; }
+a:hover { color: #3A7D44; }

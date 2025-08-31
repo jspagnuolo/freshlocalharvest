@@ -11,6 +11,9 @@ canonifyURLs = false  # keep relative URLs in dev; we'll set a real baseURL in p
 [params]
   description = "Find fresh local produce and farmers markets—fast."
   env = "development" # used later to gate dev-only API status widget
+  customCSS = ["css/typography.css"]
+  background_color_class = "bg-hero-green"
+
 
 [menus]
   [[menu.main]]

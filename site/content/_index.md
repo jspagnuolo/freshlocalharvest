@@ -12,7 +12,7 @@ Our mission:
 - Highlight seasonal produce and programs like SNAP  
 - Offer a clear, searchable experience for connecting with fresh, local food
 
-🚧 **Work in Progress**  
+**Work in Progress**  
 We’re developing this in the open. Follow along as we ship features, fix issues, and share what we learn.
 
 ## Latest from the Blog
