@@ -30,7 +30,7 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
           pip install 'httpx[http2]'
 
-      # 👇 Debug step: makes curl calls so we can see real headers/status
+      # Debug step (safe): verify proxy responds from the runner
       - name: Preflight: call proxy like a browser
         run: |
           set -euo pipefail
