@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 import os, re, json, pathlib
 import httpx
-import urllib3
-urllib3.disable_warnings()
 
 API_BASE = "https://search.ams.usda.gov/farmersmarkets/v1/data.svc"
 
