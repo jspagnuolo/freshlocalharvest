@@ -1,4 +1,4 @@
-baseURL = "/"
+baseURL = "https://www.freshlocalharvest.org"
 languageCode = "en-us"
 title = "Fresh Local Harvest"
 theme = "ananke"
@@ -13,6 +13,7 @@ canonifyURLs = false  # keep relative URLs in dev; we'll set a real baseURL in p
   env = "development" # used later to gate dev-only API status widget
   customCSS = ["css/typography.css"]
   background_color_class = "bg-hero-green"
+  site_logo = "images/logo-pin.webp"   # path is relative to /static
 
 
 [menus]

@@ -2,7 +2,7 @@
 {{- $limit := .Get "limit" | default 8 -}}
 {{- $showSummaries := .Get "show_summaries" | default "true" -}}
 {{- $pages := where .Site.RegularPages "Section" $section -}}
-{{- $sorted := sort $pages "Date" "desc" -}}
+{{- $sorted := sort $pages "Date" "ascending" -}}
 {{- $list := first (int $limit) $sorted -}}
 <div style="display:grid; gap:1rem;">
   {{- if not (gt (len $list) 0) -}}

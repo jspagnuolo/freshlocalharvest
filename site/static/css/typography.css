@@ -35,12 +35,12 @@ a:hover { text-decoration-thickness: 0.12em; }
 pre, code { line-height: 1.6; font-size: 0.95em; }
 
 /*logo*/
-a.f3.fw2.hover-white.white-90.dib.no-underline {font-weight: 600;}
+.site-title {font-weight: 600;}
 
 /*heading*/
 h1.f2.f-subheadline-l.fw2.light-silver.mb0.lh-title {
-    font-weight: 500;
-    color: #95d195;
+    font-weight: 600;
+    color: #fecf3c;
 }
 
 h2.fw1.f5.f3-l.white-80.measure-wide-l.center.lh-copy.mt3.mb4 {
@@ -54,17 +54,21 @@ h2.fw1.f5.f3-l.white-80.measure-wide-l.center.lh-copy.mt3.mb4 {
 }
 
 /* Brand Colors */
-.bg-hero-green { background-color: #3A7D44; color: #fff; }
+.bg-hero-green { background-color: #29542f; color: #fff; }
 .bg-leaf-green { background-color: #6BBF59; }
-.bg-sun-yellow { background-color: #FFD449; }
+.bg-sun-yellow { background-color: #fecf3c; }
 .bg-cool-gray  { background-color: #EAEAEA; }
 .bg-warm-white { background-color: #FDFBF7; }
 
 .text-stone-gray { color: #5A5A5A; }
-.text-hero-green { color: #3A7D44; }
+.text-hero-green { color: #29542f; }
 .text-leaf-green { color: #6BBF59; }
-.text-sun-yellow { color: #FFD449; }
+.text-sun-yellow { color: #fecf3c; }
 
 /* Links */
 a { color: #0a56c9; text-decoration: underline; }
 a:hover { color: #3A7D44; }
+
+a.f3.fw2.hover-white.white-90.dib.no-underline {
+    width: 180px;
+}
