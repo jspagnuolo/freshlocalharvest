@@ -29,7 +29,6 @@ jobs:
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
           pip install 'httpx[http2]'
-      
 
       - name: Preflight: call proxy like a browser
         run: |
@@ -44,7 +43,6 @@ jobs:
             -H "Referer: https://freshlocalharvest.org/" \
             -H "Origin: https://freshlocalharvest.org" \
             "https://api.freshlocalharvest.org/api/usda.php?path=locSearch&lat=32.806671&lng=-86.79113" || true
-
 
       - name: Export data from USDA Local Food Portal
         env:
@@ -104,4 +102,3 @@ jobs:
           name: markets-db
           path: db/markets.db
           if-no-files-found: ignore
-
