@@ -2,7 +2,7 @@
 import os, re, json, pathlib
 import httpx
 
-API_BASE = "http://search.ams.usda.gov/farmersmarkets/v1/data.svc"
+API_BASE = "https://search.ams.usda.gov/farmersmarkets/v1/data.svc"
 
 # State centers to sweep the US coarsely
 states = {
@@ -24,9 +24,6 @@ states = {
   "VA": (37.769337,-78.169968), "WA": (47.400902,-121.490494), "WV": (38.491226,-80.954453),
   "WI": (44.268543,-89.616508), "WY": (42.755966,-107.302490), "DC": (38.9072, -77.0369),
 }
-
-# Optional key; USDA endpoints generally don’t require one, but we include it if provided.
-USDA_API_KEY = os.environ.get("USDA_API_KEY")
 
 def strip_distance(name: str) -> str:
     # USDA locSearch marketname may start with "2.4 Market Name"
@@ -59,8 +56,12 @@ def split_city_state_zip(address: str):
 def fetch_json(client, path, params=None):
     url = f"{API_BASE}/{path}"
     headers = {
-        "User-Agent": "FLH/1.0",
-        "Accept": "application/json",
+        # Browser-like headers seem to avoid 403s after HTTPS redirect.
+        "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36",
+        "Accept": "application/json,text/plain,*/*",
+        "Accept-Language": "en-US,en;q=0.9",
+        "Referer": "https://search.ams.usda.gov/",
+        "Connection": "keep-alive",
     }
     r = client.get(url, params=params or {}, headers=headers)
     r.raise_for_status()
@@ -70,7 +71,12 @@ def main():
     seen = set()
     items = []
 
-    with httpx.Client(timeout=30, verify=False) as client:
+    with httpx.Client(
+        timeout=30,
+        verify=False,           # USDA TLS chain quirk
+        follow_redirects=True,  # handle 303 -> HTTPS
+        http2=False             # stick to HTTP/1.1
+    ) as client:
         for abbr, (lat, lon) in states.items():
             # Nearby search around state "center"
             payload = fetch_json(client, "locSearch", {"lat": lat, "lng": lon})
