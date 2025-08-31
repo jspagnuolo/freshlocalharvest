@@ -58,7 +58,17 @@ def fetch_json(client, path, params=None):
     # Build query with `path` param (PHP proxy expects it)
     q = dict(params or {})
     q["path"] = path
-    r = client.get(API_BASE, params=q, headers={"Accept": "application/json"})
+    headers = {
+        "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36",
+        "Accept": "application/json,text/plain,*/*",
+        "Accept-Language": "en-US,en;q=0.9",
+        "Referer": "https://freshlocalharvest.org/",
+        "Origin": "https://freshlocalharvest.org",
+        "Connection": "keep-alive",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
+    }
+    r = client.get(API_BASE, params=q, headers=headers)
     r.raise_for_status()
     return r.json()
 
