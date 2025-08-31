@@ -1,18 +1,45 @@
 // /api/usda?path=locSearch&lat=..&lng=..
 // /api/usda?path=mktDetail&id=..
 
-const dns = require('node:dns');
-const { Agent } = require('undici');
-
-dns.setDefaultResultOrder?.('ipv4first'); // prefer IPv4 (helps some .gov hosts)
+const https = require('node:https');
+const http = require('node:http');
+const { URL } = require('node:url');
 
 const USDA_HOST = 'search.ams.usda.gov';
 const USDA_BASE = `https://${USDA_HOST}/farmersmarkets/v1/data.svc`;
 
-// TEMP: bypass expired TLS chain from USDA (scoped to this host only)
-const insecureUSDAAgent = new Agent({
-  connect: { rejectUnauthorized: false },
-});
+// TEMP: bypass expired TLS chain from USDA (scoped to that host only)
+const insecureAgent = new https.Agent({ rejectUnauthorized: false });
+
+function fetchViaNode(u) {
+  return new Promise((resolve, reject) => {
+    const url = new URL(u);
+    const isHttps = url.protocol === 'https:';
+    const mod = isHttps ? https : http;
+
+    const opts = {
+      method: 'GET',
+      headers: {
+        'User-Agent': 'FLH Vercel Proxy/1.0',
+        'Accept': 'application/json,text/plain,*/*'
+      },
+      // Only relax TLS for the USDA host
+      agent: (isHttps && url.hostname === USDA_HOST) ? insecureAgent : undefined
+    };
+
+    const req = mod.request(url, opts, (res) => {
+      let chunks = [];
+      res.on('data', d => chunks.push(d));
+      res.on('end', () => {
+        const body = Buffer.concat(chunks).toString('utf8');
+        resolve({ status: res.statusCode || 502, headers: res.headers, body });
+      });
+    });
+
+    req.on('error', reject);
+    req.end();
+  });
+}
 
 module.exports = async function handler(req, res) {
   try {
@@ -24,30 +51,21 @@ module.exports = async function handler(req, res) {
     }
 
     // Build upstream URL
-    const url = new URL(`${USDA_BASE}/${path}`);
+    const upstream = new URL(`${USDA_BASE}/${path}`);
     for (const [k, v] of Object.entries(q)) {
-      if (k !== 'path') url.searchParams.set(k, v);
+      if (k !== 'path') upstream.searchParams.set(k, v);
     }
 
-    // Fetch USDA (with our relaxed TLS dispatcher)
-    const upstream = await fetch(url.toString(), {
-      headers: {
-        'User-Agent': 'FLH Vercel Proxy/1.0',
-        'Accept': 'application/json,text/plain,*/*',
-      },
-      redirect: 'follow',
-      // undici option supported in Node 18+ runtime on Vercel
-      dispatcher: insecureUSDAAgent,
-    });
+    const { status, headers, body } = await fetchViaNode(upstream.toString());
 
-    const text = await upstream.text();
-
-    // CORS + caching headers
+    // CORS + no-store
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Cache-Control', 'no-store');
 
-    // Pass through upstream status and body (JSON or text)
-    res.status(upstream.status).send(text);
+    // Pass content-type if upstream sent one, else assume JSON
+    res.setHeader('Content-Type', headers['content-type'] || 'application/json');
+
+    res.status(status).send(body);
   } catch (err) {
     console.error('Proxy error:', err);
     res.status(502).json({ error: 'proxy_failed', detail: String(err) });
