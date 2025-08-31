@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 import os, re, json, pathlib
 import httpx
+import urllib3
+urllib3.disable_warnings()
 
 API_BASE = "https://search.ams.usda.gov/farmersmarkets/v1/data.svc"
 
@@ -71,7 +73,7 @@ def main():
     seen = set()
     items = []
 
-    with httpx.Client(timeout=30) as client:
+    with httpx.Client(timeout=30, verify=False) as client:
         for abbr, (lat, lon) in states.items():
             # Nearby search around state "center"
             payload = fetch_json(client, "locSearch", {"lat": lat, "lng": lon})
