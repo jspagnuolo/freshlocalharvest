@@ -2,7 +2,7 @@
 import re, json, pathlib
 import httpx
 
-API_BASE = "https://solitary-night-c65e.digitalimages.workers.dev"
+API_BASE = "https://api.freshlocalharvest.org/api/usda.php"
 
 # State centers to sweep the US coarsely
 states = {
