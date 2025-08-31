@@ -4,7 +4,7 @@ on:
   schedule:
     # Run at 13:30 UTC (09:30 Eastern) every day for testing
     - cron: "30 13 * * *"
-  workflow_dispatch: {}
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -30,14 +30,13 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
           pip install 'httpx[http2]'
 
-      # Debug step (safe): verify proxy responds from the runner
       - name: Preflight: call proxy like a browser
         run: |
           set -euo pipefail
-          echo "=== Plain curl ==="
+          echo "Plain curl (expect 200):"
           curl -iS "https://api.freshlocalharvest.org/api/usda.php?path=locSearch&lat=32.806671&lng=-86.79113" || true
           echo ""
-          echo "=== Browser-like curl ==="
+          echo "Browser-like curl (expect 200):"
           curl -iS \
             -H "User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36" \
             -H "Accept: application/json,text/plain,*/*" \
