@@ -7,11 +7,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Content width/measure for comfortable reading */
-main, .ma0-l.lh-copy { 
-  max-width: 72ch;  /* ~optimal line length */
-}
-
 /* Headings: a bit larger, a bit tighter leading */
 h1 { font-size: clamp(2rem, 1.6rem + 1.2vw, 2.6rem); line-height: 1.2; margin: 0 0 0.6em; }
 h2 { font-size: clamp(1.6rem, 1.3rem + 0.8vw, 2rem); line-height: 1.25; margin: 1.2em 0 0.5em; }
