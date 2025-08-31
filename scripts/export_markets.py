@@ -5,105 +5,107 @@ import httpx
 # Point to your PHP proxy (no trailing slash)
 API_BASE = "https://api.freshlocalharvest.org/api/usda.php"
 
-on:
-  schedule:
-    # Run at 13:30 UTC (09:30 Eastern) every day for testing
-    - cron: "30 13 * * *"
-  workflow_dispatch: {}
+# State centers to sweep the US coarsely
+states = {
+  "AL": (32.806671,-86.791130), "AK": (61.370716,-152.404419), "AZ": (33.729759,-111.431221),
+  "AR": (34.969704,-92.373123), "CA": (36.116203,-119.681564), "CO": (39.059811,-105.311104),
+  "CT": (41.597782,-72.755371), "DE": (39.318523,-75.507141), "FL": (27.766279,-81.686783),
+  "GA": (33.040619,-83.643074), "HI": (21.094318,-157.498337), "ID": (44.240459,-114.478828),
+  "IL": (40.349457,-88.986137), "IN": (39.849426,-86.258278), "IA": (42.011539,-93.210526),
+  "KS": (38.526600,-96.726486), "KY": (37.668140,-84.670067), "LA": (31.169546,-91.867805),
+  "ME": (44.693947,-69.381927), "MD": (39.063946,-76.802101), "MA": (42.230171,-71.530106),
+  "MI": (43.326618,-84.536095), "MN": (45.694454,-93.900192), "MS": (32.741646,-89.678696),
+  "MO": (38.456085,-92.288368), "MT": (46.921925,-110.454353), "NE": (41.125370,-98.268082),
+  "NV": (38.313515,-117.055374), "NH": (43.452492,-71.563896), "NJ": (40.298904,-74.521011),
+  "NM": (34.840515,-106.248482), "NY": (42.165726,-74.948051), "NC": (35.630066,-79.806419),
+  "ND": (47.528912,-99.784012), "OH": (40.388783,-82.764915), "OK": (35.565342,-96.928917),
+  "OR": (44.572021,-122.070938), "PA": (40.590752,-77.209755), "RI": (41.680893,-71.511780),
+  "SC": (33.856892,-80.945007), "SD": (44.299782,-99.438828), "TN": (35.747845,-86.692345),
+  "TX": (31.054487,-97.563461), "UT": (40.150032,-111.862434), "VT": (44.045876,-72.710686),
+  "VA": (37.769337,-78.169968), "WA": (47.400902,-121.490494), "WV": (38.491226,-80.954453),
+  "WI": (44.268543,-89.616508), "WY": (42.755966,-107.302490), "DC": (38.9072, -77.0369),
+}
 
-permissions:
-  contents: write
+def strip_distance(name: str) -> str:
+    # USDA locSearch marketname may start with "2.4 Market Name"
+    return re.sub(r"^\s*\d+(?:\.\d+)?\s+", "", name or "").strip()
 
-jobs:
-  update:
-    runs-on: ubuntu-latest
+def parse_latlon_from_google_link(link: str):
+    # Example: http://maps.google.com/?q=39.1234%2C-77.5678
+    if not link:
+        return None, None
+    m = re.search(r"[?&]q=([\-0-9\.]+)%2C([\-0-9\.]+)", link)
+    if not m:
+        m = re.search(r"[?&]q=([\-0-9\.]+),([\-0-9\.]+)", link)
+    try:
+        return float(m.group(1)), float(m.group(2)) if m else (None, None)
+    except Exception:
+        return None, None
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+def split_city_state_zip(address: str):
+    # Very loose parser: "... City, ST 12345"
+    if not address or "," not in address:
+        return None, None, None
+    parts = [p.strip() for p in address.split(",")]
+    last = parts[-1] if parts else ""
+    m = re.search(r"([A-Z]{2})\s+(\d{5})", last)
+    state = m.group(1) if m else None
+    zipc = m.group(2) if m else None
+    city = parts[-2] if len(parts) >= 2 else None
+    return city, state, zipc
 
-      - name: Set up Python 3.11
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
+def fetch_json(client, path, params=None):
+    # Build query with `path` param (PHP proxy expects it)
+    q = dict(params or {})
+    q["path"] = path
+    headers = {
+        "Accept": "application/json",
+        "User-Agent": "FLH/1.0 (+https://freshlocalharvest.org)",
+    }
+    r = client.get(API_BASE, params=q, headers=headers)
+    r.raise_for_status()
+    return r.json()
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-          pip install 'httpx[http2]'
+def main():
+    seen = set()
+    items = []
 
-      # === Debug only: confirms the proxy returns 200 from the runner ===
-      - name: Preflight: call proxy like a browser
-        run: |
-          set -euo pipefail
-          echo "Plain curl (expect 200):"
-          curl -iS "https://api.freshlocalharvest.org/api/usda.php?path=locSearch&lat=32.806671&lng=-86.79113" || true
-          echo ""
-          echo "Browser-like curl (expect 200):"
-          curl -iS \
-            -H "User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36" \
-            -H "Accept: application/json,text/plain,*/*" \
-            -H "Referer: https://freshlocalharvest.org/" \
-            -H "Origin: https://freshlocalharvest.org" \
-            "https://api.freshlocalharvest.org/api/usda.php?path=locSearch&lat=32.806671&lng=-86.79113" || true
+    with httpx.Client(timeout=30, follow_redirects=True) as client:
+        for abbr, (lat, lon) in states.items():
+            payload = fetch_json(client, "locSearch", {"lat": lat, "lng": lon})
+            results = payload.get("results") or payload.get("items") or []
+            for row in results:
+                market_id = str(row.get("id") or "").strip()
+                market_name = strip_distance(row.get("marketname") or row.get("name") or "Market")
+                if not market_id:
+                    continue
 
-      - name: Export data from USDA Local Food Portal
-        env:
-          USDA_API_KEY: ${{ secrets.USDA_API_KEY }}
-        run: |
-          set -euo pipefail
-          python scripts/export_markets.py
+                detail = fetch_json(client, "mktDetail", {"id": market_id})
+                md = detail.get("marketdetails") or {}
+                g_link = md.get("GoogleLink") or ""
+                lat2, lon2 = parse_latlon_from_google_link(g_link)
+                address = md.get("Address") or ""
+                city, state, zipc = split_city_state_zip(address)
 
-      - name: Verify markets.json has items
-        run: |
-          set -euo pipefail
-          test -f site/static/data/markets.json || { echo "site/static/data/markets.json not found"; exit 1; }
-          python - <<'PY'
-          import json, sys, pathlib
-          p = pathlib.Path("site/static/data/markets.json")
-          try:
-              data = json.loads(p.read_text(encoding="utf-8"))
-          except Exception as e:
-              print(f"Failed to parse {p}: {e}")
-              sys.exit(1)
+                key = (market_name, lat2, lon2)
+                if lat2 is None or lon2 is None or key in seen:
+                    continue
+                seen.add(key)
 
-          def count_items(d):
-              if isinstance(d, dict) and isinstance(d.get("items"), list):
-                  return len(d["items"])
-              if isinstance(d, list):
-                  return len(d)
-              for k in ("markets", "data", "results"):
-                  v = d.get(k) if isinstance(d, dict) else None
-                  if isinstance(v, list):
-                      return len(v)
-              return 0
+                items.append({
+                    "name": market_name,
+                    "lat": lat2, "lon": lon2,
+                    "city": city, "state": state, "zip": zipc,
+                    "website": md.get("Website") or md.get("Facebook") or None,
+                    "phone": md.get("Phone") or None,
+                    "source_id": market_id,
+                })
 
-          n = count_items(data)
-          print(f"items_count={n}")
-          if n <= 0:
-              print("No items found; failing to avoid overwriting with empty data.")
-              sys.exit(1)
-          PY
+    print("deduped items:", len(items))
+    out = pathlib.Path("site/static/data/markets.json")
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(json.dumps(items), encoding="utf-8")
+    print("wrote", len(items), "to", str(out))
 
-      - name: Commit updated markets.json (if changed)
-        run: |
-          set -euo pipefail
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add site/static/data/markets.json
-          if git diff --cached --quiet; then
-            echo "No changes to commit."
-          else
-            git commit -m "chore(data): update markets.json"
-            git push
-          fi
-
-      - name: Upload markets.db artifact (optional)
-        uses: actions/upload-artifact@v4
-        with:
-          name: markets-db
-          path: db/markets.db
-          if-no-files-found: ignore
+if __name__ == "__main__":
+    main()
