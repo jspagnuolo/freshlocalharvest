@@ -1,4 +1,11 @@
-# The Case of the Missing Map Pins
+---
+title: "The Case of the Missing Map Pins"
+date: 2025-08-30T12:00:00-04:00
+description: "Hafter restructuring the repo and switching branches, the data that powered the map had vanished.  Learn how we restored the pins."
+tags: ["launch", "behind-the-scenes"]
+slug: "missing-map-pins"
+draft: false
+---
 
 We started with a mystery.  
 The map on our site was blank — no pins, no interactivity, just a lonely placeholder where a lively directory of farmers markets used to be. Somewhere along the way, after restructuring the repo and switching branches, the data that powered the map had vanished.  

@@ -1,0 +1,21 @@
+{{ define "main" }}
+  <main class="container" style="max-width: 900px; margin: 0 auto; padding: 2rem 1rem;">
+    <h1>Blog</h1>
+    {{ range .Pages.ByDate.Reverse }}
+      <article style="margin-bottom: 2.5rem; border-bottom: 1px solid #ddd; padding-bottom: 1.5rem;">
+        <header>
+          <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+          <time datetime="{{ .Date }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+        </header>
+        <div>
+          {{ .Summary }}
+        </div>
+        <p>
+          <a href="{{ .RelPermalink }}" style="font-weight:bold; text-decoration: underline;">
+            Read more →
+          </a>
+        </p>
+      </article>
+    {{ end }}
+  </main>
+{{ end }}

@@ -17,3 +17,4 @@ We’re developing this in the open. Follow along as we ship features, fix issue
 
 ## Latest from the Blog
 
+{{< blog-list limit="6" show_summaries="true" >}}           <!-- all sections -->

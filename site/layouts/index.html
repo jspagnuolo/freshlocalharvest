@@ -1,39 +1,5 @@
 {{ define "main" }}
-<main class="pa3 pa4-ns">
-  {{/* keep whatever you wrote in content/_index.md (incl. the dev API badge) */}}
-  <div class="measure-wide center lh-copy">
+  <main class="container" style="max-width: 900px; margin: 0 auto; padding: 2rem 1rem;">
     {{ .Content }}
-  </div>
-
-  {{/* choose which sections to feature on the homepage; default to posts/post */}}
-  {{- $sections := site.Params.mainSections | default (slice "posts" "post") -}}
-  {{- $pages := where site.RegularPages "Type" "in" $sections -}}
-  {{- $paginator := .Paginate $pages -}}
-
-  <section class="cf w-100 mt4">
-    {{ range $paginator.Pages }}
-      <article class="fl w-100 w-50-m w-33-l pv3 ph3">
-        <h2 class="f3 fw7 lh-title mv0">
-          <a class="link black dim" href="{{ .RelPermalink }}">{{ .Title }}</a>
-        </h2>
-
-        <p class="f6 gray mt1 mb3">
-          <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
-            {{ .Date.Format "Jan 2, 2006" }}
-          </time>
-        </p>
-
-        {{ with .Summary }}
-          <p class="measure lh-copy">{{ . }}</p>
-        {{ end }}
-
-        <a class="ba b--moon-gray bg-white link br2 ph3 pv2 dib mt2" href="{{ .RelPermalink }}">
-          {{ i18n "read_more" | default "read more" }}
-        </a>
-      </article>
-    {{ end }}
-  </section>
-
-  {{ partial "pagination.html" . }}
-</main>
+  </main>
 {{ end }}

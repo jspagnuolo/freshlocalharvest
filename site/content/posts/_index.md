@@ -1,4 +1,4 @@
 ---
 title: "Blog"
-description: "Project updates, changelogs, and notes."
+description: "Updates on Fresh Local Harvest as we build in public."
 ---

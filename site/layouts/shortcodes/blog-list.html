@@ -1,29 +1,23 @@
-{{- $section := .Get "section" | default "blog" -}}
+{{- $section := .Get "section" | default "posts" -}}
 {{- $limit := .Get "limit" | default 8 -}}
 {{- $showSummaries := .Get "show_summaries" | default "true" -}}
-
 {{- $pages := where .Site.RegularPages "Section" $section -}}
 {{- $sorted := sort $pages "Date" "desc" -}}
 {{- $list := first (int $limit) $sorted -}}
-
-<div class="blog-list" style="display:grid; gap:1rem;">
+<div style="display:grid; gap:1rem;">
   {{- if not (gt (len $list) 0) -}}
     <p>No posts yet. Check back soon!</p>
   {{- else -}}
     {{- range $list -}}
-      <article class="post-card" style="border:1px solid #e5e7eb; border-radius:0.75rem; padding:1rem;">
-        <h3 style="margin:0 0 .25rem 0;">
-          <a href="{{ .RelPermalink }}" style="text-decoration:none; color:#0f172a;">
-            {{ .Title }}
-          </a>
-        </h3>
-        <div style="font-size:.9rem; color:#64748b; margin-bottom:.5rem;">
-          {{ .Date.Format "January 2, 2006" }}
-        </div>
+      <article style="border:1px solid #e5e7eb; border-radius:0.75rem; padding:1rem;">
+        <h3 style="margin:0 0 .25rem 0;"><a href="{{ .RelPermalink }}" style="text-decoration:none; color:#0f172a;">{{ .Title }}</a></h3>
+        <div style="font-size:.9rem; color:#64748b; margin-bottom:.5rem;">{{ .Date.Format "January 2, 2006" }}</div>
         {{- if eq (lower $showSummaries) "true" -}}
-          <p style="margin:0;">
-            {{ with .Params.summary }}{{ . }}{{ else }}{{ .Summary | plainify }}{{ end }}
-          </p>
+          <p style="margin:0;">{{ with .Params.summary }}{{ . }}{{ else }}{{ .Summary | plainify }}{{ end }}</p>
+          <p>
+          <a href="{{ .RelPermalink }}" style="font-weight:bold; text-decoration: underline;">
+            Read more →
+          </a>
         {{- end -}}
       </article>
     {{- end -}}
