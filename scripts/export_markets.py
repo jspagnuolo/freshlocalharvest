@@ -3,7 +3,7 @@ import re, json, pathlib, sys
 import httpx
 
 # Point to your PHP proxy (no trailing slash)
-API_BASE = "https://api.freshlocalharvest.org/api/usda.php"
+API_BASE = "https://solitary-night-c65e.digitalimages.workers.dev"  # <- your Worker URL (no trailing slash)
 
 # State centers to sweep the US coarsely
 states = {
