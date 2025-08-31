@@ -21,3 +21,7 @@ __pycache__/
 # venv + dotenv
 .venv/
 .env
+
+# Ignore DB files, keep folder
+db/*.db
+!db/.gitkeep
