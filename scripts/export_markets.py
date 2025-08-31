@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import re, json, pathlib
+import re, json, pathlib, sys
 import httpx
 
 # Point to your PHP proxy (no trailing slash)
@@ -26,51 +26,69 @@ states = {
   "WI": (44.268543,-89.616508), "WY": (42.755966,-107.302490), "DC": (38.9072, -77.0369),
 }
 
+UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
+DEFAULT_HEADERS = {
+    "User-Agent": UA,
+    "Accept": "application/json,text/plain,*/*",
+    "Origin": "https://freshlocalharvest.org",
+    "Referer": "https://freshlocalharvest.org/",
+}
+
 def strip_distance(name: str) -> str:
-    # USDA locSearch marketname may start with "2.4 Market Name"
     return re.sub(r"^\s*\d+(?:\.\d+)?\s+", "", name or "").strip()
 
 def parse_latlon_from_google_link(link: str):
-    # Example: http://maps.google.com/?q=39.1234%2C-77.5678
     if not link:
         return None, None
-    m = re.search(r"[?&]q=([\-0-9\.]+)%2C([\-0-9\.]+)", link)
-    if not m:
-        m = re.search(r"[?&]q=([\-0-9\.]+),([\-0-9\.]+)", link)
+    m = re.search(r"[?&]q=([\-0-9\.]+)%2C([\-0-9\.]+)", link) or re.search(r"[?&]q=([\-0-9\.]+),([\-0-9\.]+)", link)
     try:
-        return float(m.group(1)), float(m.group(2)) if m else (None, None)
+        return (float(m.group(1)), float(m.group(2))) if m else (None, None)
     except Exception:
         return None, None
 
 def split_city_state_zip(address: str):
-    # Very loose parser: "... City, ST 12345"
     if not address or "," not in address:
         return None, None, None
     parts = [p.strip() for p in address.split(",")]
     last = parts[-1] if parts else ""
     m = re.search(r"([A-Z]{2})\s+(\d{5})", last)
-    state = m.group(1) if m else None
-    zipc = m.group(2) if m else None
-    city = parts[-2] if len(parts) >= 2 else None
-    return city, state, zipc
+    return (parts[-2] if len(parts) >= 2 else None,
+            m.group(1) if m else None,
+            m.group(2) if m else None)
 
-def fetch_json(client, path, params=None):
-    # Build query with `path` param (PHP proxy expects it)
+def fetch_json(client: httpx.Client, path: str, params=None):
     q = dict(params or {})
     q["path"] = path
-    headers = {
-        "Accept": "application/json",
-        "User-Agent": "FLH/1.0 (+https://freshlocalharvest.org)",
-    }
-    r = client.get(API_BASE, params=q, headers=headers)
-    r.raise_for_status()
-    return r.json()
+    try:
+        r = client.get(API_BASE, params=q, headers=DEFAULT_HEADERS)
+        # If remote returns 4xx/5xx, dump debug and raise
+        if r.status_code >= 400:
+            print(f"[DEBUG] {r.status_code} on {r.request.url}")
+            print("[DEBUG] Response headers:")
+            for k, v in r.headers.items():
+                print(f"  {k}: {v}")
+            body = r.text
+            print("[DEBUG] Body (first 500 chars):")
+            print(body[:500])
+            r.raise_for_status()
+        return r.json()
+    except httpx.HTTPError as e:
+        print(f"[ERROR] Request failed for {path} with params={q}: {e}")
+        raise
 
 def main():
     seen = set()
     items = []
 
     with httpx.Client(timeout=30, follow_redirects=True) as client:
+        # Probe once (AL) before sweeping—gives us headers if blocked
+        try:
+            _probe = fetch_json(client, "locSearch", {"lat": 32.806671, "lng": -86.791130})
+            print("[DEBUG] Probe OK, continuing sweep…")
+        except Exception:
+            print("[DEBUG] Probe failed—stopping so logs show the cause.")
+            sys.exit(1)
+
         for abbr, (lat, lon) in states.items():
             payload = fetch_json(client, "locSearch", {"lat": lat, "lng": lon})
             results = payload.get("results") or payload.get("items") or []
@@ -79,19 +97,14 @@ def main():
                 market_name = strip_distance(row.get("marketname") or row.get("name") or "Market")
                 if not market_id:
                     continue
-
                 detail = fetch_json(client, "mktDetail", {"id": market_id})
                 md = detail.get("marketdetails") or {}
-                g_link = md.get("GoogleLink") or ""
-                lat2, lon2 = parse_latlon_from_google_link(g_link)
-                address = md.get("Address") or ""
-                city, state, zipc = split_city_state_zip(address)
-
+                lat2, lon2 = parse_latlon_from_google_link(md.get("GoogleLink") or "")
+                city, state, zipc = split_city_state_zip(md.get("Address") or "")
                 key = (market_name, lat2, lon2)
                 if lat2 is None or lon2 is None or key in seen:
                     continue
                 seen.add(key)
-
                 items.append({
                     "name": market_name,
                     "lat": lat2, "lon": lon2,
