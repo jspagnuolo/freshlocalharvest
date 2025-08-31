@@ -16,6 +16,4 @@ Our mission:
 We’re developing this in the open. Follow along as we ship features, fix issues, and share what we learn.
 
 ## Latest from the Blog
-{{< blog-list section="blog" limit="8" show_summaries="true" >}}
 
-> Want deeper updates? Visit the full [Blog](/blog/).
