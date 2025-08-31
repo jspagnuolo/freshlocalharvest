@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-import os, json, httpx
+import os, re, json, pathlib
+import httpx
 
-API = os.environ.get("FLH_MARKETS_API", "http://127.0.0.1:8001/markets")
+API_BASE = "https://search.ams.usda.gov/farmersmarkets/v1/data.svc"
 
-# State centers (coarse), used to sweep the whole US quickly
+# State centers to sweep the US coarsely
 states = {
   "AL": (32.806671,-86.791130), "AK": (61.370716,-152.404419), "AZ": (33.729759,-111.431221),
   "AR": (34.969704,-92.373123), "CA": (36.116203,-119.681564), "CO": (39.059811,-105.311104),
@@ -24,34 +25,89 @@ states = {
   "WI": (44.268543,-89.616508), "WY": (42.755966,-107.302490), "DC": (38.9072, -77.0369),
 }
 
-seen = set()
-items = []
+# Optional key; USDA endpoints generally don’t require one, but we include it if provided.
+USDA_API_KEY = os.environ.get("USDA_API_KEY")
 
-with httpx.Client(timeout=30) as client:
-    for abbr, (lat, lon) in states.items():
-        params = {"radius": 200, "directory": "farmersmarket", "location": abbr, "x": lon, "y": lat}
-        r = client.get(API, params=params)
-        r.raise_for_status()
-        payload = r.json()
-        arr = payload.get("items") or []
-        for m in arr:
-            key = (m.get("name"), m.get("lat"), m.get("lon"))
-            if key in seen:
-                continue
-            seen.add(key)
-            try:
+def strip_distance(name: str) -> str:
+    # USDA locSearch marketname may start with "2.4 Market Name"
+    return re.sub(r"^\s*\d+(?:\.\d+)?\s+", "", name or "").strip()
+
+def parse_latlon_from_google_link(link: str):
+    # Example: http://maps.google.com/?q=39.1234%2C-77.5678
+    if not link:
+        return None, None
+    m = re.search(r"[?&]q=([\-0-9\.]+)%2C([\-0-9\.]+)", link)
+    if not m:
+        m = re.search(r"[?&]q=([\-0-9\.]+),([\-0-9\.]+)", link)
+    try:
+        return float(m.group(1)), float(m.group(2)) if m else (None, None)
+    except Exception:
+        return None, None
+
+def split_city_state_zip(address: str):
+    # Very loose parser: "... City, ST 12345"
+    if not address or "," not in address:
+        return None, None, None
+    parts = [p.strip() for p in address.split(",")]
+    last = parts[-1] if parts else ""
+    m = re.search(r"([A-Z]{2})\s+(\d{5})", last)
+    state = m.group(1) if m else None
+    zipc = m.group(2) if m else None
+    city = parts[-2] if len(parts) >= 2 else None
+    return city, state, zipc
+
+def fetch_json(client, path, params=None):
+    url = f"{API_BASE}/{path}"
+    headers = {"User-Agent": "FLH/1.0"}
+    if USDA_API_KEY:
+        headers["X-API-Key"] = USDA_API_KEY  # harmless if ignored
+        if params is None: params = {}
+        params.setdefault("api_key", USDA_API_KEY)
+    r = client.get(url, params=params or {}, headers=headers)
+    r.raise_for_status()
+    return r.json()
+
+def main():
+    seen = set()
+    items = []
+
+    with httpx.Client(timeout=30) as client:
+        for abbr, (lat, lon) in states.items():
+            # Nearby search around state "center"
+            payload = fetch_json(client, "locSearch", {"lat": lat, "lng": lon})
+            results = payload.get("results") or payload.get("items") or []
+            for row in results:
+                market_id = str(row.get("id") or "").strip()
+                market_name = strip_distance(row.get("marketname") or row.get("name") or "Market")
+                if not market_id:
+                    continue
+
+                detail = fetch_json(client, "mktDetail", {"id": market_id})
+                md = detail.get("marketdetails") or {}
+                g_link = md.get("GoogleLink") or ""
+                lat2, lon2 = parse_latlon_from_google_link(g_link)
+                address = md.get("Address") or ""
+                city, state, zipc = split_city_state_zip(address)
+
+                key = (market_name, lat2, lon2)
+                if lat2 is None or lon2 is None or key in seen:
+                    continue
+                seen.add(key)
+
                 items.append({
-                    "name": m.get("name") or "Market",
-                    "lat": float(m.get("lat")), "lon": float(m.get("lon")),
-                    "city": m.get("city"), "state": m.get("state"), "zip": m.get("zip"),
-                    "website": m.get("website"), "phone": m.get("phone")
+                    "name": market_name,
+                    "lat": lat2, "lon": lon2,
+                    "city": city, "state": state, "zip": zipc,
+                    "website": md.get("Website") or md.get("Facebook") or None,
+                    "phone": md.get("Phone") or None,
+                    "source_id": market_id,
                 })
-            except Exception:
-                pass
 
-print("deduped items:", len(items))
-out = "site/static/data/markets.json"
-os.makedirs(os.path.dirname(out), exist_ok=True)
-with open(out, "w") as f:
-    json.dump(items, f)
-print("wrote", len(items), "to", out)
+    print("deduped items:", len(items))
+    out = pathlib.Path("site/static/data/markets.json")
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(json.dumps(items), encoding="utf-8")
+    print("wrote", len(items), "to", str(out))
+
+if __name__ == "__main__":
+    main()
