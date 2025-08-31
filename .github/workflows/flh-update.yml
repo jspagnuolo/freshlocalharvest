@@ -28,18 +28,6 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
           pip install "httpx[http2]"
 
-      - name: Preflight: plain curl
-        run: curl -iS "https://api.freshlocalharvest.org/api/usda.php?path=locSearch&lat=32.806671&lng=-86.79113" || true
-
-      - name: Preflight: browser-like curl
-        run: >
-          curl -iS
-          -H "User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
-          -H "Accept: application/json,text/plain,*/*"
-          -H "Referer: https://freshlocalharvest.org/"
-          -H "Origin: https://freshlocalharvest.org"
-          "https://api.freshlocalharvest.org/api/usda.php?path=locSearch&lat=32.806671&lng=-86.79113" || true
-
       - name: Export data from USDA Local Food Portal
         env:
           USDA_API_KEY: ${{ secrets.USDA_API_KEY }}
