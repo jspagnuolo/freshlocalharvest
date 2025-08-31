@@ -3,19 +3,6 @@
 __pycache__/
 *.pyc
 
-# raw ingest + db (top-level only)
-# (ignore /data at repo root, not Hugo's site/static/data)
-#/data/   <-- WRONG (too broad)
-data/
-db/
-data/**/raw/*
-data/**/processed/*
-db/*.db
-
-# allow Hugo's static data folder
-!site/static/data/
-!site/static/data/*.json
-
 # Binary blobs / archives
 *.zip
 *.tar.gz
@@ -25,14 +12,12 @@ db/*.db
 # Editors / OS
 .DS_Store
 *.swp
-!data/.gitkeep
-!db/.gitkeep
 
 # site build artifacts
 /site/public/
 /site/resources/
 /site/.hugo_build.lock
 
-# venv
+# venv + dotenv
 .venv/
 .env
