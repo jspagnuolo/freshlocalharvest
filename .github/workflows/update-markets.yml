@@ -30,6 +30,21 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
           pip install 'httpx[http2]'
 
+      # 👇 Debug step: makes curl calls so we can see real headers/status
+      - name: Preflight: call proxy like a browser
+        run: |
+          set -euo pipefail
+          echo "=== Plain curl ==="
+          curl -iS "https://api.freshlocalharvest.org/api/usda.php?path=locSearch&lat=32.806671&lng=-86.79113" || true
+          echo ""
+          echo "=== Browser-like curl ==="
+          curl -iS \
+            -H "User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36" \
+            -H "Accept: application/json,text/plain,*/*" \
+            -H "Referer: https://freshlocalharvest.org/" \
+            -H "Origin: https://freshlocalharvest.org" \
+            "https://api.freshlocalharvest.org/api/usda.php?path=locSearch&lat=32.806671&lng=-86.79113" || true
+
       - name: Export data from USDA Local Food Portal
         env:
           USDA_API_KEY: ${{ secrets.USDA_API_KEY }}
@@ -55,7 +70,6 @@ jobs:
                   return len(d["items"])
               if isinstance(d, list):
                   return len(d)
-              # Common fallbacks if shape differs
               for k in ("markets", "data", "results"):
                   v = d.get(k) if isinstance(d, dict) else None
                   if isinstance(v, list):
@@ -88,4 +102,3 @@ jobs:
           name: markets-db
           path: db/markets.db
           if-no-files-found: ignore
-
