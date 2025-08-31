@@ -1,22 +1,21 @@
 ---
 title: "Fresh Local Harvest"
-description: "Building a nationwide resource for farmers markets and fresh produce."
+description: "Building a nationwide resource for farmers markets, CSAs, and local food programs."
 ---
 
 # Fresh Local Harvest
 
-We’re building a community resource that makes it easier to discover **farmers markets, CSAs, and local food programs** across the United States.  
+We’re building a community resource that makes it easy to discover **farmers markets, CSAs, and local food programs** across the United States.
 
-Our mission:  
-- Keep market data accurate and up to date.  
-- Highlight seasonal produce and programs like SNAP.  
-- Provide a clear, searchable experience for anyone looking to connect with fresh food.  
+Our mission:
+- Keep market data accurate and up to date  
+- Highlight seasonal produce and programs like SNAP  
+- Offer a clear, searchable experience for connecting with fresh, local food
 
 🚧 **Work in Progress**  
-This project is actively being developed in the open. Things may look unfinished, and that’s intentional — we want to share the process transparently, including the challenges we face.  
+We’re developing this in the open. Follow along as we ship features, fix issues, and share what we learn.
 
-📖 **Follow Along**  
-We’re documenting progress and lessons learned on the [Blog](/blog). If you’d like to see how a project like this comes together, check in there for updates.  
-🌱 The **Map** feature (currently a dev preview) will soon let you explore markets interactively.  
+## Latest from the Blog
+{{< blog-list section="blog" limit="8" show_summaries="true" >}}
 
-<hr />
+> Want deeper updates? Visit the full [Blog](/blog/).
