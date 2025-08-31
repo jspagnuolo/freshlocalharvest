@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import os, re, json, pathlib
+import re, json, pathlib
 import httpx
 
 API_BASE = "https://search.ams.usda.gov/farmersmarkets/v1/data.svc"
@@ -23,6 +23,20 @@ states = {
   "TX": (31.054487,-97.563461), "UT": (40.150032,-111.862434), "VT": (44.045876,-72.710686),
   "VA": (37.769337,-78.169968), "WA": (47.400902,-121.490494), "WV": (38.491226,-80.954453),
   "WI": (44.268543,-89.616508), "WY": (42.755966,-107.302490), "DC": (38.9072, -77.0369),
+}
+
+BROWSER_HEADERS = {
+    # Emulate a modern browser; include Origin to satisfy some edge checks
+    "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
+                  "(KHTML, like Gecko) Chrome/124.0 Safari/537.36",
+    "Accept": "application/json,text/plain,*/*",
+    "Accept-Language": "en-US,en;q=0.9",
+    "Referer": "https://search.ams.usda.gov/",
+    "Origin": "https://search.ams.usda.gov",
+    "Connection": "keep-alive",
+    "Cache-Control": "no-cache",
+    "Pragma": "no-cache",
+    "Upgrade-Insecure-Requests": "1",
 }
 
 def strip_distance(name: str) -> str:
@@ -55,15 +69,7 @@ def split_city_state_zip(address: str):
 
 def fetch_json(client, path, params=None):
     url = f"{API_BASE}/{path}"
-    headers = {
-        # Browser-like headers seem to avoid 403s after HTTPS redirect.
-        "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36",
-        "Accept": "application/json,text/plain,*/*",
-        "Accept-Language": "en-US,en;q=0.9",
-        "Referer": "https://search.ams.usda.gov/",
-        "Connection": "keep-alive",
-    }
-    r = client.get(url, params=params or {}, headers=headers)
+    r = client.get(url, params=params or {}, headers=BROWSER_HEADERS)
     r.raise_for_status()
     return r.json()
 
