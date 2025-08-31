@@ -1,4 +1,9 @@
-name: Update markets data
+#!/usr/bin/env python3
+import re, json, pathlib
+import httpx
+
+# Point to your PHP proxy (no trailing slash)
+API_BASE = "https://api.freshlocalharvest.org/api/usda.php"
 
 on:
   schedule:
