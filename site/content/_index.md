@@ -1,37 +1,22 @@
 ---
 title: "Fresh Local Harvest"
-description: "Up-to-date info on farmers markets and seasonal produce."
+description: "Building a nationwide resource for farmers markets and fresh produce."
 ---
-**Fresh Local Harvest** helps you find farmers markets and fresh produce—fast.  
-This is the public site for the project. Explore the **Blog** for updates, and use **Map** to launch the interactive view (dev URL for now).
+
+# Fresh Local Harvest
+
+We’re building a community resource that makes it easier to discover **farmers markets, CSAs, and local food programs** across the United States.  
+
+Our mission:  
+- Keep market data accurate and up to date.  
+- Highlight seasonal produce and programs like SNAP.  
+- Provide a clear, searchable experience for anyone looking to connect with fresh food.  
+
+🚧 **Work in Progress**  
+This project is actively being developed in the open. Things may look unfinished, and that’s intentional — we want to share the process transparently, including the challenges we face.  
+
+📖 **Follow Along**  
+We’re documenting progress and lessons learned on the [Blog](/blog). If you’d like to see how a project like this comes together, check in there for updates.  
+🌱 The **Map** feature (currently a dev preview) will soon let you explore markets interactively.  
+
 <hr />
-
-<div id="api-status" style="font:14px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; margin-top:1rem;">
-  <strong>API:</strong> <span id="api-status-text">checking…</span>
-</div>
-
-<script>
-  // why: avoid breaking static export; run only when served from localhost (true dev)
-  (function () {
-    var isDevHost = (location.hostname === 'localhost' || location.hostname === '127.0.0.1');
-    if (!isDevHost) {
-      // Production or preview: keep UI but mark as inactive
-      var t = document.getElementById('api-status-text');
-      if (t) t.textContent = 'inactive (dev only)';
-      return;
-    }
-
-    var t = document.getElementById('api-status-text');
-    var controller = new AbortController();
-    var timeout = setTimeout(function(){ controller.abort(); }, 3000);
-
-    fetch('http://127.0.0.1:8001/health', { signal: controller.signal })
-      .then(function(res){ clearTimeout(timeout); return res.ok ? res.json() : Promise.reject(new Error('HTTP '+res.status)); })
-      .then(function(json){
-        if (t) t.textContent = 'OK';
-      })
-      .catch(function(err){
-        if (t) t.textContent = 'unreachable (start API on :8001)';
-      });
-  })();
-</script>
