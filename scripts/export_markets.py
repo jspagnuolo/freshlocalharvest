@@ -2,7 +2,7 @@
 import os, re, json, pathlib
 import httpx
 
-API_BASE = "https://search.ams.usda.gov/farmersmarkets/v1/data.svc"
+API_BASE = "http://search.ams.usda.gov/farmersmarkets/v1/data.svc"
 
 # State centers to sweep the US coarsely
 states = {
