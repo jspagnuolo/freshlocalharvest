@@ -1,0 +1,31 @@
+# File: ingest/config/export_profiles.yml
+map:
+  path: site/static/data/markets.map.json
+  fields:
+    - listing_id
+    - listing_name
+    - longitude
+    - latitude
+    - city
+    - state
+    - program_snap
+
+search:
+  path: site/static/data/markets.search.json
+  fields:
+    - listing_id
+    - listing_name
+    - city
+    - state
+    - zip
+    - program_snap
+    - program_wic
+    - program_wic_fmnp
+    - program_senior_fmnp
+    - program_incentives
+    - snap_central_booth
+    - snap_vendor_pos
+
+full:
+  path: data/processed/markets.full.parquet
+  fields: ["*"]

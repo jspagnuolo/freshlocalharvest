@@ -1,71 +1,83 @@
+# File: Makefile
 SHELL := /bin/bash
 .ONESHELL:
 
+# --- Virtualenv & tools -------------------------------------------------------
 VENV    := .venv
 PY      := $(VENV)/bin/python3
 PIP     := $(VENV)/bin/pip
-UVICORN := $(VENV)/bin/uvicorn
 PYTEST  := $(VENV)/bin/pytest
-PORT    ?= 8001
 
-# Ensure Python sees the src/ layout
-PYENV := PYTHONPATH=src
+# --- Options ------------------------------------------------------------------
+RAW     ?=                              # optional: path to USDA Excel for staging
+CLI     := $(PY) -m ingest.scripts.cli  # Typer CLI entrypoint for the new pipeline
 
-.PHONY: deps ingest injest serve test smoke enrich
+.PHONY: deps stage run validate export ingest injest test site-build update-data site-stop site-dev
 
+# -----------------------------------------------------------------------------
+# Dependencies
+# -----------------------------------------------------------------------------
 deps:
 	python3 -m venv $(VENV)
+	$(PIP) install --upgrade pip
 	$(PIP) install -r requirements.txt
 
-ingest:
-	$(PY) src/ingest/ingest_ams_farmersmarket.py
-	@echo -n "markets_usda rows: "
-	@sqlite3 db/markets.db 'SELECT COUNT(*) FROM markets_usda;'
+# -----------------------------------------------------------------------------
+# New Excel → JSON pipeline (preferred)
+# -----------------------------------------------------------------------------
+# Stage a freshly downloaded USDA Excel into data/raw/ with checksum in filename
+stage:
+	@if [ -z "$(RAW)" ]; then \
+	  echo "Usage: make stage RAW=/absolute/path/to/usda_download.xlsx"; \
+	  exit 2; \
+	fi
+	$(CLI) stage-raw "$(RAW)"
 
-# alias for fat-finger muscle memory
+# Run the full pipeline (ingest → map programs → validate → export → manifest)
+run:
+	@if [ -n "$(RAW)" ]; then \
+	  $(CLI) run --raw "$(RAW)"; \
+	else \
+	  $(CLI) run; \
+	fi
+
+# Validate only (quick sanity checks; writes rejects.csv)
+validate:
+	$(CLI) validate
+
+# Export from a pre-staged parquet (advanced)
+export:
+	$(CLI) export
+
+# -----------------------------------------------------------------------------
+# Back-compat targets (keep muscle memory working)
+# -----------------------------------------------------------------------------
+# Legacy "ingest" now routes to the new pipeline
+ingest:
+	@echo "[info] 'make ingest' now uses the Excel pipeline (see 'make run')."
+	$(MAKE) run
+
+# Alias for fat-finger muscle memory
 injest: ingest
 
-serve:
-	@if lsof -tiTCP:$(PORT) -sTCP:LISTEN >/dev/null; then \
-	  echo "Port $(PORT) is busy. Run 'make stop' first."; exit 1; \
-	fi
-	$(UVICORN) --app-dir src api.app:app --reload --port $(PORT)
-
 test:
-	$(PYENV) $(PYTEST) -q
+	$(PY) -m pytest -q
 
-smoke:
-	scripts/ops/smoke.sh http://127.0.0.1:$(PORT)
-
-# placeholder for SNAP join later
-enrich:
-	@echo "No enrich step yet."
-
-.PHONY: stop restart status
-
-stop:
-	- pkill -f 'uvicorn .* --port $(PORT)' || true
-	- PIDS="$$(lsof -tiTCP:$(PORT) -sTCP:LISTEN)"; \
-	  if [ -n "$$PIDS" ]; then kill $$PIDS || true; fi
-	@sleep 1
-	@echo "Stopped anything on :$(PORT) (if it was running)."
-
-restart: stop
-	$(MAKE) serve
-
-status:
-	@lsof -nP -iTCP:$(PORT) -sTCP:LISTEN || true
-	
-# --- Hugo site ---------------------------------------------------------------
-
-
+# -----------------------------------------------------------------------------
+# Hugo site
+# -----------------------------------------------------------------------------
 site-build:
 	# why: reproduce CI build locally; publishes to site/public
 	cd site && hugo --gc --minify --environment production
 
+# Update site data files.
+# If RAW is provided, this will stage then run; otherwise it runs using the latest staged Excel.
 update-data:
-	. .venv/bin/activate && \
-	python3 scripts/export_markets.py
+	@if [ -n "$(RAW)" ]; then \
+	  $(MAKE) stage RAW="$(RAW)"; \
+	fi
+	$(MAKE) run
+	@ls -lh site/static/data/markets.map.json site/static/data/markets.search.json || true
 
 site-stop:
 	- pkill -f "hugo server.*1313" || true

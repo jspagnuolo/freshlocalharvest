@@ -1,58 +1,123 @@
-# Fresh Local Harvest
+<!-- File: README.md -->
+# Fresh Local Harvest — Data Pipeline & Site
 
-Static site (Hugo) + tiny API proxy used during data export. The production site is deployed on **Cloudflare Pages** and reads prebuilt JSON (`site/static/data/markets.json`) for the map.
+Static site (Hugo) + a **local ingest pipeline** that converts the manually downloaded USDA Excel file into small, app-ready JSON artifacts for the map/search UI. The production site is deployed on **Cloudflare Pages** and reads prebuilt JSON from `site/static/data/`.
+
+> **Status (Sept 2025):** The FastAPI proxy has been removed. This repository now focuses solely on the Excel ingest pipeline that ships JSON/Parquet artifacts.
 
 ---
 
 ## Prereqs
 
 - **Python 3.11+**
-- **Hugo** (extended)
-- Local dev uses Make targets (see below)
+- **Hugo (extended)**
+- Recommended: a fresh virtualenv for this repo.
 
-## Quick Start (Local)
+## Quick Start
 
-```bash
-# 1) Create venv and install deps
-python3.11 -m venv .venv
-. .venv/bin/activate
-pip install --upgrade pip
-pip install -r requirements.txt "httpx[http2]"
+    # 0) Setup
+    python3.11 -m venv .venv
+    . .venv/bin/activate
+    pip install --upgrade pip
+    pip install -r requirements.txt
 
-# 2) Start the API (only needed when exporting data)
-export USDA_API_KEY='YOUR_REAL_KEY'
-make restart
-curl -s http://127.0.0.1:8001/health  # -> has_key: true
+    # 1) Stage the Excel you downloaded from the USDA site
+    python -m ingest.scripts.cli stage-raw /path/to/usda_download.xlsx
+    # -> copies to data/raw/farmersmarket_YYYY-MM-DD_sha256=<digest>.xlsx
 
-# 3) Export markets.json for the site
-make update-data
-ls -lh site/static/data/markets.json
+    # 2) Run the full pipeline (ingest → map programs → validate → export → manifest)
+    python -m ingest.scripts.cli run
 
-# 4) Preview the site
-make site-dev
-# open http://localhost:1313/map/
+    # 3) Verify outputs
+    ls -lh site/static/data/markets.map.json
+    ls -lh site/static/data/markets.search.json
+    ls -lh data/processed/markets.full.parquet
+    cat data/processed/manifest.json | jq .
 
-## Data Refresh
+    # 4) Preview the site locally (Hugo)
+    # If you already have a Make target, use it; otherwise:
+    hugo server -s site -D
+    # open http://localhost:1313/map/
 
-This project pulls farmers market data from the USDA Local Food Portal API.
+If you prefer Make targets, this repo includes:
 
-### Regenerating the Database
-The SQLite DB (`db/markets.db`) is **not tracked in Git** to keep the repo clean.  
-If you need to regenerate it:
+    make stage RAW=/path/to/usda_download.xlsx
+    make run
+    make validate
+    make export
 
-```bash
-# Activate venv
-. .venv/bin/activate
+---
 
-# Set your USDA API key
-export USDA_API_KEY='your_key_here'
+## What the pipeline produces
 
-# Restart the API
-make restart
+- **site/static/data/markets.map.json**  
+  Minimal fields for fast map rendering: `listing_id`, `listing_name`, `longitude`, `latitude`, `city`, `state`, `program_snap`.
 
-# Export data to db/markets.db and site/static/data/markets.json
-make update-data
+- **site/static/data/markets.search.json**  
+  Fields used by search/filters (SNAP/WIC/FMNP/incentives, SNAP acceptance mode, location facets).
 
-## Status (Aug 2025): Paused — USDA TLS cert expired
-USDA endpoint `https://search.ams.usda.gov/farmersmarkets/` presents an expired/invalid chain (expired Mar 22, 2025).
-Automation is paused. Once fixed, we’ll switch the exporter to a Cloudflare Worker proxy and re-enable cron.
+- **data/processed/markets.full.parquet**  
+  The cleaned canonical table for analysis (keep this out of the site bundle).
+
+- **data/staging/rejects.csv**  
+  Any rows excluded by validation, with reason codes.
+
+- **data/processed/manifest.json**  
+  Provenance (source filename + SHA256), record counts, and export paths.
+
+---
+
+## Config-driven behavior (edit without touching code)
+
+- **ingest/config/schema.yml**  
+  - Required columns  
+  - Column renames (e.g., `location_x → longitude`, `orgnization → organization`)  
+  - Type coercions (datetime/float/bool/string)
+
+- **ingest/config/mapping_programs.yml**  
+  - Maps USDA flags to canonical program fields:  
+    `FNAP_1→program_wic`, `FNAP_2→program_snap`, `FNAP_3→program_incentives`, `FNAP_4→program_wic_fmnp`, `FNAP_5→program_senior_fmnp`  
+  - Promotes SNAP acceptance details: `snap_acceptance`, `snap_central_booth`, `snap_vendor_pos`  
+  - Preserves raw text fields: `programs_raw`, `program_incentives_desc`
+
+- **ingest/config/export_profiles.yml**  
+  - Which fields go into each artifact and where they’re written on disk.
+
+> **Compatibility note:** If your current map code still expects `site/static/data/markets.json`, either (a) update it to read `markets.map.json` + `markets.search.json`, or (b) add an extra export profile writing a compatibility JSON at `site/static/data/markets.json`.
+
+---
+
+## Validation (what we check)
+
+- Required fields present: `listing_id`, `listing_name`, `location_address`, `longitude`, `latitude`  
+- Coordinate bounds (`lon ∈ [-180,180]`, `lat ∈ [-90,90]`)  
+- Duplicate `listing_id` (first wins; dupes sent to `rejects.csv`)  
+- Clean booleans from USDA 0/1/NaN to true/false  
+- State normalization (2-letter uppercase when provided)
+
+---
+
+## Directory layout (high-level)
+
+    ingest/
+      config/                    # YAML configs (schema, mappings, export profiles)
+      scripts/                   # CLI + step scripts (stage, ingest, map, validate, export)
+    data/
+      raw/                       # timestamped Excel drops (staged)
+      staging/                   # rejects, intermediate
+      processed/                 # parquet + manifest
+    site/
+      static/data/               # JSON artifacts consumed by the Hugo site
+
+---
+
+## Troubleshooting
+
+- **“Missing required columns” on run**  
+  Ensure you downloaded the correct Excel and didn’t open/save it with altered headers. Check `ingest/config/schema.yml` and update mappings if USDA changes column names.
+
+- **Rows land in `rejects.csv`**  
+  Open the file and review the `_reject_reason` column (e.g., `missing:latitude;bad:longitude;dup:listing_id;`).
+
+- **Site can’t find JSON**  
+  Confirm the files exist at `site/static/data/`. If your map still reads `markets.json`, switch to `markets.map.json` or add a compatibility export in `export_profiles.yml`.

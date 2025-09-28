@@ -1,38 +1,172 @@
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin>
-<style>#map{height:60vh;width:100%}</style>
+<!-- File: site/layouts/shortcodes/flhmap.html -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<style>
+  .flh-wrap{max-width:1100px;margin:0 auto}
+  .flh-controls{display:flex;gap:.5rem;align-items:center;margin:1rem 0}
+  .flh-search{flex:1;padding:.6rem .8rem;border:1px solid #ddd;border-radius:.6rem}
+  .flh-clear{padding:.55rem .8rem;border:1px solid #ddd;border-radius:.6rem;background:#fff;cursor:pointer}
+  .flh-count{font-size:.9rem;opacity:.75;margin-left:.25rem}
+  #flh-map{height:560px;border-radius:1rem;border:1px solid #eee;overflow:hidden}
+  @media (max-width:700px){#flh-map{height:420px}}
 
-<div id="map" data-src='{{ default "data/markets.json" (.Get "src") | relURL }}'></div>
+  .snap-pill{display:inline-block;margin-top:.25rem;padding:.15rem .4rem;font-size:.75rem;border-radius:.4rem;background:#e7f5e7;border:1px solid #b9e0b9}
+</style>
 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin data-cfasync="false"></script>
-<script data-cfasync="false">
-document.addEventListener('DOMContentLoaded', () => {
-  // Guard against double-init (Hugo hot reload)
-  if (window.__flhMap) { window.__flhMap.remove?.(); }
+<div class="flh-wrap">
+  <div class="flh-controls">
+    <input id="flh-q" class="flh-search" type="search" placeholder="Search markets by name, city, state, or ZIP…" autocomplete="off">
+    <button id="flh-clear" class="flh-clear" type="button">Clear</button>
+    <span id="flh-count" class="flh-count" aria-live="polite"></span>
+  </div>
+  <div id="flh-map"></div>
+</div>
 
-  const el = document.getElementById('map');
-  const url = el?.dataset?.src;
-  if (!el || !url) return console.error('Map init aborted: missing #map or data-src');
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script>
+(function(){
+  const MAP_ID = "flh-map";
 
-  // Base tiles (no token required)
-  window.__flhMap = L.map('map').setView([27.95,-82.46], 9);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution:'© OSM' }).addTo(window.__flhMap);
+  // Hugo params (normalized below)
+  const MAP_URL_RAW    = {{ (.Get "data"   | default "/data/markets.map.json")   | jsonify }};
+  const SEARCH_URL_RAW = {{ (.Get "search" | default "/data/markets.search.json") | jsonify }};
 
-  // Fetch data safely, log errors to console
-  fetch(url).then(r => {
-    if (!r.ok) throw new Error(`Fetch failed ${r.status}: ${url}`);
-    return r.json();
-  }).then(data => {
-    const rows = Array.isArray(data) ? data : (data.markets || data.items || []);
-    let count = 0;
-    rows.forEach(m => {
-      const lat = +(m.lat ?? m.latitude);
-      const lon = +(m.lon ?? m.lng ?? m.longitude);
-      if (Number.isFinite(lat) && Number.isFinite(lon)) {
-        L.marker([lat,lon]).addTo(window.__flhMap).bindPopup(m.name || m.marketname || 'Market');
-        count++;
+  function normalizeUrl(u){
+    if (u == null) return "";
+    u = String(u).trim().replace(/^["']+|["']+$/g, "");
+    if (!u.startsWith("/")) u = "/" + u;
+    return u;
+  }
+  const MAP_URL    = normalizeUrl(MAP_URL_RAW);
+  const SEARCH_URL = normalizeUrl(SEARCH_URL_RAW);
+
+  // US states map for search synonyms (lowercased)
+  const STATES = {
+    "alabama":"AL","alaska":"AK","arizona":"AZ","arkansas":"AR","california":"CA","colorado":"CO","connecticut":"CT","delaware":"DE",
+    "district of columbia":"DC","florida":"FL","georgia":"GA","hawaii":"HI","idaho":"ID","illinois":"IL","indiana":"IN","iowa":"IA",
+    "kansas":"KS","kentucky":"KY","louisiana":"LA","maine":"ME","maryland":"MD","massachusetts":"MA","michigan":"MI","minnesota":"MN",
+    "mississippi":"MS","missouri":"MO","montana":"MT","nebraska":"NE","nevada":"NV","new hampshire":"NH","new jersey":"NJ",
+    "new mexico":"NM","new york":"NY","north carolina":"NC","north dakota":"ND","ohio":"OH","oklahoma":"OK","oregon":"OR",
+    "pennsylvania":"PA","rhode island":"RI","south carolina":"SC","south dakota":"SD","tennessee":"TN","texas":"TX","utah":"UT",
+    "vermont":"VT","virginia":"VA","washington":"WA","west virginia":"WV","wisconsin":"WI","wyoming":"WY","puerto rico":"PR"
+  };
+  const STATE_BY_CODE = Object.fromEntries(Object.values(STATES).map(c => [c, c]));
+
+  // Helpers
+  const pick = (obj, keys) => { for (const k of keys) if (obj && obj[k] != null) return obj[k]; return null; };
+  const toNum = v => { const n = Number(v); return Number.isFinite(n) ? n : NaN; };
+  const clampUS = (lat, lng) => (lat >= 18 && lat <= 72 && lng <= -50 && lng >= -170);
+
+  // Extractors (tolerate old/new schemas)
+  const getLat  = r => toNum(pick(r, ["lat","latitude","Latitude","Y","y"]));
+  const getLng  = r => toNum(pick(r, ["lng","lon","longitude","Longitude","X","x"]));
+  const getId   = r => String(pick(r, ["listing_id","id","ID"])||"").trim();
+  const getName = r => String(pick(r, ["listing_name","ListingName","market_name","MarketName","name","Name"])||"").trim();
+  const getCity = r => String(pick(r, ["city","City","market_city"])||"").trim();
+  const getState= r => String(pick(r, ["state","State","market_state"])||"").trim().toUpperCase();
+  const getZip  = r => String(pick(r, ["zip","Zip","zip_code","ZIP"])||"").trim();
+  const hasSNAP = r => Boolean(pick(r, ["program_snap","snap","SNAP"]));
+
+  const map = L.map(MAP_ID, { scrollWheelZoom: false });
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:19, attribution:'&copy; OSM'}).addTo(map);
+  map.setView([39.5, -98.35], 4); // USA-ish default
+
+  const markers = [];
+  const group = L.featureGroup().addTo(map);
+
+  const $q = document.getElementById('flh-q');
+  const $clear = document.getElementById('flh-clear');
+  const $count = document.getElementById('flh-count');
+  const debounce = (fn, ms=150) => { let t; return (...a)=>{ clearTimeout(t); t=setTimeout(()=>fn(...a), ms); }; };
+
+  function renderCount(n, total){ $count.textContent = total ? `${n} of ${total}` : ''; }
+
+  // Build a searchable “haystack” string for each record
+  function buildHay(rec){
+    const city = getCity(rec);
+    const st   = getState(rec); // 2-letter
+    const stName = Object.entries(STATES).find(([,code]) => code === st)?.[0] || "";
+    const zip  = getZip(rec);
+    const name = getName(rec);
+    return [name, city, st, stName, zip].filter(Boolean).join(" ").toLowerCase();
+  }
+
+  // Normalize the query: if a token is a full state name, add its 2-letter code too
+  function normalizeQuery(q){
+    const parts = (q||"").toLowerCase().split(/\s+/).filter(Boolean);
+    const extra = [];
+    for (const p of parts){
+      if (STATES[p]) extra.push(STATES[p]);
+    }
+    return parts.concat(extra);
+  }
+
+  function applyFilter(query){
+    const tokens = normalizeQuery(query);
+    group.clearLayers();
+    let shown = 0;
+
+    for (const {rec, marker, hay} of markers){
+      const ok = !tokens.length || tokens.every(t => hay.includes(t));
+      if (ok){ group.addLayer(marker); shown++; }
+    }
+
+    if (shown){
+      try { map.fitBounds(L.featureGroup(group.getLayers()).getBounds().pad(0.08)); } catch(e){}
+    }
+    renderCount(shown, markers.length);
+
+    const url = new URL(location);
+    const q = (query||"").trim();
+    if (q) url.searchParams.set('q', q); else url.searchParams.delete('q');
+    history.replaceState(null,'',url);
+  }
+  const applyFilterDebounced = debounce(applyFilter, 150);
+
+  // Load both datasets (map coords + search fields)
+  Promise.all([
+    fetch(MAP_URL,    { cache: 'no-store' }).then(r => r.json()),
+    fetch(SEARCH_URL, { cache: 'no-store' }).then(r => r.json())
+  ]).then(([mapData, searchData]) => {
+    const mapRows = Array.isArray(mapData) ? mapData : (mapData.rows || mapData.data || []);
+    const searchRows = Array.isArray(searchData) ? searchData : (searchData.rows || searchData.data || []);
+
+    // Index search rows by id for richer popups if needed later
+    const byId = new Map();
+    for (const s of searchRows){ byId.set(getId(s), s); }
+
+    for (const rec of mapRows){
+      let lat = getLat(rec), lng = getLng(rec);
+
+      // Fix obvious swaps: if lng is positive or lat is out-of-US but swap lands in US bounds
+      if (!clampUS(lat, lng) && clampUS(lng, lat)){
+        const tmp = lat; lat = lng; lng = tmp;
       }
-    });
-    if (!count) console.warn('No valid rows with lat/lon found in', url, data);
-  }).catch(err => console.error('Map data error:', err));
-});
+      if (!Number.isFinite(lat) || !Number.isFinite(lng) || !clampUS(lat, lng)) continue;
+
+      const name = getName(rec) || 'Farmers Market';
+      const city = getCity(rec), state = getState(rec), zip = getZip(rec);
+      const subtitle = [city, state, zip].filter(Boolean).join(', ');
+      const snapBadge = hasSNAP(rec) ? '<div class="snap-pill">SNAP/EBT Accepted</div>' : '';
+
+      const popup = `<strong>${name}</strong><br><small>${subtitle}</small>${snapBadge}`;
+      const m = L.marker([lat, lng]).bindPopup(popup);
+
+      markers.push({ rec, marker: m, hay: buildHay(rec) });
+    }
+
+    renderCount(0, markers.length); // show total count
+
+    // Only render after a query (avoid dumping thousands of markers initially)
+    const q0 = new URL(location).searchParams.get('q') || '';
+    if (q0){ $q.value = q0; applyFilter(q0); }
+
+  }).catch(() => {
+    map.setView([39.5, -98.35], 4);
+    renderCount(0, 0);
+  });
+
+  $q.addEventListener('input', e => applyFilterDebounced(e.target.value));
+  $clear.addEventListener('click', ()=>{ $q.value=''; applyFilter(''); $q.focus(); });
+  $q.addEventListener('keydown', e => { if (e.key === 'Enter'){ const first = group.getLayers()[0]; if (first) first.openPopup(); }});
+})();
 </script>
