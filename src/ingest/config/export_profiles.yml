@@ -4,20 +4,34 @@ map:
   fields:
     - listing_id
     - listing_name
+    - organization
+    - street
     - longitude
     - latitude
+    - full_address
     - city
     - state
+    - zip
+    - location_desc
+    - listing_desc
+    - snap_acceptance
     - program_snap
+    - snap_central_booth
+    - snap_vendor_pos
 
 search:
   path: site/static/data/markets.search.json
   fields:
     - listing_id
     - listing_name
+    - organization
+    - street
     - city
     - state
     - zip
+    - full_address
+    - longitude
+    - latitude
     - program_snap
     - program_wic
     - program_wic_fmnp
@@ -25,6 +39,11 @@ search:
     - program_incentives
     - snap_central_booth
     - snap_vendor_pos
+    - snap_acceptance
+    - search_city
+    - search_state
+    - search_zip
+    - search_haystack
 
 full:
   path: data/processed/markets.full.parquet

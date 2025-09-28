@@ -11,6 +11,7 @@ from ingest.scripts.ingest_excel import ingest_excel
 from ingest.scripts.map_programs import map_program_flags
 from ingest.scripts.validate import basic_validate
 from ingest.scripts.export_artifacts import export_from_profile
+from ingest.scripts.enrich import enrich_markets
 
 APP = typer.Typer(help="Fresh Local Harvest data pipeline.")
 
@@ -51,17 +52,20 @@ def cmd_run(raw: str = typer.Option(None, help="Optional raw file path to use (d
     # 2) Map programs
     df = map_program_flags(df, MAPPING)
 
-    # 3) Validate (split valid/rejects)
+    # 3) Enrich with normalized address + search helpers
+    df = enrich_markets(df)
+
+    # 4) Validate (split valid/rejects)
     valid, rejects = basic_validate(df)
 
     STAGE_DIR.mkdir(parents=True, exist_ok=True)
     rejects_path = STAGE_DIR / "rejects.csv"
     rejects.to_csv(rejects_path, index=False)
 
-    # 4) Export
+    # 5) Export
     exports = export_from_profile(valid, EXPORTS)
 
-    # 5) Manifest
+    # 6) Manifest
     manifest = {
         "schema_version": "1.0.0",
         "source_file": str(raw_path),
@@ -84,6 +88,7 @@ def cmd_validate():
     raw_path = _latest_raw()
     df = ingest_excel(str(raw_path), SCHEMA)
     df = map_program_flags(df, MAPPING)
+    df = enrich_markets(df)
     valid, rejects = basic_validate(df)
     typer.echo(f"valid={len(valid)} rejects={len(rejects)}")
 

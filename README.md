@@ -51,10 +51,10 @@ If you prefer Make targets, this repo includes:
 ## What the pipeline produces
 
 - **site/static/data/markets.map.json**  
-  Minimal fields for fast map rendering: `listing_id`, `listing_name`, `longitude`, `latitude`, `city`, `state`, `program_snap`.
+  Marker-friendly payload used by the Hugo map. Includes name, organization, geocode, full address pieces, location descriptions, and high-level SNAP details.
 
 - **site/static/data/markets.search.json**  
-  Fields used by search/filters (SNAP/WIC/FMNP/incentives, SNAP acceptance mode, location facets).
+  Extended search index powering the UI filters. Contains the address parts, search tokens, program flags, and coordinates for list/map synchronization.
 
 - **data/processed/markets.full.parquet**  
   The cleaned canonical table for analysis (keep this out of the site bundle).

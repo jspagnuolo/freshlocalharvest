@@ -1,45 +1,131 @@
 <!-- File: site/layouts/shortcodes/flhmap.html -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 <style>
-  .flh-wrap{max-width:1100px;margin:0 auto}
-  .flh-controls{display:flex;gap:.5rem;align-items:center;margin:1rem 0}
-  .flh-search{flex:1;padding:.6rem .8rem;border:1px solid #ddd;border-radius:.6rem}
-  .flh-clear{padding:.55rem .8rem;border:1px solid #ddd;border-radius:.6rem;background:#fff;cursor:pointer}
-  .flh-count{font-size:.9rem;opacity:.75;margin-left:.25rem}
-  #flh-map{height:560px;border-radius:1rem;border:1px solid #eee;overflow:hidden}
-  @media (max-width:700px){#flh-map{height:420px}}
+  .flh-map-page{
+    margin:0;
+    padding:0;
+    background:#f3f4f6;
+  }
 
-  .snap-pill{display:inline-block;margin-top:.25rem;padding:.15rem .4rem;font-size:.75rem;border-radius:.4rem;background:#e7f5e7;border:1px solid #b9e0b9}
+  .flh-wrap{
+    max-width:1280px;
+    width:calc(100% - 4rem);
+    margin:0 auto;
+    padding:0 0 2.75rem;
+  }
+  @media (max-width:1024px){
+    .flh-wrap{width:calc(100% - 3rem);}
+  }
+  @media (max-width:768px){
+    .flh-wrap{width:100%;padding:0 1rem 2.5rem;}
+  }
+
+  .flh-controls{display:flex;flex-wrap:wrap;gap:1rem 1.25rem;align-items:flex-end;margin:0 0 1.1rem}
+  .flh-field{display:flex;flex-direction:column;gap:.35rem;min-width:160px;flex:1}
+  .flh-field label{font-size:.8rem;letter-spacing:.02em;font-weight:600;text-transform:uppercase;color:#6b7280}
+  .flh-input{padding:.6rem .8rem;border:1px solid #d2d6df;border-radius:.55rem;font-size:1rem;box-shadow:0 1px 2px rgba(15,23,42,.08) inset}
+  .flh-clear{align-self:flex-start;padding:.6rem 1rem;border:1px solid #d2d6df;border-radius:.6rem;background:#fff;cursor:pointer;font-weight:600;transition:background .15s,box-shadow .15s}
+  .flh-clear:hover{background:#f3f4f6;box-shadow:0 2px 6px rgba(15,23,42,.1)}
+  .flh-count{font-size:.9rem;opacity:.75;white-space:nowrap;margin-left:auto;padding-bottom:.4rem}
+  @media (max-width:768px){.flh-count{width:100%;margin-left:0;padding-bottom:0;order:99;text-align:right}}
+
+  .flh-content-frame{background:#f8f8f8;border-radius:1.5rem;box-shadow:0 28px 60px rgba(15,23,42,.12);padding:2.25rem 3rem;}
+  @media (max-width:1024px){.flh-content-frame{padding:2rem 2.5rem;}}
+  @media (max-width:768px){.flh-content-frame{padding:1.75rem 1.25rem;box-shadow:none;border-radius:0;background:transparent;width:100%;}}
+
+  .flh-layout{display:flex;align-items:flex-start;gap:2.25rem}
+  .flh-map-pane{flex:1 1 60%;min-width:0}
+  .flh-list-pane{flex:0 1 420px;min-width:300px;max-width:460px;max-height:650px;overflow:auto;border-radius:1rem;border:1px solid #e4e7ee;padding:1.1rem 1.25rem;background:#fff;box-shadow:0 12px 32px rgba(15,23,42,.12)}
+
+  #flh-map{width:100%;height:min(70vh,700px);min-height:420px;border-radius:1.1rem;border:1px solid #e4e7ee;overflow:hidden;box-shadow:0 18px 40px rgba(15,23,42,.18)}
+  @media (max-width:1150px){
+    .flh-layout{flex-direction:column;gap:1.75rem}
+    .flh-map-pane{flex:0 0 auto;width:100%;}
+    .flh-list-pane{width:100%;max-width:none;max-height:none}
+    #flh-map{height:65vh;min-height:360px}
+  }
+  @media (max-width:700px){
+    .flh-map-pane{flex:0 0 auto;width:100%;}
+    #flh-map{height:55vh;min-height:320px}
+  }
+
+  .flh-results{display:flex;flex-direction:column;gap:.85rem;margin:0;padding:0;list-style:none}
+  .flh-result{border:1px solid #e7e9f0;border-radius:.9rem;padding:.85rem 1rem;background:#fff;text-align:left;cursor:pointer;transition:box-shadow .15s,border-color .15s}
+  .flh-result:hover{box-shadow:0 6px 18px rgba(15,23,42,.1)}
+  .flh-result--active{border-color:#2a7f62;box-shadow:0 0 0 2px rgba(42,127,98,.2)}
+  .flh-result h3{margin:0;font-size:1rem;line-height:1.4}
+  .flh-result-address{margin:.35rem 0;font-size:.9rem;color:#4b5563}
+  .flh-result-desc{margin:.2rem 0 0;font-size:.85rem;color:#616d80}
+  .flh-badges{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.45rem}
+  .flh-badge{font-size:.72rem;padding:.18rem .45rem;border-radius:.4rem;background:#eef2ff;color:#31427a;font-weight:600}
+  .flh-results-message{font-size:.9rem;color:#4b5563;margin-bottom:.75rem}
+  .flh-results-hint{font-size:.85rem;color:#6b7280;margin-top:.5rem}
+
+  .snap-pill{display:inline-block;margin-top:.35rem;padding:.2rem .45rem;font-size:.75rem;border-radius:.4rem;background:#e7f5e7;border:1px solid #b9e0b9}
 </style>
 
 <div class="flh-wrap">
+  <div class="flh-content-frame">
   <div class="flh-controls">
-    <input id="flh-q" class="flh-search" type="search" placeholder="Search markets by name, city, state, or ZIP…" autocomplete="off">
-    <button id="flh-clear" class="flh-clear" type="button">Clear</button>
+    <div class="flh-field">
+      <label for="flh-city">City</label>
+      <input id="flh-city" class="flh-input" type="search" placeholder="e.g., Miami" autocomplete="off">
+    </div>
+    <div class="flh-field" style="max-width:120px">
+      <label for="flh-state">State</label>
+      <input id="flh-state" class="flh-input" type="text" placeholder="FL" maxlength="2" autocomplete="off">
+    </div>
+    <div class="flh-field" style="max-width:140px">
+      <label for="flh-zip">ZIP</label>
+      <input id="flh-zip" class="flh-input" type="search" placeholder="30303" inputmode="numeric" pattern="[0-9]*" maxlength="10" autocomplete="off">
+    </div>
+    <div class="flh-field">
+      <label for="flh-name">Market Name / Keyword</label>
+      <input id="flh-name" class="flh-input" type="search" placeholder="Market name or programs" autocomplete="off">
+    </div>
+    <button id="flh-clear" class="flh-clear" type="button">Clear Filters</button>
     <span id="flh-count" class="flh-count" aria-live="polite"></span>
   </div>
-  <div id="flh-map"></div>
+  <div class="flh-layout">
+    <div class="flh-map-pane"><div id="flh-map"></div></div>
+    <div class="flh-list-pane" aria-live="polite">
+      <div id="flh-list-message" class="flh-results-message"></div>
+      <div id="flh-results" class="flh-results" role="list"></div>
+      <div id="flh-results-hint" class="flh-results-hint"></div>
+    </div>
+  </div>
+  </div>
 </div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script>
 (function(){
   const MAP_ID = "flh-map";
+  const DEFAULT_CENTER = [39.5, -98.35];
+  const DEFAULT_ZOOM = 4;
+  const MAX_RESULTS = 200;
 
-  // Hugo params (normalized below)
   const MAP_URL_RAW    = {{ (.Get "data"   | default "/data/markets.map.json")   | jsonify }};
   const SEARCH_URL_RAW = {{ (.Get "search" | default "/data/markets.search.json") | jsonify }};
 
+  const $city = document.getElementById('flh-city');
+  const $state = document.getElementById('flh-state');
+  const $zip = document.getElementById('flh-zip');
+  const $name = document.getElementById('flh-name');
+  const $clear = document.getElementById('flh-clear');
+  const $count = document.getElementById('flh-count');
+  const $results = document.getElementById('flh-results');
+  const $message = document.getElementById('flh-list-message');
+  const $hint = document.getElementById('flh-results-hint');
+
   function normalizeUrl(u){
-    if (u == null) return "";
+    if (u == null) return '';
     u = String(u).trim().replace(/^["']+|["']+$/g, "");
-    if (!u.startsWith("/")) u = "/" + u;
-    return u;
+    return u.startsWith('/') ? u : `/${u}`;
   }
-  const MAP_URL    = normalizeUrl(MAP_URL_RAW);
+  const MAP_URL = normalizeUrl(MAP_URL_RAW);
   const SEARCH_URL = normalizeUrl(SEARCH_URL_RAW);
 
-  // US states map for search synonyms (lowercased)
   const STATES = {
     "alabama":"AL","alaska":"AK","arizona":"AZ","arkansas":"AR","california":"CA","colorado":"CO","connecticut":"CT","delaware":"DE",
     "district of columbia":"DC","florida":"FL","georgia":"GA","hawaii":"HI","idaho":"ID","illinois":"IL","indiana":"IN","iowa":"IA",
@@ -49,124 +135,392 @@
     "pennsylvania":"PA","rhode island":"RI","south carolina":"SC","south dakota":"SD","tennessee":"TN","texas":"TX","utah":"UT",
     "vermont":"VT","virginia":"VA","washington":"WA","west virginia":"WV","wisconsin":"WI","wyoming":"WY","puerto rico":"PR"
   };
-  const STATE_BY_CODE = Object.fromEntries(Object.values(STATES).map(c => [c, c]));
-
-  // Helpers
-  const pick = (obj, keys) => { for (const k of keys) if (obj && obj[k] != null) return obj[k]; return null; };
-  const toNum = v => { const n = Number(v); return Number.isFinite(n) ? n : NaN; };
-  const clampUS = (lat, lng) => (lat >= 18 && lat <= 72 && lng <= -50 && lng >= -170);
-
-  // Extractors (tolerate old/new schemas)
-  const getLat  = r => toNum(pick(r, ["lat","latitude","Latitude","Y","y"]));
-  const getLng  = r => toNum(pick(r, ["lng","lon","longitude","Longitude","X","x"]));
-  const getId   = r => String(pick(r, ["listing_id","id","ID"])||"").trim();
-  const getName = r => String(pick(r, ["listing_name","ListingName","market_name","MarketName","name","Name"])||"").trim();
-  const getCity = r => String(pick(r, ["city","City","market_city"])||"").trim();
-  const getState= r => String(pick(r, ["state","State","market_state"])||"").trim().toUpperCase();
-  const getZip  = r => String(pick(r, ["zip","Zip","zip_code","ZIP"])||"").trim();
-  const hasSNAP = r => Boolean(pick(r, ["program_snap","snap","SNAP"]));
+  const STATE_CODES = new Set(Object.values(STATES));
+  const STATE_NAME_BY_CODE = Object.fromEntries(Object.entries(STATES).map(([name, code]) => [code, name]));
 
   const map = L.map(MAP_ID, { scrollWheelZoom: false });
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:19, attribution:'&copy; OSM'}).addTo(map);
-  map.setView([39.5, -98.35], 4); // USA-ish default
+  map.setView(DEFAULT_CENTER, DEFAULT_ZOOM);
 
-  const markers = [];
-  const group = L.featureGroup().addTo(map);
+  const markersGroup = L.featureGroup().addTo(map);
+  const records = [];
+  const recordById = new Map();
+  let totalRecords = 0;
+  let activeId = null;
 
-  const $q = document.getElementById('flh-q');
-  const $clear = document.getElementById('flh-clear');
-  const $count = document.getElementById('flh-count');
-  const debounce = (fn, ms=150) => { let t; return (...a)=>{ clearTimeout(t); t=setTimeout(()=>fn(...a), ms); }; };
+  const escapeHtml = (str) => String(str ?? '').replace(/[&<>"']/g, (ch) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[ch]));
+  const normalizeWhitespace = (value) => String(value || '').toLowerCase().replace(/[^a-z0-9\s]/g, ' ').replace(/\s+/g, ' ').trim();
+  const digitsOnly = (value) => String(value || '').replace(/[^0-9]/g, '');
+  const debounce = (fn, ms=150) => { let t; return (...args)=>{ clearTimeout(t); t=setTimeout(()=>fn(...args), ms); }; };
 
-  function renderCount(n, total){ $count.textContent = total ? `${n} of ${total}` : ''; }
+  const toNum = (value) => {
+    const n = Number(value);
+    return Number.isFinite(n) ? n : NaN;
+  };
+  const clampUS = (lat, lng) => lat >= 18 && lat <= 72 && lng <= -50 && lng >= -170;
 
-  // Build a searchable “haystack” string for each record
-  function buildHay(rec){
-    const city = getCity(rec);
-    const st   = getState(rec); // 2-letter
-    const stName = Object.entries(STATES).find(([,code]) => code === st)?.[0] || "";
-    const zip  = getZip(rec);
-    const name = getName(rec);
-    return [name, city, st, stName, zip].filter(Boolean).join(" ").toLowerCase();
+  function parseAddressParts(rec){
+    return {
+      name: rec.listing_name || rec.name || '',
+      organization: rec.organization || '',
+      street: rec.street || '',
+      city: rec.city || '',
+      state: (rec.state || '').toUpperCase(),
+      zip: rec.zip || ''
+    };
   }
 
-  // Normalize the query: if a token is a full state name, add its 2-letter code too
-  function normalizeQuery(q){
-    const parts = (q||"").toLowerCase().split(/\s+/).filter(Boolean);
-    const extra = [];
-    for (const p of parts){
-      if (STATES[p]) extra.push(STATES[p]);
+  function renderPopup(data){
+    const pieces = [];
+    const programs = [];
+    if (data.program_snap) programs.push('SNAP/EBT');
+    if (data.program_wic) programs.push('WIC');
+    if (data.program_wic_fmnp) programs.push('WIC FMNP');
+    if (data.program_senior_fmnp) programs.push('Senior FMNP');
+    if (data.program_incentives) programs.push('Incentives');
+
+    pieces.push(`<strong>${escapeHtml(data.name || 'Farmers Market')}</strong>`);
+    if (data.full_address) pieces.push(`<div>${escapeHtml(data.full_address)}</div>`);
+    if (data.snap_acceptance) pieces.push(`<div class="snap-pill">${escapeHtml(data.snap_acceptance)}</div>`);
+    if (data.location_desc) pieces.push(`<div style="margin-top:4px;font-size:12px;line-height:1.4;">${escapeHtml(data.location_desc)}</div>`);
+    if (!data.location_desc && data.listing_desc) {
+      pieces.push(`<div style="margin-top:4px;font-size:12px;line-height:1.4;">${escapeHtml(data.listing_desc)}</div>`);
     }
-    return parts.concat(extra);
+    if (programs.length) {
+      pieces.push(`<div style="margin-top:6px;font-size:12px;">Programs: ${escapeHtml(programs.join(', '))}</div>`);
+    }
+    return pieces.join('');
   }
 
-  function applyFilter(query){
-    const tokens = normalizeQuery(query);
-    group.clearLayers();
-    let shown = 0;
+  function renderBadgeList(data){
+    const badges = [];
+    if (data.program_snap) badges.push('SNAP/EBT');
+    if (data.program_wic) badges.push('WIC');
+    if (data.program_wic_fmnp) badges.push('WIC FMNP');
+    if (data.program_senior_fmnp) badges.push('Senior FMNP');
+    if (data.program_incentives) badges.push('Incentives');
+    if (data.snap_central_booth) badges.push('Central Booth');
+    if (data.snap_vendor_pos) badges.push('Vendor POS');
+    if (data.snap_acceptance && !badges.includes('SNAP/EBT')) badges.push('SNAP/EBT');
+    return badges.map(b => `<span class="flh-badge">${escapeHtml(b)}</span>`).join('');
+  }
 
-    for (const {rec, marker, hay} of markers){
-      const ok = !tokens.length || tokens.every(t => hay.includes(t));
-      if (ok){ group.addLayer(marker); shown++; }
+  function renderResultCard(record){
+    const d = record.data;
+    const address = d.full_address || [d.street, d.city, d.state, d.zip].filter(Boolean).join(', ');
+    const desc = d.location_desc || d.listing_desc || '';
+    const badges = renderBadgeList(d);
+    return `
+      <div class="flh-result" role="listitem" tabindex="0" data-id="${record.id}">
+        <h3>${escapeHtml(d.name || 'Farmers Market')}</h3>
+        ${address ? `<p class="flh-result-address">${escapeHtml(address)}</p>` : ''}
+        ${desc ? `<p class="flh-result-desc">${escapeHtml(desc)}</p>` : ''}
+        ${badges ? `<div class="flh-badges">${badges}</div>` : ''}
+      </div>
+    `;
+  }
+
+  function renderCount(shown, total, hasFilters){
+    if (!$count) return;
+    if (!hasFilters){
+      $count.textContent = total ? `${total.toLocaleString()} markets available` : '';
+    } else {
+      $count.textContent = `${shown.toLocaleString()} of ${total.toLocaleString()}`;
+    }
+  }
+
+  function clearHighlight(){
+    if (!activeId) return;
+    const prev = $results.querySelector(`[data-id="${activeId}"]`);
+    if (prev) prev.classList.remove('flh-result--active');
+    activeId = null;
+  }
+
+  function highlightResult(id, opts={scroll:true}){
+    if (activeId === id) return;
+    clearHighlight();
+    const el = $results.querySelector(`[data-id="${id}"]`);
+    if (el){
+      el.classList.add('flh-result--active');
+      if (opts.scroll) el.scrollIntoView({block:'nearest', behavior:'smooth'});
+    }
+    activeId = id;
+  }
+
+  function focusRecord(id){
+    const entry = recordById.get(id);
+    if (!entry) return;
+    if (!markersGroup.hasLayer(entry.marker)) {
+      markersGroup.addLayer(entry.marker);
+    }
+    const latLng = entry.marker.getLatLng();
+    const targetZoom = Math.max(map.getZoom(), 9);
+    map.setView(latLng, targetZoom, { animate: true });
+    entry.marker.openPopup();
+    highlightResult(id);
+  }
+
+  function hasFilters(filters){
+    return Boolean(
+      (filters.cityNormalized && filters.cityNormalized.length) ||
+      (filters.stateNormalized && filters.stateNormalized.length) ||
+      (filters.zipNormalized && filters.zipNormalized.length) ||
+      (filters.nameTokens && filters.nameTokens.length)
+    );
+  }
+
+  function renderList(matches, matchCount, filters){
+    clearHighlight();
+    if (!hasFilters(filters)){
+      $results.innerHTML = '';
+      $message.textContent = totalRecords ? `Type a city, state, ZIP, or market name to explore ${totalRecords.toLocaleString()} markets.` : '';
+      $hint.textContent = 'Try “miami”, “ohio”, “albany ny”, or a ZIP such as “30303”.';
+      return;
     }
 
-    if (shown){
-      try { map.fitBounds(L.featureGroup(group.getLayers()).getBounds().pad(0.08)); } catch(e){}
+    if (!matchCount){
+      $results.innerHTML = '';
+      const summaryParts = [];
+      if (filters.cityRaw) summaryParts.push(`city “${escapeHtml(filters.cityRaw)}”`);
+      if (filters.stateRaw) summaryParts.push(`state ${escapeHtml(filters.stateRaw.toUpperCase())}`);
+      if (filters.zipRaw) summaryParts.push(`ZIP ${escapeHtml(filters.zipRaw)}`);
+      if (filters.nameRaw) summaryParts.push(`keywords “${escapeHtml(filters.nameRaw)}”`);
+      const summary = summaryParts.join(', ') || 'your filters';
+      $message.textContent = `No markets found for ${summary}.`;
+      $hint.textContent = 'Adjust the filters or try a nearby city/ZIP code.';
+      return;
     }
-    renderCount(shown, markers.length);
+
+    const cards = matches.map(renderResultCard).join('');
+    $results.innerHTML = cards;
+
+    $message.textContent = matchCount === 1
+      ? '1 market found'
+      : `${matchCount.toLocaleString()} markets found`;
+
+    if (matchCount > matches.length){
+      $hint.textContent = `Showing the first ${matches.length} results. Narrow your search for a shorter list.`;
+    } else {
+      $hint.textContent = '';
+    }
+  }
+
+  function getFilters(){
+    const cityRaw = ($city.value || '').trim();
+    const stateRaw = ($state.value || '').trim();
+    const zipRaw = ($zip.value || '').trim();
+    const nameRaw = ($name.value || '').trim();
+
+    return {
+      cityRaw,
+      stateRaw,
+      zipRaw,
+      nameRaw,
+      cityNormalized: normalizeWhitespace(cityRaw),
+      stateNormalized: stateRaw.toUpperCase(),
+      zipNormalized: digitsOnly(zipRaw),
+      nameTokens: normalizeWhitespace(nameRaw).split(' ').filter(Boolean)
+    };
+  }
+
+  function matchesFilters(data, filters){
+    if (filters.cityNormalized && (!data.cityNormalized || !data.cityNormalized.includes(filters.cityNormalized))) return false;
+    if (filters.stateNormalized && data.stateNormalized !== filters.stateNormalized) return false;
+    if (filters.zipNormalized && (!data.zipNormalized || !data.zipNormalized.startsWith(filters.zipNormalized))) return false;
+    if (filters.nameTokens.length && !filters.nameTokens.every(tok => data.haystackNormalized.includes(tok))) return false;
+    return true;
+  }
+
+  function applyFilters(){
+    const filters = getFilters();
+    const filtersActive = hasFilters(filters);
+
+    markersGroup.clearLayers();
+
+    if (!filtersActive){
+      renderCount(0, totalRecords, false);
+      renderList([], 0, filters);
+      map.setView(DEFAULT_CENTER, DEFAULT_ZOOM);
+      const url = new URL(location);
+      url.searchParams.delete('city');
+      url.searchParams.delete('state');
+      url.searchParams.delete('zip');
+      url.searchParams.delete('q');
+      history.replaceState(null, '', url);
+      return;
+    }
+
+    let matchCount = 0;
+    const visible = [];
+
+    for (const entry of records){
+      if (matchesFilters(entry.data, filters)){
+        matchCount++;
+        if (visible.length < MAX_RESULTS){
+          visible.push(entry);
+          markersGroup.addLayer(entry.marker);
+        }
+      }
+    }
+
+    renderCount(matchCount, totalRecords, filtersActive);
+    renderList(visible, matchCount, filters);
+
+    if (markersGroup.getLayers().length){
+      try {
+        map.fitBounds(markersGroup.getBounds().pad(0.08));
+      } catch (err) {}
+    } else {
+      map.setView(DEFAULT_CENTER, DEFAULT_ZOOM);
+    }
 
     const url = new URL(location);
-    const q = (query||"").trim();
-    if (q) url.searchParams.set('q', q); else url.searchParams.delete('q');
-    history.replaceState(null,'',url);
+    filters.cityRaw ? url.searchParams.set('city', filters.cityRaw) : url.searchParams.delete('city');
+    filters.stateRaw ? url.searchParams.set('state', filters.stateRaw.toUpperCase()) : url.searchParams.delete('state');
+    filters.zipRaw ? url.searchParams.set('zip', filters.zipRaw) : url.searchParams.delete('zip');
+    filters.nameRaw ? url.searchParams.set('q', filters.nameRaw) : url.searchParams.delete('q');
+    history.replaceState(null, '', url);
   }
-  const applyFilterDebounced = debounce(applyFilter, 150);
 
-  // Load both datasets (map coords + search fields)
-  Promise.all([
-    fetch(MAP_URL,    { cache: 'no-store' }).then(r => r.json()),
-    fetch(SEARCH_URL, { cache: 'no-store' }).then(r => r.json())
-  ]).then(([mapData, searchData]) => {
-    const mapRows = Array.isArray(mapData) ? mapData : (mapData.rows || mapData.data || []);
-    const searchRows = Array.isArray(searchData) ? searchData : (searchData.rows || searchData.data || []);
+  function hydrate(){
+    Promise.all([
+      fetch(MAP_URL, { cache: 'no-store' }).then(r => r.json()),
+      fetch(SEARCH_URL, { cache: 'no-store' }).then(r => r.json())
+    ]).then(([mapData, searchData]) => {
+      const mapRows = Array.isArray(mapData) ? mapData : (mapData.rows || mapData.data || []);
+      const searchRows = Array.isArray(searchData) ? searchData : (searchData.rows || searchData.data || []);
 
-    // Index search rows by id for richer popups if needed later
-    const byId = new Map();
-    for (const s of searchRows){ byId.set(getId(s), s); }
-
-    for (const rec of mapRows){
-      let lat = getLat(rec), lng = getLng(rec);
-
-      // Fix obvious swaps: if lng is positive or lat is out-of-US but swap lands in US bounds
-      if (!clampUS(lat, lng) && clampUS(lng, lat)){
-        const tmp = lat; lat = lng; lng = tmp;
+      const searchById = new Map();
+      for (const row of searchRows){
+        const id = String(row.listing_id || row.id || '').trim();
+        if (id) searchById.set(id, row);
       }
-      if (!Number.isFinite(lat) || !Number.isFinite(lng) || !clampUS(lat, lng)) continue;
 
-      const name = getName(rec) || 'Farmers Market';
-      const city = getCity(rec), state = getState(rec), zip = getZip(rec);
-      const subtitle = [city, state, zip].filter(Boolean).join(', ');
-      const snapBadge = hasSNAP(rec) ? '<div class="snap-pill">SNAP/EBT Accepted</div>' : '';
+      for (const rec of mapRows){
+        const id = String(rec.listing_id || rec.id || '').trim();
+        if (!id) continue;
 
-      const popup = `<strong>${name}</strong><br><small>${subtitle}</small>${snapBadge}`;
-      const m = L.marker([lat, lng]).bindPopup(popup);
+        let lat = toNum(rec.latitude ?? rec.lat ?? rec.location_y);
+        let lng = toNum(rec.longitude ?? rec.lon ?? rec.location_x);
 
-      markers.push({ rec, marker: m, hay: buildHay(rec) });
-    }
+        if (!clampUS(lat, lng) && clampUS(lng, lat)){
+          const tmp = lat; lat = lng; lng = tmp;
+        }
+        if (!Number.isFinite(lat) || !Number.isFinite(lng) || !clampUS(lat, lng)) continue;
 
-    renderCount(0, markers.length); // show total count
+        const searchRow = searchById.get(id) || {};
 
-    // Only render after a query (avoid dumping thousands of markers initially)
-    const q0 = new URL(location).searchParams.get('q') || '';
-    if (q0){ $q.value = q0; applyFilter(q0); }
+        const combined = {
+          id,
+          name: rec.listing_name || searchRow.listing_name || rec.name || 'Farmers Market',
+          organization: searchRow.organization ?? rec.organization ?? '',
+          street: searchRow.street ?? rec.street ?? '',
+          city: searchRow.city ?? rec.city ?? '',
+          state: (searchRow.state ?? rec.state ?? '').toUpperCase(),
+          zip: searchRow.zip ?? rec.zip ?? '',
+          full_address: searchRow.full_address ?? rec.full_address ?? rec.location_address ?? '',
+          location_desc: rec.location_desc ?? searchRow.location_desc ?? '',
+          listing_desc: rec.listing_desc ?? searchRow.listing_desc ?? '',
+          snap_acceptance: rec.snap_acceptance ?? searchRow.snap_acceptance ?? '',
+          program_snap: Boolean(searchRow.program_snap ?? rec.program_snap),
+          program_wic: Boolean(searchRow.program_wic ?? rec.program_wic),
+          program_wic_fmnp: Boolean(searchRow.program_wic_fmnp ?? rec.program_wic_fmnp),
+          program_senior_fmnp: Boolean(searchRow.program_senior_fmnp ?? rec.program_senior_fmnp),
+          program_incentives: Boolean(searchRow.program_incentives ?? rec.program_incentives),
+          snap_central_booth: Boolean(searchRow.snap_central_booth ?? rec.snap_central_booth),
+          snap_vendor_pos: Boolean(searchRow.snap_vendor_pos ?? rec.snap_vendor_pos),
+          longitude: lng,
+          latitude: lat,
+          search_state: (searchRow.search_state ?? rec.state ?? '').toUpperCase(),
+          search_city: (searchRow.search_city ?? (rec.city || '')).toLowerCase(),
+          search_zip: (searchRow.search_zip ?? rec.zip ?? '').slice(0, 5),
+          search_haystack: (searchRow.search_haystack || '').toLowerCase()
+        };
 
-  }).catch(() => {
-    map.setView([39.5, -98.35], 4);
-    renderCount(0, 0);
+        if (!combined.search_haystack){
+          const sourcePieces = [
+            combined.name,
+            combined.organization,
+            combined.street,
+            combined.city,
+            combined.state,
+            STATE_NAME_BY_CODE[combined.state] || '',
+            combined.zip,
+            combined.location_desc,
+            combined.listing_desc
+          ];
+          combined.search_haystack = sourcePieces.filter(Boolean).join(' ').toLowerCase();
+        }
+
+        if (combined.state && STATE_NAME_BY_CODE[combined.state]){
+          combined.state_name = STATE_NAME_BY_CODE[combined.state].replace(/\b\w/g, ch => ch.toUpperCase());
+          if (!combined.search_haystack.includes(STATE_NAME_BY_CODE[combined.state])){
+            combined.search_haystack += ` ${STATE_NAME_BY_CODE[combined.state]}`;
+          }
+        } else {
+          combined.state_name = combined.state;
+        }
+
+        combined.cityNormalized = normalizeWhitespace(combined.search_city || combined.city);
+        combined.stateNormalized = (combined.search_state || '').toUpperCase();
+        combined.zipNormalized = digitsOnly(combined.search_zip || combined.zip);
+        combined.haystackNormalized = normalizeWhitespace(combined.search_haystack || '');
+
+        const marker = L.marker([combined.latitude, combined.longitude], { title: combined.name });
+        marker.bindPopup(renderPopup(combined));
+        marker.on('click', () => highlightResult(id));
+
+        const entry = { id, marker, data: combined };
+        records.push(entry);
+        recordById.set(id, entry);
+      }
+
+      totalRecords = records.length;
+      applyFilters();
+    }).catch(err => {
+      console.error('Failed to load market data', err);
+      $message.textContent = 'Unable to load markets right now. Please refresh the page.';
+    });
+  }
+
+  const params = new URL(location).searchParams;
+  if (params.get('city')) $city.value = params.get('city');
+  if (params.get('state')) $state.value = params.get('state');
+  if (params.get('zip')) $zip.value = params.get('zip');
+  if (params.get('q')) $name.value = params.get('q');
+
+  hydrate();
+
+  const applyFiltersDebounced = debounce(applyFilters, 120);
+  [$city, $state, $zip, $name].forEach(el => {
+    el.addEventListener('input', applyFiltersDebounced);
+    el.addEventListener('change', applyFilters);
+    el.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter'){
+        e.preventDefault();
+        applyFilters();
+      }
+    });
+  });
+  $clear.addEventListener('click', () => {
+    $city.value = '';
+    $state.value = '';
+    $zip.value = '';
+    $name.value = '';
+    applyFilters();
+    $city.focus();
   });
 
-  $q.addEventListener('input', e => applyFilterDebounced(e.target.value));
-  $clear.addEventListener('click', ()=>{ $q.value=''; applyFilter(''); $q.focus(); });
-  $q.addEventListener('keydown', e => { if (e.key === 'Enter'){ const first = group.getLayers()[0]; if (first) first.openPopup(); }});
+  $results.addEventListener('click', (e) => {
+    const card = e.target.closest('[data-id]');
+    if (!card) return;
+    focusRecord(card.dataset.id);
+  });
+  $results.addEventListener('keydown', (e) => {
+    if ((e.key === 'Enter' || e.key === ' ') && e.target.matches('[data-id]')){
+      e.preventDefault();
+      focusRecord(e.target.dataset.id);
+    }
+  });
 })();
 </script>
