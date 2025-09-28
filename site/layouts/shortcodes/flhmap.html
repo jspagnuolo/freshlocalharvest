@@ -107,6 +107,7 @@
   const MAX_RESULTS = 200;
   const ZIP_RADIUS_MILES = 30;
   const CITY_RADIUS_MILES = 30;
+  const USER_RADIUS_MILES = ZIP_RADIUS_MILES;
   const NEAREST_RESULTS_LIMIT = 75;
   const USER_LOCATION_FALLBACK_ZOOM = 8;
 
@@ -265,7 +266,7 @@
     const candidates = [];
     for (const entry of records){
       const distance = haversineMiles(origin.lat, origin.lon, entry.data.latitude, entry.data.longitude);
-      if (!Number.isFinite(distance)) continue;
+      if (!Number.isFinite(distance) || distance > USER_RADIUS_MILES) continue;
       entry.data.distanceMiles = distance;
       entry.data.distanceSource = 'user';
       candidates.push(entry);
@@ -277,7 +278,7 @@
       return da - db;
     });
 
-    const limit = Math.min(MAX_RESULTS, NEAREST_RESULTS_LIMIT);
+    const limit = Math.min(MAX_RESULTS, NEAREST_RESULTS_LIMIT, sorted.length);
     const visible = sorted.slice(0, limit);
 
     markersGroup.clearLayers();
@@ -290,7 +291,8 @@
       nearestLabel: origin.label,
       distanceMode: 'user',
       nearestTotal: candidates.length,
-      nearestShown: visible.length
+      nearestShown: visible.length,
+      userRadius: USER_RADIUS_MILES
     };
 
     renderCount(visible.length, totalRecords, true);
@@ -565,7 +567,8 @@
       }
     } else if (filters.distanceMode === 'user'){
       const label = filters.nearestLabel ? escapeHtml(filters.nearestLabel) : 'your location';
-      hintCopy = `Nearest markets to ${label}.`;
+      const radiusMiles = filters.userRadius || USER_RADIUS_MILES;
+      hintCopy = `Within ${radiusMiles} miles of ${label}.`;
       if (filters.nearestTotal && filters.nearestTotal > matches.length){
         hintCopy += ` Showing the first ${matches.length} results.`;
       }
