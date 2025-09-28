@@ -12,6 +12,8 @@ map:
     - city
     - state
     - zip
+    - zip_lat
+    - zip_lon
     - location_desc
     - listing_desc
     - snap_acceptance
@@ -32,6 +34,8 @@ search:
     - full_address
     - longitude
     - latitude
+    - zip_lat
+    - zip_lon
     - program_snap
     - program_wic
     - program_wic_fmnp

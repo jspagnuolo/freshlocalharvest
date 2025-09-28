@@ -1,8 +1,8 @@
 # File: ingest/scripts/enrich.py
 """Post-ingest enrichment helpers.
 
-Adds normalized address components and search-friendly tokens so that the
-front-end can support richer filtering without additional services.
+Adds normalized address components, derived ZIP centroids, and search-friendly
+strings so the front-end can filter markets without additional services.
 """
 from __future__ import annotations
 
@@ -91,11 +91,20 @@ def _join_address(street: str | None, city: str | None, state: str | None, zipco
     return ', '.join(pieces)
 
 
-def enrich_markets(df: pd.DataFrame) -> pd.DataFrame:
-    """Add normalized address + search helper columns.
+def _zip_means(df: pd.DataFrame) -> pd.DataFrame:
+    coords = df[['zip', 'latitude', 'longitude']].copy()
+    coords['latitude'] = pd.to_numeric(coords['latitude'], errors='coerce')
+    coords['longitude'] = pd.to_numeric(coords['longitude'], errors='coerce')
+    coords = coords.dropna(subset=['zip', 'latitude', 'longitude'])
+    if coords.empty:
+        return pd.DataFrame(columns=['zip_lat', 'zip_lon'])
+    means = coords.groupby('zip')[['latitude', 'longitude']].mean()
+    means.columns = ['zip_lat', 'zip_lon']
+    return means
 
-    Returns a copy so callers do not rely on mutation semantics.
-    """
+
+def enrich_markets(df: pd.DataFrame) -> pd.DataFrame:
+    """Add normalized address, search helpers, and per-ZIP centroids."""
     df = df.copy()
 
     parsed = df['location_address'].apply(_parse_address)
@@ -114,6 +123,9 @@ def enrich_markets(df: pd.DataFrame) -> pd.DataFrame:
     df['search_city'] = df['city'].fillna('').str.lower()
     df['search_state'] = df['state'].fillna('').str.upper()
     df['search_zip'] = df['zip'].fillna('').str.strip()
+
+    means = _zip_means(df)
+    df = df.join(means, on='zip')
 
     haystack_sources = pd.concat(
         [
@@ -135,4 +147,36 @@ def enrich_markets(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
-__all__ = ['enrich_markets']
+def generate_zip_centroids(df: pd.DataFrame) -> dict[str, list[float]]:
+    """Generate zip and zip-prefix centroids from a validated markets DataFrame."""
+    centroids: dict[str, list[float]] = {}
+    coords = df[['zip', 'zip_lat', 'zip_lon']].dropna(subset=['zip_lat', 'zip_lon'])
+    for zip_code, group in coords.groupby('zip'):
+        try:
+            lat = float(group['zip_lat'].mean())
+            lon = float(group['zip_lon'].mean())
+        except Exception:
+            continue
+        if not zip_code:
+            continue
+        zip_str = str(zip_code).strip()
+        if zip_str:
+            centroids[zip_str] = [lat, lon]
+
+    if not centroids:
+        return centroids
+
+    # Prefix centroids (3-digit) provide fallbacks for ZIPs not present in the dataset
+    prefix_frame = coords.copy()
+    prefix_frame['prefix'] = prefix_frame['zip'].astype(str).str[:3]
+    prefix_means = prefix_frame.groupby('prefix')[['zip_lat', 'zip_lon']].mean()
+    for prefix, row in prefix_means.iterrows():
+        if not prefix:
+            continue
+        if prefix not in centroids:
+            centroids[prefix] = [float(row['zip_lat']), float(row['zip_lon'])]
+
+    return centroids
+
+
+__all__ = ['enrich_markets', 'generate_zip_centroids']

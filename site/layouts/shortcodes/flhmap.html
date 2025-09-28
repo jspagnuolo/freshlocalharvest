@@ -56,6 +56,7 @@
   .flh-result h3{margin:0;font-size:1rem;line-height:1.4}
   .flh-result-address{margin:.35rem 0;font-size:.9rem;color:#4b5563}
   .flh-result-desc{margin:.2rem 0 0;font-size:.85rem;color:#616d80}
+  .flh-result-distance{margin:.3rem 0 0;font-size:.82rem;color:#2563eb;font-weight:600}
   .flh-badges{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.45rem}
   .flh-badge{font-size:.72rem;padding:.18rem .45rem;border-radius:.4rem;background:#eef2ff;color:#31427a;font-weight:600}
   .flh-results-message{font-size:.9rem;color:#4b5563;margin-bottom:.75rem}
@@ -104,9 +105,11 @@
   const DEFAULT_CENTER = [39.5, -98.35];
   const DEFAULT_ZOOM = 4;
   const MAX_RESULTS = 200;
+  const ZIP_RADIUS_MILES = 30;
 
   const MAP_URL_RAW    = {{ (.Get "data"   | default "/data/markets.map.json")   | jsonify }};
   const SEARCH_URL_RAW = {{ (.Get "search" | default "/data/markets.search.json") | jsonify }};
+  const ZIP_URL_RAW    = {{ (.Get "zip_centroids" | default "/data/zip.centroids.json") | jsonify }};
 
   const $city = document.getElementById('flh-city');
   const $state = document.getElementById('flh-state');
@@ -125,6 +128,9 @@
   }
   const MAP_URL = normalizeUrl(MAP_URL_RAW);
   const SEARCH_URL = normalizeUrl(SEARCH_URL_RAW);
+  const ZIP_URL = normalizeUrl(ZIP_URL_RAW);
+
+  let zipCentroids = {};
 
   const STATES = {
     "alabama":"AL","alaska":"AK","arizona":"AZ","arkansas":"AR","california":"CA","colorado":"CO","connecticut":"CT","delaware":"DE",
@@ -152,6 +158,35 @@
   const normalizeWhitespace = (value) => String(value || '').toLowerCase().replace(/[^a-z0-9\s]/g, ' ').replace(/\s+/g, ' ').trim();
   const digitsOnly = (value) => String(value || '').replace(/[^0-9]/g, '');
   const debounce = (fn, ms=150) => { let t; return (...args)=>{ clearTimeout(t); t=setTimeout(()=>fn(...args), ms); }; };
+  const EARTH_RADIUS_MILES = 3958.7613;
+
+  function haversineMiles(lat1, lon1, lat2, lon2){
+    const toRad = (deg) => deg * Math.PI / 180;
+    const dLat = toRad(lat2 - lat1);
+    const dLon = toRad(lon2 - lon1);
+    const a = Math.sin(dLat / 2) ** 2 + Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLon / 2) ** 2;
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    return EARTH_RADIUS_MILES * c;
+  }
+
+  function normalizeCentroidDataset(raw){
+    if (!raw) return {};
+    if (Array.isArray(raw)){
+      const out = {};
+      for (const item of raw){
+        if (item && item.zip){
+          const code = digitsOnly(item.zip).padStart(5, '0');
+          if (Array.isArray(item.coords) && item.coords.length === 2){
+            out[code] = item.coords;
+          } else if (typeof item.lat === 'number' && typeof item.lon === 'number'){
+            out[code] = [item.lat, item.lon];
+          }
+        }
+      }
+      return out;
+    }
+    return raw;
+  }
 
   const toNum = (value) => {
     const n = Number(value);
@@ -210,11 +245,13 @@
     const address = d.full_address || [d.street, d.city, d.state, d.zip].filter(Boolean).join(', ');
     const desc = d.location_desc || d.listing_desc || '';
     const badges = renderBadgeList(d);
+    const distance = typeof d.distanceMiles === 'number' ? `<p class="flh-result-distance">${d.distanceMiles.toFixed(1)} miles away</p>` : '';
     return `
       <div class="flh-result" role="listitem" tabindex="0" data-id="${record.id}">
         <h3>${escapeHtml(d.name || 'Farmers Market')}</h3>
         ${address ? `<p class="flh-result-address">${escapeHtml(address)}</p>` : ''}
         ${desc ? `<p class="flh-result-desc">${escapeHtml(desc)}</p>` : ''}
+        ${distance}
         ${badges ? `<div class="flh-badges">${badges}</div>` : ''}
       </div>
     `;
@@ -298,11 +335,17 @@
       ? '1 market found'
       : `${matchCount.toLocaleString()} markets found`;
 
-    if (matchCount > matches.length){
-      $hint.textContent = `Showing the first ${matches.length} results. Narrow your search for a shorter list.`;
-    } else {
-      $hint.textContent = '';
+    let hintCopy = '';
+    if (filters.zipNormalized){
+      const zipLabel = escapeHtml(filters.zipRaw || filters.zipNormalized);
+      hintCopy = `Within ${ZIP_RADIUS_MILES} miles of ZIP ${zipLabel}.`;
+      if (matchCount > matches.length){
+        hintCopy += ` Showing the first ${matches.length} matches.`;
+      }
+    } else if (matchCount > matches.length){
+      hintCopy = `Showing the first ${matches.length} results. Narrow your search for a shorter list.`;
     }
+    $hint.textContent = hintCopy;
   }
 
   function getFilters(){
@@ -323,17 +366,50 @@
     };
   }
 
-  function matchesFilters(data, filters){
+  function matchesFilters(data, filters, zipTarget){
     if (filters.cityNormalized && (!data.cityNormalized || !data.cityNormalized.includes(filters.cityNormalized))) return false;
     if (filters.stateNormalized && data.stateNormalized !== filters.stateNormalized) return false;
-    if (filters.zipNormalized && (!data.zipNormalized || !data.zipNormalized.startsWith(filters.zipNormalized))) return false;
+
+    let distance = null;
+    if (filters.zipNormalized){
+      if (!zipTarget) return false;
+      distance = haversineMiles(zipTarget.lat, zipTarget.lon, data.latitude, data.longitude);
+      if (!Number.isFinite(distance) || distance > ZIP_RADIUS_MILES) return false;
+    }
+
     if (filters.nameTokens.length && !filters.nameTokens.every(tok => data.haystackNormalized.includes(tok))) return false;
+
+    if (distance !== null){
+      data.distanceMiles = distance;
+    } else if (Object.prototype.hasOwnProperty.call(data, 'distanceMiles')){
+      delete data.distanceMiles;
+    }
     return true;
+  }
   }
 
   function applyFilters(){
     const filters = getFilters();
     const filtersActive = hasFilters(filters);
+
+    let zipTarget = null;
+    if (filters.zipNormalized){
+      const key = filters.zipNormalized.padStart(5, '0');
+      const prefixKey = key.slice(0, 3);
+      const rawCentroid = zipCentroids[key] || zipCentroids[filters.zipNormalized] || zipCentroids[prefixKey];
+      if (Array.isArray(rawCentroid) && rawCentroid.length === 2){
+        const [lat, lon] = rawCentroid;
+        if (Number.isFinite(Number(lat)) && Number.isFinite(Number(lon))){
+          zipTarget = { lat: Number(lat), lon: Number(lon) };
+        }
+      }
+      if (!zipTarget){
+        const fallback = records.find(r => r.data.zipNormalized === filters.zipNormalized);
+        if (fallback){
+          zipTarget = { lat: fallback.data.latitude, lon: fallback.data.longitude };
+        }
+      }
+    }
 
     markersGroup.clearLayers();
 
@@ -354,7 +430,7 @@
     const visible = [];
 
     for (const entry of records){
-      if (matchesFilters(entry.data, filters)){
+      if (matchesFilters(entry.data, filters, zipTarget)){
         matchCount++;
         if (visible.length < MAX_RESULTS){
           visible.push(entry);
@@ -363,15 +439,33 @@
       }
     }
 
+    if (filters.zipNormalized){
+      visible.sort((a, b) => {
+        const da = a.data.distanceMiles ?? Number.POSITIVE_INFINITY;
+        const db = b.data.distanceMiles ?? Number.POSITIVE_INFINITY;
+        return da - db;
+      });
+    }
+
     renderCount(matchCount, totalRecords, filtersActive);
     renderList(visible, matchCount, filters);
 
-    if (markersGroup.getLayers().length){
-      try {
-        map.fitBounds(markersGroup.getBounds().pad(0.08));
-      } catch (err) {}
+    if (filters.zipNormalized && zipTarget){
+      if (markersGroup.getLayers().length){
+        try {
+          map.fitBounds(markersGroup.getBounds().pad(0.08));
+        } catch (err) {}
+      } else {
+        map.setView([zipTarget.lat, zipTarget.lon], 10);
+      }
     } else {
-      map.setView(DEFAULT_CENTER, DEFAULT_ZOOM);
+      if (markersGroup.getLayers().length){
+        try {
+          map.fitBounds(markersGroup.getBounds().pad(0.08));
+        } catch (err) {}
+      } else {
+        map.setView(DEFAULT_CENTER, DEFAULT_ZOOM);
+      }
     }
 
     const url = new URL(location);
@@ -385,8 +479,10 @@
   function hydrate(){
     Promise.all([
       fetch(MAP_URL, { cache: 'no-store' }).then(r => r.json()),
-      fetch(SEARCH_URL, { cache: 'no-store' }).then(r => r.json())
-    ]).then(([mapData, searchData]) => {
+      fetch(SEARCH_URL, { cache: 'no-store' }).then(r => r.json()),
+      fetch(ZIP_URL, { cache: 'no-store' }).then(r => r.ok ? r.json() : {}).catch(() => ({}))
+    ]).then(([mapData, searchData, zipData]) => {
+      zipCentroids = normalizeCentroidDataset(zipData);
       const mapRows = Array.isArray(mapData) ? mapData : (mapData.rows || mapData.data || []);
       const searchRows = Array.isArray(searchData) ? searchData : (searchData.rows || searchData.data || []);
 
@@ -418,6 +514,8 @@
           city: searchRow.city ?? rec.city ?? '',
           state: (searchRow.state ?? rec.state ?? '').toUpperCase(),
           zip: searchRow.zip ?? rec.zip ?? '',
+          zip_lat: searchRow.zip_lat ?? rec.zip_lat ?? null,
+          zip_lon: searchRow.zip_lon ?? rec.zip_lon ?? null,
           full_address: searchRow.full_address ?? rec.full_address ?? rec.location_address ?? '',
           location_desc: rec.location_desc ?? searchRow.location_desc ?? '',
           listing_desc: rec.listing_desc ?? searchRow.listing_desc ?? '',

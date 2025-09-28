@@ -56,6 +56,9 @@ If you prefer Make targets, this repo includes:
 - **site/static/data/markets.search.json**  
   Extended search index powering the UI filters. Contains the address parts, search tokens, program flags, and coordinates for list/map synchronization.
 
+- **site/static/data/zip.centroids.json**  
+  ZIP code → latitude/longitude lookup generated from USPS data (via pgeocode). Used to power radius-based ZIP searches on the map.
+
 - **data/processed/markets.full.parquet**  
   The cleaned canonical table for analysis (keep this out of the site bundle).
 
