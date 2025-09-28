@@ -106,10 +106,12 @@
   const DEFAULT_ZOOM = 4;
   const MAX_RESULTS = 200;
   const ZIP_RADIUS_MILES = 30;
+  const CITY_RADIUS_MILES = 30;
 
   const MAP_URL_RAW    = {{ (.Get "data"   | default "/data/markets.map.json")   | jsonify }};
   const SEARCH_URL_RAW = {{ (.Get "search" | default "/data/markets.search.json") | jsonify }};
   const ZIP_URL_RAW    = {{ (.Get "zip_centroids" | default "/data/zip.centroids.json") | jsonify }};
+  const CITY_URL_RAW   = {{ (.Get "city_centroids" | default "/data/city.centroids.json") | jsonify }};
 
   const $city = document.getElementById('flh-city');
   const $state = document.getElementById('flh-state');
@@ -129,8 +131,10 @@
   const MAP_URL = normalizeUrl(MAP_URL_RAW);
   const SEARCH_URL = normalizeUrl(SEARCH_URL_RAW);
   const ZIP_URL = normalizeUrl(ZIP_URL_RAW);
+  const CITY_URL = normalizeUrl(CITY_URL_RAW);
 
   let zipCentroids = {};
+  let cityCentroids = {};
 
   const STATES = {
     "alabama":"AL","alaska":"AK","arizona":"AZ","arkansas":"AR","california":"CA","colorado":"CO","connecticut":"CT","delaware":"DE",
@@ -156,6 +160,7 @@
 
   const escapeHtml = (str) => String(str ?? '').replace(/[&<>"']/g, (ch) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[ch]));
   const normalizeWhitespace = (value) => String(value || '').toLowerCase().replace(/[^a-z0-9\s]/g, ' ').replace(/\s+/g, ' ').trim();
+  const toTitleCase = (value) => String(value || '').replace(/\b\w/g, (ch) => ch.toUpperCase());
   const digitsOnly = (value) => String(value || '').replace(/[^0-9]/g, '');
   const debounce = (fn, ms=150) => { let t; return (...args)=>{ clearTimeout(t); t=setTimeout(()=>fn(...args), ms); }; };
   const EARTH_RADIUS_MILES = 3958.7613;
@@ -186,6 +191,74 @@
       return out;
     }
     return raw;
+  }
+
+  function parseCityInput(raw){
+    const original = (raw || '').trim();
+    const normalizedFull = normalizeWhitespace(original);
+    if (!normalizedFull){
+      return { normalizedFull: '', cityKey: '', tokens: [], stateHint: '', displayCity: '' };
+    }
+
+    const tokens = normalizedFull.split(' ').filter(Boolean);
+    if (!tokens.length){
+      return { normalizedFull: '', cityKey: '', tokens: [], stateHint: '', displayCity: '' };
+    }
+
+    let cityTokens = tokens.slice();
+    let stateHint = '';
+    const last = tokens[tokens.length - 1];
+    if (last && last.length === 2 && /^[a-z]{2}$/.test(last)){
+      stateHint = last.toUpperCase();
+      cityTokens = tokens.slice(0, -1);
+      if (!cityTokens.length){
+        cityTokens = tokens.slice();
+        stateHint = '';
+      }
+    }
+
+    const cityKey = cityTokens.join(' ');
+    const displayCity = toTitleCase(cityKey || normalizedFull);
+    return {
+      normalizedFull,
+      cityKey,
+      tokens: cityTokens,
+      stateHint,
+      displayCity
+    };
+  }
+
+  function resolveCityTarget(filters){
+    if (!filters.cityNormalized){
+      return null;
+    }
+    const attempts = [];
+    if (filters.stateNormalized){
+      attempts.push(`${filters.cityNormalized}|${filters.stateNormalized}`);
+    }
+    if (!filters.stateNormalized && filters.cityStateHint){
+      attempts.push(`${filters.cityNormalized}|${filters.cityStateHint}`);
+    }
+    attempts.push(filters.cityNormalized);
+
+    for (const key of attempts){
+      const centroid = cityCentroids[key];
+      if (Array.isArray(centroid) && centroid.length === 2){
+        const [lat, lon] = centroid;
+        const latNum = Number(lat);
+        const lonNum = Number(lon);
+        if (Number.isFinite(latNum) && Number.isFinite(lonNum)){
+          return {
+            lat: latNum,
+            lon: lonNum,
+            radius: CITY_RADIUS_MILES,
+            label: filters.cityLabel || toTitleCase(filters.cityNormalized),
+            key
+          };
+        }
+      }
+    }
+    return null;
   }
 
   const toNum = (value) => {
@@ -336,9 +409,15 @@
       : `${matchCount.toLocaleString()} markets found`;
 
     let hintCopy = '';
-    if (filters.zipNormalized){
-      const zipLabel = escapeHtml(filters.zipRaw || filters.zipNormalized);
+    if (filters.distanceMode === 'zip' && filters.zipLabel){
+      const zipLabel = escapeHtml(filters.zipLabel);
       hintCopy = `Within ${ZIP_RADIUS_MILES} miles of ZIP ${zipLabel}.`;
+      if (matchCount > matches.length){
+        hintCopy += ` Showing the first ${matches.length} matches.`;
+      }
+    } else if (filters.distanceMode === 'city' && filters.cityTargetLabel){
+      const cityLabel = escapeHtml(filters.cityTargetLabel);
+      hintCopy = `Within ${CITY_RADIUS_MILES} miles of ${cityLabel}.`;
       if (matchCount > matches.length){
         hintCopy += ` Showing the first ${matches.length} matches.`;
       }
@@ -354,36 +433,66 @@
     const zipRaw = ($zip.value || '').trim();
     const nameRaw = ($name.value || '').trim();
 
+    const cityParts = parseCityInput(cityRaw);
+    const cityNormalized = cityParts.cityKey;
+    const cityTokens = cityParts.tokens;
+    const cityStateHint = cityParts.stateHint;
+    const cityDisplay = cityParts.displayCity;
+
+    const stateFromInput = stateRaw.toUpperCase();
+    const stateNormalized = stateFromInput || cityStateHint || '';
+    const stateParam = stateRaw ? stateFromInput : (cityStateHint || '');
+    const cityLabel = cityDisplay
+      ? (stateNormalized ? `${cityDisplay}, ${stateNormalized}` : cityDisplay)
+      : (cityRaw || '');
+
     return {
       cityRaw,
       stateRaw,
       zipRaw,
       nameRaw,
-      cityNormalized: normalizeWhitespace(cityRaw),
-      stateNormalized: stateRaw.toUpperCase(),
+      cityNormalized,
+      cityTokens,
+      cityStateHint,
+      cityLabel,
+      stateNormalized,
+      stateParam,
       zipNormalized: digitsOnly(zipRaw),
       nameTokens: normalizeWhitespace(nameRaw).split(' ').filter(Boolean)
     };
   }
 
-  function matchesFilters(data, filters, zipTarget){
-    if (filters.cityNormalized && (!data.cityNormalized || !data.cityNormalized.includes(filters.cityNormalized))) return false;
-    if (filters.stateNormalized && data.stateNormalized !== filters.stateNormalized) return false;
+  function matchesFilters(data, filters, radiusOptions = {}){
+    if (filters.stateNormalized && data.stateNormalized && data.stateNormalized !== filters.stateNormalized) return false;
 
-    let distance = null;
-    if (filters.zipNormalized){
-      if (!zipTarget) return false;
-      distance = haversineMiles(zipTarget.lat, zipTarget.lon, data.latitude, data.longitude);
-      if (!Number.isFinite(distance) || distance > ZIP_RADIUS_MILES) return false;
+    if (filters.zipNormalized && !radiusOptions.zipTarget) return false;
+
+    const requiresCityMatch = Boolean(filters.cityNormalized && !radiusOptions.cityTarget);
+    if (requiresCityMatch){
+      if (!data.cityNormalized) return false;
+      if (!filters.cityTokens.every(tok => data.cityNormalized.includes(tok))) return false;
     }
 
     if (filters.nameTokens.length && !filters.nameTokens.every(tok => data.haystackNormalized.includes(tok))) return false;
 
-    if (distance !== null){
+    const targets = [];
+    if (radiusOptions.zipTarget){
+      targets.push({ ...radiusOptions.zipTarget, type: 'zip' });
+    } else if (radiusOptions.cityTarget){
+      targets.push({ ...radiusOptions.cityTarget, type: 'city' });
+    }
+
+    if (targets.length){
+      const target = targets[0];
+      const distance = haversineMiles(target.lat, target.lon, data.latitude, data.longitude);
+      if (!Number.isFinite(distance) || distance > target.radius) return false;
       data.distanceMiles = distance;
+      data.distanceSource = target.type;
     } else if (Object.prototype.hasOwnProperty.call(data, 'distanceMiles')){
       delete data.distanceMiles;
+      delete data.distanceSource;
     }
+
     return true;
   }
 
@@ -398,17 +507,35 @@
       const rawCentroid = zipCentroids[key] || zipCentroids[filters.zipNormalized] || zipCentroids[prefixKey];
       if (Array.isArray(rawCentroid) && rawCentroid.length === 2){
         const [lat, lon] = rawCentroid;
-        if (Number.isFinite(Number(lat)) && Number.isFinite(Number(lon))){
-          zipTarget = { lat: Number(lat), lon: Number(lon) };
+        const latNum = Number(lat);
+        const lonNum = Number(lon);
+        if (Number.isFinite(latNum) && Number.isFinite(lonNum)){
+          zipTarget = { lat: latNum, lon: lonNum, radius: ZIP_RADIUS_MILES, label: filters.zipRaw || key, key };
         }
       }
       if (!zipTarget){
         const fallback = records.find(r => r.data.zipNormalized === filters.zipNormalized);
         if (fallback){
-          zipTarget = { lat: fallback.data.latitude, lon: fallback.data.longitude };
+          zipTarget = {
+            lat: fallback.data.latitude,
+            lon: fallback.data.longitude,
+            radius: ZIP_RADIUS_MILES,
+            label: filters.zipRaw || fallback.data.zip || filters.zipNormalized,
+            key: 'record'
+          };
         }
       }
     }
+    if (zipTarget){
+      filters.zipLabel = zipTarget.label;
+    }
+
+    const cityTarget = resolveCityTarget(filters);
+    if (cityTarget){
+      filters.cityTargetLabel = cityTarget.label;
+    }
+
+    const radiusOptions = { zipTarget, cityTarget };
 
     markersGroup.clearLayers();
 
@@ -429,7 +556,7 @@
     const visible = [];
 
     for (const entry of records){
-      if (matchesFilters(entry.data, filters, zipTarget)){
+      if (matchesFilters(entry.data, filters, radiusOptions)){
         matchCount++;
         if (visible.length < MAX_RESULTS){
           visible.push(entry);
@@ -438,7 +565,8 @@
       }
     }
 
-    if (filters.zipNormalized){
+    const distanceSortActive = Boolean(zipTarget || cityTarget);
+    if (distanceSortActive){
       visible.sort((a, b) => {
         const da = a.data.distanceMiles ?? Number.POSITIVE_INFINITY;
         const db = b.data.distanceMiles ?? Number.POSITIVE_INFINITY;
@@ -447,15 +575,24 @@
     }
 
     renderCount(matchCount, totalRecords, filtersActive);
+    filters.distanceMode = zipTarget ? 'zip' : (cityTarget ? 'city' : null);
     renderList(visible, matchCount, filters);
 
-    if (filters.zipNormalized && zipTarget){
+    if (zipTarget){
       if (markersGroup.getLayers().length){
         try {
           map.fitBounds(markersGroup.getBounds().pad(0.08));
         } catch (err) {}
       } else {
         map.setView([zipTarget.lat, zipTarget.lon], 10);
+      }
+    } else if (cityTarget){
+      if (markersGroup.getLayers().length){
+        try {
+          map.fitBounds(markersGroup.getBounds().pad(0.08));
+        } catch (err) {}
+      } else {
+        map.setView([cityTarget.lat, cityTarget.lon], 9);
       }
     } else {
       if (markersGroup.getLayers().length){
@@ -469,7 +606,7 @@
 
     const url = new URL(location);
     filters.cityRaw ? url.searchParams.set('city', filters.cityRaw) : url.searchParams.delete('city');
-    filters.stateRaw ? url.searchParams.set('state', filters.stateRaw.toUpperCase()) : url.searchParams.delete('state');
+    filters.stateParam ? url.searchParams.set('state', filters.stateParam) : url.searchParams.delete('state');
     filters.zipRaw ? url.searchParams.set('zip', filters.zipRaw) : url.searchParams.delete('zip');
     filters.nameRaw ? url.searchParams.set('q', filters.nameRaw) : url.searchParams.delete('q');
     history.replaceState(null, '', url);
@@ -479,9 +616,11 @@
     Promise.all([
       fetch(MAP_URL, { cache: 'no-store' }).then(r => r.json()),
       fetch(SEARCH_URL, { cache: 'no-store' }).then(r => r.json()),
-      fetch(ZIP_URL, { cache: 'no-store' }).then(r => r.ok ? r.json() : {}).catch(() => ({}))
-    ]).then(([mapData, searchData, zipData]) => {
+      fetch(ZIP_URL, { cache: 'no-store' }).then(r => r.ok ? r.json() : {}).catch(() => ({})),
+      fetch(CITY_URL, { cache: 'no-store' }).then(r => r.ok ? r.json() : {}).catch(() => ({}))
+    ]).then(([mapData, searchData, zipData, cityData]) => {
       zipCentroids = normalizeCentroidDataset(zipData);
+      cityCentroids = normalizeCentroidDataset(cityData);
       const mapRows = Array.isArray(mapData) ? mapData : (mapData.rows || mapData.data || []);
       const searchRows = Array.isArray(searchData) ? searchData : (searchData.rows || searchData.data || []);
 

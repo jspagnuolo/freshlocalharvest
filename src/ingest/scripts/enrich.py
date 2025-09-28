@@ -7,7 +7,7 @@ strings so the front-end can filter markets without additional services.
 from __future__ import annotations
 
 import re
-from typing import Iterable, Tuple
+from typing import Iterable, Tuple, Dict
 
 import pandas as pd
 
@@ -30,6 +30,15 @@ STATE_MAP = {
 }
 
 ZIP_RE = re.compile(r"(\d{5})(?:-\d{4})?$")
+
+
+def _normalize_text(value: str | None) -> str:
+    if not value:
+        return ""
+    lowered = str(value).lower()
+    lowered = re.sub(r"[^a-z0-9\s]", " ", lowered)
+    lowered = re.sub(r"\s+", " ", lowered).strip()
+    return lowered
 
 
 def _maybe(value: str | float | int | None) -> str:
@@ -55,33 +64,46 @@ def _parse_address(raw: str | None) -> Tuple[str | None, str | None, str | None,
     if not text:
         return None, None, None, None
 
-    text = text.rstrip(';')
-    parts = [p.strip() for p in text.split(',') if p.strip()]
-    if len(parts) >= 3:
-        street = ', '.join(parts[:-2]) or None
-        city = parts[-2] or None
-        state_chunk = parts[-1]
-    else:
-        street = text or None
-        city = None
-        state_chunk = ""
+    cleaned = text.replace(';', ',').strip()
 
-    tokens = [tok for tok in state_chunk.replace(';', ' ').split() if tok]
-    state_token = None
     zipcode = None
-    if tokens:
-        maybe_zip = tokens[-1]
-        match = ZIP_RE.match(maybe_zip)
-        if match:
-            zipcode = match.group(1)
-            tokens = tokens[:-1]
-        state_token = ' '.join(tokens) if tokens else None
+    zip_match = ZIP_RE.search(cleaned)
+    if zip_match:
+        zipcode = zip_match.group(1)
+        cleaned = cleaned[:zip_match.start()].rstrip(', ')
 
-    state = _normalize_state(state_token)
-    if zipcode and len(zipcode) == 5:
-        zipcode = zipcode
-    elif zipcode:
-        zipcode = zipcode[:5]
+    state = None
+    if cleaned:
+        lowered = cleaned.lower()
+        tokens = sorted({**STATE_MAP, **{abbr.lower(): abbr for abbr in STATE_MAP.values()}}.items(), key=lambda kv: -len(kv[0]))
+        for token, normalized in tokens:
+            if lowered.endswith(token):
+                state = normalized if len(normalized) == 2 else STATE_MAP.get(normalized, normalized)
+                cleaned = cleaned[: -len(token)].rstrip(', ')
+                break
+
+    city = None
+    street = None
+    if cleaned and (state is not None or zipcode is not None):
+        words = cleaned.split()
+        if len(words) <= 2:
+            return text, None, state, zipcode
+        if ',' in cleaned:
+            street, city = [part.strip() or None for part in cleaned.rsplit(',', 1)]
+        else:
+            parts = cleaned.rsplit(' ', 2)
+            if len(parts) >= 2:
+                city = parts[-1]
+                street = ' '.join(parts[:-1]).strip() or None
+            else:
+                city = cleaned
+                street = None
+
+    if state is None and zipcode is None:
+        return text, None, None, None
+
+    if city is None and street is None:
+        street = cleaned or text
 
     return street, city, state, zipcode
 
@@ -123,6 +145,8 @@ def enrich_markets(df: pd.DataFrame) -> pd.DataFrame:
     df['search_city'] = df['city'].fillna('').str.lower()
     df['search_state'] = df['state'].fillna('').str.upper()
     df['search_zip'] = df['zip'].fillna('').str.strip()
+    df['search_city_norm'] = df['search_city'].apply(_normalize_text)
+    df['search_state_norm'] = df['search_state'].apply(lambda s: s.strip().upper())
 
     means = _zip_means(df)
     df = df.join(means, on='zip')
@@ -179,4 +203,49 @@ def generate_zip_centroids(df: pd.DataFrame) -> dict[str, list[float]]:
     return centroids
 
 
-__all__ = ['enrich_markets', 'generate_zip_centroids']
+def generate_city_centroids(df: pd.DataFrame) -> Dict[str, list[float]]:
+    """Average market coordinates per normalized city/state grouping."""
+    city_data = df[['search_city_norm', 'search_state_norm', 'latitude', 'longitude']].copy()
+    city_data['latitude'] = pd.to_numeric(city_data['latitude'], errors='coerce')
+    city_data['longitude'] = pd.to_numeric(city_data['longitude'], errors='coerce')
+    city_data = city_data.dropna(subset=['search_city_norm', 'latitude', 'longitude'])
+    if city_data.empty:
+        return {}
+
+    grouped = city_data.groupby(['search_city_norm', 'search_state_norm'])[['latitude', 'longitude']].mean()
+    counts = city_data.groupby(['search_city_norm', 'search_state_norm']).size()
+
+    centroids: Dict[str, list[float]] = {}
+    city_totals: Dict[str, tuple[float, float, int]] = {}
+    city_states: Dict[str, set[str]] = {}
+
+    for (city_norm, state_norm), row in grouped.iterrows():
+        lat = float(row['latitude'])
+        lon = float(row['longitude'])
+        state_key = state_norm or ''
+        if city_norm:
+            city_states.setdefault(city_norm, set()).add(state_key or '')
+            key = f"{city_norm}|{state_key}" if state_key else city_norm
+            centroids[key] = [lat, lon]
+
+            # Track overall city fallback keyed without state
+            total_lat, total_lon, total_count = city_totals.get(city_norm, (0.0, 0.0, 0))
+            count = int(counts.loc[(city_norm, state_norm)])
+            city_totals[city_norm] = (total_lat + lat * count, total_lon + lon * count, total_count + count)
+
+    for city_norm, (lat_sum, lon_sum, total_count) in city_totals.items():
+        if total_count <= 0:
+            continue
+        avg_lat = lat_sum / total_count
+        avg_lon = lon_sum / total_count
+        state_variants = city_states.get(city_norm, set()) or {''}
+        # Only provide a fallback centroid when the city appears in a single state
+        non_empty_states = {s for s in state_variants if s}
+        allow_fallback = len(non_empty_states) <= 1
+        if allow_fallback:
+            centroids.setdefault(city_norm, [avg_lat, avg_lon])
+
+    return centroids
+
+
+__all__ = ['enrich_markets', 'generate_zip_centroids', 'generate_city_centroids']

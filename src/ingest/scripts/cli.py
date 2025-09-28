@@ -11,7 +11,7 @@ from ingest.scripts.ingest_excel import ingest_excel
 from ingest.scripts.map_programs import map_program_flags
 from ingest.scripts.validate import basic_validate
 from ingest.scripts.export_artifacts import export_from_profile
-from ingest.scripts.enrich import enrich_markets, generate_zip_centroids
+from ingest.scripts.enrich import enrich_markets, generate_zip_centroids, generate_city_centroids
 
 APP = typer.Typer(help="Fresh Local Harvest data pipeline.")
 
@@ -65,12 +65,18 @@ def cmd_run(raw: str = typer.Option(None, help="Optional raw file path to use (d
     # 5) Export
     exports = export_from_profile(valid, EXPORTS)
 
-    # 6) ZIP centroid export (for front-end radius lookups)
+    # 6) ZIP and city centroid exports (for front-end radius lookups)
     zip_centroids = generate_zip_centroids(valid)
     zc_path = Path("site/static/data/zip.centroids.json")
     zc_path.parent.mkdir(parents=True, exist_ok=True)
     with open(zc_path, "w", encoding="utf-8") as f:
         json.dump(zip_centroids, f, separators=(",", ":"), sort_keys=True)
+
+    city_centroids = generate_city_centroids(valid)
+    cc_path = Path("site/static/data/city.centroids.json")
+    cc_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(cc_path, "w", encoding="utf-8") as f:
+        json.dump(city_centroids, f, separators=(",", ":"), sort_keys=True)
 
     # 7) Manifest
     manifest = {
@@ -81,7 +87,7 @@ def cmd_run(raw: str = typer.Option(None, help="Optional raw file path to use (d
         "records_total": int(len(df)),
         "records_valid": int(len(valid)),
         "records_rejected": int(len(rejects)),
-        "exports": {**exports, "zip_centroids": str(zc_path)},
+        "exports": {**exports, "zip_centroids": str(zc_path), "city_centroids": str(cc_path)},
     }
     PROC_DIR.mkdir(parents=True, exist_ok=True)
     man_path = PROC_DIR / "manifest.json"
