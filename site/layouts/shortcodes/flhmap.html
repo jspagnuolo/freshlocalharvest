@@ -107,11 +107,14 @@
   const MAX_RESULTS = 200;
   const ZIP_RADIUS_MILES = 30;
   const CITY_RADIUS_MILES = 30;
+  const NEAREST_RESULTS_LIMIT = 75;
+  const USER_LOCATION_FALLBACK_ZOOM = 8;
 
-  const MAP_URL_RAW    = {{ (.Get "data"   | default "/data/markets.map.json")   | jsonify }};
-  const SEARCH_URL_RAW = {{ (.Get "search" | default "/data/markets.search.json") | jsonify }};
-  const ZIP_URL_RAW    = {{ (.Get "zip_centroids" | default "/data/zip.centroids.json") | jsonify }};
-  const CITY_URL_RAW   = {{ (.Get "city_centroids" | default "/data/city.centroids.json") | jsonify }};
+  const MAP_URL_RAW         = {{ (.Get "data"           | default "/data/markets.map.json")        | jsonify }};
+  const SEARCH_URL_RAW      = {{ (.Get "search"         | default "/data/markets.search.json")      | jsonify }};
+  const ZIP_URL_RAW         = {{ (.Get "zip_centroids"  | default "/data/zip.centroids.json")       | jsonify }};
+  const CITY_URL_RAW        = {{ (.Get "city_centroids" | default "/data/city.centroids.json")      | jsonify }};
+  const USER_LOCATION_URL_RAW = {{ (.Get "user_location" | default "/api/user-location")            | jsonify }};
 
   const $city = document.getElementById('flh-city');
   const $state = document.getElementById('flh-state');
@@ -132,9 +135,12 @@
   const SEARCH_URL = normalizeUrl(SEARCH_URL_RAW);
   const ZIP_URL = normalizeUrl(ZIP_URL_RAW);
   const CITY_URL = normalizeUrl(CITY_URL_RAW);
+  const USER_LOCATION_URL = normalizeUrl(USER_LOCATION_URL_RAW);
 
   let zipCentroids = {};
   let cityCentroids = {};
+  let userLocation = null;
+  let userMarker = null;
 
   const STATES = {
     "alabama":"AL","alaska":"AK","arizona":"AZ","arkansas":"AR","california":"CA","colorado":"CO","connecticut":"CT","delaware":"DE",
@@ -191,6 +197,129 @@
       return out;
     }
     return raw;
+  }
+
+  function buildLocationLabel(data){
+    if (!data) return '';
+    const parts = [];
+    if (data.city){
+      parts.push(toTitleCase(data.city));
+    }
+    if (data.region){
+      parts.push(data.region);
+    }
+    if (!parts.length && data.country){
+      parts.push(data.country);
+    }
+    if (data.postalCode && parts.length){
+      parts[parts.length - 1] = `${parts[parts.length - 1]} ${data.postalCode}`.trim();
+    }
+    return parts.join(', ');
+  }
+
+  function ensureUserMarker(origin){
+    if (!origin || !Number.isFinite(origin.lat) || !Number.isFinite(origin.lon)) return;
+    const point = [origin.lat, origin.lon];
+    if (!userMarker){
+      userMarker = L.circleMarker(point, {
+        radius: 8,
+        color: '#1d4ed8',
+        weight: 2,
+        fillColor: '#3b82f6',
+        fillOpacity: 0.85,
+        opacity: 0.9,
+        interactive: false
+      }).addTo(map);
+      userMarker.bindTooltip('Your approximate location');
+    } else {
+      userMarker.setLatLng(point);
+    }
+  }
+
+  function fetchUserLocation(){
+    if (!USER_LOCATION_URL) return Promise.resolve(null);
+    return fetch(USER_LOCATION_URL, { cache: 'no-store', credentials: 'omit' })
+      .then(res => res.ok ? res.json() : null)
+      .then(body => {
+        if (!body) return null;
+        const lat = Number(body.latitude ?? body.lat ?? body.coords?.latitude);
+        const lon = Number(body.longitude ?? body.lon ?? body.coords?.longitude);
+        if (!Number.isFinite(lat) || !Number.isFinite(lon)) return null;
+        const location = {
+          lat,
+          lon,
+          city: body.city || null,
+          region: body.region || null,
+          country: body.country || null,
+          postalCode: body.postalCode || null,
+          source: body.source || 'cloudflare-headers'
+        };
+        location.label = body.label || buildLocationLabel(location);
+        return location;
+      })
+      .catch(() => null);
+  }
+
+  function showNearestMarkets(origin){
+    if (!origin || !Number.isFinite(origin.lat) || !Number.isFinite(origin.lon) || !records.length) return;
+    const candidates = [];
+    for (const entry of records){
+      const distance = haversineMiles(origin.lat, origin.lon, entry.data.latitude, entry.data.longitude);
+      if (!Number.isFinite(distance)) continue;
+      entry.data.distanceMiles = distance;
+      entry.data.distanceSource = 'user';
+      candidates.push(entry);
+    }
+
+    const sorted = candidates.slice().sort((a, b) => {
+      const da = a.data.distanceMiles;
+      const db = b.data.distanceMiles;
+      return da - db;
+    });
+
+    const limit = Math.min(MAX_RESULTS, NEAREST_RESULTS_LIMIT);
+    const visible = sorted.slice(0, limit);
+
+    markersGroup.clearLayers();
+    for (const entry of visible){
+      markersGroup.addLayer(entry.marker);
+    }
+
+    const filters = {
+      nearestMode: true,
+      nearestLabel: origin.label,
+      distanceMode: 'user',
+      nearestTotal: candidates.length,
+      nearestShown: visible.length
+    };
+
+    renderCount(visible.length, totalRecords, true);
+    renderList(visible, candidates.length, filters);
+
+    ensureUserMarker(origin);
+
+    try {
+      if (markersGroup.getLayers().length){
+        let bounds = markersGroup.getBounds();
+        if (userMarker){
+          bounds = bounds.extend(userMarker.getLatLng());
+        }
+        map.fitBounds(bounds.pad(0.12));
+      } else if (userMarker){
+        map.setView(userMarker.getLatLng(), USER_LOCATION_FALLBACK_ZOOM);
+      }
+    } catch (err) {
+      if (userMarker){
+        map.setView(userMarker.getLatLng(), USER_LOCATION_FALLBACK_ZOOM);
+      }
+    }
+
+    const url = new URL(location);
+    url.searchParams.delete('city');
+    url.searchParams.delete('state');
+    url.searchParams.delete('zip');
+    url.searchParams.delete('q');
+    history.replaceState(null, '', url);
   }
 
   function parseCityInput(raw){
@@ -381,7 +510,9 @@
 
   function renderList(matches, matchCount, filters){
     clearHighlight();
-    if (!hasFilters(filters)){
+    const nearestMode = Boolean(filters.nearestMode);
+
+    if (!nearestMode && !hasFilters(filters)){
       $results.innerHTML = '';
       $message.textContent = totalRecords ? `Type a city, state, ZIP, or market name to explore ${totalRecords.toLocaleString()} markets.` : '';
       $hint.textContent = 'Try “miami”, “ohio”, “albany ny”, or a ZIP such as “30303”.';
@@ -390,23 +521,34 @@
 
     if (!matchCount){
       $results.innerHTML = '';
-      const summaryParts = [];
-      if (filters.cityRaw) summaryParts.push(`city “${escapeHtml(filters.cityRaw)}”`);
-      if (filters.stateRaw) summaryParts.push(`state ${escapeHtml(filters.stateRaw.toUpperCase())}`);
-      if (filters.zipRaw) summaryParts.push(`ZIP ${escapeHtml(filters.zipRaw)}`);
-      if (filters.nameRaw) summaryParts.push(`keywords “${escapeHtml(filters.nameRaw)}”`);
-      const summary = summaryParts.join(', ') || 'your filters';
-      $message.textContent = `No markets found for ${summary}.`;
-      $hint.textContent = 'Adjust the filters or try a nearby city/ZIP code.';
+      if (nearestMode){
+        $message.textContent = 'No markets found near your location.';
+        $hint.textContent = 'Try entering a city or ZIP code to look elsewhere.';
+      } else {
+        const summaryParts = [];
+        if (filters.cityRaw) summaryParts.push(`city “${escapeHtml(filters.cityRaw)}”`);
+        if (filters.stateRaw) summaryParts.push(`state ${escapeHtml(filters.stateRaw.toUpperCase())}`);
+        if (filters.zipRaw) summaryParts.push(`ZIP ${escapeHtml(filters.zipRaw)}`);
+        if (filters.nameRaw) summaryParts.push(`keywords “${escapeHtml(filters.nameRaw)}”`);
+        const summary = summaryParts.join(', ') || 'your filters';
+        $message.textContent = `No markets found for ${summary}.`;
+        $hint.textContent = 'Adjust the filters or try a nearby city/ZIP code.';
+      }
       return;
     }
 
     const cards = matches.map(renderResultCard).join('');
     $results.innerHTML = cards;
 
-    $message.textContent = matchCount === 1
-      ? '1 market found'
-      : `${matchCount.toLocaleString()} markets found`;
+    if (nearestMode){
+      $message.textContent = matchCount === 1
+        ? '1 market near you'
+        : `${Math.min(matchCount, matches.length).toLocaleString()} markets near you`;
+    } else {
+      $message.textContent = matchCount === 1
+        ? '1 market found'
+        : `${matchCount.toLocaleString()} markets found`;
+    }
 
     let hintCopy = '';
     if (filters.distanceMode === 'zip' && filters.zipLabel){
@@ -420,6 +562,12 @@
       hintCopy = `Within ${CITY_RADIUS_MILES} miles of ${cityLabel}.`;
       if (matchCount > matches.length){
         hintCopy += ` Showing the first ${matches.length} matches.`;
+      }
+    } else if (filters.distanceMode === 'user'){
+      const label = filters.nearestLabel ? escapeHtml(filters.nearestLabel) : 'your location';
+      hintCopy = `Nearest markets to ${label}.`;
+      if (filters.nearestTotal && filters.nearestTotal > matches.length){
+        hintCopy += ` Showing the first ${matches.length} results.`;
       }
     } else if (matchCount > matches.length){
       hintCopy = `Showing the first ${matches.length} results. Narrow your search for a shorter list.`;
@@ -540,15 +688,19 @@
     markersGroup.clearLayers();
 
     if (!filtersActive){
-      renderCount(0, totalRecords, false);
-      renderList([], 0, filters);
-      map.setView(DEFAULT_CENTER, DEFAULT_ZOOM);
-      const url = new URL(location);
-      url.searchParams.delete('city');
-      url.searchParams.delete('state');
-      url.searchParams.delete('zip');
-      url.searchParams.delete('q');
-      history.replaceState(null, '', url);
+      if (userLocation){
+        showNearestMarkets(userLocation);
+      } else {
+        renderCount(0, totalRecords, false);
+        renderList([], 0, filters);
+        map.setView(DEFAULT_CENTER, DEFAULT_ZOOM);
+        const url = new URL(location);
+        url.searchParams.delete('city');
+        url.searchParams.delete('state');
+        url.searchParams.delete('zip');
+        url.searchParams.delete('q');
+        history.replaceState(null, '', url);
+      }
       return;
     }
 
@@ -713,6 +865,16 @@
 
       totalRecords = records.length;
       applyFilters();
+
+      fetchUserLocation().then((loc) => {
+        if (!loc) return;
+        userLocation = loc;
+        ensureUserMarker(loc);
+        const currentFilters = getFilters();
+        if (!hasFilters(currentFilters)){
+          showNearestMarkets(loc);
+        }
+      });
     }).catch(err => {
       console.error('Failed to load market data', err);
       $message.textContent = 'Unable to load markets right now. Please refresh the page.';
