@@ -25,10 +25,6 @@ canonifyURLs = false  # keep relative URLs in dev; we'll set a real baseURL in p
     name = "Blog"
     pageRef = "/posts"
     weight = 20
-  [[menu.main]]
-    name = "Map"
-    url = "/map/"
-    weight = 20
 
 
 [sitemap]
