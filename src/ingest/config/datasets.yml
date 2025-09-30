@@ -1,0 +1,14 @@
+# File: ingest/config/datasets.yml
+datasets:
+  farmers_market:
+    label: "Farmers Markets"
+    category: "farmers_market"
+    prefix: "farmersmarket_"
+    glob: "farmersmarket_*.xlsx"
+    schema: "ingest/config/schema.yml"
+  csa:
+    label: "Community Supported Agriculture"
+    category: "csa"
+    prefix: "csa_"
+    glob: "csa_*.xlsx"
+    schema: "ingest/config/schema.yml"

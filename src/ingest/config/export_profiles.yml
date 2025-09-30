@@ -2,7 +2,13 @@
 map:
   path: site/static/data/markets.map.json
   fields:
+    - record_id
     - listing_id
+    - source_listing_id
+    - listing_type
+    - listing_type_label
+    - source_dataset
+    - source_dataset_label
     - listing_name
     - organization
     - street
@@ -24,7 +30,13 @@ map:
 search:
   path: site/static/data/markets.search.json
   fields:
+    - record_id
     - listing_id
+    - source_listing_id
+    - listing_type
+    - listing_type_label
+    - source_dataset
+    - source_dataset_label
     - listing_name
     - organization
     - street

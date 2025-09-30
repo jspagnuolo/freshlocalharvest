@@ -76,6 +76,12 @@
       <label for="flh-state">State</label>
       <input id="flh-state" class="flh-input" type="text" placeholder="FL" maxlength="2" autocomplete="off">
     </div>
+    <div class="flh-field" style="max-width:190px">
+      <label for="flh-type">Type</label>
+      <select id="flh-type" class="flh-input">
+        <option value="">All types</option>
+      </select>
+    </div>
     <div class="flh-field" style="max-width:140px">
       <label for="flh-zip">ZIP</label>
       <input id="flh-zip" class="flh-input" type="search" placeholder="30303" inputmode="numeric" pattern="[0-9]*" maxlength="10" autocomplete="off">
@@ -119,6 +125,7 @@
 
   const $city = document.getElementById('flh-city');
   const $state = document.getElementById('flh-state');
+  const $type = document.getElementById('flh-type');
   const $zip = document.getElementById('flh-zip');
   const $name = document.getElementById('flh-name');
   const $clear = document.getElementById('flh-clear');
@@ -142,6 +149,8 @@
   let cityCentroids = {};
   let userLocation = null;
   let userMarker = null;
+  const typeOptions = new Map();
+  let pendingTypeValue = '';
 
   const STATES = {
     "alabama":"AL","alaska":"AK","arizona":"AZ","arkansas":"AR","california":"CA","colorado":"CO","connecticut":"CT","delaware":"DE",
@@ -198,6 +207,28 @@
       return out;
     }
     return raw;
+  }
+
+  function populateTypeOptions(){
+    if (!$type) return;
+    const currentValue = $type.value;
+    $type.innerHTML = '';
+    const allOption = document.createElement('option');
+    allOption.value = '';
+    allOption.textContent = 'All types';
+    $type.appendChild(allOption);
+    const entries = Array.from(typeOptions.entries()).sort((a, b) => a[1].localeCompare(b[1]));
+    for (const [value, label] of entries){
+      const opt = document.createElement('option');
+      opt.value = value;
+      opt.textContent = label;
+      $type.appendChild(opt);
+    }
+    const targetValue = pendingTypeValue || currentValue;
+    if (targetValue && typeOptions.has(targetValue)){
+      $type.value = targetValue;
+    }
+    pendingTypeValue = '';
   }
 
   function buildLocationLabel(data){
@@ -319,6 +350,7 @@
     const url = new URL(location);
     url.searchParams.delete('city');
     url.searchParams.delete('state');
+    url.searchParams.delete('type');
     url.searchParams.delete('zip');
     url.searchParams.delete('q');
     history.replaceState(null, '', url);
@@ -433,6 +465,7 @@
 
   function renderBadgeList(data){
     const badges = [];
+    if (data.listing_type_label) badges.push(data.listing_type_label);
     if (data.program_snap) badges.push('SNAP/EBT');
     if (data.program_wic) badges.push('WIC');
     if (data.program_wic_fmnp) badges.push('WIC FMNP');
@@ -506,6 +539,7 @@
       (filters.cityNormalized && filters.cityNormalized.length) ||
       (filters.stateNormalized && filters.stateNormalized.length) ||
       (filters.zipNormalized && filters.zipNormalized.length) ||
+      (filters.typeValue && filters.typeValue.length) ||
       (filters.nameTokens && filters.nameTokens.length)
     );
   }
@@ -530,6 +564,7 @@
         const summaryParts = [];
         if (filters.cityRaw) summaryParts.push(`city “${escapeHtml(filters.cityRaw)}”`);
         if (filters.stateRaw) summaryParts.push(`state ${escapeHtml(filters.stateRaw.toUpperCase())}`);
+        if (filters.typeValue) summaryParts.push(`type ${escapeHtml(filters.typeLabel || filters.typeValue)}`);
         if (filters.zipRaw) summaryParts.push(`ZIP ${escapeHtml(filters.zipRaw)}`);
         if (filters.nameRaw) summaryParts.push(`keywords “${escapeHtml(filters.nameRaw)}”`);
         const summary = summaryParts.join(', ') || 'your filters';
@@ -581,6 +616,7 @@
   function getFilters(){
     const cityRaw = ($city.value || '').trim();
     const stateRaw = ($state.value || '').trim();
+    const typeValue = ($type.value || '').trim();
     const zipRaw = ($zip.value || '').trim();
     const nameRaw = ($name.value || '').trim();
 
@@ -596,10 +632,13 @@
     const cityLabel = cityDisplay
       ? (stateNormalized ? `${cityDisplay}, ${stateNormalized}` : cityDisplay)
       : (cityRaw || '');
+    const typeLabel = typeValue ? (typeOptions.get(typeValue) || '') : '';
 
     return {
       cityRaw,
       stateRaw,
+      typeValue,
+      typeLabel,
       zipRaw,
       nameRaw,
       cityNormalized,
@@ -615,6 +654,7 @@
 
   function matchesFilters(data, filters, radiusOptions = {}){
     if (filters.stateNormalized && data.stateNormalized && data.stateNormalized !== filters.stateNormalized) return false;
+    if (filters.typeValue && data.listing_type !== filters.typeValue) return false;
 
     if (filters.zipNormalized && !radiusOptions.zipTarget) return false;
 
@@ -762,6 +802,7 @@
     const url = new URL(location);
     filters.cityRaw ? url.searchParams.set('city', filters.cityRaw) : url.searchParams.delete('city');
     filters.stateParam ? url.searchParams.set('state', filters.stateParam) : url.searchParams.delete('state');
+    filters.typeValue ? url.searchParams.set('type', filters.typeValue) : url.searchParams.delete('type');
     filters.zipRaw ? url.searchParams.set('zip', filters.zipRaw) : url.searchParams.delete('zip');
     filters.nameRaw ? url.searchParams.set('q', filters.nameRaw) : url.searchParams.delete('q');
     history.replaceState(null, '', url);
@@ -781,13 +822,15 @@
 
       const searchById = new Map();
       for (const row of searchRows){
-        const id = String(row.listing_id || row.id || '').trim();
-        if (id) searchById.set(id, row);
+        const key = String(row.record_id || row.listing_id || row.id || '').trim();
+        if (key) searchById.set(key, row);
       }
 
+      typeOptions.clear();
+
       for (const rec of mapRows){
-        const id = String(rec.listing_id || rec.id || '').trim();
-        if (!id) continue;
+        const recordId = String(rec.record_id || rec.listing_id || rec.id || '').trim();
+        if (!recordId) continue;
 
         let lat = toNum(rec.latitude ?? rec.lat ?? rec.location_y);
         let lng = toNum(rec.longitude ?? rec.lon ?? rec.location_x);
@@ -797,10 +840,10 @@
         }
         if (!Number.isFinite(lat) || !Number.isFinite(lng) || !clampUS(lat, lng)) continue;
 
-        const searchRow = searchById.get(id) || {};
+        const searchRow = searchById.get(recordId) || {};
 
         const combined = {
-          id,
+          id: recordId,
           name: rec.listing_name || searchRow.listing_name || rec.name || 'Farmers Market',
           organization: searchRow.organization ?? rec.organization ?? '',
           street: searchRow.street ?? rec.street ?? '',
@@ -822,11 +865,30 @@
           snap_vendor_pos: Boolean(searchRow.snap_vendor_pos ?? rec.snap_vendor_pos),
           longitude: lng,
           latitude: lat,
+          record_id: recordId,
+          listing_id: rec.listing_id ?? searchRow.listing_id ?? recordId,
+          source_listing_id: rec.source_listing_id ?? searchRow.source_listing_id ?? rec.listing_id ?? recordId,
+          listing_type: rec.listing_type ?? searchRow.listing_type ?? '',
+          listing_type_label: rec.listing_type_label ?? searchRow.listing_type_label ?? '',
+          source_dataset: rec.source_dataset ?? searchRow.source_dataset ?? '',
+          source_dataset_label: rec.source_dataset_label ?? searchRow.source_dataset_label ?? '',
           search_state: (searchRow.search_state ?? rec.state ?? '').toUpperCase(),
           search_city: (searchRow.search_city ?? (rec.city || '')).toLowerCase(),
           search_zip: (searchRow.search_zip ?? rec.zip ?? '').slice(0, 5),
           search_haystack: (searchRow.search_haystack || '').toLowerCase()
         };
+
+        if (!combined.listing_type && combined.listing_type_label){
+          combined.listing_type = normalizeWhitespace(combined.listing_type_label).replace(/\s+/g, '_');
+        }
+
+        if (combined.listing_type){
+          const label = combined.listing_type_label || toTitleCase(combined.listing_type.replace(/_/g, ' '));
+          combined.listing_type_label = label;
+          if (!typeOptions.has(combined.listing_type)){
+            typeOptions.set(combined.listing_type, label);
+          }
+        }
 
         if (!combined.search_haystack){
           const sourcePieces = [
@@ -838,7 +900,8 @@
             STATE_NAME_BY_CODE[combined.state] || '',
             combined.zip,
             combined.location_desc,
-            combined.listing_desc
+            combined.listing_desc,
+            combined.listing_type_label
           ];
           combined.search_haystack = sourcePieces.filter(Boolean).join(' ').toLowerCase();
         }
@@ -859,14 +922,15 @@
 
         const marker = L.marker([combined.latitude, combined.longitude], { title: combined.name });
         marker.bindPopup(renderPopup(combined));
-        marker.on('click', () => highlightResult(id));
+        marker.on('click', () => highlightResult(recordId));
 
-        const entry = { id, marker, data: combined };
+        const entry = { id: recordId, marker, data: combined };
         records.push(entry);
-        recordById.set(id, entry);
+        recordById.set(recordId, entry);
       }
 
       totalRecords = records.length;
+      populateTypeOptions();
       applyFilters();
 
       fetchUserLocation().then((loc) => {
@@ -889,11 +953,14 @@
   if (params.get('state')) $state.value = params.get('state');
   if (params.get('zip')) $zip.value = params.get('zip');
   if (params.get('q')) $name.value = params.get('q');
+  const initialTypeParam = params.get('type');
+  if (initialTypeParam) pendingTypeValue = initialTypeParam;
 
   hydrate();
 
   const applyFiltersDebounced = debounce(applyFilters, 120);
-  [$city, $state, $zip, $name].forEach(el => {
+  [$city, $state, $type, $zip, $name].forEach(el => {
+    if (!el) return;
     el.addEventListener('input', applyFiltersDebounced);
     el.addEventListener('change', applyFilters);
     el.addEventListener('keydown', (e) => {
@@ -906,6 +973,7 @@
   $clear.addEventListener('click', () => {
     $city.value = '';
     $state.value = '';
+    $type.value = '';
     $zip.value = '';
     $name.value = '';
     applyFilters();

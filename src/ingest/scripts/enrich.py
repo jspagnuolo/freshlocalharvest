@@ -151,17 +151,19 @@ def enrich_markets(df: pd.DataFrame) -> pd.DataFrame:
     means = _zip_means(df)
     df = df.join(means, on='zip')
 
+    haystack_columns = [
+        'listing_name',
+        'organization',
+        'street',
+        'city',
+        'state',
+        'zip',
+        'location_desc',
+        'listing_desc',
+        'listing_type_label',
+    ]
     haystack_sources = pd.concat(
-        [
-            df['listing_name'],
-            df['organization'],
-            df['street'],
-            df['city'],
-            df['state'],
-            df['zip'],
-            df['location_desc'],
-            df['listing_desc'],
-        ],
+        [df.get(col, pd.Series('', index=df.index)) for col in haystack_columns],
         axis=1,
     ).fillna('').astype(str)
 
