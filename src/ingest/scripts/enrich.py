@@ -60,7 +60,7 @@ def _normalize_state(token: str | None) -> str | None:
 
 def _parse_address(raw: str | None) -> Tuple[str | None, str | None, str | None, str | None]:
     """Best-effort split of "street, City, ST 12345" into components."""
-    text = _maybe(raw)
+    text = _maybe(raw).replace('\xa0', ' ')
     if not text:
         return None, None, None, None
 
@@ -68,9 +68,15 @@ def _parse_address(raw: str | None) -> Tuple[str | None, str | None, str | None,
 
     zipcode = None
     zip_match = ZIP_RE.search(cleaned)
+    if not zip_match:
+        matches = list(re.finditer(r"(\d{5})(?:-\d{4})?", cleaned))
+        zip_match = matches[-1] if matches else None
     if zip_match:
         zipcode = zip_match.group(1)
         cleaned = cleaned[:zip_match.start()].rstrip(', ')
+
+    cleaned = re.sub(r",?\s*(?:usa|u\.?s\.?a?|u\.?s\.?|united states(?: of america)?)\s*$", "", cleaned, flags=re.IGNORECASE)
+    cleaned = cleaned.rstrip(', ')
 
     state = None
     if cleaned:

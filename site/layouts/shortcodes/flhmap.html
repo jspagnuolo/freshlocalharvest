@@ -653,7 +653,9 @@
   }
 
   function matchesFilters(data, filters, radiusOptions = {}){
-    if (filters.stateNormalized && data.stateNormalized && data.stateNormalized !== filters.stateNormalized) return false;
+    if (filters.stateNormalized){
+      if (!data.stateNormalized || data.stateNormalized !== filters.stateNormalized) return false;
+    }
     if (filters.typeValue && data.listing_type !== filters.typeValue) return false;
 
     if (filters.zipNormalized && !radiusOptions.zipTarget) return false;
