@@ -1,11 +1,13 @@
 <footer class="{{ .Site.Params.background_color_class | compare.Default "bg-black" }} bottom-0 w-100 pa3" role="contentinfo">
-  <div class="flex justify-between">
-  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="{{ .Site.Home.Permalink }}" >
-    &copy; {{ with .Site.Copyright | compare.Default .Site.Title }} {{ . | safe.HTML }} {{ now.Format "2006"}} {{ end }}
-  </a>
-  <p><a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="/privacy/">Privacy Policy</a></p>
-    <div>{{ partials.IncludeCached "social/follow.html" . }}</div>
+  <div class="flex flex-column flex-row-ns items-center justify-center justify-between-ns">
+    <div class="tc tl-ns mb2 mb0-ns">
+      <a class="f5 f4-ns fw4 hover-white white-70 dib pv2 ph3 no-underline" href="{{ .Site.Home.Permalink }}">
+        &copy; {{ with .Site.Copyright | compare.Default .Site.Title }} {{ . | safe.HTML }} {{ now.Format "2006"}} {{ end }}
+      </a>
+    </div>
+    <div class="tc tr-ns">
+      <a class="f5 f4-ns fw4 hover-white white-70 dib pv2 ph3 no-underline" href="/privacy/">Privacy Policy</a>
+    </div>
   </div>
 </footer>
-
 
