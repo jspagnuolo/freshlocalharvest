@@ -18,3 +18,9 @@ datasets:
     prefix: "foodhub_"
     glob: "foodhub_*.xlsx"
     schema: "ingest/config/schema.yml"
+  on_farm_market:
+    label: "On-Farm Markets"
+    category: "on_farm_market"
+    prefix: "onfarmmarket_"
+    glob: "onfarmmarket_*.xlsx"
+    schema: "ingest/config/schema.yml"
