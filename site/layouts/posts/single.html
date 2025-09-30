@@ -7,5 +7,23 @@
     <div class="content">
       {{ .Content }}
     </div>
+    {{ $prev := .PrevInSection }}
+    {{ $next := .NextInSection }}
+    {{ if or $prev $next }}
+      <nav style="display:flex;gap:1rem;margin-top:2.5rem;flex-wrap:wrap;justify-content:space-between;border-top:1px solid #e2e8f0;padding-top:1.5rem;">
+        {{ if $prev }}
+          <a href="{{ $prev.RelPermalink }}" style="text-decoration:none;color:#2563eb;max-width:48%;">
+            <span style="display:block;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:#94a3b8;margin-bottom:.25rem;">Previous</span>
+            <span style="font-weight:600;">{{ $prev.Title }}</span>
+          </a>
+        {{ end }}
+        {{ if $next }}
+          <a href="{{ $next.RelPermalink }}" style="text-decoration:none;color:#2563eb;max-width:48%;text-align:right;margin-left:auto;">
+            <span style="display:block;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:#94a3b8;margin-bottom:.25rem;">Next</span>
+            <span style="font-weight:600;">{{ $next.Title }}</span>
+          </a>
+        {{ end }}
+      </nav>
+    {{ end }}
   </article>
 {{ end }}
