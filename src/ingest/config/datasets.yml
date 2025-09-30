@@ -12,3 +12,9 @@ datasets:
     prefix: "csa_"
     glob: "csa_*.xlsx"
     schema: "ingest/config/schema.yml"
+  food_hub:
+    label: "Food Hubs"
+    category: "food_hub"
+    prefix: "foodhub_"
+    glob: "foodhub_*.xlsx"
+    schema: "ingest/config/schema.yml"
