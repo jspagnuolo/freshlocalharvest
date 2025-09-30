@@ -24,3 +24,9 @@ datasets:
     prefix: "onfarmmarket_"
     glob: "onfarmmarket_*.xlsx"
     schema: "ingest/config/schema.yml"
+  agritourism:
+    label: "Agritourism"
+    category: "agritourism"
+    prefix: "agritourism_"
+    glob: "agritourism_*.xlsx"
+    schema: "ingest/config/schema.yml"
