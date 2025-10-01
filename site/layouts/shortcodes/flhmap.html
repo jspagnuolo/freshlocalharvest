@@ -58,7 +58,11 @@
   .flh-result h3{margin:0;font-size:1rem;line-height:1.4}
   .flh-result-address{margin:.35rem 0;font-size:.9rem;color:#4b5563}
   .flh-result-desc{margin:.2rem 0 0;font-size:.85rem;color:#616d80}
-  .flh-result-distance{margin:.3rem 0 0;font-size:.82rem;color:#2563eb;font-weight:600}
+  .flh-result-distance{margin:.3rem 0 0;font-size:.82rem;color:#047857;font-weight:600}
+  .flh-result-actions{margin:.45rem 0 0;font-size:.85rem}
+  .flh-direction-link{color:#2563eb;font-weight:600;text-decoration:underline;display:inline-flex;align-items:center;gap:.35rem}
+  .flh-direction-link:visited{color:#1d4ed8}
+  .flh-direction-link:hover,.flh-direction-link:focus{color:#1e3a8a;text-decoration:underline}
   .flh-badges{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.45rem}
   .flh-badge{font-size:.72rem;padding:.18rem .45rem;border-radius:.4rem;background:#eef2ff;color:#31427a;font-weight:600}
   .flh-results-message{font-size:.9rem;color:#4b5563;margin-bottom:.75rem}
@@ -184,6 +188,19 @@
   const digitsOnly = (value) => String(value || '').replace(/[^0-9]/g, '');
   const debounce = (fn, ms=150) => { let t; return (...args)=>{ clearTimeout(t); t=setTimeout(()=>fn(...args), ms); }; };
   const EARTH_RADIUS_MILES = 3958.7613;
+
+  function buildDirectionsUrl(data){
+    const parts = [];
+    if (Number.isFinite(data.latitude) && Number.isFinite(data.longitude)){
+      parts.push(`destination=${encodeURIComponent(`${data.latitude},${data.longitude}`)}`);
+    }
+    if (data.full_address){
+      parts.push(`destination_place_id=${encodeURIComponent(data.full_address)}`);
+    } else if (data.name){
+      parts.push(`query=${encodeURIComponent(data.name)}`);
+    }
+    return `https://www.google.com/maps/dir/?api=1&${parts.join('&')}`;
+  }
 
   function haversineMiles(lat1, lon1, lat2, lon2){
     const toRad = (deg) => deg * Math.PI / 180;
@@ -464,6 +481,10 @@
     if (programs.length) {
       pieces.push(`<div style="margin-top:6px;font-size:12px;">Programs: ${escapeHtml(programs.join(', '))}</div>`);
     }
+    if (Number.isFinite(data.latitude) && Number.isFinite(data.longitude)){
+      const mapsLink = buildDirectionsUrl(data);
+      pieces.push(`<div style="margin-top:6px;"><a class="flh-direction-link" target="_blank" rel="noopener" href="${mapsLink}">Get directions<span class=\"sr-only\"> to ${escapeHtml(data.name || 'this location')}</span></a></div>`);
+    }
     return pieces.join('');
   }
 
@@ -487,12 +508,15 @@
     const desc = d.location_desc || d.listing_desc || '';
     const badges = renderBadgeList(d);
     const distance = typeof d.distanceMiles === 'number' ? `<p class="flh-result-distance">${d.distanceMiles.toFixed(1)} miles away</p>` : '';
+    const mapsHref = (Number.isFinite(d.latitude) && Number.isFinite(d.longitude)) ? buildDirectionsUrl(d) : null;
+    const directions = mapsHref ? `<a class="flh-direction-link" href="${mapsHref}" target="_blank" rel="noopener">Get directions<span class="sr-only"> to ${escapeHtml(d.name || 'this location')}</span></a>` : '';
     return `
       <div class="flh-result" role="listitem" tabindex="0" data-id="${record.id}">
         <h3>${escapeHtml(d.name || 'Farmers Market')}</h3>
         ${address ? `<p class="flh-result-address">${escapeHtml(address)}</p>` : ''}
         ${desc ? `<p class="flh-result-desc">${escapeHtml(desc)}</p>` : ''}
         ${distance}
+        ${directions ? `<p class="flh-result-actions">${directions}</p>` : ''}
         ${badges ? `<div class="flh-badges">${badges}</div>` : ''}
       </div>
     `;
