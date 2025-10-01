@@ -22,8 +22,10 @@
 
   .flh-controls{display:flex;flex-wrap:wrap;gap:1rem 1.25rem;align-items:flex-end;margin:0 0 1.1rem}
   .flh-field{display:flex;flex-direction:column;gap:.35rem;min-width:160px;flex:1}
-  .flh-field label{font-size:.8rem;letter-spacing:.02em;font-weight:600;text-transform:uppercase;color:#6b7280}
+  .flh-field label{font-size:.8rem;letter-spacing:.02em;font-weight:600;text-transform:uppercase;color:#374151}
   .flh-input{padding:.6rem .8rem;border:1px solid #d2d6df;border-radius:.55rem;font-size:1rem;box-shadow:0 1px 2px rgba(15,23,42,.08) inset}
+  .flh-input:focus-visible{outline:3px solid rgba(37,99,235,.45);outline-offset:2px;border-color:#2563eb;box-shadow:0 0 0 4px rgba(37,99,235,.15)}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
   .flh-clear{align-self:flex-start;padding:.6rem 1rem;border:1px solid #d2d6df;border-radius:.6rem;background:#fff;cursor:pointer;font-weight:600;transition:background .15s,box-shadow .15s}
   .flh-clear:hover{background:#f3f4f6;box-shadow:0 2px 6px rgba(15,23,42,.1)}
   .flh-count{font-size:.9rem;opacity:.75;white-space:nowrap;margin-left:auto;padding-bottom:.4rem}
@@ -67,28 +69,30 @@
 
 <div class="flh-wrap">
   <div class="flh-content-frame">
-  <div class="flh-controls">
+  <div class="flh-controls" role="group" aria-labelledby="flh-filter-heading" aria-describedby="flh-filter-instructions">
+    <p id="flh-filter-heading" class="sr-only">Search filters</p>
+    <p id="flh-filter-instructions" class="sr-only">All filters are optional. Enter a city, two-letter state code, ZIP code, market type, or keyword to narrow the map results.</p>
     <div class="flh-field">
       <label for="flh-city">City</label>
-      <input id="flh-city" class="flh-input" type="search" placeholder="e.g., Miami" autocomplete="off">
+      <input id="flh-city" class="flh-input" type="search" autocomplete="off" aria-describedby="flh-filter-instructions">
     </div>
     <div class="flh-field" style="max-width:120px">
       <label for="flh-state">State</label>
-      <input id="flh-state" class="flh-input" type="text" placeholder="FL" maxlength="2" autocomplete="off">
+      <input id="flh-state" class="flh-input" type="text" maxlength="2" autocomplete="off" aria-describedby="flh-filter-instructions">
     </div>
     <div class="flh-field" style="max-width:190px">
       <label for="flh-type">Type</label>
-      <select id="flh-type" class="flh-input">
+      <select id="flh-type" class="flh-input" aria-describedby="flh-filter-instructions">
         <option value="">All types</option>
       </select>
     </div>
     <div class="flh-field" style="max-width:140px">
       <label for="flh-zip">ZIP</label>
-      <input id="flh-zip" class="flh-input" type="search" placeholder="30303" inputmode="numeric" pattern="[0-9]*" maxlength="10" autocomplete="off">
+      <input id="flh-zip" class="flh-input" type="search" inputmode="numeric" pattern="[0-9]*" maxlength="10" autocomplete="off" aria-describedby="flh-filter-instructions">
     </div>
     <div class="flh-field">
       <label for="flh-name">Market Name / Keyword</label>
-      <input id="flh-name" class="flh-input" type="search" placeholder="Market name or programs" autocomplete="off">
+      <input id="flh-name" class="flh-input" type="search" autocomplete="off" aria-describedby="flh-filter-instructions">
     </div>
     <button id="flh-clear" class="flh-clear" type="button">Clear Filters</button>
     <span id="flh-count" class="flh-count" aria-live="polite"></span>
