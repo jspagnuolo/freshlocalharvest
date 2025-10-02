@@ -696,15 +696,16 @@
 
     if (filters.nameTokens.length && !filters.nameTokens.every(tok => data.haystackNormalized.includes(tok))) return false;
 
-    const targets = [];
+    let target = null;
     if (radiusOptions.zipTarget){
-      targets.push({ ...radiusOptions.zipTarget, type: 'zip' });
+      target = { ...radiusOptions.zipTarget, type: 'zip' };
     } else if (radiusOptions.cityTarget){
-      targets.push({ ...radiusOptions.cityTarget, type: 'city' });
+      target = { ...radiusOptions.cityTarget, type: 'city' };
+    } else if (radiusOptions.userTarget){
+      target = { ...radiusOptions.userTarget, type: 'user' };
     }
 
-    if (targets.length){
-      const target = targets[0];
+    if (target){
       const distance = haversineMiles(target.lat, target.lon, data.latitude, data.longitude);
       if (!Number.isFinite(distance) || distance > target.radius) return false;
       data.distanceMiles = distance;
@@ -756,7 +757,32 @@
       filters.cityTargetLabel = cityTarget.label;
     }
 
-    const radiusOptions = { zipTarget, cityTarget };
+    let userTarget = null;
+    const canUseUserTarget = Boolean(
+      userLocation &&
+      !zipTarget &&
+      !cityTarget &&
+      !filters.cityNormalized &&
+      !filters.stateNormalized &&
+      !filters.zipNormalized &&
+      (filters.typeValue || filters.nameTokens.length)
+    );
+    if (canUseUserTarget){
+      const label = userLocation.label || buildLocationLabel(userLocation);
+      userTarget = {
+        lat: userLocation.lat,
+        lon: userLocation.lon,
+        radius: USER_RADIUS_MILES,
+        label,
+        type: 'user'
+      };
+      if (label){
+        filters.nearestLabel = label;
+      }
+      filters.userRadius = USER_RADIUS_MILES;
+    }
+
+    const radiusOptions = { zipTarget, cityTarget, userTarget };
 
     markersGroup.clearLayers();
 
@@ -790,7 +816,7 @@
       }
     }
 
-    const distanceSortActive = Boolean(zipTarget || cityTarget);
+    const distanceSortActive = Boolean(zipTarget || cityTarget || userTarget);
     if (distanceSortActive){
       visible.sort((a, b) => {
         const da = a.data.distanceMiles ?? Number.POSITIVE_INFINITY;
@@ -800,7 +826,10 @@
     }
 
     renderCount(matchCount, totalRecords, filtersActive);
-    filters.distanceMode = zipTarget ? 'zip' : (cityTarget ? 'city' : null);
+    filters.distanceMode = zipTarget ? 'zip' : (cityTarget ? 'city' : (userTarget ? 'user' : null));
+    if (userTarget){
+      filters.nearestTotal = matchCount;
+    }
     renderList(visible, matchCount, filters);
 
     const hasGeoFilter = Boolean(zipTarget || cityTarget || filters.cityNormalized || filters.stateNormalized || filters.zipNormalized);
