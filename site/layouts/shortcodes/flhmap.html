@@ -803,6 +803,9 @@
     filters.distanceMode = zipTarget ? 'zip' : (cityTarget ? 'city' : null);
     renderList(visible, matchCount, filters);
 
+    const hasGeoFilter = Boolean(zipTarget || cityTarget || filters.cityNormalized || filters.stateNormalized || filters.zipNormalized);
+    const keepCurrentView = Boolean(userMarker && !hasGeoFilter && filters.typeValue);
+
     if (zipTarget){
       if (markersGroup.getLayers().length){
         try {
@@ -818,6 +821,10 @@
         } catch (err) {}
       } else {
         map.setView([cityTarget.lat, cityTarget.lon], 9);
+      }
+    } else if (keepCurrentView) {
+      if (!markersGroup.getLayers().length){
+        map.setView(userMarker.getLatLng(), USER_LOCATION_FALLBACK_ZOOM);
       }
     } else {
       if (markersGroup.getLayers().length){
